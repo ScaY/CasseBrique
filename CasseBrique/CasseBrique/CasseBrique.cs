@@ -84,8 +84,6 @@ namespace CasseBrique
             //chargement de l'image de la balle du jeu
             ballImgMid = Content.Load<Texture2D>("balleMid");
 
-            //chargement du style d'écriture
-            font = Content.Load<SpriteFont>("Default");
         }
 
         /// <summary>
@@ -139,7 +137,6 @@ namespace CasseBrique
             spriteBatch.Begin();
             spriteBatch.Draw(barImgMid, positionBar, Color.White);
             spriteBatch.Draw(ballImgMid, positionBall, Color.White);
-            spriteBatch.DrawString(font, "Life remaining: ", positionBrickInfo, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
