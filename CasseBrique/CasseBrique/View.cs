@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CasseBrique
+namespace CassseBrique
 {
-    interface View
+    public interface CasseBrique
     {
-        void Draw(Modele modele, SpriteBatch spriteBatch, GameTime gameTime);
+        public void Draw(AbstractModel modele, SpriteBatch spriteBatch, GameTime gameTime);
     }
 }
