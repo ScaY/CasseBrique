@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CasseBrique
 {
-    public class ControlerBar
+    public abstract class ControlerBar
     {
         private Bar bar;
 
@@ -22,20 +22,6 @@ namespace CasseBrique
             this.Bar = bar;
         }
 
-        public void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime)
-        {
-            if (keyBoardState.IsKeyDown(Keys.Right))
-            {
-                bar.Deplacement = Vector2.Normalize(new Vector2(1, 0));
-                bar.Position += bar.Deplacement * bar.Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            }
-            else if (keyBoardState.IsKeyDown(Keys.Left))
-            {
-                bar.Deplacement = Vector2.Normalize(new Vector2(-1, 0));
-                bar.Position += bar.Deplacement * bar.Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            }
-
-
-        }
+        public abstract void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame);
     }
 }

@@ -19,30 +19,25 @@ namespace CasseBrique
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        private Texture2D ballImgMid;  //image représentant la balle du jeu
-
-        private Vector2 positionBall;   //vecteur représentant la position de la balle
-
-        private Vector2 directionBall;    //vecteur représentant la direction de déplacement de la balle
-
-        public const float speedBall = 0.3f;        //constante représentant la vitesse de la balle
-
-        private SpriteFont font;                    //variable permettant d'écrire
-
-        private Vector2 positionBrickInfo;          //vecteur repésentant la position de l'information des briques restantes 
-
+        public const float speedBall = 0.2f;
+        public const float speedBar = 0.5f;
 
         //dimensions de la fenêtre
         private int widthFrame;
         private int heightFrame;
 
-        //parametre de la position de la barre
-        public const int xSetBar = 5;
-        public const int yPosition = 2;
-
+        //MVC concernant la barre
         private Bar bar1;
         private ControlerBar controlerBar1;
         private View viewBar1;
+
+        //MVC concernant la balle
+        private Ball ball1;
+        private ControlerBall controlerBall1;
+        private View viewBall1;
+
+        private Bricks bricks;
+        private ViewBricks viewBricks;
 
         public CasseBrique()
             : base()
@@ -61,19 +56,20 @@ namespace CasseBrique
         {
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
-            
-            bar1 = new Bar();
-            controlerBar1 = new ControlerBar(bar1);
+
+            bar1 = new Bar(Vector2.Zero, Vector2.Normalize(Vector2.UnitX), speedBar);
+            controlerBar1 = new ControlerbarKeyboard(bar1);
             viewBar1 = new ViewBar();
+            bar1.addView(viewBar1);
 
-            bar1.Initialize(Vector2.Zero, Vector2.UnitX);
-            directionBall = Vector2.Normalize(Vector2.UnitX);
+            ball1 = new Ball(Vector2.Zero, Vector2.Normalize(new Vector2(1, -1)), speedBall);
+            controlerBall1 = new ControlerBall(ball1);
+            viewBall1 = new ViewBall();
+            ball1.addView(viewBall1);
 
-            positionBall = Vector2.Zero;
-
-            positionBrickInfo = new Vector2(widthFrame - 100, 0);   //é changer @@@@ !!!
-
-
+            bricks = new Bricks(1, 5, (float)(heightFrame * 0.2), (float)(heightFrame * 0.2));
+            viewBricks = new ViewBricks();
+            bricks.InitializeViewBrick();
 
             base.Initialize();
         }
@@ -86,12 +82,26 @@ namespace CasseBrique
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
-            //chargement de l'image de la balle du jeu
-            ballImgMid = Content.Load<Texture2D>("balleMid");
 
-            //chargement de l'image de la barre du casse brique
-            bar1.LoadContent(Content, "horizontalbarMid");
+            try
+            {
+                //chargement de l'image de la barre du casse brique
+                viewBar1.LoadContent(Content, "barMid");
+                bar1.Position = new Vector2((float)(widthFrame - viewBar1.Texture.Width) / 2, heightFrame * 0.9f);
+
+                //chargement de l'image de la balle du jeu
+                viewBall1.LoadContent(Content, "balleMid");
+                ball1.Position = new Vector2((float)(widthFrame - viewBar1.Texture.Width) / 2, heightFrame * 0.9f - viewBar1.Texture.Height);
+
+                //chargement des images de brique
+                bricks.InitializeTextureBrick(Content);
+                //initialisation de la pasotion des briques en fonction de la taille de leur image
+                bricks.InitializePositionBrick();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception in CasseBrique LoadContent: " + e.Message);
+            }
 
         }
 
@@ -113,19 +123,8 @@ namespace CasseBrique
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (positionBall.X >= widthFrame)
-            {
-                directionBall = Vector2.Normalize(new Vector2(-1, 0));
-            }
-            else if (positionBall.X <= 0)
-            {
-                directionBall = Vector2.Normalize(Vector2.UnitX);
-            }
-
-            //permet de gérer le problème du framerate (nombre de tours de la "boule de jeu")
-            positionBall += directionBall * speedBall * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
-            controlerBar1.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime);
+            controlerBar1.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
+            controlerBall1.HandleTrajectoryBall(bar1, gameTime, heightFrame, widthFrame, bricks);
 
             base.Update(gameTime);
         }
@@ -141,7 +140,8 @@ namespace CasseBrique
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
             viewBar1.Draw(bar1, spriteBatch, gameTime);
-            spriteBatch.Draw(ballImgMid, positionBall, Color.White);
+            viewBall1.Draw(ball1, spriteBatch, gameTime);
+            viewBricks.Draw(bricks, spriteBatch, gameTime);
             spriteBatch.End();
 
             base.Draw(gameTime);

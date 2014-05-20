@@ -11,6 +11,21 @@
     <RootNamespace>CasseBrique</RootNamespace>
     <AssemblyName>CasseBrique</AssemblyName>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publier\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -38,31 +53,29 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Events\RemovedBrickEvent.cs" />
-    <Compile Include="Events\AddedBrickEvent.cs" />
-    <Compile Include="Events\BrickEvent.cs" />
-    <Compile Include="Events\BrickLifeUpdatedEvent.cs" />
-    <Compile Include="Modele.cs" />
-    <Compile Include="Model\Breakout.cs" />
-    <Compile Include="Events\RemovedPlayerEvent.cs" />
-    <Compile Include="Events\AddedPlayerEvent.cs" />
-    <Compile Include="Events\PlayerEvent.cs" />
-    <Compile Include="Model\Ball.cs" />
-    <Compile Include="Model\Brick.cs" />
+    <Compile Include="Ball.cs" />
+    <Compile Include="Bar.cs" />
+    <Compile Include="Brick.cs" />
+    <Compile Include="Bricks.cs" />
+    <Compile Include="BrickView.cs" />
     <Compile Include="CasseBrique.cs" />
+    <Compile Include="ControlerBall.cs" />
     <Compile Include="ControlerBar.cs" />
-    <Compile Include="Events\Event.cs" />
-    <Compile Include="Model\Game.cs" />
-    <Compile Include="Model\AbstractModel.cs" />
-    <Compile Include="Model\Player.cs" />
-    <Compile Include="Model\Position.cs" />
+    <Compile Include="ControlerbarKeyboard.cs" />
+    <Compile Include="Modele.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RuleBall.cs" />
     <Compile Include="Shape.cs" />
-    <Compile Include="Model\Size.cs" />
     <Compile Include="View.cs" />
+    <Compile Include="ViewBall.cs" />
     <Compile Include="ViewBar.cs" />
-    <Compile Include="Views\View.cs" />
+    <Compile Include="ViewBricks.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -91,12 +104,51 @@
       <Link>SDL.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\horizontalBarMid.png">
+    <Content Include="Content\barMid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\brick1life.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\brick2life.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\brick3life.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Brique\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
