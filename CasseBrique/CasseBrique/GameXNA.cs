@@ -7,6 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
+using Breakout.Model;
+using CasseBrique.Views;
 #endregion
 
 namespace CasseBrique
@@ -14,7 +16,7 @@ namespace CasseBrique
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class CasseBrique : Game
+    public class GameXNA : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -26,20 +28,12 @@ namespace CasseBrique
         private int widthFrame;
         private int heightFrame;
 
-        //MVC concernant la barre
-        private Bar bar1;
-        private ControlerBar controlerBar1;
-        private View viewBar1;
+        private BreakoutModel model;
+        private ViewBreakout view;
+        private ControlerBar controlerBar;
+        private ControlerBall controlerBall;
 
-        //MVC concernant la balle
-        private Ball ball1;
-        private ControlerBall controlerBall1;
-        private View viewBall1;
-
-        private Bricks bricks;
-        private ViewBricks viewBricks;
-
-        public CasseBrique()
+        public GameXNA()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -57,19 +51,16 @@ namespace CasseBrique
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            bar1 = new Bar(Vector2.Zero, Vector2.Normalize(Vector2.UnitX), speedBar);
-            controlerBar1 = new ControlerbarKeyboard(bar1);
-            viewBar1 = new ViewBar();
-            bar1.addView(viewBar1);
+            model = new BreakoutModel(2, 2, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            
+            Bar bar = model.Bar;
+            controlerBar = new ControlerbarKeyboard(bar);
 
-            ball1 = new Ball(Vector2.Zero, Vector2.Normalize(new Vector2(1, -1)), speedBall);
-            controlerBall1 = new ControlerBall(ball1);
-            viewBall1 = new ViewBall();
-            ball1.addView(viewBall1);
+            Ball ball = model.Ball;
+            controlerBall = new ControlerBall(ball);
 
-            bricks = new Bricks(1, 5, (float)(heightFrame * 0.2), (float)(heightFrame * 0.2));
-            viewBricks = new ViewBricks();
-            bricks.InitializeViewBrick();
+
+            view = new ViewBreakout(model, Content);
 
             base.Initialize();
         }
@@ -85,18 +76,14 @@ namespace CasseBrique
 
             try
             {
+
                 //chargement de l'image de la barre du casse brique
-                viewBar1.LoadContent(Content, "barMid");
-                bar1.Position = new Vector2((float)(widthFrame - viewBar1.Texture.Width) / 2, heightFrame * 0.9f);
+                model.Bar.Position = new Vector2((float)(widthFrame - view.ViewBar.Texture.Width) / 2, heightFrame * 0.9f);
+                model.Bar.Size.Width = view.ViewBar.Texture.Width;
+                model.Bar.Size.Height = view.ViewBar.Texture.Height;
 
                 //chargement de l'image de la balle du jeu
-                viewBall1.LoadContent(Content, "balleMid");
-                ball1.Position = new Vector2((float)(widthFrame - viewBar1.Texture.Width) / 2, heightFrame * 0.9f - viewBar1.Texture.Height);
-
-                //chargement des images de brique
-                bricks.InitializeTextureBrick(Content);
-                //initialisation de la pasotion des briques en fonction de la taille de leur image
-                bricks.InitializePositionBrick();
+                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2, heightFrame * 0.9f - model.Bar.Size.Height);
             }
             catch (Exception e)
             {
@@ -123,8 +110,8 @@ namespace CasseBrique
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            controlerBar1.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
-            controlerBall1.HandleTrajectoryBall(bar1, gameTime, heightFrame, widthFrame, bricks);
+            controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
+            controlerBall.HandleTrajectoryBall(model.Bar, gameTime, heightFrame, widthFrame, model.BrickZone);
 
             base.Update(gameTime);
         }
@@ -136,12 +123,10 @@ namespace CasseBrique
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
-            viewBar1.Draw(bar1, spriteBatch, gameTime);
-            viewBall1.Draw(ball1, spriteBatch, gameTime);
-            viewBricks.Draw(bricks, spriteBatch, gameTime);
+            view.Draw(spriteBatch, gameTime);
             spriteBatch.End();
 
             base.Draw(gameTime);

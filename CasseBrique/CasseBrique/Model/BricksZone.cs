@@ -1,11 +1,13 @@
 ﻿
+using Breakout.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace CasseBrique
 {
-    public class Bricks : Modele
+    public class BrickZone
     {
 
         private Brick[,] bricks;
@@ -82,7 +84,7 @@ namespace CasseBrique
         }
 
 
-        public Bricks(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
+        public BrickZone(int nbBrickRow, int nbBrickCol, float startBlockBrickX, float startBlockBrickY)
         {
             this.AllBricks = new Brick[nbBrickRow, nbBrickCol];
             this.NbBrickCol = nbBrickCol;
@@ -100,38 +102,45 @@ namespace CasseBrique
             this.StartBlockBrickY = startBlockBrickY;
         }
 
-        public void InitializeViewBrick()
-        {
-            for (int i = 0; i < this.NbBrickRow; i++)
-            {
-                for (int j = 0; j < this.NbBrickCol; j++)
-                {
-                    AllBricks[i, j].addView(new BrickView());
-                }
-            }
-        }
-
-        public void InitializeTextureBrick(ContentManager content)
+        public void InitializeSizeBrick(Size size)
         {
             if (this.AllBricks.Length != 0)
             {
-                Texture2D texture = content.Load<Texture2D>("brick3life");
 
-                this.HeightBrick = texture.Height;
-                this.WidthBrick = texture.Width;
+                this.HeightBrick = size.Height;
+                this.WidthBrick = size.Width;
 
                 for (int i = 0; i < this.NbBrickRow; i++)
                 {
                     for (int j = 0; j < this.NbBrickCol; j++)
                     {
-                        AllBricks[i, j].Views[0].Texture = texture;
+                        AllBricks[i, j].Size = size;
                     }
                 }
 
-
                 this.EndBlockBrickX = startBlockBrickX + NbBrickCol * WidthBrick;
                 this.EndBlockBrickY = startBlockBrickY + NbBrickRow * HeightBrick;
+            }
+        }
 
+        public void AddBrick(Brick brick, int x, int y)
+        {
+            if (x >= 0 && y >= 0 && x < this.NbBrickCol && y < this.NbBrickRow)
+            {
+                if (AllBricks[x, y] == null)
+                {
+                    AllBricks[x, y] = brick;
+                    brick.XBrick = x;
+                    brick.YBrick = y;
+                }
+            }
+        }
+
+        public void RemoveBrick(Brick brick)
+        {
+            if (brick != null)
+            {
+                AllBricks[brick.XBrick, brick.YBrick] = null;
             }
         }
 
@@ -141,7 +150,7 @@ namespace CasseBrique
             {
                 for (int j = 0; j < this.NbBrickCol; j++)
                 {
-                    AllBricks[i, j].Position = new Vector2((i + 1) * StartBlockBrickX, (j + 1) * StartBlockBrickY);
+                    AllBricks[i, j].Position = new Vector2((i + 1) * WidthBrick, (j + 1) * HeightBrick);
                 }
             }
         }

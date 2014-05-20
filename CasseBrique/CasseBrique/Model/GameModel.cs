@@ -6,23 +6,21 @@ using Breakout.Events;
 
 namespace Breakout.Model
 {
-    public class Game : AbstractModel
+    public class GameModel : AbstractModel
     {
         public List<Player> Players { get; set; }
 
         public void addPlayer(Player player)
         {
             Players.Add(player);
-            RefreshViews(new AddedPlayerEvent(this, player));
         }
 
         public void removePlayer(Player player)
         {
             Players.Remove(player);
-            RefreshViews(new RemovedPlayerEvent(this, player));
         }
 
-        public Game()
+        public GameModel()
         {
             this.Players = new List<Player>();
         }

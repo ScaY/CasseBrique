@@ -6,7 +6,7 @@ using System;
 
 namespace CasseBrique
 {
-    public abstract class Shape : Modele
+    public abstract class Shape
     {
         private Vector2 position;
 
@@ -40,7 +40,7 @@ namespace CasseBrique
         }
 
         public Shape()
-            : this(Vector2.Zero, Vector2.UnitX, float.MinValue)
+            : this(Vector2.Zero, Vector2.UnitX, 1f)
         {
 
         }

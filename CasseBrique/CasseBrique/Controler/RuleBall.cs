@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Breakout.Model;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace CasseBrique
 {
     public static class RuleBall
     {
-        public static Brick GetBrickHit(Ball ball, Bricks bricks)
+        public static Brick GetBrickHit(Ball ball, BrickZone bricks)
         {
             Brick result = null;
             Vector2 positionBall = ball.Position;
@@ -13,32 +14,26 @@ namespace CasseBrique
             //la balle et dans la zone de brique
             if (CheckBallEnterBlockBrick(ball.Position, bricks))
             {
-                int brickX = (int)(positionBall.X / bricks.WidthBrick);
-                int brickY = (int)(positionBall.Y / bricks.HeightBrick);
-
-                Console.WriteLine("Ball in bloc !"+brickX+"   "+ brickY);
+                int brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
+                int brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
+                Console.WriteLine("Ball in bloc !" + brickX + "   " + brickY + "              " + ball.Position.X + " " + ball.Position.Y);
                 result = bricks.AllBricks[brickX, brickY];
             }
 
             return result;
         }
 
-        public static void DecreaseLifeBrick(Brick brick)
+        public static bool CheckBallEnterBlockBrick(Vector2 positionBall, BrickZone bricks)
         {
-            brick.DecreaseLifeBrick();
-        }
-
-        public static bool CheckBallEnterBlockBrick(Vector2 positionBall, Bricks bricks)
-        {
-            Console.WriteLine("CheckBal bloc " + (positionBall.X > bricks.StartBlockBrickX));
+            Console.WriteLine(bricks.StartBlockBrickX + "    " + bricks.EndBlockBrickX + "          " + bricks.StartBlockBrickY + "    " + bricks.EndBlockBrickY);
             return (positionBall.X > bricks.StartBlockBrickX && positionBall.X < bricks.EndBlockBrickX
                 && positionBall.Y > bricks.StartBlockBrickY && positionBall.Y < bricks.EndBlockBrickY);
         }
 
         public static void HandleDeplacementHitBrick(Ball ball, Brick brick)
         {
-            int widthBrick = brick.Views[0].Texture.Width;
-            int heightBrick = brick.Views[0].Texture.Height;
+            int widthBrick = brick.Size.Width;
+            int heightBrick = brick.Size.Height;
 
             Vector2 positionBall = ball.Position;
             Vector2 centerBrick = new Vector2(brick.Position.X + widthBrick, brick.Position.Y + heightBrick);
@@ -72,7 +67,7 @@ namespace CasseBrique
                 if (positionBall.Y < centerBrick.Y)
                 {
                     //la balle a touché la brique dans la partie haute
-                    float diffX = positionBall.X -centerBrick.X - widthBrick;
+                    float diffX = positionBall.X - centerBrick.X - widthBrick;
                     float diffY = positionBall.Y - centerBrick.Y - heightBrick;
 
                     HandleVarianceXAndY(ball, diffX, diffY);

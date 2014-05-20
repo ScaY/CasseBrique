@@ -18,7 +18,7 @@ namespace CasseBrique
         [STAThread]
         static void Main()
         {
-                using (var game = new CasseBrique())
+                using (var game = new GameXNA())
                     game.Run();
             
         }

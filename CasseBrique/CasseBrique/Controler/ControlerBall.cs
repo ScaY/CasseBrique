@@ -21,7 +21,7 @@ namespace CasseBrique
             this.Ball = ball;
         }
 
-        public void HandleTrajectoryBall(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, Bricks bricks)
+        public void HandleTrajectoryBall(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, BrickZone bricks)
         {
             ball.HandleTrajectoryBall(bar, gameTime, heightFrame, widthFrame, bricks);
         }
