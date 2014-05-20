@@ -2,19 +2,12 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace CasseBrique
 {
     public abstract class Shape : Modele
     {
-        private Texture2D texture;
-
-        public Texture2D Texture
-        {
-            get { return texture; }
-            set { texture = value; }
-        }
-
         private Vector2 position;
 
         public Vector2 Position
@@ -39,16 +32,18 @@ namespace CasseBrique
             set { speed = value; }
         }
 
-        public void Initialize(Vector2 position, Vector2 deplacement)
+        public Shape(Vector2 position, Vector2 deplacement, float speed)
         {
             this.Position = position;
             this.Deplacement = deplacement;
-            this.speed = 0.75f;
+            this.Speed = speed;
         }
 
-        public void LoadContent(ContentManager content, string ressource)
+        public Shape()
+            : this(Vector2.Zero, Vector2.UnitX, float.MinValue)
         {
-            this.Texture = content.Load<Texture2D>(ressource);
+
         }
+
     }
 }
