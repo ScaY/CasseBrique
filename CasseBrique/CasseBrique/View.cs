@@ -7,8 +7,8 @@ using System.Text;
 
 namespace CassseBrique
 {
-    public interface CasseBrique
+    public interface View
     {
-        public void Draw(AbstractModel modele, SpriteBatch spriteBatch, GameTime gameTime);
+        public void Draw(Modele modele, SpriteBatch spriteBatch, GameTime gameTime);
     }
 }

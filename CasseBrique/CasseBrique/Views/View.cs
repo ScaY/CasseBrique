@@ -8,6 +8,6 @@ namespace Breakout.Views
 {
     public interface View
     {
-        public abstract void Refresh(Event);
+        public abstract void Refresh(Event e);
     }
 }

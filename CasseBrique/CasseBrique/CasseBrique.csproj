@@ -62,7 +62,7 @@
     <Compile Include="Model\Size.cs" />
     <Compile Include="View.cs" />
     <Compile Include="ViewBar.cs" />
-    <Compile Include="Views\AbstractView.cs" />
+    <Compile Include="Views\View.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
