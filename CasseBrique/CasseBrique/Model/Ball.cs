@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Breakout.Events;
 
-namespace Breakout.Views
+namespace Breakout.Model
 {
-    public interface View
+    public class Ball
     {
-        void Refresh(Event e);
+        public Position Position { get; set; }
     }
 }

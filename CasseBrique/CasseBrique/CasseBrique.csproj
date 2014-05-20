@@ -62,7 +62,23 @@
     <Compile Include="ControlerBall.cs" />
     <Compile Include="ControlerBar.cs" />
     <Compile Include="ControlerbarKeyboard.cs" />
+    <Compile Include="Events\AddedBrickEvent.cs" />
+    <Compile Include="Events\AddedPlayerEvent.cs" />
+    <Compile Include="Events\BrickEvent.cs" />
+    <Compile Include="Events\BrickLifeUpdatedEvent.cs" />
+    <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\PlayerEvent.cs" />
+    <Compile Include="Events\RemovedBrickEvent.cs" />
+    <Compile Include="Events\RemovedPlayerEvent.cs" />
     <Compile Include="Modele.cs" />
+    <Compile Include="Model\AbstractModel.cs" />
+    <Compile Include="Model\Ball.cs" />
+    <Compile Include="Model\Breakout.cs" />
+    <Compile Include="Model\Brick.cs" />
+    <Compile Include="Model\Game.cs" />
+    <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\Position.cs" />
+    <Compile Include="Model\Size.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -76,6 +92,7 @@
     <Compile Include="ViewBall.cs" />
     <Compile Include="ViewBar.cs" />
     <Compile Include="ViewBricks.cs" />
+    <Compile Include="Views\View.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
@@ -94,7 +111,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\balleMid.png">
+    <Content Include="balleMid.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\ballSmall.png">
