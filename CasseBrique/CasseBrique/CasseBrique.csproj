@@ -72,7 +72,7 @@
     <Compile Include="Model\BreakoutModel.cs" />
     <Compile Include="Model\Brick.cs" />
     <Compile Include="Model\GameModel.cs" />
-    <Compile Include="Model\Level1.cs" />
+    <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Position.cs" />
     <Compile Include="Model\Size.cs" />
