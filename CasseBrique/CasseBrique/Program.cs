@@ -21,8 +21,8 @@ namespace Breakout
         static void Main()
         {
                 Menu m = new Menu();
-                using (var game = new GameXNA())
-                    game.Run();
+                //using (var game = new GameXNA())
+                    //game.Run();
             
         }
     }

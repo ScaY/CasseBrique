@@ -30,26 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSolo = new System.Windows.Forms.Button();
-            this.btnMulti = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAddPlayer = new System.Windows.Forms.Button();
-            this.lblPseudo = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.btnPlay = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblPseudo = new System.Windows.Forms.Label();
+            this.btnAddPlayer = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMulti = new System.Windows.Forms.Button();
+            this.btnSolo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -70,87 +70,10 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(808, 518);
             this.splitContainer1.SplitterDistance = 240;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnMulti);
-            this.panel1.Controls.Add(this.btnSolo);
-            this.panel1.Location = new System.Drawing.Point(69, 89);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(394, 337);
-            this.panel1.TabIndex = 0;
-            // 
-            // btnSolo
-            // 
-            this.btnSolo.Location = new System.Drawing.Point(74, 45);
-            this.btnSolo.Name = "btnSolo";
-            this.btnSolo.Size = new System.Drawing.Size(248, 94);
-            this.btnSolo.TabIndex = 0;
-            this.btnSolo.Text = "Mode Solo";
-            this.btnSolo.UseVisualStyleBackColor = true;
-            this.btnSolo.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // btnMulti
-            // 
-            this.btnMulti.Location = new System.Drawing.Point(74, 190);
-            this.btnMulti.Name = "btnMulti";
-            this.btnMulti.Size = new System.Drawing.Size(248, 94);
-            this.btnMulti.TabIndex = 1;
-            this.btnMulti.Text = "Mode Multijoueur";
-            this.btnMulti.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(97, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(345, 73);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Casse Brique";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.lblPseudo);
-            this.panel2.Controls.Add(this.btnAddPlayer);
-            this.panel2.Location = new System.Drawing.Point(69, 86);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(394, 337);
-            this.panel2.TabIndex = 2;
-            this.panel2.Visible = false;
-            // 
-            // btnAddPlayer
-            // 
-            this.btnAddPlayer.Location = new System.Drawing.Point(74, 190);
-            this.btnAddPlayer.Name = "btnAddPlayer";
-            this.btnAddPlayer.Size = new System.Drawing.Size(248, 94);
-            this.btnAddPlayer.TabIndex = 1;
-            this.btnAddPlayer.Text = "Ajouter";
-            this.btnAddPlayer.UseVisualStyleBackColor = true;
-            this.btnAddPlayer.Click += new System.EventHandler(this.btnAddPlayer_Click);
-            // 
-            // lblPseudo
-            // 
-            this.lblPseudo.AutoSize = true;
-            this.lblPseudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPseudo.Location = new System.Drawing.Point(69, 88);
-            this.lblPseudo.Name = "lblPseudo";
-            this.lblPseudo.Size = new System.Drawing.Size(79, 25);
-            this.lblPseudo.TabIndex = 2;
-            this.lblPseudo.Text = "Pseudo";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(158, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 22);
-            this.textBox1.TabIndex = 3;
             // 
             // panel3
             // 
@@ -211,6 +134,84 @@
             this.comboBox1.TabIndex = 5;
             this.comboBox1.Text = "Aucun";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.lblPseudo);
+            this.panel2.Controls.Add(this.btnAddPlayer);
+            this.panel2.Location = new System.Drawing.Point(69, 86);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(394, 337);
+            this.panel2.TabIndex = 2;
+            this.panel2.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(158, 91);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(164, 22);
+            this.textBox1.TabIndex = 3;
+            // 
+            // lblPseudo
+            // 
+            this.lblPseudo.AutoSize = true;
+            this.lblPseudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPseudo.Location = new System.Drawing.Point(69, 88);
+            this.lblPseudo.Name = "lblPseudo";
+            this.lblPseudo.Size = new System.Drawing.Size(79, 25);
+            this.lblPseudo.TabIndex = 2;
+            this.lblPseudo.Text = "Pseudo";
+            // 
+            // btnAddPlayer
+            // 
+            this.btnAddPlayer.Location = new System.Drawing.Point(74, 190);
+            this.btnAddPlayer.Name = "btnAddPlayer";
+            this.btnAddPlayer.Size = new System.Drawing.Size(248, 94);
+            this.btnAddPlayer.TabIndex = 1;
+            this.btnAddPlayer.Text = "Ajouter";
+            this.btnAddPlayer.UseVisualStyleBackColor = true;
+            this.btnAddPlayer.Click += new System.EventHandler(this.btnAddPlayer_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.Location = new System.Drawing.Point(97, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(345, 73);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Casse Brique";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnMulti);
+            this.panel1.Controls.Add(this.btnSolo);
+            this.panel1.Location = new System.Drawing.Point(69, 89);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(394, 337);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnMulti
+            // 
+            this.btnMulti.Location = new System.Drawing.Point(74, 190);
+            this.btnMulti.Name = "btnMulti";
+            this.btnMulti.Size = new System.Drawing.Size(248, 94);
+            this.btnMulti.TabIndex = 1;
+            this.btnMulti.Text = "Mode Multijoueur";
+            this.btnMulti.UseVisualStyleBackColor = true;
+            // 
+            // btnSolo
+            // 
+            this.btnSolo.Location = new System.Drawing.Point(74, 45);
+            this.btnSolo.Name = "btnSolo";
+            this.btnSolo.Size = new System.Drawing.Size(248, 94);
+            this.btnSolo.TabIndex = 0;
+            this.btnSolo.Text = "Mode Solo";
+            this.btnSolo.UseVisualStyleBackColor = true;
+            this.btnSolo.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -224,11 +225,11 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

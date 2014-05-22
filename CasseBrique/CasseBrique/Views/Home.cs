@@ -1,4 +1,5 @@
 ﻿using Breakout;
+using Breakout.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace Breakout.Views
 {
     public partial class Home : Form
     {
+        private Player player;
         public Home()
         {
             InitializeComponent();
@@ -54,6 +56,10 @@ namespace Breakout.Views
 
         private void btnAddPlayer_Click(object sender, EventArgs e)
         {
+            if (this.textBox1.Text != null && this.textBox1.Text.Length > 0)
+            {
+                this.player = new Player(this.textBox1.Text,null,null);
+            }
             this.panel2.Hide();
             this.panel3.Show();
 
@@ -62,8 +68,14 @@ namespace Breakout.Views
         private void btnPlay_Click(object sender, EventArgs e)
         {
             this.Hide();
-            using (var game = new GameXNA())
+            using (var game = new GameXNA(this.player))
+            
                 game.Run();
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
