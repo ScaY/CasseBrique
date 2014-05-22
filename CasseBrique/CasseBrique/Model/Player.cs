@@ -11,6 +11,7 @@ namespace Breakout.Model
         public Player()
         {
 
+
         }
         public string Name
         {
