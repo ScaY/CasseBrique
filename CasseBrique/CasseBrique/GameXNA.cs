@@ -54,7 +54,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(2, 2, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(1, 1, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             
             Bar bar = model.Bar;
             controlerBar = new ControlerBarKeyboard(bar);
@@ -92,7 +92,7 @@ namespace Breakout
                 model.Bar.Size.Height = view.ViewBar.Texture.Height;
 
                 //chargement de l'image de la balle du jeu
-                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2, heightFrame * 0.9f - model.Bar.Size.Height);
+                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2 +100, heightFrame * 0.9f - model.Bar.Size.Height);
             }
             catch (Exception e)
             {

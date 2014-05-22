@@ -40,9 +40,8 @@ namespace Breakout.Model
 
         public void HandleTrajectoryBallReboundBar(Bar bar, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            if (bar.getRectangle().Contains((int)(Position.X + bar.Size.Width), (int)(Position.Y + bar.Size.Height)))
+            if (bar.getRectangle().Contains((int)(Position.X), (int)(Position.Y + bar.Size.Height)))
             {
-                Console.WriteLine("Check rebound bar in Ball");
                 RuleBall.HandleReboundUpDown(this);
             }
 
