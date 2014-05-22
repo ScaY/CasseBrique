@@ -14,6 +14,7 @@ namespace Breakout.Model
         public Ball Ball { get; set; }
 
         public Bar Bar { get; set; }
+
         public BreakoutModel(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.BrickZone = new BrickZone(nbBrickCol, nbBrickRow, startBlockBrickX, startBlockBrickY);
