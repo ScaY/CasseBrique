@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace Breakout.Model
 
         }
 
-        public void HandleTrajectoryBall(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, BrickZone bricks)
+        public void HandleTrajectoryBall(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, BrickZone bricks, ViewBall viewBall)
         {
             //balle sort du jeu
             if (Position.Y > heightFrame)
@@ -28,18 +29,17 @@ namespace Breakout.Model
                 //handle when the player loose the game
             }
 
-            HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
+            HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame, viewBall);
             HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
             HandleBallReboundBrick(bricks);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
-        public void HandleTrajectoryBallReboundBar(Bar bar, GameTime gameTime, int heightFrame, int widthFrame)
+        public void HandleTrajectoryBallReboundBar(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, ViewBall viewBall )
         {
-            if (bar.getRectangle().Contains((int)(Position.X + bar.Size.Width), (int)(Position.Y + bar.Size.Height)))
+            if (bar.getRectangle().Contains((int)(Position.X), (int)(Position.Y+viewBall.Texture.Height/2)))
             {
-                Console.WriteLine("Check rebound bar in Ball");
                 RuleBall.BallReboundDown(this);
             }
 
@@ -64,6 +64,7 @@ namespace Breakout.Model
             Brick brick = RuleBall.GetBrickHit(this, bricks);
             if(brick != null)
             {
+                Console.WriteLine("Brick detected");
                 RuleBall.HandleDeplacementHitBrick(this, brick);
             }
         }

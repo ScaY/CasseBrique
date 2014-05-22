@@ -16,6 +16,8 @@ namespace Breakout.Model
             {
                 int brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 int brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
+
+                Console.WriteLine("Enter in blockBrick      " + brickX+" , "+brickY );
                 result = bricks.AllBricks[brickX, brickY];
             }
 
@@ -40,9 +42,11 @@ namespace Breakout.Model
             //la balle a touché la brique à droite
             if (positionBall.X > centerBrick.X)
             {
+                Console.WriteLine("In RulleBall ball touché à droite");
                 //la balle a touché la brique dans la partie haute
                 if (positionBall.Y < centerBrick.Y)
                 {
+                    Console.WriteLine("             In RulleBall ball touché en haut");
                     float diffX = centerBrick.X + widthBrick - positionBall.X;
                     float diffY = positionBall.Y - centerBrick.Y - heightBrick;
 
@@ -60,10 +64,13 @@ namespace Breakout.Model
             }
             else
             {
+                Console.WriteLine("In RulleBall ball touché à gauche au au milieu");
                 //la balle a touché la brique à gauche
 
                 if (positionBall.Y < centerBrick.Y)
                 {
+
+                    Console.WriteLine("             In RulleBall ball touché en haut");
                     //la balle a touché la brique dans la partie haute
                     float diffX = positionBall.X - centerBrick.X - widthBrick;
                     float diffY = positionBall.Y - centerBrick.Y - heightBrick;
@@ -107,9 +114,9 @@ namespace Breakout.Model
 
         public static void HandleVarianceXAndY(Ball ball, float diffX, float diffY)
         {
-            //la balle a touché la brique à droite
             if (diffX < diffY)
             {
+                //la balle a touché la brique à droite
                 BallReboundLeftRight(ball);
             }
             else
