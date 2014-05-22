@@ -13,6 +13,10 @@ namespace Breakout.Bonus
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
+            float x = this.Position.X + this.Deplacement.X * this.Speed;
+            float y = this.Position.Y + this.Deplacement.Y * this.Speed;
+
+            this.Position = new Vector2(x, y);
 
         }
     }
