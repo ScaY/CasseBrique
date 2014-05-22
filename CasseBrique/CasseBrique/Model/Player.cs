@@ -1,4 +1,5 @@
-﻿using CasseBrique;
+﻿using Breakout.Bonus;
+using CasseBrique;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,8 @@ namespace Breakout.Model
             get;
             set;
         }
+
+        public List<AbstractBonus> Bonuses { get; set; }
 
         public Player(String _name, Bar _bar, Ball _ball)
         {

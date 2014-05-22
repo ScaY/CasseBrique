@@ -53,8 +53,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bonus\BarSizeBonus.cs" />
     <Compile Include="Model\Ball.cs" />
     <Compile Include="Model\Bar.cs" />
+    <Compile Include="Bonus\AbstractBonus.cs" />
+    <Compile Include="Bonus\BarBonus.cs" />
     <Compile Include="Model\BrickZone.cs" />
     <Compile Include="GameXNA.cs" />
     <Compile Include="Controler\ControlerBall.cs" />

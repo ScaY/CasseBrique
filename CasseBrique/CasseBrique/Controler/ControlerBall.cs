@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,9 @@ namespace Breakout.Controler
             this.Ball = ball;
         }
 
-        public void HandleTrajectoryBall(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, BrickZone bricks)
+        public void HandleTrajectoryBall(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, BrickZone bricks, ViewBall viewBall)
         {
-            ball.HandleTrajectoryBall(bar, gameTime, heightFrame, widthFrame, bricks);
+            ball.HandleTrajectoryBall(bar, gameTime, heightFrame, widthFrame, bricks, viewBall);
         }
 
     }
