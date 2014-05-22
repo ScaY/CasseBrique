@@ -34,6 +34,7 @@ namespace Breakout
         private ViewBreakout view;
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
+        private ControlerBonus controlerBonus;
 
         public GameXNA()
             : base()
@@ -66,6 +67,7 @@ namespace Breakout
             bonus.Position = new Vector2(200, 200);
             bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
             model.Bonuses.Add(bonus);
+            controlerBonus = new ControlerBonus(bonus);
 
             view = new ViewBreakout(model, Content);
 
@@ -119,6 +121,7 @@ namespace Breakout
 
             controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
             controlerBall.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+            controlerBonus.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
 
             base.Update(gameTime);
         }
