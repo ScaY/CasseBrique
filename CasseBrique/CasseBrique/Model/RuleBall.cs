@@ -41,15 +41,19 @@ namespace Breakout.Model
             //la balle a touché la brique à droite
             if (positionBall.X > centerBrick.X)
             {
+                Console.WriteLine("Brique à droite !");
                 //la balle a touché la brique dans la partie haute
                 if (positionBall.Y < centerBrick.Y)
                 {
-                    float diffX = positionBall.X - (brick.Position.X + brick.Size.Width);
+                    Console.WriteLine("Brique à haute !");
+                    float diffX = (brick.Position.X + brick.Size.Width) - positionBall.X;
                     float diffY = positionBall.Y - brick.Position.Y;
                     HandleVarianceXAndY(ball, diffX, diffY);
                 }
                 else
                 {
+
+                    Console.WriteLine("Brique en bas !");
                     //la balle a touché la brique dans la partie basse
                     float diffX = (brick.Position.X + brick.Size.Width) - positionBall.X;
                     float diffY = (brick.Position.Y + brick.Size.Height) - positionBall.Y;
@@ -60,9 +64,10 @@ namespace Breakout.Model
             else
             {
                 //la balle a touché la brique à gauche
-
+                Console.WriteLine("Brique à gauche !");
                 if (positionBall.Y < centerBrick.Y)
                 {
+                    Console.WriteLine("Brique à haute !");
                     //la balle a touché la brique dans la partie haute
                     float diffX = positionBall.X - brick.Position.X;
                     float diffY = positionBall.Y - brick.Position.Y;
@@ -71,6 +76,8 @@ namespace Breakout.Model
                 }
                 else
                 {
+
+                    Console.WriteLine("Brique en bas !");
                     //la balle a touché la brique dans la partie basse
                     float diffX = positionBall.X - brick.Position.X;
                     float diffY = positionBall.Y - (brick.Position.Y + brick.Size.Height);
@@ -94,14 +101,6 @@ namespace Breakout.Model
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(ball.Deplacement.X, -ball.Deplacement.Y));
             }else if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && ball.Deplacement.Y < 0)
-            {
-                ball.Deplacement = Vector2.Normalize(new Vector2(ball.Deplacement.X, -ball.Deplacement.Y));
-            }
-        }
-
-        public static void BallReboundTop(Ball ball)
-        {
-            if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && ball.Deplacement.Y < 0)
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(ball.Deplacement.X, -ball.Deplacement.Y));
             }
