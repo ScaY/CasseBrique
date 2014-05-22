@@ -1,4 +1,5 @@
-﻿using Breakout.Views;
+﻿using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,6 +12,8 @@ namespace Breakout.Views
 {
     public abstract class ShapeView : View
     {
+        public Shape Shape { get; set; }
+
         private Texture2D texture;
 
         public Texture2D Texture
@@ -19,11 +22,15 @@ namespace Breakout.Views
             set { texture = value; }
         }
 
-        public ShapeView(Texture2D texture)
+        public ShapeView(Shape shape, Texture2D texture)
         {
+            this.Shape = shape;
             this.Texture = texture;
         }
 
-        public abstract void Draw(SpriteBatch spriteBatch, GameTime gameTime);
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            spriteBatch.Draw(this.Texture, Shape.Position, Color.White);
+        }
     }
 }

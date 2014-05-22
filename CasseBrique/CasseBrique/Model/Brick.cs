@@ -31,5 +31,9 @@ namespace Breakout.Model
             this.Life = life;
             this.Size = size;
         }
+
+        public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
+        {
+        }
     }
 }

@@ -14,6 +14,8 @@ namespace Breakout.Controler
 
         public override void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame)
         {
+            Bar Bar = (Bar)Shape;
+
             if (keyBoardState.IsKeyDown(Keys.Right) && (Bar.Position.X + Bar.Size.Width < widthFrame))
             {
                 Bar.Deplacement = Vector2.Normalize(new Vector2(1, 0));

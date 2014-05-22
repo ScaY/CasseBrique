@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Breakout.Model;
 using Breakout.Views;
 using Breakout.Controler;
+using Breakout.Bonus;
 #endregion
 
 namespace Breakout
@@ -60,6 +61,11 @@ namespace Breakout
             Ball ball = model.Ball;
             controlerBall = new ControlerBall(ball);
 
+            AbstractBonus bonus = new BarSizeBonus();
+            bonus.Speed = 0.2f;
+            bonus.Position = new Vector2(200, 200);
+            bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
+            model.Bonuses.Add(bonus);
 
             view = new ViewBreakout(model, Content);
 
@@ -112,7 +118,7 @@ namespace Breakout
                 Exit();
 
             controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
-            controlerBall.HandleTrajectoryBall(model.Bar, gameTime, heightFrame, widthFrame, model.BrickZone);
+            controlerBall.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
 
             base.Update(gameTime);
         }

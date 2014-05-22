@@ -20,10 +20,10 @@ namespace Breakout
         [STAThread]
         static void Main()
         {
-            Home h = new Home();
-            Application.Run(h);
-                //using (var game = new GameXNA())
-                    //game.Run();
+            //Home h = new Home();
+            //Application.Run(h);
+                using (var game = new GameXNA())
+                    game.Run();
             
         }
     }

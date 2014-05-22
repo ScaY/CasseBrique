@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CasseBrique;
 using Microsoft.Xna.Framework;
+using Breakout.Bonus;
 
 namespace Breakout.Model
 {
@@ -15,11 +16,14 @@ namespace Breakout.Model
 
         public Bar Bar { get; set; }
 
+        public List<AbstractBonus> Bonuses { get; set; }
+
         public BreakoutModel(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.BrickZone = new BrickZone(nbBrickCol, nbBrickRow, startBlockBrickX, startBlockBrickY);
             this.Ball = new Ball();
             this.Bar = new Bar();
+            this.Bonuses = new List<AbstractBonus>();
         }
 
         public void AddBrick(Brick brick, int x, int y)

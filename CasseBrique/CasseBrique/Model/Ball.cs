@@ -20,8 +20,11 @@ namespace Breakout.Model
 
         }
 
-        public void HandleTrajectoryBall(Bar bar, GameTime gameTime, int heightFrame, int widthFrame, BrickZone bricks)
+        public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
+            Bar bar = model.Bar;
+            BrickZone bricks = model.BrickZone;
+
             //balle sort du jeu
             if (Position.Y > heightFrame)
             {

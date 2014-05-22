@@ -7,16 +7,8 @@ namespace Breakout.Views
 {
     public class ViewBall : ShapeView
     {
-        public Ball Ball { get; set; }
-
-        public ViewBall(Ball ball, Texture2D texture) : base(texture)
-        {
-            this.Ball = ball;    
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
-        {
-            spriteBatch.Draw(this.Texture, this.Ball.Position, Color.White);
+        public ViewBall(Ball ball, Texture2D texture) : base(ball, texture)
+        {  
         }
     }
 
