@@ -6,7 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 #endregion
 
-namespace CasseBrique
+namespace Breakout
 {
 #if WINDOWS || LINUX
     /// <summary>

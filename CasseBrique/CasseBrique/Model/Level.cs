@@ -6,35 +6,21 @@ using System.Text;
 using System.Xml;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
-namespace CasseBrique.Model
+
+namespace Breakout.Model
 {
-    class Level
+    public class Level
     {
-        private BrickZone map;
-        private int id;
-        private string levelName;
+        public BrickZone Map { get; set; }
 
-        public BrickZone Map
-        {
-            get { return map; }
-            set { map = value; }
-        }
+        public string LevelName { get; set; }
 
-        public string LevelName
-        {
-            get { return levelName; }
-            set { levelName = value; }
-        }
-        public int Id
-        {
-            get { return id; }
-            set { id = value;}
-        }
+        public int Id { get; set; }
 
         public Level()
         {
-            Map = null;
-            id = 0;
+            this.Map = null;
+            this.Id = 0;
         }
         public Level(int id)
         {

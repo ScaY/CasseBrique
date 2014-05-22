@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace CasseBrique.Views
+namespace Breakout.Views
 {
     public class ViewBrick : ShapeView
     {

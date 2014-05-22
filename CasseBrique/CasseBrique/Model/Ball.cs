@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CasseBrique
+namespace Breakout.Model
 {
     public class Ball : Shape
     {
@@ -25,7 +25,7 @@ namespace CasseBrique
             //balle sort du jeu
             if (Position.Y > heightFrame)
             {
-                Console.WriteLine("Perdu !");
+                //handle when the player loose the game
             }
 
             HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
@@ -39,6 +39,7 @@ namespace CasseBrique
         {
             if (bar.getRectangle().Contains((int)(Position.X + bar.Size.Width), (int)(Position.Y + bar.Size.Height)))
             {
+                Console.WriteLine("Check rebound bar in Ball");
                 RuleBall.BallReboundDown(this);
             }
 
