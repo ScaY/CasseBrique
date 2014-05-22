@@ -43,7 +43,7 @@ namespace Breakout.Model
             if (bar.getRectangle().Contains((int)(Position.X + bar.Size.Width), (int)(Position.Y + bar.Size.Height)))
             {
                 Console.WriteLine("Check rebound bar in Ball");
-                RuleBall.BallReboundDown(this);
+                RuleBall.HandleReboundUpDown(this);
             }
 
         }

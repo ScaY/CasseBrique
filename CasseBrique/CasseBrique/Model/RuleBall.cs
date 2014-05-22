@@ -63,7 +63,6 @@ namespace Breakout.Model
 
                 if (positionBall.Y < centerBrick.Y)
                 {
-
                     //la balle a touché la brique dans la partie haute
                     float diffX = positionBall.X - brick.Position.X;
                     float diffY = positionBall.Y - brick.Position.Y;
@@ -117,7 +116,6 @@ namespace Breakout.Model
             }
             else
             {
-                Console.WriteLine("     in handleVarianceXAndY: down");
                 //la balle a touché la brique en haut
                 HandleReboundUpDown(ball);
             }
