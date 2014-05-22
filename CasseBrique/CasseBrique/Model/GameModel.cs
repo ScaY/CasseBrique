@@ -7,18 +7,22 @@ namespace Breakout.Model
 {
     public class GameModel : AbstractModel
     {
+        private Player currentPlayer;
+        public Player CurrentPlayer
+        {
+            get
+            {
+                return currentPlayer;
+            }
+            set {
+                if (Players.Contains(value))
+                {
+                    currentPlayer = value;
+                }
+            }
+        }
+
         public List<Player> Players { get; set; }
-
-        public void addPlayer(Player player)
-        {
-            Players.Add(player);
-            
-        }
-
-        public void removePlayer(Player player)
-        {
-            Players.Remove(player);
-        }
 
         public GameModel()
         {

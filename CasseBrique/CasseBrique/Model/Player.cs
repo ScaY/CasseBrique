@@ -49,6 +49,7 @@ namespace Breakout.Model
             this.Name = _name;
             this.Bar = _bar;
             this.Ball = _ball;
+            this.Bonuses = new List<AbstractBonus>();
         }
     }
 }

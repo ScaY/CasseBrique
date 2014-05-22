@@ -60,6 +60,8 @@ namespace Breakout
             heightFrame = Window.ClientBounds.Height;
 
             model = new BreakoutModel(2, 2, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model.Players.Add(player);
+            model.CurrentPlayer = player;
             
             Bar bar = model.Bar;
             controlerBar = new ControlerBarKeyboard(bar);

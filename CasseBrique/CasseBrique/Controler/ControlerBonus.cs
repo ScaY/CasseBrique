@@ -31,7 +31,10 @@ namespace Breakout.Controler
                 }
                 else if (bar.getRectangle().Contains((int)(Shape.Position.X), (int)(Shape.Position.Y + Shape.Size.Height)) || bar.getRectangle().Contains((int)(Shape.Position.X + Shape.Size.Width), (int)(Shape.Position.Y + Shape.Size.Height)))
                 {
-                    //model.Players[0].Bonuses.Add((AbstractBonus)Shape);
+                    if(model.CurrentPlayer != null) {
+                        model.CurrentPlayer.Bonuses.Add((AbstractBonus)Shape);
+                    }
+                    
                     RemoveBonus(model, views);
                 }
             }
