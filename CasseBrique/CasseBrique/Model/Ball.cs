@@ -57,7 +57,7 @@ namespace Breakout.Model
             //rebond en haut
             else if (Position.Y < 0)
             {
-                RuleBall.BallReboundTop(this);
+                RuleBall.HandleReboundUpDown(this);
             }
         }
 
