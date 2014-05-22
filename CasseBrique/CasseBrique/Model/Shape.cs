@@ -32,17 +32,18 @@ namespace Breakout.Model
             set { speed = value; }
         }
 
-        public Shape(Vector2 position, Vector2 deplacement, float speed)
+        public Size Size { get; set; }
+
+        public Shape(Vector2 position, Vector2 deplacement, float speed, Size size)
         {
             this.Position = position;
             this.Deplacement = deplacement;
             this.Speed = speed;
+            this.Size = size;
         }
 
-        public Shape()
-            : this(Vector2.Zero, Vector2.UnitX, 1f)
+        public Shape() : this(Vector2.Zero, Vector2.UnitX, 1f, new Size(0, 0))
         {
-
         }
 
         public abstract void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame);

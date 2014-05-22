@@ -1,5 +1,6 @@
 ﻿using Breakout.Bonus;
 using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -17,17 +18,40 @@ namespace Breakout.Controler
             Enabled = true;
         }
 
-        public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
-        {
+        public void HandleBonus(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame, List<ViewBonus> views) {
             if (Enabled)
             {
-                base.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+                HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+
+                Bar bar = model.Bar;
 
                 if (Shape.Position.Y > heightFrame)
                 {
-                    model.Bonuses.Remove((AbstractBonus)Shape);
+                    RemoveBonus(model, views);
+                }
+                else if (bar.getRectangle().Contains((int)(Shape.Position.X), (int)(Shape.Position.Y + Shape.Size.Height)) || bar.getRectangle().Contains((int)(Shape.Position.X + Shape.Size.Width), (int)(Shape.Position.Y + Shape.Size.Height)))
+                {
+                    //model.Players[0].Bonuses.Add((AbstractBonus)Shape);
+                    RemoveBonus(model, views);
+                }
+            }
+        }
+
+        private void RemoveBonus(BreakoutModel model, List<ViewBonus> views)
+        {
+            model.Bonuses.Remove((AbstractBonus)Shape);
+
+            int i = 0;
+            while(Enabled || i < views.Count)
+            {
+                ViewBonus view = views.ElementAt(i);
+                if (view.Shape == Shape)
+                {
+                    views.Remove(view);
                     Enabled = false;
                 }
+
+                i++;
             }
         }
     }

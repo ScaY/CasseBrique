@@ -21,15 +21,12 @@ namespace Breakout.Model
             this.Life = 0;
 
         }
-        public Size Size { get; set; }
 
-        public Brick(Vector2 position, int life, Size size)
-            : base(position, Vector2.Zero, 0f)
+        public Brick(Vector2 position, int life, Size size) : base(position, Vector2.Zero, 0f, size)
         {
             this.XBrick = 0;
             this.YBrick = 0;
             this.Life = life;
-            this.Size = size;
         }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)

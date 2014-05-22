@@ -10,8 +10,6 @@ namespace Breakout.Views
 {
     public class ViewBonus : ShapeView
     {
-        public AbstractBonus Bonus { get; set; }
-
         public ViewBonus(AbstractBonus bonus, Texture2D texture) : base(bonus, texture)
         {
         }

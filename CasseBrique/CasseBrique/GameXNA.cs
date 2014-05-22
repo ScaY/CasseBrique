@@ -34,6 +34,7 @@ namespace Breakout
         private ViewBreakout view;
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
+        private List<ControlerBonus> controlersBonus;
         private Player player;
 
         public GameXNA(Player _player)
@@ -67,10 +68,12 @@ namespace Breakout
             controlerBall = new ControlerBall(ball);
 
             AbstractBonus bonus = new BarSizeBonus();
-            bonus.Speed = 0.2f;
+            bonus.Speed = 1f;
             bonus.Position = new Vector2(200, 200);
             bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
             model.Bonuses.Add(bonus);
+            controlersBonus = new List<ControlerBonus>();
+            controlersBonus.Add(new ControlerBonus(bonus));
 
             view = new ViewBreakout(model, Content);
 
@@ -96,6 +99,12 @@ namespace Breakout
 
                 //chargement de l'image de la balle du jeu
                 model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2, heightFrame * 0.9f - model.Bar.Size.Height);
+
+                foreach (AbstractBonus bonus in model.Bonuses)
+                {
+                    bonus.Size.Width = view.ViewBonuses[0].Texture.Width;
+                    bonus.Size.Height = view.ViewBonuses[0].Texture.Height;
+                }
             }
             catch (Exception e)
             {
@@ -124,6 +133,11 @@ namespace Breakout
 
             controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
             controlerBall.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+
+            foreach (ControlerBonus controler in controlersBonus)
+            {
+                controler.HandleBonus(model, gameTime, heightFrame, widthFrame, view.ViewBonuses);
+            }
 
             base.Update(gameTime);
         }

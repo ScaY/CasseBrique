@@ -9,13 +9,11 @@ namespace Breakout.Model
 {
     public class Ball : Shape
     {
-        public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f)
+        public Ball() : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
         {
         }
 
-        public Ball(Vector2 position, Vector2 deplacement, float speed)
-            : base(position, deplacement, speed)
+        public Ball(Vector2 position, Vector2 deplacement, float speed) : base(position, deplacement, speed, new Size(0, 0))
         {
 
         }

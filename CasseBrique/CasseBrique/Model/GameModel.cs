@@ -12,6 +12,7 @@ namespace Breakout.Model
         public void addPlayer(Player player)
         {
             Players.Add(player);
+            
         }
 
         public void removePlayer(Player player)
