@@ -63,7 +63,7 @@ namespace Breakout
             controlerBall = new ControlerBall(ball);
 
             AbstractBonus bonus = new BarSizeBonus();
-            bonus.Speed = 0.2f;
+            bonus.Speed = 1f;
             bonus.Position = new Vector2(200, 200);
             bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
             model.Bonuses.Add(bonus);

@@ -17,7 +17,6 @@ namespace Breakout.Bonus
             float y = this.Position.Y + this.Deplacement.Y * this.Speed;
 
             this.Position = new Vector2(x, y);
-
         }
     }
 }

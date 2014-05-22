@@ -16,7 +16,7 @@ namespace Breakout.Controler
             this.Shape = shape;
         }
 
-        public void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
+        public virtual void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
             Shape.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
         }
