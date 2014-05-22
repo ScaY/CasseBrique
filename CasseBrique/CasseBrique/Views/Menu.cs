@@ -34,6 +34,10 @@ namespace CasseBrique.Views
             FrameWidth = Default_Frame_Width;
             FrameHeight = Default_Frame_Height;
             FramePosition = Default_Frame_Position;
+
+            Home h = new Home();
+            
+            Application.Run(h);
             
         }
 
