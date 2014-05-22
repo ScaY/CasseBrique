@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Breakout.Views;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace CasseBrique.Views
     
     public class Menu
     {
-        public static const float Default_Frame_Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width*3/4;
-        public static const float Default_Frame_Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height*3/4;
+        public static float Default_Frame_Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width*3/4;
+        public static float Default_Frame_Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height*3/4;
 
-        public static const Point Default_Frame_Position = new Point(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 2, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height/2);
+        public static  Point Default_Frame_Position = new Point(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 2, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height/2);
 
 
 
@@ -34,6 +35,10 @@ namespace CasseBrique.Views
             FrameWidth = Default_Frame_Width;
             FrameHeight = Default_Frame_Height;
             FramePosition = Default_Frame_Position;
+
+            Home h = new Home();
+            
+            Application.Run(h);
             
         }
 
