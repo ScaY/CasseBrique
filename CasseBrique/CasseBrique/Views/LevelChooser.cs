@@ -25,8 +25,6 @@ namespace Breakout.Views
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            using (var game = new GameXNA())
-             game.Run();
         }
     }
 }
