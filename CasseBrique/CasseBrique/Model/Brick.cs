@@ -1,5 +1,6 @@
 ﻿using CasseBrique;
 using Microsoft.Xna.Framework;
+using Breakout.Bonus;
 
 namespace Breakout.Model
 {
@@ -10,6 +11,8 @@ namespace Breakout.Model
         public int XBrick { get; set; }
 
         public int YBrick { get; set; }
+
+        public AbstractBonus bonus { get; set; }
 
         public Brick() 
         {

@@ -53,8 +53,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bonus\BarSizeBonus.cs" />
     <Compile Include="Model\Ball.cs" />
     <Compile Include="Model\Bar.cs" />
+    <Compile Include="Bonus\AbstractBonus.cs" />
+    <Compile Include="Bonus\BarBonus.cs" />
     <Compile Include="Model\BrickZone.cs" />
     <Compile Include="GameXNA.cs" />
     <Compile Include="Controler\ControlerBall.cs" />
@@ -76,6 +79,24 @@
     </Compile>
     <Compile Include="Model\RuleBall.cs" />
     <Compile Include="Model\Shape.cs" />
+    <Compile Include="Views\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LevelChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LevelChooser.Designer.cs">
+      <DependentUpon>LevelChooser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayerRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PlayerRegister.Designer.cs">
+      <DependentUpon>PlayerRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewBall.cs" />
     <Compile Include="Views\ViewBar.cs" />
     <Compile Include="Views\ViewBreakout.cs" />
@@ -95,6 +116,9 @@
     <Reference Include="Lidgren.Network">
       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\Lidgren.Network.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="Tao.Sdl">
       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\Tao.Sdl.dll</HintPath>
     </Reference>
@@ -127,6 +151,15 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LevelChooser.resx">
+      <DependentUpon>LevelChooser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PlayerRegister.resx">
+      <DependentUpon>PlayerRegister.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,9 @@
 ﻿#region Using Statements
+using Breakout.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 #endregion
 
 namespace Breakout
@@ -18,8 +20,10 @@ namespace Breakout
         [STAThread]
         static void Main()
         {
-                using (var game = new GameXNA())
-                    game.Run();
+            Home h = new Home();
+            Application.Run(h);
+                //using (var game = new GameXNA())
+                    //game.Run();
             
         }
     }
