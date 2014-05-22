@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 
-namespace CasseBrique
+namespace Breakout.Model
 {
     public static class RuleBall
     {

@@ -1,10 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Breakout.Model;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CasseBrique
+namespace Breakout.Controler
 {
     public class ControlerBall
     {

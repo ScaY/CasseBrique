@@ -1,12 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Breakout.Model;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace CasseBrique
+namespace Breakout.Controler
 {
-    public class ControlerbarKeyboard : ControlerBar
+    public class ControlerBarKeyboard : ControlerBar
     {
-        public ControlerbarKeyboard(Bar bar) : base(bar)
+        public ControlerBarKeyboard(Bar bar) : base(bar)
         {
 
         }
