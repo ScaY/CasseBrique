@@ -10,11 +10,11 @@ namespace CasseBrique.Model
 {
     class Level
     {
-        private Bricks map;
+        private BrickZone map;
         private int id;
         private string levelName;
 
-        public Bricks Map
+        public BrickZone Map
         {
             get { return map; }
             set { map = value; }
@@ -41,7 +41,7 @@ namespace CasseBrique.Model
             this.Id = id;
             load(id);
         }
-        public Level(int id, Bricks map ){
+        public Level(int id, BrickZone map ){
             this.Map = map;
             this.Id = id;
         }
