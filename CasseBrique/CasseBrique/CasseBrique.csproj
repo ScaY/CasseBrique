@@ -11,6 +11,7 @@
     <RootNamespace>CasseBrique</RootNamespace>
     <AssemblyName>CasseBrique</AssemblyName>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publier\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -72,6 +72,7 @@
     <Compile Include="Model\BreakoutModel.cs" />
     <Compile Include="Model\Brick.cs" />
     <Compile Include="Model\GameModel.cs" />
+    <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Position.cs" />
     <Compile Include="Model\Size.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="Views\View.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="OpenTK">
       <HintPath>$(MSBuildExtensionsPath)\..\MonoGame\v3.0\Assemblies\WindowsGL\OpenTK.dll</HintPath>
     </Reference>
