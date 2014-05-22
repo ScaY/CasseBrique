@@ -1,4 +1,4 @@
-﻿namespace CasseBrique.Views
+﻿namespace Breakout.Views
 {
     partial class PlayerRegister
     {

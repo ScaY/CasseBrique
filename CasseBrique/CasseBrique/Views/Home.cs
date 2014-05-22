@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CasseBrique.Views
+namespace Breakout.Views
 {
     public partial class Home : Form
     {

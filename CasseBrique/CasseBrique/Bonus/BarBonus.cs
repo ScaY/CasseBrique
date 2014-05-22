@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 
 namespace Breakout.Bonus
-
-    public abstract class BarBonus : Bonus
+{
+    public abstract class BarBonus : AbstractBonus
     {
     }
 }
