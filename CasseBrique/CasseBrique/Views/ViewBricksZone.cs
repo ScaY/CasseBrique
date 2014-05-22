@@ -1,10 +1,9 @@
-﻿using Breakout.Views;
-using CasseBrique.Views;
+﻿using Breakout.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace CasseBrique
+namespace Breakout.Views
 {
     public class ViewBricksZone : View
     {

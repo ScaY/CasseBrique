@@ -8,10 +8,11 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.GamerServices;
 using Breakout.Model;
-using CasseBrique.Views;
+using Breakout.Views;
+using Breakout.Controler;
 #endregion
 
-namespace CasseBrique
+namespace Breakout
 {
     /// <summary>
     /// This is the main type for your game
@@ -54,7 +55,7 @@ namespace CasseBrique
             model = new BreakoutModel(2, 2, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             
             Bar bar = model.Bar;
-            controlerBar = new ControlerbarKeyboard(bar);
+            controlerBar = new ControlerBarKeyboard(bar);
 
             Ball ball = model.Ball;
             controlerBall = new ControlerBall(ball);

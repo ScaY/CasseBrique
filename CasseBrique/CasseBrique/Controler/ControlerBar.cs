@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Breakout.Model;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CasseBrique
+namespace Breakout.Controler
 {
     public abstract class ControlerBar
     {
