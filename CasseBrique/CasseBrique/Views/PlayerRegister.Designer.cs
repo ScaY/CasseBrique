@@ -35,27 +35,32 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(205, 92);
+            this.textBox1.Location = new System.Drawing.Point(154, 75);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.Size = new System.Drawing.Size(76, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 92);
+            this.label1.Location = new System.Drawing.Point(81, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pseudo :";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(111, 221);
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(83, 180);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.MinimumSize = new System.Drawing.Size(50, 50);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(194, 82);
+            this.button1.Size = new System.Drawing.Size(146, 67);
             this.button1.TabIndex = 2;
             this.button1.Text = "Suivant";
             this.button1.UseVisualStyleBackColor = true;
@@ -63,12 +68,13 @@
             // 
             // PlayerRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 487);
+            this.ClientSize = new System.Drawing.Size(320, 396);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PlayerRegister";
             this.Text = "Enregistrement d\'un joueur";
             this.Load += new System.EventHandler(this.PlayerRegister_Load);
