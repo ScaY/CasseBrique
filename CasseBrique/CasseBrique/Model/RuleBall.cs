@@ -109,6 +109,7 @@ namespace Breakout.Model
 
         public static void HandleVarianceXAndY(Ball ball, float diffX, float diffY)
         {
+            Console.WriteLine("diffX: " + diffX + "     diffY: "+diffY);
             if (diffX < diffY)
             {
                 //la balle a touché la brique à droite

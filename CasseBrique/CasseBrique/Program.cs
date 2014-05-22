@@ -20,7 +20,7 @@ namespace Breakout
         [STAThread]
         static void Main()
         {
-                Menu m = new Menu();
+               // Menu m = new Menu();
                 using (var game = new GameXNA())
                     game.Run();
             
