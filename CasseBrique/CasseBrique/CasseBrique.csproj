@@ -53,6 +53,7 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Level.cs" />
     <Compile Include="Model\Ball.cs" />
     <Compile Include="Model\Bar.cs" />
     <Compile Include="Model\BricksZone.cs" />

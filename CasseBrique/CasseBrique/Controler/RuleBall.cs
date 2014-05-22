@@ -16,7 +16,6 @@ namespace CasseBrique
             {
                 int brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 int brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
-                Console.WriteLine("Ball in bloc !" + brickX + "   " + brickY + "              " + ball.Position.X + " " + ball.Position.Y);
                 result = bricks.AllBricks[brickX, brickY];
             }
 
@@ -25,7 +24,6 @@ namespace CasseBrique
 
         public static bool CheckBallEnterBlockBrick(Vector2 positionBall, BrickZone bricks)
         {
-            Console.WriteLine(bricks.StartBlockBrickX + "    " + bricks.EndBlockBrickX + "          " + bricks.StartBlockBrickY + "    " + bricks.EndBlockBrickY);
             return (positionBall.X > bricks.StartBlockBrickX && positionBall.X < bricks.EndBlockBrickX
                 && positionBall.Y > bricks.StartBlockBrickY && positionBall.Y < bricks.EndBlockBrickY);
         }
