@@ -8,19 +8,10 @@ using System.Text;
 
 namespace Breakout.Controler
 {
-    public abstract class ControlerBar
+    public abstract class ControlerBar : ControlerShape
     {
-        private Bar bar;
-
-        public Bar Bar
+        public ControlerBar(Bar bar) : base(bar)
         {
-            get { return bar; }
-            set { bar = value; }
-        }
-
-        public ControlerBar(Bar bar)
-        {
-            this.Bar = bar;
         }
 
         public abstract void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame);

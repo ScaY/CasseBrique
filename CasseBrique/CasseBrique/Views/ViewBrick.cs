@@ -9,14 +9,8 @@ namespace Breakout.Views
     {
         public Brick Brick { get; set; }
 
-        public ViewBrick(Brick brick, Texture2D texture) : base(texture)
+        public ViewBrick(Brick brick, Texture2D texture) : base(brick, texture)
         {
-            this.Brick = brick;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
-        {
-            spriteBatch.Draw(this.Texture, this.Brick.Position, Color.White);
         }
     }
 }

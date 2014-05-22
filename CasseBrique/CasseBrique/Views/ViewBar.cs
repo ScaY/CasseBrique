@@ -9,14 +9,8 @@ namespace Breakout.Views
     {
         public Bar Bar { get; set; }
 
-        public ViewBar(Bar bar,  Texture2D texture) : base(texture)
+        public ViewBar(Bar bar,  Texture2D texture) : base(bar, texture)
         {
-            this.Bar = bar;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
-        {
-            spriteBatch.Draw(this.Texture, Bar.Position, Color.White);
         }
     }
 }

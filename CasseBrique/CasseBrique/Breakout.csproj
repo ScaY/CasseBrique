@@ -54,6 +54,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bonus\BarSizeBonus.cs" />
+    <Compile Include="Controler\ControlerBonus.cs" />
+    <Compile Include="Controler\ControlerShape.cs" />
     <Compile Include="Model\Ball.cs" />
     <Compile Include="Model\Bar.cs" />
     <Compile Include="Bonus\AbstractBonus.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Views\LevelChooser.Designer.cs">
       <DependentUpon>LevelChooser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Menu.cs" />
     <Compile Include="Views\PlayerRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +102,7 @@
     </Compile>
     <Compile Include="Views\ViewBall.cs" />
     <Compile Include="Views\ViewBar.cs" />
+    <Compile Include="Views\ViewBonus.cs" />
     <Compile Include="Views\ViewBreakout.cs" />
     <Compile Include="Views\ViewBrick.cs" />
     <Compile Include="Views\ViewBricksZone.cs" />

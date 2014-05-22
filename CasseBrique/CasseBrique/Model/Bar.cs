@@ -29,5 +29,8 @@ namespace Breakout.Model
 
         }
 
+        public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
+        {
+        }
     }
 }

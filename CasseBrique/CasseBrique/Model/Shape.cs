@@ -45,5 +45,6 @@ namespace Breakout.Model
 
         }
 
+        public abstract void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame);
     }
 }
