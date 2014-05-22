@@ -40,7 +40,7 @@ namespace Breakout.Model
         {
             if (bar.getRectangle().Contains((int)(Position.X), (int)(Position.Y+viewBall.Texture.Height/2)))
             {
-                RuleBall.BallReboundDown(this);
+                RuleBall.HandleReboundUpDown(this);
             }
 
         }
@@ -64,7 +64,6 @@ namespace Breakout.Model
             Brick brick = RuleBall.GetBrickHit(this, bricks);
             if(brick != null)
             {
-                Console.WriteLine("Brick detected");
                 RuleBall.HandleDeplacementHitBrick(this, brick);
             }
         }
