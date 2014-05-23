@@ -7,5 +7,8 @@ namespace Breakout.Bonus
 {
     public abstract class BarBonus : AbstractBonus
     {
+        public BarBonus(int modifier, int duration) : base(modifier, duration)
+        {
+        }
     }
 }

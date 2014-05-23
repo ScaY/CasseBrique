@@ -30,6 +30,7 @@ namespace Breakout.Views
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            
             spriteBatch.Draw(this.Texture, Shape.Position, Color.White);
         }
     }
