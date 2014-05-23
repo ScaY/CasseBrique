@@ -95,7 +95,7 @@ namespace Breakout
                 model.Bar.Size.Height = view.ViewBar.Texture.Height;
 
                 //chargement de l'image de la balle du jeu
-                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2, heightFrame * 0.9f - model.Bar.Size.Height);
+                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2+200, heightFrame * 0.9f - model.Bar.Size.Height);
             }
             catch (Exception e)
             {

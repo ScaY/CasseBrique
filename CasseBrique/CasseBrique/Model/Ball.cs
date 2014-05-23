@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -64,9 +65,10 @@ namespace Breakout.Model
         public void HandleBallReboundBrick(BrickZone bricks)
         {
             Brick brick = RuleBall.GetBrickHit(this, bricks);
+
             if(brick != null)
             {
-                RuleBall.HandleDeplacementHitBrick(this, brick);
+                RuleBall.HandleDeplacementHitBrick(this, brick, bricks);
             }
         }
     }
