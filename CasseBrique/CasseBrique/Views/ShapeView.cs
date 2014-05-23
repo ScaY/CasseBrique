@@ -30,8 +30,10 @@ namespace Breakout.Views
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            
-            spriteBatch.Draw(this.Texture, Shape.Position, Color.White);
+            float scale = Shape.Size.Width / texture.Width;
+
+            spriteBatch.Draw(this.Texture, Shape.Position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 1);   
+            //spriteBatch.Draw(this.Texture, Shape.Position, Color.White);
         }
     }
 }
