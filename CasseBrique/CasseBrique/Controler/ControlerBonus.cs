@@ -34,7 +34,8 @@ namespace Breakout.Controler
                     if(model.CurrentPlayer != null) {
                         model.CurrentPlayer.Bonuses.Add((AbstractBonus)Shape);
                     }
-                    
+
+                    ((AbstractBonus)Shape).ApplyBonus(model);
                     RemoveBonus(model, views);
                 }
             }

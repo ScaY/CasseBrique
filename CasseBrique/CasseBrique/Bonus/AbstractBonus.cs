@@ -11,12 +11,22 @@ namespace Breakout.Bonus
     {
         public int Modifier { get; set; }
 
+        public int Duration { get; set; }
+
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
             float x = this.Position.X + this.Deplacement.X * this.Speed;
             float y = this.Position.Y + this.Deplacement.Y * this.Speed;
 
             this.Position = new Vector2(x, y);
+        }
+
+        public abstract void ApplyBonus(BreakoutModel model);
+
+        public AbstractBonus(int modifier, int duration)
+        {
+            this.Modifier = modifier;
+            this.Duration = duration;
         }
     }
 }
