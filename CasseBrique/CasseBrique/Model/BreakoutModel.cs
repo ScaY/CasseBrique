@@ -33,7 +33,7 @@ namespace Breakout.Model
 
         public void RemoveBrick(Brick brick)
         {
-            BrickZone.RemoveBrick(brick);
+           // BrickZone.RemoveBrick(brick);
         }
 
         public void UpdateBrickLife(Brick brick, int life)

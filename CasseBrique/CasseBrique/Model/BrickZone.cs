@@ -83,7 +83,6 @@ namespace Breakout.Model
             set { widthBrick = value; }
         }
 
-
         public BrickZone(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.AllBricks = new Brick[nbBrickRow, nbBrickCol];
@@ -94,7 +93,7 @@ namespace Breakout.Model
             {
                 for (int j = 0; j < nbBrickCol; j++)
                 {
-                    AllBricks[i, j] = new Brick();
+                    AddBrick(new Brick(), i, j);
                 }
             }
 
@@ -126,12 +125,9 @@ namespace Breakout.Model
         {
             if (x >= 0 && y >= 0 && x < this.NbBrickCol && y < this.NbBrickRow)
             {
-                if (AllBricks[x, y] == null)
-                {
-                    AllBricks[x, y] = brick;
-                    brick.XBrick = x;
-                    brick.YBrick = y;
-                }
+                AllBricks[x, y] = brick;
+                brick.XBrick = x;
+                brick.YBrick = y;
             }
         }
 
@@ -149,7 +145,7 @@ namespace Breakout.Model
             {
                 for (int j = 0; j < this.NbBrickCol; j++)
                 {
-                    AllBricks[i, j].Position = new Vector2(StartBlockBrickX + i*WidthBrick, StartBlockBrickY + j*HeightBrick);
+                    AllBricks[i, j].Position = new Vector2(StartBlockBrickX + i * WidthBrick, StartBlockBrickY + j * HeightBrick);
                 }
             }
 
