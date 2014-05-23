@@ -8,6 +8,5 @@ namespace Breakout.Model
 {
     public abstract class AbstractModel
     {
-
     }
 }
