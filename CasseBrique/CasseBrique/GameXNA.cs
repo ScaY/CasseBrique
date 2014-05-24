@@ -102,6 +102,8 @@ namespace Breakout
 
                 //chargement de l'image de la balle du jeu
                 model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2 + 100, heightFrame * 0.9f - model.Bar.Size.Height);
+                model.Ball.Size.Width = view.ViewBall.Texture.Width;
+                model.Ball.Size.Height = view.ViewBall.Texture.Height;
 
                 foreach (AbstractBonus bonus in model.Bonuses)
                 {
