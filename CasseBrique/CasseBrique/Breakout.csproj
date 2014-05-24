@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bonus\BarSizeBonus.cs" />
+    <Compile Include="Controler\ControlerBarMouse.cs" />
     <Compile Include="Controler\ControlerBonus.cs" />
     <Compile Include="Controler\ControlerShape.cs" />
     <Compile Include="Model\Ball.cs" />

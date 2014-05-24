@@ -11,6 +11,7 @@ using Breakout.Model;
 using Breakout.Views;
 using Breakout.Controler;
 using Breakout.Bonus;
+using CasseBrique.Controler;
 #endregion
 
 namespace Breakout
@@ -59,7 +60,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(2, 2, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             model.Players.Add(player);
             model.CurrentPlayer = player;
             
