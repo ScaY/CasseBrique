@@ -12,7 +12,7 @@ namespace Breakout.Model
 
         public int YBrick { get; set; }
 
-        public AbstractBonus bonus { get; set; }
+        public AbstractBonus Bonus { get; set; }
 
         public Brick() 
         {

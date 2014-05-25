@@ -32,7 +32,7 @@ namespace Breakout.Model
 
             HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
             HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
-            HandleBallReboundBrick(bricks);
+            HandleBallReboundBrick(model);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
@@ -60,13 +60,14 @@ namespace Breakout.Model
             }
         }
 
-        public void HandleBallReboundBrick(BrickZone bricks)
+        public void HandleBallReboundBrick(BreakoutModel model)
         {
+            BrickZone bricks = model.BrickZone;
             Brick brick = RuleBall.GetBrickHit(this, bricks);
 
             if(brick != null)
             {
-                RuleBall.HandleDeplacementHitBrick(this, brick, bricks);
+                RuleBall.HandleDeplacementHitBrick(model, brick);
             }
         }
     }
