@@ -30,7 +30,7 @@ namespace Breakout.Views
             //this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
             breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
             breakout.BrickZone.InitializePositionBrick();
-            Console.WriteLine(breakout.BrickZone.AllBricks[0, 0] != null);
+            
             this.ViewBar = new ViewBar(breakout.Bar, textureBar);
             this.ViewBall = new ViewBall(breakout.Ball, textureBall);
             this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone);
