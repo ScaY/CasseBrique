@@ -9,53 +9,29 @@ using System.Text;
 
 namespace Breakout.Controler
 {
-    public class ControlerBonus : ControlerShape
+    public class ControlerBonus
     {
-        public bool Enabled { get; set; }
-
-        public ControlerBonus(AbstractBonus bonus) : base(bonus)
+        public ControlerBonus()
         {
-            Enabled = true;
         }
 
-        public void HandleBonus(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame, List<ViewBonus> views) {
-            if (Enabled)
+        public void HandleBonus(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame, AbstractBonus bonus) {
+            bonus.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+
+            Bar bar = model.Bar;
+
+            if (bonus.Position.Y > heightFrame)
             {
-                HandleTrajectory(model, gameTime, heightFrame, widthFrame);
-
-                Bar bar = model.Bar;
-
-                if (Shape.Position.Y > heightFrame)
-                {
-                    RemoveBonus(model, views);
-                }
-                else if (bar.getRectangle().Contains((int)(Shape.Position.X), (int)(Shape.Position.Y + Shape.Size.Height)) || bar.getRectangle().Contains((int)(Shape.Position.X + Shape.Size.Width), (int)(Shape.Position.Y + Shape.Size.Height)))
-                {
-                    if(model.CurrentPlayer != null) {
-                        model.CurrentPlayer.Bonuses.Add((AbstractBonus)Shape);
-                    }
-
-                    ((AbstractBonus)Shape).ApplyBonus(model);
-                    RemoveBonus(model, views);
-                }
+                model.RemoveBonus(bonus);
             }
-        }
-
-        private void RemoveBonus(BreakoutModel model, List<ViewBonus> views)
-        {
-            model.Bonuses.Remove((AbstractBonus)Shape);
-
-            int i = 0;
-            while(Enabled || i < views.Count)
+            else if (bar.getRectangle().Contains((int)(bonus.Position.X), (int)(bonus.Position.Y + bonus.Size.Height)) || bar.getRectangle().Contains((int)(bonus.Position.X + bonus.Size.Width), (int)(bonus.Position.Y + bonus.Size.Height)))
             {
-                ViewBonus view = views.ElementAt(i);
-                if (view.Shape == Shape)
-                {
-                    views.Remove(view);
-                    Enabled = false;
+                if(model.CurrentPlayer != null) {
+                    model.CurrentPlayer.Bonuses.Add(bonus);
                 }
 
-                i++;
+                bonus.ApplyBonus(model);
+                model.RemoveBonus(bonus);
             }
         }
     }

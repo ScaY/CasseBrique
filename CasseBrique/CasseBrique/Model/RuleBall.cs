@@ -81,8 +81,7 @@ namespace Breakout.Model
 
             if (brick.Bonus != null)
             {
-                model.Bonuses.Add(brick.Bonus);
-
+                model.AddBonus(brick.Bonus);
             }
         }
 
