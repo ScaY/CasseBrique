@@ -25,15 +25,15 @@ namespace Breakout.Views
             Texture2D textureBar = content.Load<Texture2D>("barMid");
             Texture2D textureBall = content.Load<Texture2D>("ballSmall");
             Texture2D textureBrick = content.Load<Texture2D>("brick3life");
-            Texture2D textureBonus = content.Load<Texture2D>("brick3life");
+            Texture2D textureBonus = content.Load<Texture2D>("bonus");
 
-            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
+            //this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
             breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
             breakout.BrickZone.InitializePositionBrick();
-
+            
             this.ViewBar = new ViewBar(breakout.Bar, textureBar);
             this.ViewBall = new ViewBall(breakout.Ball, textureBall);
-            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
+            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone);
             this.ViewBonuses = new List<ViewBonus>();
 
             foreach (AbstractBonus bonus in breakout.Bonuses)

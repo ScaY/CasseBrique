@@ -8,19 +8,12 @@ namespace Breakout.Model
 {
     public class Bar : Shape
     {
-
-        public Size Size { get; set; }
-
-        public Bar()
-            : base()
+        public Bar() : base()
         {
-            Size = new Size(0, 0);
         }
 
-        public Bar(Vector2 position, Vector2 deplacement, float speed, int width, int height)
-            : base(position, deplacement, speed)
+        public Bar(Vector2 position, Vector2 deplacement, float speed, int width, int height, Size size) : base(position, deplacement, speed, size)
         {
-            Size = new Size(width, height);
         }
 
         public Rectangle getRectangle()

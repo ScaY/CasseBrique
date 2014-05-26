@@ -29,61 +29,60 @@ namespace Breakout.Model
                 && positionBall.Y > bricks.StartBlockBrickY && positionBall.Y < bricks.EndBlockBrickY);
         }
 
-        public static void HandleDeplacementHitBrick(Ball ball, Brick brick)
+        public static void HandleDeplacementHitBrick(BreakoutModel model, Brick brick)
         {
+            Ball ball = model.Ball;
+            BrickZone bricks = model.BrickZone;
             int widthBrick = brick.Size.Width;
             int heightBrick = brick.Size.Height;
 
             Vector2 positionBall = ball.Position;
             Vector2 centerBrick = new Vector2(brick.Position.X + widthBrick / 2, brick.Position.Y + heightBrick / 2);
             Vector2 newDeplacement = Vector2.Zero;
+            float diffX = 0;
+            float diffY = 0;
 
             //la balle a touché la brique à droite
             if (positionBall.X > centerBrick.X)
             {
-                Console.WriteLine("Brique à droite !");
                 //la balle a touché la brique dans la partie haute
                 if (positionBall.Y < centerBrick.Y)
                 {
-                    Console.WriteLine("Brique à haute !");
-                    float diffX = (brick.Position.X + brick.Size.Width) - positionBall.X;
-                    float diffY = positionBall.Y - brick.Position.Y;
-                    HandleVarianceXAndY(ball, diffX, diffY);
+                    diffX = (brick.Position.X + brick.Size.Width) - positionBall.X;
+                    diffY = positionBall.Y - brick.Position.Y;
                 }
                 else
                 {
-
-                    Console.WriteLine("Brique en bas !");
                     //la balle a touché la brique dans la partie basse
-                    float diffX = (brick.Position.X + brick.Size.Width) - positionBall.X;
-                    float diffY = (brick.Position.Y + brick.Size.Height) - positionBall.Y;
-                    HandleVarianceXAndY(ball, diffX, diffY);
+                    diffX = (brick.Position.X + brick.Size.Width) - positionBall.X;
+                    diffY = (brick.Position.Y + brick.Size.Height) - positionBall.Y;
                 }
 
             }
             else
             {
                 //la balle a touché la brique à gauche
-                Console.WriteLine("Brique à gauche !");
                 if (positionBall.Y < centerBrick.Y)
                 {
-                    Console.WriteLine("Brique à haute !");
                     //la balle a touché la brique dans la partie haute
-                    float diffX = positionBall.X - brick.Position.X;
-                    float diffY = positionBall.Y - brick.Position.Y;
-
-                    HandleVarianceXAndY(ball, diffX, diffY);
+                    diffX = positionBall.X - brick.Position.X;
+                    diffY = positionBall.Y - brick.Position.Y;
                 }
                 else
                 {
-
-                    Console.WriteLine("Brique en bas !");
                     //la balle a touché la brique dans la partie basse
-                    float diffX = positionBall.X - brick.Position.X;
-                    float diffY = positionBall.Y - (brick.Position.Y + brick.Size.Height);
-
-                    HandleVarianceXAndY(ball, diffX, diffY);
+                    diffX = positionBall.X - brick.Position.X;
+                    diffY = positionBall.Y - (brick.Position.Y + brick.Size.Height);
                 }
+            }
+
+            HandleVarianceXAndY(ball, diffX, diffY);
+            bricks.RemoveBrick(brick);
+
+            if (brick.Bonus != null)
+            {
+                model.Bonuses.Add(brick.Bonus);
+
             }
         }
 
@@ -100,7 +99,8 @@ namespace Breakout.Model
             if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && ball.Deplacement.Y > 0)
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(ball.Deplacement.X, -ball.Deplacement.Y));
-            }else if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && ball.Deplacement.Y < 0)
+            }
+            else if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && ball.Deplacement.Y < 0)
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(ball.Deplacement.X, -ball.Deplacement.Y));
             }
@@ -108,7 +108,7 @@ namespace Breakout.Model
 
         public static void HandleVarianceXAndY(Ball ball, float diffX, float diffY)
         {
-            Console.WriteLine("diffX: " + diffX + "     diffY: "+diffY);
+            Console.WriteLine("diffX: " + diffX + "     diffY: " + diffY);
             if (diffX < diffY)
             {
                 //la balle a touché la brique à droite

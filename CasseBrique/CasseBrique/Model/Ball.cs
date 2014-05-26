@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,11 @@ namespace Breakout.Model
 {
     public class Ball : Shape
     {
-        public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f)
+        public Ball() : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.1f, new Size(0, 0))
         {
         }
 
-        public Ball(Vector2 position, Vector2 deplacement, float speed)
-            : base(position, deplacement, speed)
+        public Ball(Vector2 position, Vector2 deplacement, float speed) : base(position, deplacement, speed, new Size(0, 0))
         {
 
         }
@@ -33,7 +32,7 @@ namespace Breakout.Model
 
             HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
             HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
-            HandleBallReboundBrick(bricks);
+            HandleBallReboundBrick(model);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
@@ -61,12 +60,14 @@ namespace Breakout.Model
             }
         }
 
-        public void HandleBallReboundBrick(BrickZone bricks)
+        public void HandleBallReboundBrick(BreakoutModel model)
         {
+            BrickZone bricks = model.BrickZone;
             Brick brick = RuleBall.GetBrickHit(this, bricks);
+
             if(brick != null)
             {
-                RuleBall.HandleDeplacementHitBrick(this, brick);
+                RuleBall.HandleDeplacementHitBrick(model, brick);
             }
         }
     }

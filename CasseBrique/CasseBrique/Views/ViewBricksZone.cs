@@ -9,13 +9,16 @@ namespace Breakout.Views
     {
         public ViewBrick[,] ViewBrick { get; set; }
 
+        public BrickZone BrickZone { get; set; }
         public int NbBrickCol { get; set; }
 
         public int NbBrickRow { get; set; }
 
-        public ViewBricksZone(BrickZone brickZone, Texture2D texture)
+        public ViewBricksZone(BrickZone brickZone, Texture2D texture, BrickZone bricks)
         {
             this.ViewBrick = new ViewBrick[brickZone.NbBrickRow, brickZone.NbBrickCol];
+            this.BrickZone = bricks;
+
             this.NbBrickRow = brickZone.NbBrickRow;
             this.NbBrickCol = brickZone.NbBrickCol;
 
@@ -30,13 +33,17 @@ namespace Breakout.Views
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            for (int i = 0; i <NbBrickRow; i++)
+            for (int i = 0; i < NbBrickRow; i++)
             {
                 for (int j = 0; j < NbBrickCol; j++)
                 {
-                    ViewBrick[i, j].Draw(spriteBatch, gameTime);
+                    if (BrickZone.AllBricks[i, j] != null)
+                    {
+                        ViewBrick[i, j].Draw(spriteBatch, gameTime);
+                    }
                 }
             }
         }
+
     }
 }

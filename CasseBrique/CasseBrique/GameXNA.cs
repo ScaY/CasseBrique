@@ -11,6 +11,9 @@ using Breakout.Model;
 using Breakout.Views;
 using Breakout.Controler;
 using Breakout.Bonus;
+using CasseBrique.Controler;
+using System.Media;
+
 #endregion
 
 namespace Breakout
@@ -34,7 +37,10 @@ namespace Breakout
         private ViewBreakout view;
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
+        private List<ControlerBonus> controlersBonus;
         private Player player;
+
+       // SoundEffect ballReboundBar;
 
         public GameXNA(Player _player)
             : base()
@@ -58,19 +64,23 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(2, 2, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model.Players.Add(player);
+            model.CurrentPlayer = player;
             
             Bar bar = model.Bar;
-            controlerBar = new ControlerBarKeyboard(bar);
+            controlerBar = new ControlerBarMouse(bar);
 
             Ball ball = model.Ball;
             controlerBall = new ControlerBall(ball);
 
-            AbstractBonus bonus = new BarSizeBonus();
-            bonus.Speed = 0.2f;
+            AbstractBonus bonus = new BarSizeBonus(50, 10);
+            bonus.Speed = 1f;
             bonus.Position = new Vector2(200, 200);
             bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
             model.Bonuses.Add(bonus);
+            controlersBonus = new List<ControlerBonus>();
+            controlersBonus.Add(new ControlerBonus(bonus));
 
             view = new ViewBreakout(model, Content);
 
@@ -88,14 +98,21 @@ namespace Breakout
 
             try
             {
-
                 //chargement de l'image de la barre du casse brique
                 model.Bar.Position = new Vector2((float)(widthFrame - view.ViewBar.Texture.Width) / 2, heightFrame * 0.9f);
                 model.Bar.Size.Width = view.ViewBar.Texture.Width;
                 model.Bar.Size.Height = view.ViewBar.Texture.Height;
 
                 //chargement de l'image de la balle du jeu
-                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2, heightFrame * 0.9f - model.Bar.Size.Height);
+                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2 + 100, heightFrame * 0.9f - model.Bar.Size.Height);
+                model.Ball.Size.Width = view.ViewBall.Texture.Width;
+                model.Ball.Size.Height = view.ViewBall.Texture.Height;
+
+                foreach (AbstractBonus bonus in model.Bonuses)
+                {
+                    bonus.Size.Width = view.ViewBonuses[0].Texture.Width;
+                    bonus.Size.Height = view.ViewBonuses[0].Texture.Height;
+                }
             }
             catch (Exception e)
             {
@@ -124,6 +141,11 @@ namespace Breakout
 
             controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
             controlerBall.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+
+            foreach (ControlerBonus controler in controlersBonus)
+            {
+                controler.HandleBonus(model, gameTime, heightFrame, widthFrame, view.ViewBonuses);
+            }
 
             base.Update(gameTime);
         }
