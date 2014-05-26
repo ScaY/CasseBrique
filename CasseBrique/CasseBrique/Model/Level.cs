@@ -55,5 +55,24 @@ namespace Breakout.Model
 
         }
 
+        public static List<Level> loadAll()
+        {
+            int i=0;
+            string path = "../../../levels/level" + i + ".json";
+            List<Level> toReturn = new List<Level>();
+            while (File.Exists(path))
+            {
+                Level newLevel = new Level();
+                string file = File.ReadAllText(path);
+                var jsonDe = JsonConvert.DeserializeObject<Level>(file);
+
+                newLevel.LevelName = jsonDe.LevelName;
+                newLevel.Map = jsonDe.Map;
+                i++;
+                path = "../../../levels/level" + i + ".json";
+                toReturn.Add(newLevel);
+            }
+            return toReturn;
+        }
     }
 }

@@ -13,12 +13,33 @@ namespace Breakout.Views
 {
     public partial class Home : Form
     {
-        private Player player;
+
+        public static Point Default_Frame_Position = new Point(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width / 2, System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height / 2);
+        public static int Default_Frame_Width = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width * 3 / 4;
+        public static int Default_Frame_Height = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height * 3 / 4;
+
+
+
+        
+        public List<Player> Players { get; set; }
+        public Level LevelChoosed { get; set; }
+
         public Home()
         {
             InitializeComponent();
+
+
+            Players = new List<Player>();
+
+
+
+            this.panel1.Show();
             this.panel2.Hide();
         }
+       
+
+
+
 
         private void Home_Load(object sender, EventArgs e)
         {
@@ -58,17 +79,17 @@ namespace Breakout.Views
         {
             if (this.textBox1.Text != null && this.textBox1.Text.Length > 0)
             {
-                this.player = new Player(this.textBox1.Text,null,null);
+                Players.Add( new Player(this.textBox1.Text,null,null));
             }
             this.panel2.Hide();
             this.panel3.Show();
-
+            
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
             this.Hide();
-            using (var game = new GameXNA(this.player))
+            using (var game = new GameXNA(this.Players.ElementAtOrDefault(0)))
             
                 game.Run();
 

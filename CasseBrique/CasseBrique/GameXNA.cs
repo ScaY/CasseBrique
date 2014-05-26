@@ -12,6 +12,8 @@ using Breakout.Views;
 using Breakout.Controler;
 using Breakout.Bonus;
 using CasseBrique.Controler;
+using System.Media;
+
 #endregion
 
 namespace Breakout
@@ -37,6 +39,8 @@ namespace Breakout
         private ControlerBall controlerBall;
         private ControlerBonus controlerBonus;
         private Player player;
+
+       // SoundEffect ballReboundBar;
 
         public GameXNA(Player _player)
             : base()
@@ -68,7 +72,7 @@ namespace Breakout
             model.CurrentPlayer = player;
             
             Bar bar = model.Bar;
-            controlerBar = new ControlerBarKeyboard(bar);
+            controlerBar = new ControlerBarMouse(bar);
 
             Ball ball = model.Ball;
             controlerBall = new ControlerBall(ball);
@@ -95,7 +99,6 @@ namespace Breakout
 
             try
             {
-
                 //chargement de l'image de la barre du casse brique
                 model.Bar.Position = new Vector2((float)(widthFrame - view.ViewBar.Texture.Width) / 2, heightFrame * 0.9f);
                 model.Bar.Size.Width = view.ViewBar.Texture.Width;

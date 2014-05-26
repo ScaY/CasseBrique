@@ -105,7 +105,6 @@
     <Compile Include="Views\LevelChooser.Designer.cs">
       <DependentUpon>LevelChooser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Menu.cs" />
     <Compile Include="Views\PlayerRegister.cs">
       <SubType>Form</SubType>
     </Compile>
