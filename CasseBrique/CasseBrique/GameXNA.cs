@@ -37,7 +37,7 @@ namespace Breakout
         private ViewBreakout view;
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
-        private List<ControlerBonus> controlersBonus;
+        private ControlerBonus controlerBonus;
         private Player player;
 
        // SoundEffect ballReboundBar;
@@ -65,7 +65,10 @@ namespace Breakout
             heightFrame = Window.ClientBounds.Height;
 
             model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
-            model.Players.Add(player);
+            view = new ViewBreakout(model, Content);
+            model.AddView(view);
+
+            model.AddPlayer(player);
             model.CurrentPlayer = player;
             
             Bar bar = model.Bar;
@@ -78,11 +81,9 @@ namespace Breakout
             bonus.Speed = 1f;
             bonus.Position = new Vector2(200, 200);
             bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
-            model.Bonuses.Add(bonus);
-            controlersBonus = new List<ControlerBonus>();
-            controlersBonus.Add(new ControlerBonus(bonus));
+            model.AddBonus(bonus);
+            controlerBonus = new ControlerBonus();
 
-            view = new ViewBreakout(model, Content);
 
             base.Initialize();
         }
@@ -142,9 +143,15 @@ namespace Breakout
             controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
             controlerBall.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
 
-            foreach (ControlerBonus controler in controlersBonus)
+            try
             {
-                controler.HandleBonus(model, gameTime, heightFrame, widthFrame, view.ViewBonuses);
+                foreach (AbstractBonus bonus in model.Bonuses)
+                {
+                    controlerBonus.HandleBonus(model, gameTime, heightFrame, widthFrame, bonus);
+                }
+            }
+            catch (InvalidOperationException ex) //je comprends pas encore à quoi est dû la levée d'exception
+            {
             }
 
             base.Update(gameTime);

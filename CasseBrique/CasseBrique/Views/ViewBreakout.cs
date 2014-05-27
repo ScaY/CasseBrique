@@ -1,4 +1,5 @@
 ﻿using Breakout.Bonus;
+using Breakout.Events;
 using Breakout.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -20,12 +21,17 @@ namespace Breakout.Views
 
         public List<ViewBonus> ViewBonuses { get; set; }
 
+        private Texture2D textureBar;
+        private Texture2D textureBall;
+        private Texture2D textureBrick;
+        private Texture2D textureBonus;
+
         public ViewBreakout(BreakoutModel breakout, ContentManager content)
         {
-            Texture2D textureBar = content.Load<Texture2D>("barMid");
-            Texture2D textureBall = content.Load<Texture2D>("ballSmall");
-            Texture2D textureBrick = content.Load<Texture2D>("brick3life");
-            Texture2D textureBonus = content.Load<Texture2D>("bonus");
+            textureBar = content.Load<Texture2D>("barMid");
+            textureBall = content.Load<Texture2D>("ballSmall");
+            textureBrick = content.Load<Texture2D>("brick3life");
+            textureBonus = content.Load<Texture2D>("bonus");
 
             //this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
             breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
@@ -52,6 +58,43 @@ namespace Breakout.Views
             foreach (ViewBonus viewBonus in ViewBonuses)
             {
                 viewBonus.Draw(spriteBatch, gameTime);
+            }
+        }
+
+        public void Refresh(Event e)
+        {
+            if (e is PlayerEvent)
+            {
+
+            }
+            else if (e is BrickEvent)
+            {
+
+            }
+            else if (e is BonusEvent)
+            {
+                BonusEvent be = (BonusEvent)e;
+
+                if (e is AddedBonusEvent)
+                {
+                    this.ViewBonuses.Add(new ViewBonus(be.Bonus, textureBonus));
+                }
+                else if (e is RemovedBonusEvent)
+                {
+                    bool found = false;
+                    int i = 0;
+                    while (!found && i < this.ViewBonuses.Count)
+                    {
+                        ViewBonus view = this.ViewBonuses.ElementAt(i);
+                        if (view.Shape == be.Bonus)
+                        {
+                            this.ViewBonuses.Remove(view);
+                            found = true;
+                        }
+
+                        i++;
+                    }
+                }
             }
         }
     }

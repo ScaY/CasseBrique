@@ -11,6 +11,10 @@ namespace Breakout.Controler
     {
         public Shape Shape { get; set; }
 
+        public ControlerShape()
+        {
+        }
+
         public ControlerShape(Shape shape)
         {
             this.Shape = shape;
