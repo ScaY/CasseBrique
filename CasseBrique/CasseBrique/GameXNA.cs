@@ -69,8 +69,10 @@ namespace Breakout
             model.AddView(view);
 
             model.AddPlayer(player);
+            //model.AddPlayer(new Player());
+
             model.AddBall(new Ball());
-            model.AddBall(new Ball());
+
             controlerBar = new ControlerBarMouse(model);
             controlerBall = new ControlerBall(model);
             controlerBonus = new ControlerBonus(model);
@@ -89,20 +91,20 @@ namespace Breakout
 
             try
             {
-                   /* Player player = model.Players[0];
-                    player.Bar.Position = new Vector2(50, 50);
-                    player.Bar.Size.Width = 99;
-                    player.Bar.Size.Height = 7;*/
-
                     Player player = model.Players[0];
                     player.Bar.Position = new Vector2(50, 450);
                     player.Bar.Size.Width = 99;
                     player.Bar.Size.Height = 7;
 
+                    /*player = model.Players[1];
+                    player.Bar.Position = new Vector2(50, 50 );
+                    player.Bar.Size.Width = 99;
+                    player.Bar.Size.Height = 7;*/
+
                 foreach (Ball ball in model.Balls)
                 {
                     //chargement de l'image de la balle du jeu
-                    ball.Position = new Vector2((float)(widthFrame - 99) / 2 + 260, heightFrame * 0.9f - 7);
+                    ball.Position = new Vector2((float)(widthFrame - 99) / 2 + 100, heightFrame * 0.9f - 7);
                     ball.Size.Width = 16;
                     ball.Size.Height = 16;
                 }

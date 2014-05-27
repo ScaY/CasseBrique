@@ -87,6 +87,7 @@ namespace Breakout.Views
 
                 if (e is AddedPlayerEvent)
                 {
+                    Console.WriteLine("added player event");
                     this.ViewBars.Add(new ViewBar(pe.Player.Bar, textureBar));
                 }
             }
