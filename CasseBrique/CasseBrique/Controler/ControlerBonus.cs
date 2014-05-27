@@ -28,10 +28,10 @@ namespace Breakout.Controler
             {
                 if(model.CurrentPlayer != null) {
                     model.CurrentPlayer.Bonuses.Add(bonus);
+                    bonus.ApplyBonus(model, model.CurrentPlayer);
+                    bonus.StartDate = DateTime.Now;
+                    model.RemoveBonus(bonus);
                 }
-
-                bonus.ApplyBonus(model);
-                model.RemoveBonus(bonus);
             }
         }
     }

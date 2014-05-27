@@ -11,6 +11,8 @@ namespace Breakout.Bonus
     {
         public int Modifier { get; set; }
 
+        public DateTime StartDate { get; set; }
+
         public int Duration { get; set; }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
@@ -21,7 +23,8 @@ namespace Breakout.Bonus
             this.Position = new Vector2(x, y);
         }
 
-        public abstract void ApplyBonus(BreakoutModel model);
+        public abstract void ApplyBonus(BreakoutModel model, Player player);
+        public abstract void RemoveBonus(BreakoutModel model, Player player);
 
         public AbstractBonus(int modifier, int duration)
         {

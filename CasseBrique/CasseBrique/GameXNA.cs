@@ -77,13 +77,12 @@ namespace Breakout
             Ball ball = model.Ball;
             controlerBall = new ControlerBall(ball);
 
-            AbstractBonus bonus = new BarSizeBonus(50, 10);
+            AbstractBonus bonus = new BarSizeBonus(50, 5);
             bonus.Speed = 1f;
             bonus.Position = new Vector2(200, 200);
             bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
             model.AddBonus(bonus);
             controlerBonus = new ControlerBonus();
-
 
             base.Initialize();
         }
@@ -153,8 +152,27 @@ namespace Breakout
                     controlerBonus.HandleBonus(model, gameTime, heightFrame, widthFrame, bonus);
                 }
             }
-            catch (InvalidOperationException ex) //je comprends pas encore à quoi est dû la levée d'exception
+            catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
             {
+            }
+
+            DateTime now = DateTime.Now;
+            foreach (Player player in model.Players)
+            {
+                try
+                {
+                    foreach (AbstractBonus bonus in player.Bonuses)
+                    {
+                        if ((now - bonus.StartDate).Seconds > bonus.Duration)
+                        {
+                            bonus.RemoveBonus(model, player);
+                            player.Bonuses.Remove(bonus);
+                        }
+                    }
+                }
+                catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
+                {
+                }
             }
 
             base.Update(gameTime);

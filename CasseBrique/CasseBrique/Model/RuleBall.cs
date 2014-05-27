@@ -74,7 +74,7 @@ namespace Breakout.Model
 
             model.UpdateBrickLife(brick, brick.Life - 1);
 
-            if (brick.Bonus != null)
+            if (brick.Life == 0 && brick.Bonus != null)
             {
                 model.AddBonus(brick.Bonus);
             }
