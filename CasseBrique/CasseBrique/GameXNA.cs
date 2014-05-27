@@ -64,7 +64,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(1, 1, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             view = new ViewBreakout(model, Content);
             model.AddView(view);
 
@@ -89,20 +89,20 @@ namespace Breakout
 
             try
             {
-                    Player player = model.Players[0];
+                   /* Player player = model.Players[0];
                     player.Bar.Position = new Vector2(50, 50);
                     player.Bar.Size.Width = 99;
-                    player.Bar.Size.Height = 7;
+                    player.Bar.Size.Height = 7;*/
 
-                    player = model.Players[1];
-                    player.Bar.Position = new Vector2(50, 350);
+                    Player player = model.Players[0];
+                    player.Bar.Position = new Vector2(50, 450);
                     player.Bar.Size.Width = 99;
                     player.Bar.Size.Height = 7;
 
                 foreach (Ball ball in model.Balls)
                 {
                     //chargement de l'image de la balle du jeu
-                    ball.Position = new Vector2((float)(widthFrame - 99) / 2 + 100, heightFrame * 0.9f - 7);
+                    ball.Position = new Vector2((float)(widthFrame - 99) / 2 + 260, heightFrame * 0.9f - 7);
                     ball.Size.Width = 16;
                     ball.Size.Height = 16;
                 }

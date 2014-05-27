@@ -10,6 +10,8 @@ namespace Breakout.Model
 {
     public class Ball : Shape
     {
+        public Brick brikHit { get; set; }
+
         public Ball()
             : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
         {
@@ -48,6 +50,8 @@ namespace Breakout.Model
             if (bar.getRectangle().Intersects(this.GetBox()))
             {
                 RuleBall.HandleReboundUpDown(this);
+
+                this.brikHit = null;
             }
 
         }
@@ -58,12 +62,15 @@ namespace Breakout.Model
             if ((Position.X < 0 || Position.X > widthFrame))
             {
                 RuleBall.HandleReboundLeftRight(this);
+                this.brikHit = null;
             }
             //rebond en haut
             else if (Position.Y < 0)
             {
                 RuleBall.HandleReboundUpDown(this);
+                this.brikHit = null;
             }
+
         }
 
         public void HandleBallReboundBrick(BreakoutModel model)
@@ -74,6 +81,8 @@ namespace Breakout.Model
             if (brick != null)
             {
                 RuleBall.HandleDeplacementHitBrick(model, brick, this);
+
+                this.brikHit = brick;
             }
         }
 
