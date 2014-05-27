@@ -74,7 +74,6 @@
     <Compile Include="GameXNA.cs" />
     <Compile Include="Controler\ControlerBall.cs" />
     <Compile Include="Controler\ControlerBar.cs" />
-    <Compile Include="Controler\ControlerBarKeyboard.cs" />
     <Compile Include="Model\AbstractModel.cs" />
     <Compile Include="Model\BreakoutModel.cs" />
     <Compile Include="Model\Brick.cs" />
