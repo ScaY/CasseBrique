@@ -95,7 +95,9 @@ namespace Breakout
 
         private void pnlAbou_MouseClick(object sender, MouseEventArgs e)
         {
-
+            this.pnlLeftArrow.Show();
+            this.panel1.Hide();
+            this.pnlAb.Show();
         }
 
         private void pnl2Players_MouseClick(object sender, MouseEventArgs e)
@@ -229,8 +231,15 @@ namespace Breakout
         {
             this.bigPnlLevel.Hide();
             this.bigPnlOnePlayer.Hide();
+            this.pnlAb.Hide();
+
             this.panel1.Show();
             this.pnlLeftArrow.Hide();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
