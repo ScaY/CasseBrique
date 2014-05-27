@@ -33,7 +33,6 @@ namespace Breakout.Views
             textureBrick = content.Load<Texture2D>("brick3life");
             textureBonus = content.Load<Texture2D>("bonus");
 
-            //this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
             breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
             breakout.BrickZone.InitializePositionBrick();
 
@@ -49,7 +48,7 @@ namespace Breakout.Views
                 this.ViewBalls.Add(new ViewBall(ball, textureBall));
             }
 
-            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone, content);
+            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, content);
             this.ViewBonuses = new List<ViewBonus>();
 
             foreach (AbstractBonus bonus in breakout.Bonuses)
@@ -87,7 +86,6 @@ namespace Breakout.Views
 
                 if (e is AddedPlayerEvent)
                 {
-                    Console.WriteLine("added player event");
                     this.ViewBars.Add(new ViewBar(pe.Player.Bar, textureBar));
                 }
             }
