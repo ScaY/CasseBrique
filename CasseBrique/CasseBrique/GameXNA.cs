@@ -64,7 +64,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(1, 1, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             view = new ViewBreakout(model, Content);
             model.AddView(view);
 
@@ -72,7 +72,7 @@ namespace Breakout
             model.CurrentPlayer = player;
 
             Bar bar = model.CurrentPlayer.Bar;
-            controlerBar = new ControlerBarMouse(bar);
+            controlerBar = new ControlerBarKeyboard(bar);
 
             Ball ball = model.Ball;
             controlerBall = new ControlerBall(ball);
@@ -108,7 +108,7 @@ namespace Breakout
                 }
 
                 //chargement de l'image de la balle du jeu
-                model.Ball.Position = new Vector2((float)(widthFrame - model.CurrentPlayer.Bar.Size.Width) / 2 + 100, heightFrame * 0.9f - model.CurrentPlayer.Bar.Size.Height);
+                model.Ball.Position = new Vector2((float)(widthFrame - model.CurrentPlayer.Bar.Size.Width) / 2 + 258, heightFrame * 0.9f - model.CurrentPlayer.Bar.Size.Height);
                 model.Ball.Size.Width = view.ViewBall.Texture.Width;
                 model.Ball.Size.Height = view.ViewBall.Texture.Height;
 

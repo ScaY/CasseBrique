@@ -157,6 +157,16 @@ namespace Breakout.Model
             }
 
         }
+
+        public Brick GetBrick(int i , int j)
+        {
+            if (i < 0 || j < 0 || i >= NbBrickRow || j >= NbBrickCol)
+            {
+                return null;
+            }
+            return AllBricks[i, j];
+        }
+
         public Rectangle GetBox()
         {
             return new Rectangle((int)StartBlockBrickX, (int)StartBlockBrickY, (int)Math.Abs(StartBlockBrickX - EndBlockBrickX), (int)Math.Abs(StartBlockBrickY - EndBlockBrickY));

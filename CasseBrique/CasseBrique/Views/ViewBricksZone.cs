@@ -65,12 +65,10 @@ namespace Breakout.Views
         {
             if (e is BrickLifeUpdatedEvent)
             {
-                Console.WriteLine("Weh !");
                 BrickLifeUpdatedEvent sourceEvent = (BrickLifeUpdatedEvent)e;
                 Brick brick = sourceEvent.Brick;
                 ViewBrick viewBrick = this.ViewBricks[brick.XBrick, brick.YBrick];
                 int lifeBrick = brick.Life;
-                Console.WriteLine("LifeBrick n ViewBrickZone : " + lifeBrick);
                 switch (lifeBrick)
                 {
                     case 0: viewBrick.Texture = ViewBrick0Life;
@@ -78,7 +76,6 @@ namespace Breakout.Views
                     case 1: viewBrick.Texture = ViewBrick1Life;
                         break;
                     case 2: viewBrick.Texture = ViewBrick2Life;
-                        Console.WriteLine("2 life left in ViewBrickZone");
                         break;
                     case 3: viewBrick.Texture = ViewBrick3Life;
                         break;

@@ -1,4 +1,5 @@
 ﻿#region Using Statements
+using Breakout.Model;
 using Breakout.Views;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,10 @@ namespace Breakout
         [STAThread]
         static void Main()
         {
-                Home m = new Home();
-                Application.Run(m);
-                //using (var game = new GameXNA(null))
-                //game.Run();
+                //Home m = new Home();
+                //Application.Run(m);
+                using (var game = new GameXNA(new Player("toto", null)))
+                game.Run();
             
         }
     }

@@ -10,8 +10,10 @@ namespace Breakout.Model
 {
     public class Ball : Shape
     {
+        public Brick brikHit { get; set; }
+
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.5f, new Size(0, 0))
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.05f, new Size(0, 0))
         {
         }
 
