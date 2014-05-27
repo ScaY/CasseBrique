@@ -13,7 +13,7 @@ namespace Breakout.Model
         public Brick brikHit { get; set; }
 
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.08f, new Size(0, 0))
         {
         }
 
@@ -75,15 +75,19 @@ namespace Breakout.Model
 
         public void HandleBallReboundBrick(BreakoutModel model)
         {
-            BrickZone bricks = model.BrickZone;
-            Brick brick = RuleBall.GetBrickHit(this, bricks);
-
-            if (brick != null)
+            if (this.brikHit == null || !this.brikHit.GetBBox().Intersects(this.GetBox()))
             {
-                RuleBall.HandleDeplacementHitBrick(model, brick, this);
+                BrickZone bricks = model.BrickZone;
+                Brick brick = RuleBall.GetBrickHit(this, bricks);
 
-                this.brikHit = brick;
+                if (brick != null)
+                {
+                    RuleBall.HandleDeplacementHitBrick(model, brick, this);
+
+                    this.brikHit = brick;
+                }
             }
+
         }
 
         public Rectangle GetBox()

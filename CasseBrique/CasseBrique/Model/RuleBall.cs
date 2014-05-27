@@ -74,6 +74,9 @@ namespace Breakout.Model
 
             int widthBrick = brick.Size.Width;
             int heightBrick = brick.Size.Height;
+            int heightBall = ball.Size.Height;
+            int widthBall = ball.Size.Width;
+
             Vector2 centerBrick = new Vector2(brick.Position.X + widthBrick / 2, brick.Position.Y + heightBrick / 2);
 
             Vector2 newDeplacement = Vector2.Zero;
@@ -81,30 +84,46 @@ namespace Breakout.Model
             //la balle se situe à la partie droite de la brique
             if (centerBall.X > centerBrick.X)
             {
-                //la balle a touché la brique par la droite
-                if (centerBall.X > (centerBrick.X + widthBrick / 2))
+                if (centerBall.X < (centerBrick.X + widthBrick / 2))
                 {
-                    HandleReboundLeftRight(ball);
+                    Console.WriteLine("Rebond à droite en bas ou en haut        " + brick.XBrick +"    "+brick.YBrick);
+                    HandleReboundUpDown(ball);
                 }
                 else
                 {
-                    //la balle a touché la brique par le haut ou bas
-                    HandleReboundUpDown(ball);
+                    if ((centerBall.Y + heightBall / 2) < (centerBrick.Y - heightBrick / 2) || (centerBall.Y - heightBall / 2) > (centerBrick.Y + heightBrick / 2))
+                    {
+                        Console.WriteLine("Rebond à droite en bas ou en haut        " + brick.XBrick + "    " + brick.YBrick);
+                        HandleReboundUpDown(ball);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Rebond à droite      " + brick.XBrick + "    " + brick.YBrick);
+                        HandleReboundLeftRight(ball);
+                    }
                 }
 
             }
             else
             //la balle a touché la brique à gauche
             {
-                //la balle a touché la brique par la gauche
-                if (centerBall.X < (centerBrick.X - widthBrick / 2))
+                if (centerBall.X > (centerBrick.X - widthBrick / 2))
                 {
-                    HandleReboundLeftRight(ball);
+                    Console.WriteLine("Rebond à gauche en bas ou en haut     " + brick.XBrick + "    " + brick.YBrick);
+                    HandleReboundUpDown(ball);
                 }
                 else
                 {
-                    //la balle a touché la brique par le haut ou bas
-                    HandleReboundUpDown(ball);
+                    if ((centerBall.Y + heightBall / 2) < (centerBrick.Y - heightBrick / 2) || (centerBall.Y - heightBall / 2) > (centerBrick.Y + heightBrick / 2))
+                    {
+                        Console.WriteLine("Rebond à gauche en bas ou en haut        " + brick.XBrick + "    " + brick.YBrick);
+                        HandleReboundUpDown(ball);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Rebond à gauche      " + brick.XBrick + "    " + brick.YBrick);
+                        HandleReboundLeftRight(ball);
+                    }
                 }
 
             }

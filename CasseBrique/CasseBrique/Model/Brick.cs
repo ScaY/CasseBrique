@@ -29,9 +29,9 @@ namespace Breakout.Model
             this.Life = life;
         }
 
-        public void DecreaseLife()
+        public Rectangle GetBBox()
         {
-
+            return new Rectangle((int)this.Position.X, (int)this.Position.Y, (int)this.Size.Width, (int)this.Size.Height);
         }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)

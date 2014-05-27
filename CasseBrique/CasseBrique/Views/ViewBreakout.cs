@@ -33,7 +33,6 @@ namespace Breakout.Views
             textureBrick = content.Load<Texture2D>("brick3life");
             textureBonus = content.Load<Texture2D>("bonus");
 
-            //this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
             breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
             breakout.BrickZone.InitializePositionBrick();
 
