@@ -67,7 +67,6 @@
     <Compile Include="Events\RemovedBonusEvent.cs" />
     <Compile Include="Events\RemovedBrickEvent.cs" />
     <Compile Include="Events\RemovedPlayerEvent.cs" />
-    <Compile Include="Model\Ball.cs" />
     <Compile Include="Model\Bar.cs" />
     <Compile Include="Bonus\AbstractBonus.cs" />
     <Compile Include="Bonus\BarBonus.cs" />
@@ -90,7 +89,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Model\RuleBall.cs" />
     <Compile Include="Model\Shape.cs" />
     <Compile Include="Views\Home.cs">
       <SubType>Form</SubType>
