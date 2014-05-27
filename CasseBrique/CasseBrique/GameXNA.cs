@@ -38,16 +38,16 @@ namespace Breakout
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
         private ControlerBonus controlerBonus;
-        private Player player;
+        private List<Player> players;
+        private KeyboardState previousKeyboardState;
 
        // SoundEffect ballReboundBar;
 
-        public GameXNA(Player _player)
-            : base()
+        public GameXNA(List<Player> _players) : base()
         {
-            if (_player != null)
+            if (_players != null)
             {
-                this.player = _player;
+                this.players = _players;
             }
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -68,8 +68,13 @@ namespace Breakout
             view = new ViewBreakout(model, Content);
             model.AddView(view);
 
-            model.AddPlayer(player);
-            //model.AddPlayer(new Player());
+            if (this.players != null)
+            {
+                foreach (Player player in this.players)
+                {
+                    model.AddPlayer(player);
+                }
+            }
 
             model.AddBall(new Ball());
 
@@ -137,50 +142,64 @@ namespace Breakout
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
+            {
                 Exit();
+            }
 
-            try
+            if (keyboardState.IsKeyDown(Keys.Space) && previousKeyboardState != null && previousKeyboardState.IsKeyUp(Keys.Space))
             {
-                foreach (Ball ball in model.Balls)
+                model.Pause = !model.Pause;
+            }
+
+            if (!model.Pause)
+            {
+                try
                 {
-                    controlerBall.HandleBall(ball, gameTime, heightFrame, widthFrame);
+                    foreach (Ball ball in model.Balls)
+                    {
+                        controlerBall.HandleBall(ball, gameTime, heightFrame, widthFrame);
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-            }
-
-            try
-            {
-                foreach (AbstractBonus bonus in model.Bonuses)
+                catch (Exception e)
                 {
-                    controlerBonus.HandleBonus(gameTime, heightFrame, widthFrame, bonus, gameTime.TotalGameTime);
                 }
-            }
-            catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
-            {
-            }
-
-            foreach (Player player in model.Players)
-            {
-                controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame, player);
 
                 try
                 {
-                    foreach (AbstractBonus bonus in player.Bonuses)
+                    foreach (AbstractBonus bonus in model.Bonuses)
                     {
-                        if ((gameTime.TotalGameTime - bonus.StartTime).Seconds > bonus.Duration)
-                        {
-                            bonus.RemoveBonus(model, player);
-                            player.Bonuses.Remove(bonus);
-                        }
+                        controlerBonus.HandleBonus(gameTime, heightFrame, widthFrame, bonus, gameTime.TotalGameTime);
                     }
                 }
                 catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
                 {
                 }
+
+                foreach (Player player in model.Players)
+                {
+                    controlerBar.HandleInput(keyboardState, Mouse.GetState(), gameTime, widthFrame, player);
+
+                    try
+                    {
+                        foreach (AbstractBonus bonus in player.Bonuses)
+                        {
+                            if ((gameTime.TotalGameTime - bonus.StartTime).Seconds > bonus.Duration)
+                            {
+                                bonus.RemoveBonus(model, player);
+                                player.Bonuses.Remove(bonus);
+                            }
+                        }
+                    }
+                    catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
+                    {
+                    }
+                }
             }
+
+            previousKeyboardState = keyboardState;
 
             base.Update(gameTime);
         }

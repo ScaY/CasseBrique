@@ -48,7 +48,7 @@ namespace Breakout.Views
                 this.ViewBalls.Add(new ViewBall(ball, textureBall));
             }
 
-            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone, content);
+            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, content);
             this.ViewBonuses = new List<ViewBonus>();
 
             foreach (AbstractBonus bonus in breakout.Bonuses)
@@ -86,7 +86,6 @@ namespace Breakout.Views
 
                 if (e is AddedPlayerEvent)
                 {
-                    Console.WriteLine("added player event");
                     this.ViewBars.Add(new ViewBar(pe.Player.Bar, textureBar));
                 }
             }
