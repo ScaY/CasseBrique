@@ -13,9 +13,47 @@ namespace Breakout.Model
             //la balle et dans la zone de brique
             if (CheckBallEnterBlockBrick(ball, bricks))
             {
+                // Vector2 centerBall = ball.GetCenterBall();
+                int width = ball.Size.Width;
+                int height = ball.Size.Height;
+
+                //teste le coin en haut à gauche
                 int brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 int brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
-                result = bricks.AllBricks[brickX, brickY];
+                result = bricks.GetBrick(brickX, brickY);
+                if (result != null && result != ball.brikHit)
+                {
+                    return result;
+                }
+
+                //teste le coin en haut à droite
+                brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
+                brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
+                result = bricks.GetBrick(brickX, brickY);
+                if (result != null && result != ball.brikHit)
+                {
+                    return result;
+                }
+
+
+                //teste le coin en bas à droite
+                brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
+                brickY = (int)((positionBall.Y + height - bricks.StartBlockBrickY) / bricks.HeightBrick);
+                result = bricks.GetBrick(brickX, brickY);
+                if (result != null && result != ball.brikHit)
+                {
+                    return result;
+                }
+
+
+                //teste le coin en bas à gauche
+                brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
+                brickY = (int)((positionBall.Y + height + bricks.StartBlockBrickY) / bricks.HeightBrick);
+                result = bricks.GetBrick(brickX, brickY);
+                if (result != null && result != ball.brikHit)
+                {
+                    return result;
+                }
             }
 
             return result;
@@ -70,7 +108,7 @@ namespace Breakout.Model
                 }
 
             }
-            
+
             model.UpdateBrickLife(brick, brick.Life - 1);
 
             //si la brique est détruite et contient un bonus on ajoute le bonus
