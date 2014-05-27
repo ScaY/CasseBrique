@@ -80,6 +80,7 @@
     <Compile Include="Model\AbstractModel.cs" />
     <Compile Include="Model\BreakoutModel.cs" />
     <Compile Include="Model\Brick.cs" />
+    <Compile Include="Model\CustomLevel.cs" />
     <Compile Include="Model\GameModel.cs" />
     <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Player.cs" />

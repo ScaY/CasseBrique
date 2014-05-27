@@ -15,39 +15,38 @@ namespace Breakout.Model
 
         public string LevelName { get; set; }
 
+        public string Path { get; set; }
         public int Id { get; set; }
 
         public Level()
         {
+            this.Path = "../../../levels/Default/level" + Id + ".json";
             this.Map = null;
             this.Id = 0;
+            
         }
-        public Level(int id,bool isCustom)
+        public Level(int id)
         {
+            
             this.Id = id;
-            load(id, isCustom);
+            this.Path = "../../../levels/Default/level" + Id + ".json";
+            
         }
         public Level(int id, BrickZone map ){
+            
             this.Map = map;
             this.Id = id;
+            this.Path = "../../../levels/Default/level" + Id + ".json";
         }
         
 
-        public void load(int id,bool isCustomLevel)
+        public void load()
         {
-            string path;
-            if (isCustomLevel)
-            {
-                 path = "../../../levels/Default/level" + Id + ".json";
-            }
-            else
-            {
-                path = "../../../levels/Customized/level" + Id + ".json";
-            }
             
-            if (File.Exists(path))
+
+            if (File.Exists(Path))
             {
-                string file = File.ReadAllText(path);
+                string file = File.ReadAllText(Path);
                 var jsonDe = JsonConvert.DeserializeObject<Level>(file);
 
                 this.LevelName = jsonDe.LevelName;
@@ -56,15 +55,15 @@ namespace Breakout.Model
         }
 
 
-        public void write(bool isCustomLevel)
+        public void write()
         {
-            string path = "../../../levels/Default/level" + Id + ".json";
             
-            File.WriteAllText(path, JsonConvert.SerializeObject(this));
+            
+            File.WriteAllText(Path, JsonConvert.SerializeObject(this));
 
         }
 
-        public static List<Level> loadAll(bool isCustomLevel)
+        public static List<Level> loadAllDefault()
         {
             int i=0;
             string path = "../../../levels/Default/level" + i + ".json";
@@ -83,5 +82,8 @@ namespace Breakout.Model
             }
             return toReturn;
         }
+
+
+        
     }
 }
