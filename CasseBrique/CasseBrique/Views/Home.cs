@@ -60,6 +60,7 @@ namespace Breakout.Views
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            Console.WriteLine("salut");
             this.panel1.Hide();
             this.panel2.Show();
 
@@ -79,7 +80,21 @@ namespace Breakout.Views
         {
             if (this.textBox1.Text != null && this.textBox1.Text.Length > 0)
             {
-                Players.Add( new Player(this.textBox1.Text,null,null));
+                Players.Add( new Player(this.textBox1.Text, null));
+            }
+            
+            foreach (Control item in panel3.Controls)
+            {
+                if (item is ComboBox){
+                
+                    var cb =(ComboBox) item;
+                    List<Level> Levels = Level.loadAll();
+                    foreach (Level level in Levels)
+                    {
+                        cb.Items.Add(level.LevelName);
+                    }
+                }
+
             }
             this.panel2.Hide();
             this.panel3.Show();
@@ -96,6 +111,21 @@ namespace Breakout.Views
         }
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMulti_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -14,15 +14,12 @@ namespace Breakout.Model
 
         public Ball Ball { get; set; }
 
-        public Bar Bar { get; set; }
-
         public List<AbstractBonus> Bonuses { get; set; }
 
         public BreakoutModel(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.BrickZone = new BrickZone(nbBrickCol, nbBrickRow, startBlockBrickX, startBlockBrickY);
             this.Ball = new Ball();
-            this.Bar = new Bar();
             this.Bonuses = new List<AbstractBonus>();
         }
 

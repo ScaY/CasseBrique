@@ -44,10 +44,10 @@ namespace Breakout.Model
 
         public List<AbstractBonus> Bonuses { get; set; }
 
-        public Player(String _name, Bar _bar, Ball _ball)
+        public Player(String _name, Ball _ball)
         {
             this.Name = _name;
-            this.Bar = _bar;
+            this.Bar = new Bar();
             this.Ball = _ball;
             this.Bonuses = new List<AbstractBonus>();
         }

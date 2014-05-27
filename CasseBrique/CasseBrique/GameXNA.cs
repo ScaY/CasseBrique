@@ -70,8 +70,8 @@ namespace Breakout
 
             model.AddPlayer(player);
             model.CurrentPlayer = player;
-            
-            Bar bar = model.Bar;
+
+            Bar bar = model.CurrentPlayer.Bar;
             controlerBar = new ControlerBarMouse(bar);
 
             Ball ball = model.Ball;
@@ -83,6 +83,7 @@ namespace Breakout
             bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
             model.AddBonus(bonus);
             controlerBonus = new ControlerBonus();
+
 
             base.Initialize();
         }
@@ -98,13 +99,16 @@ namespace Breakout
 
             try
             {
-                //chargement de l'image de la barre du casse brique
-                model.Bar.Position = new Vector2((float)(widthFrame - view.ViewBar.Texture.Width) / 2, heightFrame * 0.9f);
-                model.Bar.Size.Width = view.ViewBar.Texture.Width;
-                model.Bar.Size.Height = view.ViewBar.Texture.Height;
+                foreach (Player player in model.Players)
+                {
+                    //chargement de l'image de la barre du casse brique
+                    player.Bar.Position = new Vector2((float)(widthFrame - 99) / 2, heightFrame * 0.9f);
+                    player.Bar.Size.Width = 99;
+                    player.Bar.Size.Height = 7;
+                }
 
                 //chargement de l'image de la balle du jeu
-                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2 + 316, heightFrame * 0.9f - model.Bar.Size.Height);
+                model.Ball.Position = new Vector2((float)(widthFrame - model.CurrentPlayer.Bar.Size.Width) / 2 + 100, heightFrame * 0.9f - model.CurrentPlayer.Bar.Size.Height);
                 model.Ball.Size.Width = view.ViewBall.Texture.Width;
                 model.Ball.Size.Height = view.ViewBall.Texture.Height;
 
