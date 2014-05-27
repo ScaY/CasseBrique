@@ -80,6 +80,13 @@ namespace Breakout
 
         private void pnlOnePlayer_MouseClick(object sender, MouseEventArgs e)
         {
+            this.panel1.Hide();
+            this.isMultiPlayer = false;
+            this.label5.Text = "Joueur : ";
+            this.pnlLeftArrow.Show();
+
+            this.bigPnlOnePlayer.BringToFront();
+            this.bigPnlOnePlayer.Show();
 
         }
 
@@ -118,10 +125,11 @@ namespace Breakout
         private void pnlOnePlayer_Click(object sender, EventArgs e)
         {
             this.panel1.Hide();
+            this.isMultiPlayer = false;
+
             this.pnlLeftArrow.Show();
 
             this.bigPnlOnePlayer.BringToFront();
-
             this.bigPnlOnePlayer.Show();
 
 
