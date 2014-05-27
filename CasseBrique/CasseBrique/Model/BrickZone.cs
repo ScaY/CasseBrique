@@ -129,6 +129,7 @@ namespace Breakout.Model
                 AllBricks[x, y] = brick;
                 brick.XBrick = x;
                 brick.YBrick = y;
+                brick.Life = 3;
                 brick.Bonus = new BarSizeBonus(50, 10);
                 brick.Bonus.Speed = 1f;
                 brick.Bonus.Position = brick.Position;
@@ -155,6 +156,10 @@ namespace Breakout.Model
                 }
             }
 
+        }
+        public Rectangle GetBox()
+        {
+            return new Rectangle((int)StartBlockBrickX, (int)StartBlockBrickY, (int)Math.Abs(StartBlockBrickX - EndBlockBrickX), (int)Math.Abs(StartBlockBrickY - EndBlockBrickY));
         }
 
         public override string ToString()

@@ -11,7 +11,7 @@ namespace Breakout.Model
     public class Ball : Shape
     {
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.1f, new Size(0, 0))
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.5f, new Size(0, 0))
         {
         }
 
