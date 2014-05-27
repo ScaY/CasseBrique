@@ -70,9 +70,10 @@ namespace Breakout.Model
                 }
 
             }
-
+            
             model.UpdateBrickLife(brick, brick.Life - 1);
 
+            //si la brique est détruite et contient un bonus on ajoute le bonus
             if (brick.Life == -1 && brick.Bonus != null)
             {
                 model.AddBonus(brick.Bonus);

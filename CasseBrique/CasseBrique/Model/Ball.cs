@@ -28,6 +28,7 @@ namespace Breakout.Model
             //balle sort du jeu
             if (Position.Y > heightFrame)
             {
+                //si la balle n'est pas rattrapée par le joueur on la supprime
                 model.RemoveBall(this);
             }
 

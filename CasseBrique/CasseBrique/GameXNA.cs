@@ -89,14 +89,15 @@ namespace Breakout
 
             try
             {
-                for (int i = 0; i < model.Players.Count; i++)
-                {
-                    Player player = model.Players[i];
-                    //chargement de l'image de la barre du casse brique
-                    player.Bar.Position = new Vector2((float)(150 * (i+1)) / 2, heightFrame * 0.9f);
+                    Player player = model.Players[0];
+                    player.Bar.Position = new Vector2(50, 50);
                     player.Bar.Size.Width = 99;
                     player.Bar.Size.Height = 7;
-                }
+
+                    player = model.Players[1];
+                    player.Bar.Position = new Vector2(50, 350);
+                    player.Bar.Size.Width = 99;
+                    player.Bar.Size.Height = 7;
 
                 foreach (Ball ball in model.Balls)
                 {
