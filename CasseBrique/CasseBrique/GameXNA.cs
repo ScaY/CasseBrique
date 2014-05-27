@@ -69,21 +69,11 @@ namespace Breakout
             model.AddView(view);
 
             model.AddPlayer(player);
-            model.CurrentPlayer = player;
+            model.AddBall(new Ball());
 
-            Bar bar = model.CurrentPlayer.Bar;
-            controlerBar = new ControlerBarMouse(bar);
-
-            Ball ball = model.Ball;
-            controlerBall = new ControlerBall(ball);
-
-            AbstractBonus bonus = new BarSizeBonus(50, 10);
-            bonus.Speed = 1f;
-            bonus.Position = new Vector2(200, 200);
-            bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
-            model.AddBonus(bonus);
-            controlerBonus = new ControlerBonus();
-
+            controlerBar = new ControlerBarMouse(model);
+            controlerBall = new ControlerBall(model);
+            controlerBonus = new ControlerBonus(model);
 
             base.Initialize();
         }
@@ -107,10 +97,13 @@ namespace Breakout
                     player.Bar.Size.Height = 7;
                 }
 
-                //chargement de l'image de la balle du jeu
-                model.Ball.Position = new Vector2((float)(widthFrame - model.CurrentPlayer.Bar.Size.Width) / 2 + 100, heightFrame * 0.9f - model.CurrentPlayer.Bar.Size.Height);
-                model.Ball.Size.Width = view.ViewBall.Texture.Width;
-                model.Ball.Size.Height = view.ViewBall.Texture.Height;
+                foreach (Ball ball in model.Balls)
+                {
+                    //chargement de l'image de la balle du jeu
+                    ball.Position = new Vector2((float)(widthFrame - 99) / 2 + 100, heightFrame * 0.9f - 7);
+                    ball.Size.Width = 16;
+                    ball.Size.Height = 16;
+                }
 
                 foreach (AbstractBonus bonus in model.Bonuses)
                 {
@@ -143,18 +136,47 @@ namespace Breakout
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
-            controlerBall.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+            try
+            {
+                foreach (Ball ball in model.Balls)
+                {
+                    controlerBall.HandleBall(ball, gameTime, heightFrame, widthFrame);
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
 
             try
             {
                 foreach (AbstractBonus bonus in model.Bonuses)
                 {
-                    controlerBonus.HandleBonus(model, gameTime, heightFrame, widthFrame, bonus);
+                    controlerBonus.HandleBonus(gameTime, heightFrame, widthFrame, bonus, gameTime.TotalGameTime);
                 }
             }
-            catch (InvalidOperationException ex) //je comprends pas encore à quoi est dû la levée d'exception
+            catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
             {
+            }
+
+            foreach (Player player in model.Players)
+            {
+                controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame, player);
+
+                try
+                {
+                    foreach (AbstractBonus bonus in player.Bonuses)
+                    {
+                        if ((gameTime.TotalGameTime - bonus.StartTime).Seconds > bonus.Duration)
+                        {
+                            bonus.RemoveBonus(model, player);
+                            player.Bonuses.Remove(bonus);
+                        }
+                    }
+                }
+                catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
+                {
+                }
             }
 
             base.Update(gameTime);

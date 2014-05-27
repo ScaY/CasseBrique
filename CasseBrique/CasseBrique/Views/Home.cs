@@ -81,7 +81,7 @@ namespace Breakout.Views
         {
             if (this.textBox1.Text != null && this.textBox1.Text.Length > 0)
             {
-                Players.Add( new Player(this.textBox1.Text, null));
+                Players.Add( new Player(this.textBox1.Text));
             }
             
             foreach (Control item in panel3.Controls)

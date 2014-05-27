@@ -11,15 +11,15 @@ namespace CasseBrique.Controler
 {
     public class ControlerBarMouse : ControlerBar
     {
-        public ControlerBarMouse(Bar bar)
-            : base(bar)
+        public ControlerBarMouse(BreakoutModel model) : base(model)
         {
 
         }
 
-        public override void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame)
+        public override void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame, Player player)
         {
-            Bar Bar = (Bar)Shape;
+            Bar Bar = player.Bar;
+
             if ( (mouseSate.X - Bar.Size.Width / 2) >= 0 && mouseSate.X <= widthFrame)
             {
                 Bar.Position = new Vector2(mouseSate.X - Bar.Size.Width / 2, Bar.Position.Y);

@@ -30,9 +30,8 @@ namespace Breakout.Model
             return boxBall.Intersects(boxZone);
         }
 
-        public static void HandleDeplacementHitBrick(BreakoutModel model, Brick brick)
+        public static void HandleDeplacementHitBrick(BreakoutModel model, Brick brick, Ball ball)
         {
-            Ball ball = model.Ball;
             Vector2 centerBall = ball.GetCenterBall();
 
             int widthBrick = brick.Size.Width;
@@ -74,9 +73,10 @@ namespace Breakout.Model
 
             model.UpdateBrickLife(brick, brick.Life - 1);
 
-            if (brick.Bonus != null)
+            if (brick.Life == -1 && brick.Bonus != null)
             {
                 model.AddBonus(brick.Bonus);
+                brick.Bonus.Position = brick.Position;
             }
 
         }

@@ -54,17 +54,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bonus\BarSizeBonus.cs" />
+    <Compile Include="Controler\AbstractControler.cs" />
     <Compile Include="Controler\ControlerBarMouse.cs" />
     <Compile Include="Controler\ControlerBonus.cs" />
-    <Compile Include="Controler\ControlerShape.cs" />
+    <Compile Include="Events\AddedBallEvent.cs" />
     <Compile Include="Events\AddedBonusEvent.cs" />
     <Compile Include="Events\AddedBrickEvent.cs" />
     <Compile Include="Events\AddedPlayerEvent.cs" />
+    <Compile Include="Events\BallEvent.cs" />
     <Compile Include="Events\BonusEvent.cs" />
     <Compile Include="Events\BrickEvent.cs" />
     <Compile Include="Events\BrickLifeUpdatedEvent.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\PlayerEvent.cs" />
+    <Compile Include="Events\RemovedBallEvent.cs" />
     <Compile Include="Events\RemovedBonusEvent.cs" />
     <Compile Include="Events\RemovedBrickEvent.cs" />
     <Compile Include="Events\RemovedPlayerEvent.cs" />
