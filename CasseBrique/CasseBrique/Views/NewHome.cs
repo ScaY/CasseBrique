@@ -105,6 +105,8 @@ namespace Breakout
             if (this.players.Count <= 2)
             {
                 this.panel1.Hide();
+                this.pnlLeftArrow.Show();
+
                 this.bigPnlOnePlayer.Show();
                 
                 this.label5.Text = "Joueur  "+ (this.players.Count + 1)+" : ";
@@ -114,6 +116,8 @@ namespace Breakout
         private void pnlOnePlayer_Click(object sender, EventArgs e)
         {
             this.panel1.Hide();
+            this.pnlLeftArrow.Show();
+
             this.bigPnlOnePlayer.BringToFront();
 
             this.bigPnlOnePlayer.Show();
@@ -219,6 +223,14 @@ namespace Breakout
                 game.Run();
 
 
+        }
+
+        private void pnlLeftArrow_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.bigPnlLevel.Hide();
+            this.bigPnlOnePlayer.Hide();
+            this.panel1.Show();
+            this.pnlLeftArrow.Hide();
         }
     }
 }

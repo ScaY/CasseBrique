@@ -94,9 +94,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(14, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 50);
+            this.label2.Size = new System.Drawing.Size(155, 50);
             this.label2.TabIndex = 0;
-            this.label2.Text = "1 Player";
+            this.label2.Text = "1 Joueur";
             // 
             // panel2
             // 
@@ -136,9 +136,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(66, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 50);
+            this.label3.Size = new System.Drawing.Size(169, 50);
             this.label3.TabIndex = 0;
-            this.label3.Text = "2 Players";
+            this.label3.Text = "2 Joueurs";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // pnlQuite
@@ -199,7 +199,9 @@
             this.pnlLeftArrow.Name = "pnlLeftArrow";
             this.pnlLeftArrow.Size = new System.Drawing.Size(64, 55);
             this.pnlLeftArrow.TabIndex = 6;
+            this.pnlLeftArrow.Visible = false;
             this.pnlLeftArrow.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLeftArrow_Paint);
+            this.pnlLeftArrow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlLeftArrow_MouseClick);
             // 
             // pnlRightArrow
             // 
@@ -209,6 +211,7 @@
             this.pnlRightArrow.Name = "pnlRightArrow";
             this.pnlRightArrow.Size = new System.Drawing.Size(64, 55);
             this.pnlRightArrow.TabIndex = 7;
+            this.pnlRightArrow.Visible = false;
             // 
             // panel1
             // 
