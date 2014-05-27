@@ -80,6 +80,13 @@ namespace Breakout
 
         private void pnlOnePlayer_MouseClick(object sender, MouseEventArgs e)
         {
+            this.panel1.Hide();
+            this.isMultiPlayer = false;
+            this.label5.Text = "Joueur : ";
+            this.pnlLeftArrow.Show();
+
+            this.bigPnlOnePlayer.BringToFront();
+            this.bigPnlOnePlayer.Show();
 
         }
 
@@ -95,7 +102,9 @@ namespace Breakout
 
         private void pnlAbou_MouseClick(object sender, MouseEventArgs e)
         {
-
+            this.pnlLeftArrow.Show();
+            this.panel1.Hide();
+            this.pnlAb.Show();
         }
 
         private void pnl2Players_MouseClick(object sender, MouseEventArgs e)
@@ -105,6 +114,8 @@ namespace Breakout
             if (this.players.Count <= 2)
             {
                 this.panel1.Hide();
+                this.pnlLeftArrow.Show();
+
                 this.bigPnlOnePlayer.Show();
                 
                 this.label5.Text = "Joueur  "+ (this.players.Count + 1)+" : ";
@@ -114,8 +125,11 @@ namespace Breakout
         private void pnlOnePlayer_Click(object sender, EventArgs e)
         {
             this.panel1.Hide();
-            this.bigPnlOnePlayer.BringToFront();
+            this.isMultiPlayer = false;
 
+            this.pnlLeftArrow.Show();
+
+            this.bigPnlOnePlayer.BringToFront();
             this.bigPnlOnePlayer.Show();
 
 
@@ -218,6 +232,21 @@ namespace Breakout
 
                 game.Run();
 
+
+        }
+
+        private void pnlLeftArrow_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.bigPnlLevel.Hide();
+            this.bigPnlOnePlayer.Hide();
+            this.pnlAb.Hide();
+
+            this.panel1.Show();
+            this.pnlLeftArrow.Hide();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
