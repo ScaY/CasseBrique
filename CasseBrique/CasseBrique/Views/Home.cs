@@ -88,7 +88,7 @@ namespace Breakout.Views
                 if (item is ComboBox){
                 
                     var cb =(ComboBox) item;
-                    List<Level> Levels = Level.loadAll();
+                    List<Level> Levels = Level.loadAll(false);
                     foreach (Level level in Levels)
                     {
                         cb.Items.Add(level.LevelName);
