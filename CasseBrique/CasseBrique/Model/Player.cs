@@ -9,12 +9,6 @@ namespace Breakout.Model
 {
     public class Player
     {
-        public Player()
-        {
-
-
-        }
-
         public string Name
         {
             get;
@@ -26,11 +20,6 @@ namespace Breakout.Model
             set;
         }
 
-        public Ball Ball
-        {
-            get;
-            set;
-        }
         public int Life
         {
             get;
@@ -45,11 +34,14 @@ namespace Breakout.Model
 
         public List<AbstractBonus> Bonuses { get; set; }
 
-        public Player(String _name, Ball _ball)
+        public Player() : this("")
+        {
+        }
+
+        public Player(String _name)
         {
             this.Name = _name;
             this.Bar = new Bar();
-            this.Ball = _ball;
             this.Bonuses = new List<AbstractBonus>();
         }
     }

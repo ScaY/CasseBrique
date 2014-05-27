@@ -8,12 +8,17 @@ using System.Text;
 
 namespace Breakout.Controler
 {
-    public abstract class ControlerBar : ControlerShape
+    public abstract class ControlerBar : AbstractControler
     {
-        public ControlerBar(Bar bar) : base(bar)
+        public ControlerBar()
         {
         }
 
-        public abstract void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame);
+        public ControlerBar(BreakoutModel model) : base(model)
+        {
+
+        }
+
+        public abstract void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame, Player player);
     }
 }

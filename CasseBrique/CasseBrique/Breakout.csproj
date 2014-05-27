@@ -54,19 +54,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bonus\BarSizeBonus.cs" />
+    <Compile Include="Controler\AbstractControler.cs" />
     <Compile Include="Controler\ControlerBarMouse.cs" />
     <Compile Include="Controler\ControlerBonus.cs" />
+    <Compile Include="Events\AddedBallEvent.cs" />
     <Compile Include="Events\AddedBonusEvent.cs" />
     <Compile Include="Events\AddedBrickEvent.cs" />
     <Compile Include="Events\AddedPlayerEvent.cs" />
+    <Compile Include="Events\BallEvent.cs" />
     <Compile Include="Events\BonusEvent.cs" />
     <Compile Include="Events\BrickEvent.cs" />
     <Compile Include="Events\BrickLifeUpdatedEvent.cs" />
     <Compile Include="Events\Event.cs" />
     <Compile Include="Events\PlayerEvent.cs" />
+    <Compile Include="Events\RemovedBallEvent.cs" />
     <Compile Include="Events\RemovedBonusEvent.cs" />
     <Compile Include="Events\RemovedBrickEvent.cs" />
     <Compile Include="Events\RemovedPlayerEvent.cs" />
+    <Compile Include="Model\Ball.cs" />
     <Compile Include="Model\Bar.cs" />
     <Compile Include="Bonus\AbstractBonus.cs" />
     <Compile Include="Bonus\BarBonus.cs" />
@@ -74,9 +79,11 @@
     <Compile Include="GameXNA.cs" />
     <Compile Include="Controler\ControlerBall.cs" />
     <Compile Include="Controler\ControlerBar.cs" />
+    <Compile Include="Controler\ControlerBarKeyboard.cs" />
     <Compile Include="Model\AbstractModel.cs" />
     <Compile Include="Model\BreakoutModel.cs" />
     <Compile Include="Model\Brick.cs" />
+    <Compile Include="Model\CustomLevel.cs" />
     <Compile Include="Model\GameModel.cs" />
     <Compile Include="Model\Level.cs" />
     <Compile Include="Model\Player.cs" />
@@ -88,6 +95,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Model\RuleBall.cs" />
     <Compile Include="Model\Shape.cs" />
     <Compile Include="Views\Home.cs">
       <SubType>Form</SubType>
@@ -106,6 +114,12 @@
     </Compile>
     <Compile Include="Views\PlayerRegister.Designer.cs">
       <DependentUpon>PlayerRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\testCreationLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\testCreationLevel.Designer.cs">
+      <DependentUpon>testCreationLevel.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewBall.cs" />
     <Compile Include="Views\ViewBar.cs" />
@@ -180,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PlayerRegister.resx">
       <DependentUpon>PlayerRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\testCreationLevel.resx">
+      <DependentUpon>testCreationLevel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

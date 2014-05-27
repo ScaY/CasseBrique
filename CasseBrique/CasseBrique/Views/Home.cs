@@ -1,5 +1,6 @@
 ﻿using Breakout;
 using Breakout.Model;
+using CasseBrique.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,15 +81,24 @@ namespace Breakout.Views
         {
             if (this.textBox1.Text != null && this.textBox1.Text.Length > 0)
             {
-                Players.Add( new Player(this.textBox1.Text, null));
+                Players.Add( new Player(this.textBox1.Text));
             }
             
             foreach (Control item in panel3.Controls)
             {
-                if (item is ComboBox){
+                if (item == this.comboBox1){
                 
                     var cb =(ComboBox) item;
-                    List<Level> Levels = Level.loadAll(false);
+                    List<Level> Levels = Level.loadAllDefault();
+                    foreach (Level level in Levels)
+                    {
+                        cb.Items.Add(level.LevelName);
+                    }
+                }
+                else if (item == this.comboBox2)
+                {
+                    var cb = (ComboBox)item;
+                    List<Level> Levels = CustomLevel.loadAllCustom();
                     foreach (Level level in Levels)
                     {
                         cb.Items.Add(level.LevelName);
