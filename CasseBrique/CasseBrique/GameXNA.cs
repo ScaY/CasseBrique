@@ -38,16 +38,16 @@ namespace Breakout
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
         private ControlerBonus controlerBonus;
-        private Player player;
+        private List<Player> players;
         private KeyboardState previousKeyboardState;
 
        // SoundEffect ballReboundBar;
 
-        public GameXNA(Player _player) : base()
+        public GameXNA(List<Player> _players) : base()
         {
-            if (_player != null)
+            if (_players != null)
             {
-                this.player = _player;
+                this.players = _players;
             }
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -68,8 +68,13 @@ namespace Breakout
             view = new ViewBreakout(model, Content);
             model.AddView(view);
 
-            model.AddPlayer(player);
-            //model.AddPlayer(new Player());
+            if (this.players != null)
+            {
+                foreach (Player player in this.players)
+                {
+                    model.AddPlayer(player);
+                }
+            }
 
             model.AddBall(new Ball());
 
