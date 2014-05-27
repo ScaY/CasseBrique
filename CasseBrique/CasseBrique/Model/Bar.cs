@@ -22,6 +22,11 @@ namespace Breakout.Model
 
         }
 
+        public Vector2 GetCenter()
+        {
+            return new Vector2(this.Position.X + this.Size.Width / 2, this.Position.Y + this.Size.Height);
+        }
+
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
         }

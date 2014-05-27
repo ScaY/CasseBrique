@@ -10,11 +10,13 @@ namespace Breakout.Model
 {
     public class Ball : Shape
     {
-        public Ball() : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.1f, new Size(0, 0))
+        public Ball()
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.1f, new Size(0, 0))
         {
         }
 
-        public Ball(Vector2 position, Vector2 deplacement, float speed) : base(position, deplacement, speed, new Size(0, 0))
+        public Ball(Vector2 position, Vector2 deplacement, float speed)
+            : base(position, deplacement, speed, new Size(0, 0))
         {
 
         }
@@ -39,7 +41,7 @@ namespace Breakout.Model
 
         public void HandleTrajectoryBallReboundBar(Bar bar, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            if (bar.getRectangle().Contains((int)(Position.X), (int)(Position.Y + bar.Size.Height)))
+            if (bar.getRectangle().Intersects(this.GetBox()))
             {
                 RuleBall.HandleReboundUpDown(this);
             }
@@ -51,7 +53,7 @@ namespace Breakout.Model
             //rebond à gaiche ou à droite
             if ((Position.X < 0 || Position.X > widthFrame))
             {
-                RuleBall.BallReboundLeftRight(this);
+                RuleBall.HandleReboundLeftRight(this);
             }
             //rebond en haut
             else if (Position.Y < 0)
@@ -65,10 +67,20 @@ namespace Breakout.Model
             BrickZone bricks = model.BrickZone;
             Brick brick = RuleBall.GetBrickHit(this, bricks);
 
-            if(brick != null)
+            if (brick != null)
             {
                 RuleBall.HandleDeplacementHitBrick(model, brick);
             }
+        }
+
+        public Rectangle GetBox()
+        {
+            return new Rectangle((int)Position.X, (int)Position.Y, (int)this.Size.Width, (int)this.Size.Height);
+        }
+
+        public Vector2 GetCenterBall()
+        {
+            return new Vector2(this.Position.X + this.Size.Width / 2, this.Position.Y + this.Size.Height / 2);
         }
     }
 }

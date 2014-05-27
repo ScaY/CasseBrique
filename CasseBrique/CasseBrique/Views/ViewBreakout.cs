@@ -39,7 +39,7 @@ namespace Breakout.Views
             
             this.ViewBar = new ViewBar(breakout.Bar, textureBar);
             this.ViewBall = new ViewBall(breakout.Ball, textureBall);
-            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone);
+            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone, content);
             this.ViewBonuses = new List<ViewBonus>();
 
             foreach (AbstractBonus bonus in breakout.Bonuses)
@@ -69,7 +69,10 @@ namespace Breakout.Views
             }
             else if (e is BrickEvent)
             {
-
+                if (e is BrickLifeUpdatedEvent)
+                {
+                    this.ViewBricksZone.Refresh(e);
+                }
             }
             else if (e is BonusEvent)
             {

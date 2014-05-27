@@ -154,6 +154,9 @@
     <Content Include="Content\bonus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\brick0life.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\brick1life.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

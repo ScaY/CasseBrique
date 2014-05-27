@@ -41,6 +41,10 @@ namespace Breakout.Model
         public void UpdateBrickLife(Brick brick, int life)
         {
             brick.Life = life;
+            if (brick.Life < 0)
+            {
+                RemoveBrick(brick);
+            }
             this.RefreshViews(new BrickLifeUpdatedEvent(this, brick, life));
         }
 
