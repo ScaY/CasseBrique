@@ -44,12 +44,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMulti = new System.Windows.Forms.Button();
             this.btnSolo = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.msgResponse = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -67,6 +74,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel3);
+            this.splitContainer1.Panel2.Controls.Add(this.panel4);
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
@@ -82,7 +90,7 @@
             this.panel3.Controls.Add(this.btnPlay);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Location = new System.Drawing.Point(69, 86);
+            this.panel3.Location = new System.Drawing.Point(48, 104);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(394, 337);
             this.panel3.TabIndex = 3;
@@ -139,7 +147,7 @@
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.lblPseudo);
             this.panel2.Controls.Add(this.btnAddPlayer);
-            this.panel2.Location = new System.Drawing.Point(69, 86);
+            this.panel2.Location = new System.Drawing.Point(69, 89);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(394, 337);
             this.panel2.TabIndex = 2;
@@ -201,6 +209,7 @@
             this.btnMulti.TabIndex = 1;
             this.btnMulti.Text = "Mode Multijoueur";
             this.btnMulti.UseVisualStyleBackColor = true;
+            this.btnMulti.Click += new System.EventHandler(this.btnMulti_Click);
             // 
             // btnSolo
             // 
@@ -211,6 +220,64 @@
             this.btnSolo.Text = "Mode Solo";
             this.btnSolo.UseVisualStyleBackColor = true;
             this.btnSolo.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.msgResponse);
+            this.panel4.Controls.Add(this.button2);
+            this.panel4.Controls.Add(this.textBox2);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Location = new System.Drawing.Point(39, 134);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(394, 337);
+            this.panel4.TabIndex = 4;
+            this.panel4.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(158, 91);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(164, 22);
+            this.textBox2.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(69, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 25);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Pseudo";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(201, 190);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 56);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Valider";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(73, 190);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 56);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Ajouter";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // msgResponse
+            // 
+            this.msgResponse.AutoSize = true;
+            this.msgResponse.Location = new System.Drawing.Point(71, 31);
+            this.msgResponse.Name = "msgResponse";
+            this.msgResponse.Size = new System.Drawing.Size(0, 17);
+            this.msgResponse.TabIndex = 5;
             // 
             // Home
             // 
@@ -230,6 +297,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -251,6 +320,12 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label msgResponse;
 
     }
 }

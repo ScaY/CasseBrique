@@ -34,14 +34,14 @@ namespace Breakout
         private ViewBreakout view;
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
-        private Player player;
+        private List<Player> players;
 
-        public GameXNA(Player _player)
+        public GameXNA(List<Player> _players)
             : base()
         {
-            if (_player != null)
+            if (_players != null)
             {
-                this.player = _player;
+                this.players = _players;
             }
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
