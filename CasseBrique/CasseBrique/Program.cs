@@ -21,7 +21,7 @@ namespace Breakout
         [STAThread]
         static void Main()
         {
-                Home m = new Home();
+                Home m = new NewHome();
                 Application.Run(m);
                // using (var game = new GameXNA(new Player("toto", null)))
                // game.Run();

@@ -192,6 +192,7 @@
     <EmbeddedResource Include="Views\LevelChooser.resx">
       <DependentUpon>LevelChooser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\NewHome.resx" />
     <EmbeddedResource Include="Views\PlayerRegister.resx">
       <DependentUpon>PlayerRegister.cs</DependentUpon>
     </EmbeddedResource>
