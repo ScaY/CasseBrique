@@ -69,9 +69,8 @@ namespace Breakout
             model.AddView(view);
 
             model.AddPlayer(player);
-            model.AddPlayer(new Player("cc"));
             model.AddBall(new Ball());
-            model.AddBall(new Ball());
+
             controlerBar = new ControlerBarMouse(model);
             controlerBall = new ControlerBall(model);
             controlerBonus = new ControlerBonus(model);
@@ -90,11 +89,10 @@ namespace Breakout
 
             try
             {
-                for (int i = 0; i < model.Players.Count; i++)
+                foreach (Player player in model.Players)
                 {
-                    Player player = model.Players[i];
                     //chargement de l'image de la barre du casse brique
-                    player.Bar.Position = new Vector2((float)(150 * (i+1)) / 2, heightFrame * 0.9f);
+                    player.Bar.Position = new Vector2((float)(widthFrame - 99) / 2, heightFrame * 0.9f);
                     player.Bar.Size.Width = 99;
                     player.Bar.Size.Height = 7;
                 }
@@ -147,6 +145,7 @@ namespace Breakout
             }
             catch (Exception e)
             {
+
             }
 
             try
