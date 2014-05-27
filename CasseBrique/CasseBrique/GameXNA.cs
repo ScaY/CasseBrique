@@ -11,6 +11,9 @@ using Breakout.Model;
 using Breakout.Views;
 using Breakout.Controler;
 using Breakout.Bonus;
+using CasseBrique.Controler;
+using System.Media;
+
 #endregion
 
 namespace Breakout
@@ -34,14 +37,17 @@ namespace Breakout
         private ViewBreakout view;
         private ControlerBar controlerBar;
         private ControlerBall controlerBall;
-        private List<Player> players;
+        private ControlerBonus controlerBonus;
+        private Player player;
 
-        public GameXNA(List<Player> _players)
+       // SoundEffect ballReboundBar;
+
+        public GameXNA(Player _player)
             : base()
         {
-            if (_players != null)
+            if (_player != null)
             {
-                this.players = _players;
+                this.player = _player;
             }
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -58,21 +64,18 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(2, 2, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
-            
-            Bar bar = model.Bar;
-            controlerBar = new ControlerBarKeyboard(bar);
-
-            Ball ball = model.Ball;
-            controlerBall = new ControlerBall(ball);
-
-            AbstractBonus bonus = new BarSizeBonus();
-            bonus.Speed = 0.2f;
-            bonus.Position = new Vector2(200, 200);
-            bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
-            model.Bonuses.Add(bonus);
-
+            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             view = new ViewBreakout(model, Content);
+            model.AddView(view);
+
+            model.AddPlayer(player);
+            //model.AddPlayer(new Player());
+
+            model.AddBall(new Ball());
+
+            controlerBar = new ControlerBarMouse(model);
+            controlerBall = new ControlerBall(model);
+            controlerBonus = new ControlerBonus(model);
 
             base.Initialize();
         }
@@ -88,14 +91,29 @@ namespace Breakout
 
             try
             {
+                    Player player = model.Players[0];
+                    player.Bar.Position = new Vector2(50, 450);
+                    player.Bar.Size.Width = 99;
+                    player.Bar.Size.Height = 7;
 
-                //chargement de l'image de la barre du casse brique
-                model.Bar.Position = new Vector2((float)(widthFrame - view.ViewBar.Texture.Width) / 2, heightFrame * 0.9f);
-                model.Bar.Size.Width = view.ViewBar.Texture.Width;
-                model.Bar.Size.Height = view.ViewBar.Texture.Height;
+                    /*player = model.Players[1];
+                    player.Bar.Position = new Vector2(50, 50 );
+                    player.Bar.Size.Width = 99;
+                    player.Bar.Size.Height = 7;*/
 
-                //chargement de l'image de la balle du jeu
-                model.Ball.Position = new Vector2((float)(widthFrame - model.Bar.Size.Width) / 2, heightFrame * 0.9f - model.Bar.Size.Height);
+                foreach (Ball ball in model.Balls)
+                {
+                    //chargement de l'image de la balle du jeu
+                    ball.Position = new Vector2((float)(widthFrame - 99) / 2 + 100, heightFrame * 0.9f - 7);
+                    ball.Size.Width = 16;
+                    ball.Size.Height = 16;
+                }
+
+                foreach (AbstractBonus bonus in model.Bonuses)
+                {
+                    bonus.Size.Width = view.ViewBonuses[0].Texture.Width;
+                    bonus.Size.Height = view.ViewBonuses[0].Texture.Height;
+                }
             }
             catch (Exception e)
             {
@@ -122,8 +140,47 @@ namespace Breakout
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame);
-            controlerBall.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+            try
+            {
+                foreach (Ball ball in model.Balls)
+                {
+                    controlerBall.HandleBall(ball, gameTime, heightFrame, widthFrame);
+                }
+            }
+            catch (Exception e)
+            {
+            }
+
+            try
+            {
+                foreach (AbstractBonus bonus in model.Bonuses)
+                {
+                    controlerBonus.HandleBonus(gameTime, heightFrame, widthFrame, bonus, gameTime.TotalGameTime);
+                }
+            }
+            catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
+            {
+            }
+
+            foreach (Player player in model.Players)
+            {
+                controlerBar.HandleInput(Keyboard.GetState(), Mouse.GetState(), gameTime, widthFrame, player);
+
+                try
+                {
+                    foreach (AbstractBonus bonus in player.Bonuses)
+                    {
+                        if ((gameTime.TotalGameTime - bonus.StartTime).Seconds > bonus.Duration)
+                        {
+                            bonus.RemoveBonus(model, player);
+                            player.Bonuses.Remove(bonus);
+                        }
+                    }
+                }
+                catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
+                {
+                }
+            }
 
             base.Update(gameTime);
         }

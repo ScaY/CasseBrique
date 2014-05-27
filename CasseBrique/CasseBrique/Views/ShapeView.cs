@@ -1,4 +1,5 @@
-﻿using Breakout.Model;
+﻿using Breakout.Events;
+using Breakout.Model;
 using Breakout.Views;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -30,7 +31,13 @@ namespace Breakout.Views
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            spriteBatch.Draw(this.Texture, Shape.Position, Color.White);
+            float scale = (float)Shape.Size.Width / texture.Width;
+            spriteBatch.Draw(this.Texture, Shape.Position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 1);   
+        }
+
+        public void Refresh(Event e)
+        {
+
         }
     }
 }

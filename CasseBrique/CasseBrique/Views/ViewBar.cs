@@ -7,8 +7,6 @@ namespace Breakout.Views
 {
     public class ViewBar : ShapeView
     {
-        public Bar Bar { get; set; }
-
         public ViewBar(Bar bar,  Texture2D texture) : base(bar, texture)
         {
         }

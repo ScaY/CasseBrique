@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -9,65 +10,90 @@ namespace Breakout.Model
 {
     public class Ball : Shape
     {
+        public Brick brikHit { get; set; }
+
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f)
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
         {
         }
 
         public Ball(Vector2 position, Vector2 deplacement, float speed)
-            : base(position, deplacement, speed)
+            : base(position, deplacement, speed, new Size(0, 0))
         {
 
         }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            Bar bar = model.Bar;
             BrickZone bricks = model.BrickZone;
 
             //balle sort du jeu
             if (Position.Y > heightFrame)
             {
-                //handle when the player loose the game
+                //si la balle n'est pas rattrapée par le joueur on la supprime
+                model.RemoveBall(this);
             }
 
-            HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
-            HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
-            HandleBallReboundBrick(bricks);
+            foreach (Player player in model.Players)
+            {
+                Bar bar = player.Bar;
+                HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
+                HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
+            }
+            HandleBallReboundBrick(model);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
         public void HandleTrajectoryBallReboundBar(Bar bar, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            if (bar.getRectangle().Contains((int)(Position.X), (int)(Position.Y + bar.Size.Height)))
+            if (bar.getRectangle().Intersects(this.GetBox()))
             {
                 RuleBall.HandleReboundUpDown(this);
+
+                this.brikHit = null;
             }
 
         }
 
         public void HandleTrajectoryBallReboundFrame(Bar bar, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            //rebond à gaiche ou à droite
+            //rebond à gauche ou à droite
             if ((Position.X < 0 || Position.X > widthFrame))
             {
-                RuleBall.BallReboundLeftRight(this);
+                RuleBall.HandleReboundLeftRight(this);
+                this.brikHit = null;
             }
             //rebond en haut
             else if (Position.Y < 0)
             {
-                RuleBall.BallReboundTop(this);
+                RuleBall.HandleReboundUpDown(this);
+                this.brikHit = null;
+            }
+
+        }
+
+        public void HandleBallReboundBrick(BreakoutModel model)
+        {
+            BrickZone bricks = model.BrickZone;
+            Brick brick = RuleBall.GetBrickHit(this, bricks);
+
+            if (brick != null)
+            {
+                RuleBall.HandleDeplacementHitBrick(model, brick, this);
+
+                this.brikHit = brick;
             }
         }
 
-        public void HandleBallReboundBrick(BrickZone bricks)
+        public Rectangle GetBox()
         {
-            Brick brick = RuleBall.GetBrickHit(this, bricks);
-            if(brick != null)
-            {
-                RuleBall.HandleDeplacementHitBrick(this, brick);
-            }
+            return new Rectangle((int)Position.X, (int)Position.Y, (int)this.Size.Width, (int)this.Size.Height);
+        }
+
+        public Vector2 GetCenterBall()
+        {
+            return new Vector2(this.Position.X + this.Size.Width / 2, this.Position.Y + this.Size.Height / 2);
         }
     }
 }

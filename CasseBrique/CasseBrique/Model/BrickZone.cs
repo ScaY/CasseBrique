@@ -1,4 +1,5 @@
 ﻿
+using Breakout.Bonus;
 using Breakout.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -83,7 +84,6 @@ namespace Breakout.Model
             set { widthBrick = value; }
         }
 
-
         public BrickZone(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.AllBricks = new Brick[nbBrickRow, nbBrickCol];
@@ -94,7 +94,7 @@ namespace Breakout.Model
             {
                 for (int j = 0; j < nbBrickCol; j++)
                 {
-                    AllBricks[i, j] = new Brick();
+                    AddBrick(new Brick(), i, j);
                 }
             }
 
@@ -126,12 +126,15 @@ namespace Breakout.Model
         {
             if (x >= 0 && y >= 0 && x < this.NbBrickCol && y < this.NbBrickRow)
             {
-                if (AllBricks[x, y] == null)
-                {
-                    AllBricks[x, y] = brick;
-                    brick.XBrick = x;
-                    brick.YBrick = y;
-                }
+                AllBricks[x, y] = brick;
+                brick.XBrick = x;
+                brick.YBrick = y;
+                brick.Life = 3;
+                brick.Bonus = new BarSizeBonus(50, 5);
+                brick.Bonus.Speed = 1f;
+                brick.Bonus.Position = brick.Position;
+                brick.Bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
+                brick.Bonus.Size = new Size(32, 32);
             }
         }
 
@@ -149,10 +152,24 @@ namespace Breakout.Model
             {
                 for (int j = 0; j < this.NbBrickCol; j++)
                 {
-                    AllBricks[i, j].Position = new Vector2(StartBlockBrickX + i*WidthBrick, StartBlockBrickY + j*HeightBrick);
+                    AllBricks[i, j].Position = new Vector2(StartBlockBrickX + i * WidthBrick, StartBlockBrickY + j * HeightBrick);
                 }
             }
 
+        }
+
+        public Brick GetBrick(int i , int j)
+        {
+            if (i < 0 || j < 0 || i >= NbBrickRow || j >= NbBrickCol)
+            {
+                return null;
+            }
+            return AllBricks[i, j];
+        }
+
+        public Rectangle GetBox()
+        {
+            return new Rectangle((int)StartBlockBrickX, (int)StartBlockBrickY, (int)Math.Abs(StartBlockBrickX - EndBlockBrickX), (int)Math.Abs(StartBlockBrickY - EndBlockBrickY));
         }
 
         public override string ToString()

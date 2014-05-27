@@ -1,5 +1,6 @@
 ﻿using Breakout.Bonus;
 using Breakout.Model;
+using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -8,25 +9,32 @@ using System.Text;
 
 namespace Breakout.Controler
 {
-    public class ControlerBonus : ControlerShape
+    public class ControlerBonus : AbstractControler
     {
-        public bool Enabled { get; set; }
-
-        public ControlerBonus(AbstractBonus bonus) : base(bonus)
+        public ControlerBonus(BreakoutModel model) : base(model)
         {
-            Enabled = true;
         }
 
-        public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
-        {
-            if (Enabled)
-            {
-                base.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
+        public void HandleBonus(GameTime gameTime, int heightFrame, int widthFrame, AbstractBonus bonus, TimeSpan totalGameTime) {
+            bonus.HandleTrajectory(Model, gameTime, heightFrame, widthFrame);
 
-                if (Shape.Position.Y > heightFrame)
+            if (bonus.Position.Y > heightFrame)
+            {
+                Model.RemoveBonus(bonus);
+            }
+            else
+            {
+                foreach (Player player in Model.Players)
                 {
-                    model.Bonuses.Remove((AbstractBonus)Shape);
-                    Enabled = false;
+                    Bar bar = player.Bar;
+
+                    if (bar.getRectangle().Contains((int)(bonus.Position.X), (int)(bonus.Position.Y + bonus.Size.Height)) || bar.getRectangle().Contains((int)(bonus.Position.X + bonus.Size.Width), (int)(bonus.Position.Y + bonus.Size.Height)))
+                    {
+                        player.Bonuses.Add(bonus);
+                        bonus.ApplyBonus(Model, player);
+                        bonus.StartTime = totalGameTime;
+                        Model.RemoveBonus(bonus);
+                    }
                 }
             }
         }

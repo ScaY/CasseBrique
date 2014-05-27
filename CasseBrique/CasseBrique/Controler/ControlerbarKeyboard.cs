@@ -7,16 +7,16 @@ namespace Breakout.Controler
 {
     public class ControlerBarKeyboard : ControlerBar
     {
-        public ControlerBarKeyboard(Bar bar) : base(bar)
+        public ControlerBarKeyboard(BreakoutModel model) : base(model)
         {
 
         }
 
-        public override void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame)
+        public override void HandleInput(KeyboardState keyBoardState, MouseState mouseSate, GameTime gameTime, int widthFrame, Player player)
         {
-            Bar Bar = (Bar)Shape;
+            Bar Bar = player.Bar;
 
-            if (keyBoardState.IsKeyDown(Keys.Right) && (Bar.Position.X + Bar.Size.Width < widthFrame))
+            if (keyBoardState.IsKeyDown(Keys.Right) && (Bar.Position.X  < widthFrame))
             {
                 Bar.Deplacement = Vector2.Normalize(new Vector2(1, 0));
                 Bar.Position += Bar.Deplacement * Bar.Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;

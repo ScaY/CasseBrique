@@ -8,25 +8,23 @@ namespace Breakout.Model
 {
     public class Bar : Shape
     {
-
-        public Size Size { get; set; }
-
-        public Bar()
-            : base()
+        public Bar() : base()
         {
-            Size = new Size(0, 0);
         }
 
-        public Bar(Vector2 position, Vector2 deplacement, float speed, int width, int height)
-            : base(position, deplacement, speed)
+        public Bar(Vector2 position, Vector2 deplacement, float speed, int width, int height, Size size) : base(position, deplacement, speed, size)
         {
-            Size = new Size(width, height);
         }
 
         public Rectangle getRectangle()
         {
             return new Rectangle((int)Position.X, (int)Position.Y, Size.Width, Size.Height);
 
+        }
+
+        public Vector2 GetCenter()
+        {
+            return new Vector2(this.Position.X + this.Size.Width / 2, this.Position.Y + this.Size.Height);
         }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)

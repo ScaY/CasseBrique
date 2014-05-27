@@ -15,30 +15,38 @@ namespace Breakout.Model
 
         public string LevelName { get; set; }
 
+        public string Path { get; set; }
         public int Id { get; set; }
 
         public Level()
         {
+            this.Path = "../../../levels/Default/level" + Id + ".json";
             this.Map = null;
             this.Id = 0;
+            
         }
         public Level(int id)
         {
+            
             this.Id = id;
-            load(id);
+            this.Path = "../../../levels/Default/level" + Id + ".json";
+            
         }
         public Level(int id, BrickZone map ){
+            
             this.Map = map;
             this.Id = id;
+            this.Path = "../../../levels/Default/level" + Id + ".json";
         }
         
 
-        public void load(int id)
+        public void load()
         {
-            string path = "../../../levels/level"+id+".json";
-            if (File.Exists(path))
+            
+
+            if (File.Exists(Path))
             {
-                string file = File.ReadAllText(path);
+                string file = File.ReadAllText(Path);
                 var jsonDe = JsonConvert.DeserializeObject<Level>(file);
 
                 this.LevelName = jsonDe.LevelName;
@@ -49,11 +57,33 @@ namespace Breakout.Model
 
         public void write()
         {
-            string path = "../../../levels/level" + Id + ".json";
             
-            File.WriteAllText(path, JsonConvert.SerializeObject(this));
+            
+            File.WriteAllText(Path, JsonConvert.SerializeObject(this));
 
         }
 
+        public static List<Level> loadAllDefault()
+        {
+            int i=0;
+            string path = "../../../levels/Default/level" + i + ".json";
+            List<Level> toReturn = new List<Level>();
+            while (File.Exists(path))
+            {
+                Level newLevel = new Level();
+                string file = File.ReadAllText(path);
+                var jsonDe = JsonConvert.DeserializeObject<Level>(file);
+
+                newLevel.LevelName = jsonDe.LevelName;
+                newLevel.Map = jsonDe.Map;
+                i++;
+                path = "../../../levels/Default/level" + i + ".json";
+                toReturn.Add(newLevel);
+            }
+            return toReturn;
+        }
+
+
+        
     }
 }
