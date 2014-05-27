@@ -25,10 +25,10 @@ namespace Breakout.Views
 
         public Texture2D ViewBrick3Life { get; set; }
 
-        public ViewBricksZone(BrickZone brickZone, Texture2D texture, BrickZone bricks, ContentManager content)
+        public ViewBricksZone(BrickZone brickZone, Texture2D texture, ContentManager content)
         {
             this.ViewBricks = new ViewBrick[brickZone.NbBrickRow, brickZone.NbBrickCol];
-            this.BrickZone = bricks;
+            this.BrickZone = brickZone;
 
             ViewBrick0Life = content.Load<Texture2D>("brick0life");
             ViewBrick1Life = content.Load<Texture2D>("brick1life");

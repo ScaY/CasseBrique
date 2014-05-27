@@ -38,8 +38,9 @@ namespace Breakout.Model
             {
                 Bar bar = player.Bar;
                 HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
-                HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
             }
+
+            HandleTrajectoryBallReboundFrame(gameTime, heightFrame, widthFrame);
             HandleBallReboundBrick(model);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -56,7 +57,7 @@ namespace Breakout.Model
 
         }
 
-        public void HandleTrajectoryBallReboundFrame(Bar bar, GameTime gameTime, int heightFrame, int widthFrame)
+        public void HandleTrajectoryBallReboundFrame(GameTime gameTime, int heightFrame, int widthFrame)
         {
             //rebond à gauche ou à droite
             if ((Position.X < 0 || Position.X > widthFrame))

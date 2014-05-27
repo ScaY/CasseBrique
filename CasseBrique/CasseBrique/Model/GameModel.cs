@@ -8,6 +8,8 @@ namespace Breakout.Model
 {
     public class GameModel : AbstractModel
     {
+        public bool Pause { get; set; }
+
         public List<Player> Players { get; set; }
 
         public void AddPlayer(Player player)
@@ -24,6 +26,7 @@ namespace Breakout.Model
 
         public GameModel()
         {
+            this.Pause = false;
             this.Players = new List<Player>();
         }
     }
