@@ -69,7 +69,6 @@ namespace Breakout
             model.AddView(view);
 
             model.AddPlayer(player);
-            model.AddPlayer(new Player("cc"));
             model.AddBall(new Ball());
             model.AddBall(new Ball());
             controlerBar = new ControlerBarMouse(model);
