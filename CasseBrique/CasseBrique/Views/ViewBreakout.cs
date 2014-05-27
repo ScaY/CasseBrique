@@ -15,7 +15,7 @@ namespace Breakout.Views
     {
         public List<ViewBar> ViewBars { get; set; }
 
-        public ViewBall ViewBall { get; set; }
+        public List<ViewBall> ViewBalls { get; set; }
 
         public ViewBricksZone ViewBricksZone { get; set; }
 
@@ -43,7 +43,12 @@ namespace Breakout.Views
                 this.ViewBars.Add(new ViewBar(player.Bar, textureBar));
             }
 
-            this.ViewBall = new ViewBall(breakout.Ball, textureBall);
+            this.ViewBalls = new List<ViewBall>();
+            foreach (Ball ball in breakout.Balls)
+            {
+                this.ViewBalls.Add(new ViewBall(ball, textureBall));
+            }
+
             this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone, content);
             this.ViewBonuses = new List<ViewBonus>();
 
@@ -56,16 +61,19 @@ namespace Breakout.Views
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            ViewBall.Draw(spriteBatch, gameTime);
+            foreach (ViewBall viewBall in this.ViewBalls)
+            {
+                viewBall.Draw(spriteBatch, gameTime);
+            }
 
-            foreach (ViewBar viewBar in ViewBars)
+            foreach (ViewBar viewBar in this.ViewBars)
             {
                 viewBar.Draw(spriteBatch, gameTime);
             }
 
             ViewBricksZone.Draw(spriteBatch, gameTime);
             
-            foreach (ViewBonus viewBonus in ViewBonuses)
+            foreach (ViewBonus viewBonus in this.ViewBonuses)
             {
                 viewBonus.Draw(spriteBatch, gameTime);
             }
@@ -84,10 +92,7 @@ namespace Breakout.Views
             }
             else if (e is BrickEvent)
             {
-                if (e is BrickLifeUpdatedEvent)
-                {
-                    this.ViewBricksZone.Refresh(e);
-                }
+                this.ViewBricksZone.Refresh(e);
             }
             else if (e is BonusEvent)
             {
@@ -107,6 +112,31 @@ namespace Breakout.Views
                         if (view.Shape == be.Bonus)
                         {
                             this.ViewBonuses.Remove(view);
+                            found = true;
+                        }
+
+                        i++;
+                    }
+                }
+            }
+            else if (e is BallEvent)
+            {
+                BallEvent be = (BallEvent)e;
+
+                if (e is AddedBallEvent)
+                {
+                    this.ViewBalls.Add(new ViewBall(be.Ball, textureBall));
+                }
+                else if (e is RemovedBallEvent)
+                {
+                    bool found = false;
+                    int i = 0;
+                    while (!found && i < this.ViewBalls.Count)
+                    {
+                        ViewBall view = this.ViewBalls.ElementAt(i);
+                        if (view.Shape == be.Ball)
+                        {
+                            this.ViewBalls.Remove(view);
                             found = true;
                         }
 

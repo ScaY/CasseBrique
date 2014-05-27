@@ -11,7 +11,7 @@ namespace Breakout.Bonus
     {
         public int Modifier { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public TimeSpan StartTime { get; set; }
 
         public int Duration { get; set; }
 

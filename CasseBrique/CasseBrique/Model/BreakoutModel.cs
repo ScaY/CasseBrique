@@ -12,14 +12,14 @@ namespace Breakout.Model
     {
         public BrickZone BrickZone { get; set; }
 
-        public Ball Ball { get; set; }
+        public List<Ball> Balls { get; set; }
 
         public List<AbstractBonus> Bonuses { get; set; }
 
         public BreakoutModel(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.BrickZone = new BrickZone(nbBrickCol, nbBrickRow, startBlockBrickX, startBlockBrickY);
-            this.Ball = new Ball();
+            this.Balls = new List<Ball>();
             this.Bonuses = new List<AbstractBonus>();
         }
 
@@ -55,6 +55,18 @@ namespace Breakout.Model
         {
             this.Bonuses.Remove(bonus);
             this.RefreshViews(new RemovedBonusEvent(this, bonus));
+        }
+
+        public void AddBall(Ball ball)
+        {
+            this.Balls.Add(ball);
+            this.RefreshViews(new AddedBallEvent(this, ball));
+        }
+
+        public void RemoveBall(Ball ball)
+        {
+            this.Balls.Remove(ball);
+            this.RefreshViews(new RemovedBallEvent(this, ball));
         }
     }
 }

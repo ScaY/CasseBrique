@@ -23,17 +23,20 @@ namespace Breakout.Model
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            Bar bar = model.CurrentPlayer.Bar;
             BrickZone bricks = model.BrickZone;
 
             //balle sort du jeu
             if (Position.Y > heightFrame)
             {
-                //handle when the player loose the game
+                model.RemoveBall(this);
             }
 
-            HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
-            HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
+            foreach (Player player in model.Players)
+            {
+                Bar bar = player.Bar;
+                HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
+                HandleTrajectoryBallReboundFrame(bar, gameTime, heightFrame, widthFrame);
+            }
             HandleBallReboundBrick(model);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -50,7 +53,7 @@ namespace Breakout.Model
 
         public void HandleTrajectoryBallReboundFrame(Bar bar, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            //rebond à gaiche ou à droite
+            //rebond à gauche ou à droite
             if ((Position.X < 0 || Position.X > widthFrame))
             {
                 RuleBall.HandleReboundLeftRight(this);
@@ -69,7 +72,7 @@ namespace Breakout.Model
 
             if (brick != null)
             {
-                RuleBall.HandleDeplacementHitBrick(model, brick);
+                RuleBall.HandleDeplacementHitBrick(model, brick, this);
             }
         }
 
