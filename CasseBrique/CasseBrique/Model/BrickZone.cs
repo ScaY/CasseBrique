@@ -130,7 +130,7 @@ namespace Breakout.Model
                 brick.XBrick = x;
                 brick.YBrick = y;
                 brick.Life = 3;
-                brick.Bonus = new BarSizeBonus(50, 5);
+                brick.Bonus = new AddBallBonus(0.05f, 5);
                 brick.Bonus.Speed = 1f;
                 brick.Bonus.Position = brick.Position;
                 brick.Bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);

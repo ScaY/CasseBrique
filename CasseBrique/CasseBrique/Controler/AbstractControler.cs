@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Breakout.Controler
 {
-    public class AbstractControler
+    public abstract class AbstractControler
     {
         public BreakoutModel Model { get; set; }
 

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Breakout.Events
 {
-    public class BonusEvent : Event
+    public abstract class BonusEvent : Event
     {
         public AbstractBonus Bonus { get; set; }
 

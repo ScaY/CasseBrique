@@ -1,5 +1,6 @@
 ﻿using Breakout.Bonus;
 using CasseBrique;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,10 @@ namespace Breakout.Model
         }
 
         public List<AbstractBonus> Bonuses { get; set; }
+
+        public Keys MoveLeftKey { get; set; }
+
+        public Keys MoveRightKey { get; set; }
 
         public Player() : this("")
         {

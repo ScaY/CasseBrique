@@ -16,12 +16,12 @@ namespace Breakout.Controler
         {
             Bar Bar = player.Bar;
 
-            if (keyBoardState.IsKeyDown(Keys.Right) && (Bar.Position.X  < widthFrame))
+            if (keyBoardState.IsKeyDown(player.MoveRightKey) && (Bar.Position.X  < widthFrame))
             {
                 Bar.Deplacement = Vector2.Normalize(new Vector2(1, 0));
                 Bar.Position += Bar.Deplacement * Bar.Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             }
-            else if (keyBoardState.IsKeyDown(Keys.Left) && Bar.Position.X > 0)
+            else if (keyBoardState.IsKeyDown(player.MoveLeftKey) && Bar.Position.X > 0)
             {
                 Bar.Deplacement = Vector2.Normalize(new Vector2(-1, 0));
                 Bar.Position += Bar.Deplacement * Bar.Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;

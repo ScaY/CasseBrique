@@ -9,7 +9,7 @@ namespace Breakout.Bonus
 {
     public abstract class AbstractBonus : Shape
     {
-        public int Modifier { get; set; }
+        public float Modifier { get; set; }
 
         public TimeSpan StartTime { get; set; }
 
@@ -26,7 +26,7 @@ namespace Breakout.Bonus
         public abstract void ApplyBonus(BreakoutModel model, Player player);
         public abstract void RemoveBonus(BreakoutModel model, Player player);
 
-        public AbstractBonus(int modifier, int duration)
+        public AbstractBonus(float modifier, int duration)
         {
             this.Modifier = modifier;
             this.Duration = duration;

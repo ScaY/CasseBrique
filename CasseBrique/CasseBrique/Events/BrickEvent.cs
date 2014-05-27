@@ -6,7 +6,7 @@ using Breakout.Model;
 
 namespace Breakout.Events
 {
-    public class BrickEvent : Event
+    public abstract class BrickEvent : Event
     {
         public Brick Brick { get; set; }
 

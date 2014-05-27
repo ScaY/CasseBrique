@@ -53,6 +53,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bonus\AddBallBonus.cs" />
+    <Compile Include="Bonus\BallBonus.cs" />
+    <Compile Include="Bonus\BallSpeedBonus.cs" />
     <Compile Include="Bonus\BarSizeBonus.cs" />
     <Compile Include="Controler\AbstractControler.cs" />
     <Compile Include="Controler\ControlerBarMouse.cs" />
