@@ -64,7 +64,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(1, 1, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             view = new ViewBreakout(model, Content);
             model.AddView(view);
 
