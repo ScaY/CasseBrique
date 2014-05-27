@@ -9,7 +9,7 @@ namespace Breakout.Bonus
     {
         public override void ApplyBonus(Model.BreakoutModel model)
         {
-            model.Bar.Size.Width += Modifier;
+            model.CurrentPlayer.Bar.Size.Width += Modifier;
         }
 
         public BarSizeBonus(int modifier, int duration) : base(modifier, duration)

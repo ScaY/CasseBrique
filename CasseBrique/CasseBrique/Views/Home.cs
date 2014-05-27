@@ -79,7 +79,7 @@ namespace Breakout.Views
         {
             if (this.textBox1.Text != null && this.textBox1.Text.Length > 0)
             {
-                Players.Add( new Player(this.textBox1.Text,null,null));
+                Players.Add( new Player(this.textBox1.Text, null));
             }
             this.panel2.Hide();
             this.panel3.Show();

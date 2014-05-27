@@ -18,7 +18,7 @@ namespace Breakout.Controler
         public void HandleBonus(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame, AbstractBonus bonus) {
             bonus.HandleTrajectory(model, gameTime, heightFrame, widthFrame);
 
-            Bar bar = model.Bar;
+            Bar bar = model.CurrentPlayer.Bar;
 
             if (bonus.Position.Y > heightFrame)
             {

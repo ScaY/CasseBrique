@@ -21,7 +21,7 @@ namespace Breakout.Model
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            Bar bar = model.Bar;
+            Bar bar = model.CurrentPlayer.Bar;
             BrickZone bricks = model.BrickZone;
 
             //balle sort du jeu

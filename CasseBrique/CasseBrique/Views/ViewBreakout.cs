@@ -13,7 +13,7 @@ namespace Breakout.Views
 {
     public class ViewBreakout : View
     {
-        public ViewBar ViewBar { get; set; }
+        public List<ViewBar> ViewBars { get; set; }
 
         public ViewBall ViewBall { get; set; }
 
@@ -36,8 +36,13 @@ namespace Breakout.Views
             //this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick);
             breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
             breakout.BrickZone.InitializePositionBrick();
-            
-            this.ViewBar = new ViewBar(breakout.Bar, textureBar);
+
+            this.ViewBars = new List<ViewBar>();
+            foreach (Player player in breakout.Players)
+            {
+                this.ViewBars.Add(new ViewBar(player.Bar, textureBar));
+            }
+
             this.ViewBall = new ViewBall(breakout.Ball, textureBall);
             this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, breakout.BrickZone);
             this.ViewBonuses = new List<ViewBonus>();
@@ -52,9 +57,14 @@ namespace Breakout.Views
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             ViewBall.Draw(spriteBatch, gameTime);
-            ViewBar.Draw(spriteBatch, gameTime);
-            ViewBricksZone.Draw(spriteBatch, gameTime);
 
+            foreach (ViewBar viewBar in ViewBars)
+            {
+                viewBar.Draw(spriteBatch, gameTime);
+            }
+
+            ViewBricksZone.Draw(spriteBatch, gameTime);
+            
             foreach (ViewBonus viewBonus in ViewBonuses)
             {
                 viewBonus.Draw(spriteBatch, gameTime);
@@ -65,7 +75,12 @@ namespace Breakout.Views
         {
             if (e is PlayerEvent)
             {
+                PlayerEvent pe = (PlayerEvent)e;
 
+                if (e is AddedPlayerEvent)
+                {
+                    this.ViewBars.Add(new ViewBar(pe.Player.Bar, textureBar));
+                }
             }
             else if (e is BrickEvent)
             {
