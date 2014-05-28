@@ -12,18 +12,22 @@ namespace CasseBrique.Model
     {
         public CustomLevel() : base()
         {
-            this.Path = "../../../levels/Customized/level" + Id + ".json";
+            this.Path = String.Format("../../../levels/Customized/level{0}.json", Id);
         }
         public CustomLevel(int id) : base(id)
         {
-            this.Path = "../../../levels/Customized/level" + Id + ".json";
+            this.Path = String.Format("../../../levels/Customized/level{0}.json", Id);
         }
         public CustomLevel(int id, BrickZone map) : base(id,map)
         {
-            this.Path = "../../../levels/Customized/level" + Id + ".json";
+            this.Path = String.Format("../../../levels/Customized/level{0}.json", Id);
         }
 
-
+        public CustomLevel(string levelName, BrickZone map)
+            : base()
+        {
+            this.Path = String.Format("../../../levels/Customized/{0}.json", levelName);
+        }
         public static List<Level> loadAllCustom()
         {
             int i = 0;

@@ -1,6 +1,7 @@
 ﻿#region Using Statements
 using Breakout.Model;
 using Breakout.Views;
+using CasseBrique.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,8 @@ namespace Breakout
         [STAThread]
         static void Main()
         {
-                NewHome m = new NewHome();
+                //NewHome m = new NewHome();
+            LevelCreation m = new LevelCreation();
                 Application.Run(m);
                // using (var game = new GameXNA(new Player("toto", null)))
                // game.Run();
