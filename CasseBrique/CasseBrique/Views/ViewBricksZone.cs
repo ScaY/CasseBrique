@@ -37,7 +37,9 @@ namespace Breakout.Views
             {
                 for (int j = 0; j < brickZone.NbBrickCol; j++)
                 {
-                    ViewBricks[i, j] = new ViewBrick(brickZone.AllBricks[i, j]);
+                    if(brickZone.AllBricks[i, j] != null) {
+                        ViewBricks[i, j] = new ViewBrick(brickZone.AllBricks[i, j]);
+                    }
                 }
             }
         }
