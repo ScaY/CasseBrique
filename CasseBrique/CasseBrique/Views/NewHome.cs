@@ -236,7 +236,7 @@ namespace Breakout
             if (this.levels != null)
             {
                 this.Hide();
-                using (var game = new GameXNA(this.players,this.selectedLevel))
+                using (var game = new GameXNA(this.players,this.selectedLevel, this))
                     game.Run();
 
             }
