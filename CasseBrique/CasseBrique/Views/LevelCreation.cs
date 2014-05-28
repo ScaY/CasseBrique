@@ -1,4 +1,5 @@
-﻿using CasseBrique.Model;
+﻿using Breakout.Model;
+using CasseBrique.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,8 +31,8 @@ namespace CasseBrique.Views
             AddBonusSelected = false;
             NoToolSelected = true;
             NbMaxBricks = 12;
-            BrickHeight = 34;
-            BrickWidth = 67;
+            BrickHeight = pnl3Map.Height/10;
+            BrickWidth = pnl3Map.Width / 10;
             IsAddingBricks = false;
             InitializeComponent();
             ErrorConsole = this.txtErrorMessage;
@@ -54,6 +55,28 @@ namespace CasseBrique.Views
             if (!File.Exists(lvl.Path))
             {
                 lvl.write();
+                Brick[,] bricks = new Brick[pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight];
+
+                foreach (Control item in pnl3Map.Controls)
+                {
+                    StaticBrick currentB = item as StaticBrick;
+                    if (currentB != null)
+                    {
+                        int i = (int)Math.Floor((double)currentB.Bounds.X / BrickWidth);
+                        int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
+
+                        bricks[i, j] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124,51));
+                        
+                    }
+                }
+
+
+
+
+                lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 0, 0, bricks);
+
+
+
                 this.Close();
             }
             else
@@ -204,7 +227,7 @@ namespace CasseBrique.Views
         public MovableBrick(LevelCreation f, int width, int height)
             : base()
         {
-            this.Size = new Size(width, height);
+            this.Size = new System.Drawing.Size(width, height);
             ParentForm = f;
         }
         public void BrickMove(int X,int Y)
