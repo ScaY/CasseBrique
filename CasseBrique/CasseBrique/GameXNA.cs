@@ -159,6 +159,7 @@ namespace Breakout
         protected override void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
+            MouseState mouseState =Mouse.GetState();
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
             {
@@ -176,7 +177,7 @@ namespace Breakout
                 {
                     foreach (Ball ball in model.Balls)
                     {
-                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame);
+                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame, mouseState, keyboardState);
                     }
                 }
                 catch (Exception e)
@@ -197,7 +198,7 @@ namespace Breakout
 
                 foreach (Player player in model.Players)
                 {
-                    controlerBar.HandleInput(keyboardState, Mouse.GetState(), gameTime, widthFrame , player);
+                    controlerBar.HandleInput(keyboardState, mouseState, gameTime, widthFrame , player);
 
                     try
                     {
