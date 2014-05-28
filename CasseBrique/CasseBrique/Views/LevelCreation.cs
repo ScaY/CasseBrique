@@ -1,4 +1,6 @@
-﻿using CasseBrique.Model;
+﻿using Breakout.Bonus;
+using Breakout.Model;
+using CasseBrique.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,10 +32,12 @@ namespace CasseBrique.Views
             AddBonusSelected = false;
             NoToolSelected = true;
             NbMaxBricks = 12;
-            BrickHeight = 34;
-            BrickWidth = 67;
+            
+            
             IsAddingBricks = false;
             InitializeComponent();
+            BrickHeight = pnl3Map.Height / 10;
+            BrickWidth = pnl3Map.Width / 10;
             ErrorConsole = this.txtErrorMessage;
             this.pnlNbBricks.Text = String.Format("Nombre de Briques restantes : {0}", NbMaxBricks);
         }
@@ -49,18 +53,57 @@ namespace CasseBrique.Views
         }
         public void validate()
         {
+            
             CustomLevel lvl = new CustomLevel(LevelName, null);
-            Console.WriteLine(lvl.Path);
-            if (!File.Exists(lvl.Path))
+            
+            if (!(lvl.LevelName==null))
             {
-                lvl.write();
-                this.Close();
+                if (!File.Exists(lvl.Path))
+                {
+                    bool hasBricks = false;
+                    Brick[,] bricks = new Brick[pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight];
+
+                    foreach (Control item in pnl3Map.Controls)
+                    {
+                        StaticBrick currentB = item as StaticBrick;
+                        if (currentB != null)
+                        {
+                            hasBricks = true;
+                            int i = (int)Math.Floor((double)currentB.Bounds.X / BrickWidth);
+                            int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
+
+                            bricks[i, j] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124, 51));
+
+                        }
+                    }
+
+
+
+
+                    lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 0, 0, bricks);
+
+                    if (hasBricks)
+                    {
+                        lvl.write();
+                        this.Close();
+                    }
+                    else
+                    {
+                        ErrorConsole.AppendText("Aucune brique ajoutée.\r\n");
+                    }
+                    
+                }
+                else
+                {
+                    ErrorConsole.AppendText("Nom de niveau déjà pris.\r\n");
+
+                }
             }
             else
             {
-                ErrorConsole.AppendText("Nom de niveau déjà pris.\r\n");
-                
+                ErrorConsole.AppendText("Aucun nom de niveau renseigné.\r\n");
             }
+           
         }
 
         public void addBrickToolAction()
@@ -77,6 +120,11 @@ namespace CasseBrique.Views
         public void addBonusToolAction()
         {
             AddBonusSelected = true;
+            System.Windows.Forms.MessageBox.Show("My message here");
+
+
+
+
         }
 
         public void disableAllTools()
@@ -134,11 +182,7 @@ namespace CasseBrique.Views
         private void txtLevelName_TextChanged(object sender, EventArgs e)
         {
 
-            if (txtLevelName.Text.Count() < 10)
-            {
-                LevelName = txtLevelName.Text;
-                pnlLvlName.Text = txtLevelName.Text;
-            }
+            LevelName = txtLevelName.Text;
             
         }
 
@@ -204,7 +248,7 @@ namespace CasseBrique.Views
         public MovableBrick(LevelCreation f, int width, int height)
             : base()
         {
-            this.Size = new Size(width, height);
+            this.Size = new System.Drawing.Size(width, height);
             ParentForm = f;
         }
         public void BrickMove(int X,int Y)
@@ -260,6 +304,7 @@ namespace CasseBrique.Views
     {
         public LevelCreation ParentForm { get; set; }
         public bool HasBonus { get; set; }
+        public AbstractBonus bonus { get; set; }
         public StaticBrick(LevelCreation f, int width, int height, int x, int y)
             : base()
         {
@@ -267,7 +312,14 @@ namespace CasseBrique.Views
             this.BackColor = Color.FromArgb(51, 51, 51);
             this.SetBounds(x, y, width, height);
             ParentForm = f;
+            
             this.Refresh();
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.White, ButtonBorderStyle.Solid);
+
+            base.OnPaint(e);
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {

@@ -10,28 +10,33 @@ namespace CasseBrique.Model
 {
     class CustomLevel : Level
     {
+        public static int IdInstance = 0;
         public CustomLevel() : base()
         {
-            this.Path = String.Format("../../../levels/Customized/level{0}.json", Id);
+            this.Path = String.Format("../../../levels/Customized/level{0}.json", Directory.GetFiles("../../../levels/Customized/").Count() + 1);
         }
         public CustomLevel(int id) : base(id)
         {
-            this.Path = String.Format("../../../levels/Customized/level{0}.json", Id);
+            this.Path = String.Format("../../../levels/Customized/level{0}.json", Directory.GetFiles("../../../levels/Customized/").Count() + 1);
         }
         public CustomLevel(int id, BrickZone map) : base(id,map)
         {
-            this.Path = String.Format("../../../levels/Customized/level{0}.json", Id);
+            this.Path = String.Format("../../../levels/Customized/level{0}.json", Directory.GetFiles("../../../levels/Customized/").Count() + 1);
         }
 
         public CustomLevel(string levelName, BrickZone map)
             : base()
         {
-            this.Path = String.Format("../../../levels/Customized/{0}.json", levelName);
+            this.Path = String.Format("../../../levels/Customized/level{0}.json", Directory.GetFiles("../../../levels/Customized/").Count() + 1);
+            
+            
+            this.LevelName = levelName;
         }
         public static List<Level> loadAllCustom()
         {
-            int i = 0;
+            int i = 1;
             string path = "../../../levels/Customized/level" + i + ".json";
+            
             List<Level> toReturn = new List<Level>();
             while (File.Exists(path))
             {
@@ -44,6 +49,7 @@ namespace CasseBrique.Model
                 i++;
                 path = "../../../levels/Customized/level" + i + ".json";
                 toReturn.Add(newLevel);
+                Console.WriteLine(newLevel.LevelName);
             }
             return toReturn;
         }

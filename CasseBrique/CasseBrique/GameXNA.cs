@@ -44,28 +44,11 @@ namespace Breakout
 
        // SoundEffect ballReboundBar;
 
-        public GameXNA(List<Player> _players, System.Windows.Forms.Form form) : base()
+        public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form form) : base()
         {
             form.Close();
-            if (_players != null)
-            {
-                this.players = _players;
-            }
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-        }
-        public GameXNA(List<Player> _players,Level _level)
-            : base()
-        {
-            if (_players != null)
-            {
-                this.players = _players;
-            }
-            if (_level != null)
-            {
-                this.level = _level;
-            }
-
+            this.players = _players;
+            this.level = _level;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
@@ -81,7 +64,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(level);
             view = new ViewBreakout(model);
             model.AddView(view);
 
@@ -230,14 +213,12 @@ namespace Breakout
 
             previousKeyboardState = keyboardState;
 
-            if (model.IsGameWon())
+            if (model.IsGameWon() ||model.IsGameLost())
             {
-
-            }
-            else if (model.IsGameLost())
-            {
-                EndGame m = new EndGame();
-                
+                bool won = model.IsGameWon();
+                EndGame m = new EndGame(model);
+                m.ShowDialog();
+                this.Exit();
             }
 
             base.Update(gameTime);
