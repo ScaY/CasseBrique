@@ -23,39 +23,56 @@ namespace Breakout.Views
 
         private Texture2D textureBar;
         private Texture2D textureBall;
-        private Texture2D textureBrick;
         private Texture2D textureBonus;
 
-        public ViewBreakout(BreakoutModel breakout, ContentManager content)
+        public ViewBreakout(BreakoutModel breakout)
         {
-            textureBar = content.Load<Texture2D>("barMid");
-            textureBall = content.Load<Texture2D>("ballSmall");
-            textureBrick = content.Load<Texture2D>("brick3life");
-            textureBonus = content.Load<Texture2D>("bonus");
-
-            breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
+            breakout.BrickZone.InitializeSizeBrick(new Size(124, 51));
             breakout.BrickZone.InitializePositionBrick();
 
             this.ViewBars = new List<ViewBar>();
             foreach (Player player in breakout.Players)
             {
-                this.ViewBars.Add(new ViewBar(player.Bar, textureBar));
+                this.ViewBars.Add(new ViewBar(player.Bar));
             }
 
             this.ViewBalls = new List<ViewBall>();
             foreach (Ball ball in breakout.Balls)
             {
-                this.ViewBalls.Add(new ViewBall(ball, textureBall));
+                this.ViewBalls.Add(new ViewBall(ball));
             }
 
-            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone, textureBrick, content);
+            this.ViewBricksZone = new ViewBricksZone(breakout.BrickZone);
             this.ViewBonuses = new List<ViewBonus>();
 
             foreach (AbstractBonus bonus in breakout.Bonuses)
             {
-                this.ViewBonuses.Add(new ViewBonus(bonus, textureBonus));
+                this.ViewBonuses.Add(new ViewBonus(bonus));
             }
 
+        }
+
+        public void LoadContent(ContentManager content) {
+            this.textureBar = content.Load<Texture2D>("barMid");
+            this.textureBall = content.Load<Texture2D>("ballSmall");
+            this.textureBonus = content.Load<Texture2D>("bonus");
+
+            foreach (ViewBar viewBar in this.ViewBars)
+            {
+                viewBar.Texture = this.textureBar;
+            }
+
+            foreach(ViewBall viewBall in this.ViewBalls)
+            {
+                viewBall.Texture = this.textureBall;
+            }
+
+            foreach (ViewBonus viewBonus in this.ViewBonuses)
+            {
+                viewBonus.Texture = this.textureBar;
+            }
+
+            this.ViewBricksZone.LoadContent(content);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -86,7 +103,9 @@ namespace Breakout.Views
 
                 if (e is AddedPlayerEvent)
                 {
-                    this.ViewBars.Add(new ViewBar(pe.Player.Bar, textureBar));
+                    ViewBar viewBar = new ViewBar(pe.Player.Bar);
+                    viewBar.Texture = this.textureBar;
+                    this.ViewBars.Add(viewBar);
                 }
             }
             else if (e is BrickEvent)
@@ -99,7 +118,9 @@ namespace Breakout.Views
 
                 if (e is AddedBonusEvent)
                 {
-                    this.ViewBonuses.Add(new ViewBonus(be.Bonus, textureBonus));
+                    ViewBonus viewBonus = new ViewBonus(be.Bonus);
+                    viewBonus.Texture = this.textureBonus;
+                    this.ViewBonuses.Add(viewBonus);
                 }
                 else if (e is RemovedBonusEvent)
                 {
@@ -124,7 +145,9 @@ namespace Breakout.Views
 
                 if (e is AddedBallEvent)
                 {
-                    this.ViewBalls.Add(new ViewBall(be.Ball, textureBall));
+                    ViewBall viewBall = new ViewBall(be.Ball);
+                    viewBall.Texture = this.textureBall;
+                    this.ViewBalls.Add(viewBall);
                 }
                 else if (e is RemovedBallEvent)
                 {

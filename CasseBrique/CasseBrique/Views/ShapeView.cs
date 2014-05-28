@@ -23,10 +23,9 @@ namespace Breakout.Views
             set { texture = value; }
         }
 
-        public ShapeView(Shape shape, Texture2D texture)
+        public ShapeView(Shape shape)
         {
             this.Shape = shape;
-            this.Texture = texture;
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)

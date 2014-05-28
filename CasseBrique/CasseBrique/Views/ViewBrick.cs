@@ -7,9 +7,7 @@ namespace Breakout.Views
 {
     public class ViewBrick : ShapeView
     {
-        public Brick Brick { get; set; }
-
-        public ViewBrick(Brick brick, Texture2D texture) : base(brick, texture)
+        public ViewBrick(Brick brick) : base(brick)
         {
         }
     }

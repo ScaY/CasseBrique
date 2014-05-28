@@ -68,5 +68,15 @@ namespace Breakout.Model
             this.Balls.Remove(ball);
             this.RefreshViews(new RemovedBallEvent(this, ball));
         }
+
+        public bool IsGameWon()
+        {
+            return false;
+        }
+
+        public bool IsGameLost()
+        {
+            return this.Balls.Count == 0;
+        }
     }
 }

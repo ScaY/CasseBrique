@@ -42,11 +42,11 @@ namespace Breakout
         private Level level;
         private KeyboardState previousKeyboardState;
 
-        // SoundEffect ballReboundBar;
+       // SoundEffect ballReboundBar;
 
-        public GameXNA(List<Player> _players)
-            : base()
+        public GameXNA(List<Player> _players, System.Windows.Forms.Form form) : base()
         {
+            form.Close();
             if (_players != null)
             {
                 this.players = _players;
@@ -81,8 +81,8 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
-            view = new ViewBreakout(model, Content);
+            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            view = new ViewBreakout(model);
             model.AddView(view);
 
             if (this.players != null)
@@ -97,18 +97,6 @@ namespace Breakout
             controlerBar = new ControlerBarKeyboard(model);
             controlerBall = new ControlerBall(model);
             controlerBonus = new ControlerBonus(model);
-
-            base.Initialize();
-        }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             try
             {
@@ -137,15 +125,15 @@ namespace Breakout
 
                     ball.Size.Width = 16;
                     ball.Size.Height = 16;
-                    ball.Position = new Vector2(bar.Position.X + (float)(bar.Size.Width / 2) - (float)(ball.Size.Height / 2) + 458, bar.Position.Y - ball.Size.Width);
-                    ball.Speed = 0.08f;
+                    ball.Position = new Vector2(bar.Position.X + (float)(bar.Size.Width / 2) - (float)(ball.Size.Height / 2), bar.Position.Y - ball.Size.Width);
+                    ball.Speed = 0.3f;
                     i++;
                 }
 
                 foreach (AbstractBonus bonus in model.Bonuses)
                 {
-                    bonus.Size.Width = view.ViewBonuses[0].Texture.Width;
-                    bonus.Size.Height = view.ViewBonuses[0].Texture.Height;
+                    bonus.Size.Width = 32;
+                    bonus.Size.Height = 32;
                 }
             }
             catch (Exception e)
@@ -153,6 +141,18 @@ namespace Breakout
                 Console.WriteLine("Exception in CasseBrique LoadContent: " + e.Message);
             }
 
+            base.Initialize();
+        }
+
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            view.LoadContent(Content);
         }
 
         /// <summary>
@@ -229,6 +229,16 @@ namespace Breakout
 
             previousKeyboardState = keyboardState;
 
+            if (model.IsGameWon())
+            {
+
+            }
+            else if (model.IsGameLost())
+            {
+                EndGame m = new EndGame();
+                
+            }
+
             base.Update(gameTime);
         }
 
@@ -239,7 +249,7 @@ namespace Breakout
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
             view.Draw(spriteBatch, gameTime);
