@@ -305,7 +305,14 @@ namespace CasseBrique.Views
             this.BackColor = Color.FromArgb(51, 51, 51);
             this.SetBounds(x, y, width, height);
             ParentForm = f;
+            
             this.Refresh();
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.White, ButtonBorderStyle.Solid);
+
+            base.OnPaint(e);
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
