@@ -111,7 +111,7 @@ namespace Breakout
         {
             this.isMultiPlayer = true;
 
-            if (this.players.Count <= 2)
+            if (this.players.Count <= 1)
             {
                 this.panel1.Hide();
                 this.pnlLeftArrow.Show();
@@ -119,7 +119,14 @@ namespace Breakout
                 this.bigPnlOnePlayer.Show();
                 
                 this.label5.Text = "Joueur  "+ (this.players.Count + 1)+" : ";
-            } 
+            }
+            else
+            {
+
+                this.panel1.Hide();
+                this.bigPnlLevel.Show();
+
+            }
         }
 
         private void pnlOnePlayer_Click(object sender, EventArgs e)
@@ -151,7 +158,11 @@ namespace Breakout
             {
                 if (textBox1.Text != null && textBox1.Text != "" && textBox1.Text.Length > 0)
                 {
-                    this.players.Add(new Player(textBox1.Text));
+                    if (this.players.Count <= 1)
+                    {
+                        this.players.Add(new Player(textBox1.Text));
+
+                    }
                     
                     this.bigPnlOnePlayer.Hide();
                     this.bigPnlLevel.Show();
@@ -211,7 +222,7 @@ namespace Breakout
             }
             else
             {
-                if (this.players.Count <= 2)
+                if (this.players.Count <= 1)
                 {
                     this.label5.Text = "Joueur  " + (this.players.Count + 1) + " : ";
 
