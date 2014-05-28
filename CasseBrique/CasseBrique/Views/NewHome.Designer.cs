@@ -35,6 +35,16 @@ namespace Breakout
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.player2Config = new System.Windows.Forms.Panel();
+            this.gBPlayer2 = new System.Windows.Forms.GroupBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label18 = new System.Windows.Forms.Label();
+            this.player1Config = new System.Windows.Forms.Panel();
+            this.gbPlayer1 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.lblPlayer1name = new System.Windows.Forms.Label();
             this.pnl2Players = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlQuite = new System.Windows.Forms.Panel();
@@ -71,8 +81,15 @@ namespace Breakout
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.finalPlayBtn = new System.Windows.Forms.Label();
             this.pnlOnePlayer.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.player2Config.SuspendLayout();
+            this.gBPlayer2.SuspendLayout();
+            this.player1Config.SuspendLayout();
+            this.gbPlayer1.SuspendLayout();
             this.pnl2Players.SuspendLayout();
             this.pnlQuite.SuspendLayout();
             this.pnlAbou.SuspendLayout();
@@ -88,6 +105,7 @@ namespace Breakout
             this.pnlValidateLevel.SuspendLayout();
             this.panel9.SuspendLayout();
             this.pnlAb.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlOnePlayer
@@ -135,6 +153,123 @@ namespace Breakout
             this.label1.Size = new System.Drawing.Size(355, 81);
             this.label1.TabIndex = 0;
             this.label1.Text = "Casse Brique";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.Violet;
+            this.panel8.Controls.Add(this.player2Config);
+            this.panel8.Controls.Add(this.player1Config);
+            this.panel8.Location = new System.Drawing.Point(82, 157);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(421, 329);
+            this.panel8.TabIndex = 12;
+            this.panel8.Visible = false;
+            // 
+            // player2Config
+            // 
+            this.player2Config.Controls.Add(this.gBPlayer2);
+            this.player2Config.Controls.Add(this.label18);
+            this.player2Config.Location = new System.Drawing.Point(0, 162);
+            this.player2Config.Name = "player2Config";
+            this.player2Config.Size = new System.Drawing.Size(421, 157);
+            this.player2Config.TabIndex = 1;
+            this.player2Config.Visible = false;
+            // 
+            // gBPlayer2
+            // 
+            this.gBPlayer2.Controls.Add(this.radioButton3);
+            this.gBPlayer2.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gBPlayer2.ForeColor = System.Drawing.Color.White;
+            this.gBPlayer2.Location = new System.Drawing.Point(51, 54);
+            this.gBPlayer2.Name = "gBPlayer2";
+            this.gBPlayer2.Size = new System.Drawing.Size(323, 100);
+            this.gBPlayer2.TabIndex = 1;
+            this.gBPlayer2.TabStop = false;
+            this.gBPlayer2.Text = "Contrôles";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Checked = true;
+            this.radioButton3.Location = new System.Drawing.Point(17, 62);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(298, 27);
+            this.radioButton3.TabIndex = 1;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Contrôle avec le clavier (touche K/M)";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(164, 3);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(113, 37);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Joueur 2";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            this.label18.Paint += new System.Windows.Forms.PaintEventHandler(this.label18_Paint);
+            // 
+            // player1Config
+            // 
+            this.player1Config.Controls.Add(this.gbPlayer1);
+            this.player1Config.Controls.Add(this.lblPlayer1name);
+            this.player1Config.Location = new System.Drawing.Point(0, 2);
+            this.player1Config.Name = "player1Config";
+            this.player1Config.Size = new System.Drawing.Size(421, 157);
+            this.player1Config.TabIndex = 0;
+            // 
+            // gbPlayer1
+            // 
+            this.gbPlayer1.Controls.Add(this.radioButton2);
+            this.gbPlayer1.Controls.Add(this.radioButton1);
+            this.gbPlayer1.Font = new System.Drawing.Font("Segoe UI Light", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPlayer1.ForeColor = System.Drawing.Color.White;
+            this.gbPlayer1.Location = new System.Drawing.Point(51, 54);
+            this.gbPlayer1.Name = "gbPlayer1";
+            this.gbPlayer1.Size = new System.Drawing.Size(323, 100);
+            this.gbPlayer1.TabIndex = 1;
+            this.gbPlayer1.TabStop = false;
+            this.gbPlayer1.Text = "Contrôles";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(17, 62);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(299, 27);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Contrôle avec le clavier (touche Q/D)";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(17, 29);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(195, 27);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Contrôle avec la souris";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // lblPlayer1name
+            // 
+            this.lblPlayer1name.AutoSize = true;
+            this.lblPlayer1name.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayer1name.ForeColor = System.Drawing.Color.White;
+            this.lblPlayer1name.Location = new System.Drawing.Point(164, 3);
+            this.lblPlayer1name.Name = "lblPlayer1name";
+            this.lblPlayer1name.Size = new System.Drawing.Size(113, 37);
+            this.lblPlayer1name.TabIndex = 0;
+            this.lblPlayer1name.Text = "Joueur 1";
+            this.lblPlayer1name.Paint += new System.Windows.Forms.PaintEventHandler(this.lblPlayer1name_Paint);
             // 
             // pnl2Players
             // 
@@ -436,6 +571,7 @@ namespace Breakout
             this.pnlValidateLevel.Name = "pnlValidateLevel";
             this.pnlValidateLevel.Size = new System.Drawing.Size(247, 158);
             this.pnlValidateLevel.TabIndex = 3;
+            this.pnlValidateLevel.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlValidateLevel_Paint);
             this.pnlValidateLevel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlValidateLevel_MouseClick);
             // 
             // label9
@@ -554,6 +690,28 @@ namespace Breakout
             this.label12.TabIndex = 1;
             this.label12.Text = "Bienvenue sur Casse Brique 8.1 !";
             // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panel10.Controls.Add(this.finalPlayBtn);
+            this.panel10.Location = new System.Drawing.Point(207, 492);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(152, 56);
+            this.panel10.TabIndex = 13;
+            this.panel10.Visible = false;
+            this.panel10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
+            // 
+            // finalPlayBtn
+            // 
+            this.finalPlayBtn.AutoSize = true;
+            this.finalPlayBtn.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finalPlayBtn.ForeColor = System.Drawing.Color.White;
+            this.finalPlayBtn.Location = new System.Drawing.Point(44, 12);
+            this.finalPlayBtn.Name = "finalPlayBtn";
+            this.finalPlayBtn.Size = new System.Drawing.Size(57, 28);
+            this.finalPlayBtn.TabIndex = 0;
+            this.finalPlayBtn.Text = "Jouer";
+            // 
             // NewHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -562,6 +720,7 @@ namespace Breakout
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(582, 560);
             this.ControlBox = false;
+            this.Controls.Add(this.panel10);
             this.Controls.Add(this.bigPnlLevel);
             this.Controls.Add(this.bigPnlOnePlayer);
             this.Controls.Add(this.panel1);
@@ -569,6 +728,7 @@ namespace Breakout
             this.Controls.Add(this.pnlAb);
             this.Controls.Add(this.pnlLeftArrow);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(600, 600);
             this.MinimumSize = new System.Drawing.Size(600, 600);
@@ -579,6 +739,15 @@ namespace Breakout
             this.pnlOnePlayer.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.player2Config.ResumeLayout(false);
+            this.player2Config.PerformLayout();
+            this.gBPlayer2.ResumeLayout(false);
+            this.gBPlayer2.PerformLayout();
+            this.player1Config.ResumeLayout(false);
+            this.player1Config.PerformLayout();
+            this.gbPlayer1.ResumeLayout(false);
+            this.gbPlayer1.PerformLayout();
             this.pnl2Players.ResumeLayout(false);
             this.pnl2Players.PerformLayout();
             this.pnlQuite.ResumeLayout(false);
@@ -606,6 +775,8 @@ namespace Breakout
             this.panel9.PerformLayout();
             this.pnlAb.ResumeLayout(false);
             this.pnlAb.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -652,6 +823,18 @@ namespace Breakout
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label btnRefreshLevel;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel player1Config;
+        private System.Windows.Forms.GroupBox gbPlayer1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label lblPlayer1name;
+        private System.Windows.Forms.Panel player2Config;
+        private System.Windows.Forms.GroupBox gBPlayer2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label finalPlayBtn;
 
     }
 }

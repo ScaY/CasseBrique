@@ -26,6 +26,11 @@ namespace Breakout.Model
             get;
             set;
         }
+        public string ControlGame
+        {
+            get;
+            set;
+        }
 
         public int Score
         {

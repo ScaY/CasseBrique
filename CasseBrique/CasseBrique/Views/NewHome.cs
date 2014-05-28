@@ -149,7 +149,6 @@ namespace Breakout
             this.isMultiPlayer = false;
 
             this.pnlLeftArrow.Show();
-
             this.bigPnlOnePlayer.BringToFront();
             this.bigPnlOnePlayer.Show();
 
@@ -246,9 +245,23 @@ namespace Breakout
         {
             if (this.levelsStandard != null)
             {
-                this.Hide();
-                using (var game = new GameXNA(this.players,this.selectedLevel, this))
-                    game.Run();
+                
+                this.bigPnlLevel.Hide();
+                this.panel8.Show();
+                this.panel10.Show();
+                if (this.players.ElementAt(0) != null)
+                {
+                    this.players.ElementAt(0).ControlGame = "mouse";
+
+                }
+                if (this.players.Count >1)
+                {
+                    this.players.ElementAt(1).ControlGame = "keyboard-K/M";
+
+                }
+
+                /*using (var game = new GameXNA(this.players,this.selectedLevel, this))
+                    game.Run();*/
 
             }
             else
@@ -264,6 +277,8 @@ namespace Breakout
             this.bigPnlLevel.Hide();
             this.bigPnlOnePlayer.Hide();
             this.pnlAb.Hide();
+            this.panel8.Hide();
+            this.panel10.Hide();
 
             this.panel1.Show();
             this.pnlLeftArrow.Hide();
@@ -364,6 +379,75 @@ namespace Breakout
 
                 }
             }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                this.players.ElementAt(0).ControlGame = "mouse";
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                this.players.ElementAt(0).ControlGame = "keyboard-Q/D";
+            }
+
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton3.Checked)
+            {
+                this.players.ElementAt(1).ControlGame = "keyboard-K/M";
+            }
+
+        }
+
+        private void lblPlayer1name_Paint(object sender, PaintEventArgs e)
+        {
+            if (this.players.ElementAt(0) != null)
+            {
+                this.lblPlayer1name.Text = this.players.ElementAt(0).Name;
+            }
+            if (this.players.ElementAt(1) != null)
+            {
+
+                this.player2Config.Show();
+            }
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Paint(object sender, PaintEventArgs e)
+        {
+            if (this.players.ElementAt(1) != null)
+            {
+                
+                this.player2Config.Show();
+                this.label18.Text = this.players.ElementAt(1).Name;
+            }
+
+
+        }
+
+        private void pnlValidateLevel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel10_MouseClick(object sender, MouseEventArgs e)
+        {
+            using (var game = new GameXNA(this.players,this.selectedLevel, this))
+                game.Run();
+
         }
 
     }
