@@ -26,9 +26,6 @@ namespace Breakout
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public const float speedBall = 0.2f;
-        public const float speedBar = 0.5f;
-
         //dimensions de la fenêtre
         private int widthFrame;
         private int heightFrame;
@@ -179,7 +176,7 @@ namespace Breakout
                 {
                     foreach (Ball ball in model.Balls)
                     {
-                        controlerBall.HandleBall(ball, gameTime, heightFrame, widthFrame);
+                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame);
                     }
                 }
                 catch (Exception e)
@@ -200,7 +197,7 @@ namespace Breakout
 
                 foreach (Player player in model.Players)
                 {
-                    controlerBar.HandleInput(keyboardState, Mouse.GetState(), gameTime, widthFrame, player);
+                    controlerBar.HandleInput(keyboardState, Mouse.GetState(), gameTime, widthFrame , player);
 
                     try
                     {

@@ -42,7 +42,7 @@ namespace Breakout.Model
             this.Size = size;
         }
 
-        public Shape() : this(Vector2.Zero, Vector2.UnitX, 1f, new Size(0, 0))
+        public Shape() : this(Vector2.Zero, Vector2.UnitX, 0.5f, new Size(0, 0))
         {
         }
 

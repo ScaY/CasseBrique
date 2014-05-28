@@ -63,7 +63,7 @@ namespace Breakout.Model
         public void HandleTrajectoryBallReboundFrame(GameTime gameTime, int heightFrame, int widthFrame)
         {
             //rebond à gauche ou à droite
-            if ((Position.X < 0 || Position.X > widthFrame))
+            if ((Position.X < 0 || Position.X > widthFrame+200))
             {
                 RuleBall.HandleReboundLeftRight(this);
                 this.briksHit.Clear();
