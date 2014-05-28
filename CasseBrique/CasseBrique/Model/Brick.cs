@@ -5,7 +5,7 @@ using Breakout.Bonus;
 namespace Breakout.Model
 {
     public class Brick : Shape
-    {{//ceci est un commentaire
+    {//ceci est un commentaire
         public int Life { get; set; }
 
         public int XBrick { get; set; }
