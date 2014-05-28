@@ -221,6 +221,7 @@ namespace Breakout
 
             if (model.IsGameWon() || model.IsGameLost())
             {
+                model.Pause = true;
                 EndGame m = new EndGame(model);
                 m.ShowDialog();
             }
