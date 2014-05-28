@@ -33,8 +33,6 @@
             this.pnl2Outils = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblBonus = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlLvlName = new System.Windows.Forms.Label();
             this.txtLevelName = new System.Windows.Forms.TextBox();
             this.pnlValidate = new System.Windows.Forms.Panel();
             this.lblValidate = new System.Windows.Forms.Label();
@@ -49,7 +47,6 @@
             this.pnl1Titre.SuspendLayout();
             this.pnl2Outils.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.pnlValidate.SuspendLayout();
             this.pnlNoTool.SuspendLayout();
             this.pnl4Player.SuspendLayout();
@@ -82,7 +79,6 @@
             // 
             this.pnl2Outils.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.pnl2Outils.Controls.Add(this.panel3);
-            this.pnl2Outils.Controls.Add(this.panel1);
             this.pnl2Outils.Controls.Add(this.txtLevelName);
             this.pnl2Outils.Controls.Add(this.pnlValidate);
             this.pnl2Outils.Controls.Add(this.pnlNoTool);
@@ -117,31 +113,6 @@
             this.lblBonus.TabIndex = 9;
             this.lblBonus.Text = "Bonus";
             this.lblBonus.Click += new System.EventHandler(this.lblBonus_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(80)))), ((int)(((byte)(171)))));
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Controls.Add(this.pnlLvlName);
-            this.panel1.Location = new System.Drawing.Point(13, 311);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(145, 33);
-            this.panel1.TabIndex = 8;
-            // 
-            // pnlLvlName
-            // 
-            this.pnlLvlName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pnlLvlName.AutoSize = true;
-            this.pnlLvlName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(80)))), ((int)(((byte)(171)))));
-            this.pnlLvlName.Font = new System.Drawing.Font("Segoe UI Light", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlLvlName.ForeColor = System.Drawing.Color.White;
-            this.pnlLvlName.Location = new System.Drawing.Point(27, -6);
-            this.pnlLvlName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.pnlLvlName.Name = "pnlLvlName";
-            this.pnlLvlName.Size = new System.Drawing.Size(81, 41);
-            this.pnlLvlName.TabIndex = 7;
-            this.pnlLvlName.Text = "Nom";
             // 
             // txtLevelName
             // 
@@ -274,7 +245,7 @@
             this.txtErrorMessage.TabIndex = 6;
             this.txtErrorMessage.WordWrap = false;
             // 
-            // testCreationLevel
+            // LevelCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -285,7 +256,7 @@
             this.Controls.Add(this.pnl3Map);
             this.Controls.Add(this.pnl2Outils);
             this.Controls.Add(this.pnl1Titre);
-            this.Name = "testCreationLevel";
+            this.Name = "LevelCreation";
             this.Text = "testCreationLevel";
             this.Load += new System.EventHandler(this.testCreationLevel_Load);
             this.pnl1Titre.ResumeLayout(false);
@@ -294,8 +265,6 @@
             this.pnl2Outils.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.pnlValidate.ResumeLayout(false);
             this.pnlValidate.PerformLayout();
             this.pnlNoTool.ResumeLayout(false);
@@ -320,8 +289,6 @@
         private System.Windows.Forms.Panel pnlValidate;
         private System.Windows.Forms.TextBox txtLevelName;
         private System.Windows.Forms.Label pnlNbBricks;
-        private System.Windows.Forms.Label pnlLvlName;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblBricks;
         private System.Windows.Forms.Panel panel3;

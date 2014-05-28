@@ -31,10 +31,12 @@ namespace CasseBrique.Views
             AddBonusSelected = false;
             NoToolSelected = true;
             NbMaxBricks = 12;
-            BrickHeight = pnl3Map.Height/10;
-            BrickWidth = pnl3Map.Width / 10;
+            
+            
             IsAddingBricks = false;
             InitializeComponent();
+            BrickHeight = pnl3Map.Height / 10;
+            BrickWidth = pnl3Map.Width / 10;
             ErrorConsole = this.txtErrorMessage;
             this.pnlNbBricks.Text = String.Format("Nombre de Briques restantes : {0}", NbMaxBricks);
         }
@@ -50,40 +52,57 @@ namespace CasseBrique.Views
         }
         public void validate()
         {
+            
             CustomLevel lvl = new CustomLevel(LevelName, null);
-            Console.WriteLine(lvl.Path);
-            if (!File.Exists(lvl.Path))
+            
+            if (!(lvl.LevelName==null))
             {
-                lvl.write();
-                Brick[,] bricks = new Brick[pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight];
-
-                foreach (Control item in pnl3Map.Controls)
+                if (!File.Exists(lvl.Path))
                 {
-                    StaticBrick currentB = item as StaticBrick;
-                    if (currentB != null)
+                    bool hasBricks = false;
+                    Brick[,] bricks = new Brick[pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight];
+
+                    foreach (Control item in pnl3Map.Controls)
                     {
-                        int i = (int)Math.Floor((double)currentB.Bounds.X / BrickWidth);
-                        int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
+                        StaticBrick currentB = item as StaticBrick;
+                        if (currentB != null)
+                        {
+                            hasBricks = true;
+                            int i = (int)Math.Floor((double)currentB.Bounds.X / BrickWidth);
+                            int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
 
-                        bricks[i, j] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124,51));
-                        
+                            bricks[i, j] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124, 51));
+
+                        }
                     }
+
+
+
+
+                    lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 0, 0, bricks);
+
+                    if (hasBricks)
+                    {
+                        lvl.write();
+                        this.Close();
+                    }
+                    else
+                    {
+                        ErrorConsole.AppendText("Aucune brique ajoutée.\r\n");
+                    }
+                    
                 }
+                else
+                {
+                    ErrorConsole.AppendText("Nom de niveau déjà pris.\r\n");
 
-
-
-
-                lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 0, 0, bricks);
-
-
-
-                this.Close();
+                }
             }
             else
             {
-                ErrorConsole.AppendText("Nom de niveau déjà pris.\r\n");
-                
+                ErrorConsole.AppendText("Aucun nom de niveau renseigné.\r\n");
             }
+           
         }
 
         public void addBrickToolAction()
@@ -157,11 +176,7 @@ namespace CasseBrique.Views
         private void txtLevelName_TextChanged(object sender, EventArgs e)
         {
 
-            if (txtLevelName.Text.Count() < 10)
-            {
-                LevelName = txtLevelName.Text;
-                pnlLvlName.Text = txtLevelName.Text;
-            }
+            LevelName = txtLevelName.Text;
             
         }
 

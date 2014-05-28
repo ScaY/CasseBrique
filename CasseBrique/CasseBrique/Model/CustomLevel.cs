@@ -27,6 +27,7 @@ namespace CasseBrique.Model
             : base()
         {
             this.Path = String.Format("../../../levels/Customized/{0}.json", levelName);
+            this.LevelName = levelName;
         }
         public static List<Level> loadAllCustom()
         {
