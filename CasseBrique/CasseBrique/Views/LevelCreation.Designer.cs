@@ -249,13 +249,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(845, 543);
+            this.ControlBox = false;
             this.Controls.Add(this.txtErrorMessage);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnl3Map);
             this.Controls.Add(this.pnl2Outils);
             this.Controls.Add(this.pnl1Titre);
+            this.MaximumSize = new System.Drawing.Size(861, 581);
+            this.MinimumSize = new System.Drawing.Size(861, 581);
             this.Name = "LevelCreation";
             this.Text = "testCreationLevel";
             this.Load += new System.EventHandler(this.testCreationLevel_Load);

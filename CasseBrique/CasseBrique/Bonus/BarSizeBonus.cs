@@ -17,7 +17,9 @@ namespace Breakout.Bonus
         {
             player.Bar.Size.Width -= (int)Modifier;
         }
-
+        public BarSizeBonus()
+        {
+        }
         public BarSizeBonus(float modifier, int duration) : base(modifier, duration)
         {
         }
