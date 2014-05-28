@@ -21,7 +21,7 @@ namespace Breakout.Model
                 int brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 int brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 result = bricks.GetBrick(brickX, brickY);
-                if (result != null && result != ball.brikHit)
+                if (result != null && !result.Equals(ball.brikHit))
                 {
                     return result;
                 }
@@ -30,7 +30,7 @@ namespace Breakout.Model
                 brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 result = bricks.GetBrick(brickX, brickY);
-                if (result != null && result != ball.brikHit)
+                if (result != null && !result.Equals(ball.brikHit))
                 {
                     return result;
                 }
@@ -40,7 +40,7 @@ namespace Breakout.Model
                 brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y + height - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 result = bricks.GetBrick(brickX, brickY);
-                if (result != null && result != ball.brikHit)
+                if (result != null && !result.Equals(ball.brikHit))
                 {
                     return result;
                 }
@@ -50,7 +50,7 @@ namespace Breakout.Model
                 brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y + height + bricks.StartBlockBrickY) / bricks.HeightBrick);
                 result = bricks.GetBrick(brickX, brickY);
-                if (result != null && result != ball.brikHit)
+                if (result != null && !result.Equals(ball.brikHit))
                 {
                     return result;
                 }
@@ -70,6 +70,7 @@ namespace Breakout.Model
 
         public static void HandleDeplacementHitBrick(BreakoutModel model, Brick brick, Ball ball)
         {
+            Console.WriteLine("Handle hit brick brick: "+brick.XBrick+"   "+brick.YBrick);
             Vector2 centerBall = ball.GetCenterBall();
 
             int widthBrick = brick.Size.Width;
@@ -79,14 +80,13 @@ namespace Breakout.Model
 
             Vector2 centerBrick = new Vector2(brick.Position.X + widthBrick / 2, brick.Position.Y + heightBrick / 2);
 
-            Vector2 newDeplacement = Vector2.Zero;
-
             //la balle se situe à la partie droite de la brique
             if (centerBall.X > centerBrick.X)
             {
                 if (centerBall.X < (centerBrick.X + widthBrick / 2))
                 {
-                    Console.WriteLine("Rebond à droite en bas ou en haut        " + brick.XBrick +"    "+brick.YBrick);
+
+                    Console.WriteLine("Rebond à droite en bas ou en haut        " + brick.XBrick + "    " + brick.YBrick);
                     HandleReboundUpDown(ball);
                 }
                 else

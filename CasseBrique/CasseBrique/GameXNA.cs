@@ -41,9 +41,10 @@ namespace Breakout
         private List<Player> players;
         private KeyboardState previousKeyboardState;
 
-       // SoundEffect ballReboundBar;
+        // SoundEffect ballReboundBar;
 
-        public GameXNA(List<Player> _players) : base()
+        public GameXNA(List<Player> _players)
+            : base()
         {
             if (_players != null)
             {
@@ -64,7 +65,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
             view = new ViewBreakout(model, Content);
             model.AddView(view);
 
@@ -120,8 +121,8 @@ namespace Breakout
 
                     ball.Size.Width = 16;
                     ball.Size.Height = 16;
-                    ball.Position = new Vector2(bar.Position.X + (float)(bar.Size.Width / 2) - (float)(ball.Size.Height / 2), bar.Position.Y - ball.Size.Width);
-                    ball.Speed = 0.3f;
+                    ball.Position = new Vector2(bar.Position.X + (float)(bar.Size.Width / 2) - (float)(ball.Size.Height / 2) + 458, bar.Position.Y - ball.Size.Width);
+                    ball.Speed = 0.08f;
                     i++;
                 }
 
@@ -222,7 +223,7 @@ namespace Breakout
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
             view.Draw(spriteBatch, gameTime);

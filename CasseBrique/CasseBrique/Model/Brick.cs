@@ -37,5 +37,27 @@ namespace Breakout.Model
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if(obj == this){
+                return true;
+            }
+
+            if (obj is Brick)
+            {
+                Brick other = (Brick)obj;
+                return other.XBrick != this.XBrick && other.YBrick != this.YBrick;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
