@@ -44,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_name1 = new System.Windows.Forms.Label();
             this.lbl_name2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -109,26 +110,27 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(163)))), ((int)(((byte)(10)))));
             this.panel9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel9.Controls.Add(this.label3);
             this.panel9.Controls.Add(this.label10);
             this.panel9.Location = new System.Drawing.Point(184, 187);
             this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(127, 128);
             this.panel9.TabIndex = 5;
-            this.panel9.Click += new System.EventHandler(this.exit_click);
+            this.panel9.Click += new System.EventHandler(this.menu_click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI Light", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(16, 60);
+            this.label10.Location = new System.Drawing.Point(19, 15);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 41);
+            this.label10.Size = new System.Drawing.Size(90, 41);
             this.label10.TabIndex = 1;
-            this.label10.Text = "Quitter";
-            this.label10.Click += new System.EventHandler(this.exit_click);
+            this.label10.Text = "Menu";
+            this.label10.Click += new System.EventHandler(this.menu_click);
             // 
             // pnlValidateLevel
             // 
@@ -214,6 +216,19 @@
             this.lbl_name2.TabIndex = 2;
             this.lbl_name2.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 56);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 41);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "principal";
+            this.label3.Click += new System.EventHandler(this.menu_click);
+            // 
             // EndGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +274,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_name2;
         private System.Windows.Forms.Label lbl_name1;
+        private System.Windows.Forms.Label label3;
 
     }
 }
