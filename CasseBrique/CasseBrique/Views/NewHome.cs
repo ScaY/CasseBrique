@@ -254,7 +254,7 @@ namespace Breakout
                     this.players.ElementAt(0).ControlGame = "mouse";
 
                 }
-                if (this.players.ElementAt(1) != null)
+                if (this.players.Count >1)
                 {
                     this.players.ElementAt(1).ControlGame = "keyboard-K/M";
 
