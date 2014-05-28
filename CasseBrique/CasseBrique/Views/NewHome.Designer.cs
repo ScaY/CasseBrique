@@ -259,7 +259,7 @@ namespace Breakout
             this.label7.Size = new System.Drawing.Size(131, 50);
             this.label7.TabIndex = 1;
             this.label7.Text = "Quitter";
-            this.label7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
+            this.label7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_Click);
             // 
             // pnlValidatePlayer
             // 
