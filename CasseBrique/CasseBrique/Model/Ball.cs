@@ -63,17 +63,21 @@ namespace Breakout.Model
         public void HandleTrajectoryBallReboundFrame(GameTime gameTime, int heightFrame, int widthFrame)
         {
             //rebond à gauche ou à droite
-            if ((Position.X < 0 || Position.X > widthFrame))
+            if ((Position.X < 0 || Position.X > widthFrame+200))
             {
                 RuleBall.HandleReboundLeftRight(this);
                 this.briksHit.Clear();
+                Console.WriteLine("ReboundFrame in Ball: " + this.briksHit.Count);
             }
             //rebond en haut
             else if (Position.Y < 0)
             {
                 RuleBall.HandleReboundUpDown(this);
                 this.briksHit.Clear();
+
+                Console.WriteLine("ReboundFrame in Ball: " + this.briksHit.Count);
             }
+
 
         }
 
@@ -85,10 +89,9 @@ namespace Breakout.Model
             if (bricksHit.Count != 0)
             {
                 RuleBall.HandleDeplacementHitBrick(model, bricksHit, this);
-                this.briksHit = bricksHit;
             }
 
-
+            this.briksHit = bricksHit;
         }
 
         public Rectangle GetBox()

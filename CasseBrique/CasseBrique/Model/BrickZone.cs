@@ -158,7 +158,7 @@ namespace Breakout.Model
         {
             if (brick != null)
             {
-                AllBricks[brick.XBrick, brick.YBrick] = null;
+                AllBricks[ brick.YBrick, brick.XBrick] = null;
             }
         }
 
