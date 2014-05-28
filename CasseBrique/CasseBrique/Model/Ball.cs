@@ -67,15 +67,12 @@ namespace Breakout.Model
             {
                 RuleBall.HandleReboundLeftRight(this);
                 this.briksHit.Clear();
-                Console.WriteLine("ReboundFrame in Ball: " + this.briksHit.Count);
             }
             //rebond en haut
             else if (Position.Y < 0)
             {
                 RuleBall.HandleReboundUpDown(this);
                 this.briksHit.Clear();
-
-                Console.WriteLine("ReboundFrame in Ball: " + this.briksHit.Count);
             }
 
 

@@ -23,8 +23,6 @@ namespace Breakout
         {
                 NewHome m = new NewHome();
                 m.ShowDialog();
-               // using (var game = new GameXNA(new Player("toto", null)))
-               // game.Run();
         }
     }
 #endif

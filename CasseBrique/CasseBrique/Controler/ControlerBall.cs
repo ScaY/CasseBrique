@@ -1,5 +1,6 @@
 ﻿using Breakout.Model;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace Breakout.Controler
 {
     public class ControlerBall : AbstractControler
     {
+        public bool gameLaunch { get; set; }
+
+        public ControlerBall()
+        {
+            gameLaunch = false;
+        }
+
         public ControlerBall(BreakoutModel model) : base(model)
         {
         }
@@ -18,9 +26,17 @@ namespace Breakout.Controler
 
         }
 
-        public void HandleBall(Ball ball, GameTime gameTime, int heightFrame, int widthFrame) 
+        public void HandleBall(Ball ball, GameTime gameTime, int heightFrame, int widthFrame, MouseState mouseState, KeyboardState keyState) 
         {
-            ball.HandleTrajectory(Model, gameTime, heightFrame, widthFrame);
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                gameLaunch = true;
+            }
+
+            if (gameLaunch)
+            {
+                ball.HandleTrajectory(Model, gameTime, heightFrame, widthFrame);
+            }
         }
     }
 }

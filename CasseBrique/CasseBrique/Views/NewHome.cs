@@ -18,6 +18,13 @@ namespace Breakout
         {
             InitializeComponent();
         }
+
+        public NewHome(Form form)
+        {
+            form.Close();
+            InitializeComponent();
+        }
+
         private List<Player> players = new List<Player>();
         private List<Level> levelsStandard = new List<Level>();
         private List<Level> levelsCustom = new List<Level>();

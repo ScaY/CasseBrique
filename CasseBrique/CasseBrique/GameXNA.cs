@@ -26,9 +26,6 @@ namespace Breakout
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public const float speedBall = 0.2f;
-        public const float speedBar = 0.5f;
-
         //dimensions de la fenêtre
         private int widthFrame;
         private int heightFrame;
@@ -44,9 +41,9 @@ namespace Breakout
 
        // SoundEffect ballReboundBar;
 
-        public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form form) : base()
+        public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form _form) : base()
         {
-            form.Close();
+            _form.Close();
             this.players = _players;
             this.level = _level;
             graphics = new GraphicsDeviceManager(this);
@@ -61,8 +58,8 @@ namespace Breakout
         /// </summary>
         protected override void Initialize()
         {
-            this.widthFrame = Window.ClientBounds.Width;
-            this.heightFrame = Window.ClientBounds.Height;
+            this.widthFrame = this.GraphicsDevice.Viewport.Width;
+            this.heightFrame = this.GraphicsDevice.Viewport.Height;
 
             if (this.level == null)
             {
@@ -162,6 +159,7 @@ namespace Breakout
         protected override void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
+            MouseState mouseState =Mouse.GetState();
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
             {
@@ -179,7 +177,7 @@ namespace Breakout
                 {
                     foreach (Ball ball in model.Balls)
                     {
-                        controlerBall.HandleBall(ball, gameTime, heightFrame, widthFrame);
+                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame, mouseState, keyboardState);
                     }
                 }
                 catch (Exception e)
@@ -200,7 +198,7 @@ namespace Breakout
 
                 foreach (Player player in model.Players)
                 {
-                    controlerBar.HandleInput(keyboardState, Mouse.GetState(), gameTime, widthFrame, player);
+                    controlerBar.HandleInput(keyboardState, mouseState, gameTime, widthFrame , player);
 
                     try
                     {
@@ -221,12 +219,11 @@ namespace Breakout
 
             previousKeyboardState = keyboardState;
 
-            if (model.IsGameWon() ||model.IsGameLost())
+            if (model.IsGameWon() || model.IsGameLost())
             {
-                bool won = model.IsGameWon();
+                model.Pause = true;
                 EndGame m = new EndGame(model);
                 m.ShowDialog();
-                this.Exit();
             }
 
             base.Update(gameTime);
