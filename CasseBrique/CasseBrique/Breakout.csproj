@@ -69,6 +69,7 @@
     <Compile Include="Events\BrickEvent.cs" />
     <Compile Include="Events\BrickLifeUpdatedEvent.cs" />
     <Compile Include="Events\Event.cs" />
+    <Compile Include="Events\GamePause.cs" />
     <Compile Include="Events\PlayerEvent.cs" />
     <Compile Include="Events\RemovedBallEvent.cs" />
     <Compile Include="Events\RemovedBonusEvent.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Views\ViewBricksZone.cs" />
     <Compile Include="Views\ShapeView.cs" />
     <Compile Include="Views\View.cs" />
+    <Compile Include="Views\ViewPause.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
@@ -197,6 +199,9 @@
     <Content Include="Content\Brique\RedBrick.png" />
     <Content Include="Content\ChromeBonus.png" />
     <Content Include="Content\IEBonus.png" />
+    <Content Include="Content\pause.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -248,7 +253,6 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

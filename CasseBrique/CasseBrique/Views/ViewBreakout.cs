@@ -1,6 +1,8 @@
 ﻿using Breakout.Bonus;
 using Breakout.Events;
 using Breakout.Model;
+using CasseBrique.Events;
+using CasseBrique.Views;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -21,9 +23,12 @@ namespace Breakout.Views
 
         public List<ViewBonus> ViewBonuses { get; set; }
 
+        public ViewPause ViewPause { get; set; }
+
         private Texture2D textureBar;
         private Texture2D textureBall;
         private Texture2D textureBonus;
+        private Texture2D texturePause;
 
         public ViewBreakout(BreakoutModel breakout)
         {
@@ -50,12 +55,14 @@ namespace Breakout.Views
                 this.ViewBonuses.Add(new ViewBonus(bonus));
             }
 
+            this.ViewPause = new ViewPause();
         }
 
-        public void LoadContent(ContentManager content) {
+        public void LoadContent(ContentManager content, int widthFrame, int heightFrame) {
             this.textureBar = content.Load<Texture2D>("barMid");
             this.textureBall = content.Load<Texture2D>("ballSmall");
             this.textureBonus = content.Load<Texture2D>("bonus");
+            this.texturePause = content.Load<Texture2D>("pause");
 
             foreach (ViewBar viewBar in this.ViewBars)
             {
@@ -73,6 +80,8 @@ namespace Breakout.Views
             }
 
             this.ViewBricksZone.LoadContent(content);
+
+            this.ViewPause.LoadContent(this.texturePause, widthFrame, heightFrame);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -93,6 +102,8 @@ namespace Breakout.Views
             {
                 viewBonus.Draw(spriteBatch, gameTime);
             }
+
+            ViewPause.Draw(spriteBatch, gameTime);
         }
 
         public void Refresh(Event e)
@@ -165,6 +176,10 @@ namespace Breakout.Views
                         i++;
                     }
                 }
+            }
+            else if (e is GamePause)
+            {
+                ViewPause.Refresh(e);
             }
         }
     }

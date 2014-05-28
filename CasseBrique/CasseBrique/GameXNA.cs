@@ -23,8 +23,8 @@ namespace Breakout
     /// </summary>
     public class GameXNA : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         //dimensions de la fenêtre
         private int widthFrame;
@@ -38,8 +38,6 @@ namespace Breakout
         private List<Player> players;
         private Level level;
         private KeyboardState previousKeyboardState;
-
-       // SoundEffect ballReboundBar;
 
         public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form _form) : base()
         {
@@ -78,7 +76,10 @@ namespace Breakout
                 foreach (Player player in this.players)
                 {
                     model.AddPlayer(player);
-                    model.AddBall(new Ball());
+                    Ball ball = new Ball();
+                    model.AddBall(ball);
+                    player.Bar.StartBall = ball;
+
                 }
             }
 
@@ -140,7 +141,7 @@ namespace Breakout
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            view.LoadContent(Content);
+            view.LoadContent(Content, widthFrame, heightFrame);
         }
 
         /// <summary>
@@ -159,7 +160,7 @@ namespace Breakout
         protected override void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            MouseState mouseState =Mouse.GetState();
+            MouseState mouseState = Mouse.GetState();
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
             {
@@ -168,7 +169,12 @@ namespace Breakout
 
             if (keyboardState.IsKeyDown(Keys.Space) && previousKeyboardState != null && previousKeyboardState.IsKeyUp(Keys.Space))
             {
-                model.Pause = !model.Pause;
+                model.SetPause(!model.Pause);
+            }
+
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                model.GameLauch = true;
             }
 
             if (!model.Pause)
@@ -177,7 +183,7 @@ namespace Breakout
                 {
                     foreach (Ball ball in model.Balls)
                     {
-                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame, mouseState, keyboardState);
+                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame);
                     }
                 }
                 catch (Exception e)
@@ -198,7 +204,7 @@ namespace Breakout
 
                 foreach (Player player in model.Players)
                 {
-                    controlerBar.HandleInput(keyboardState, mouseState, gameTime, widthFrame , player);
+                    controlerBar.HandleInput(keyboardState, mouseState, gameTime, widthFrame, player);
 
                     try
                     {
