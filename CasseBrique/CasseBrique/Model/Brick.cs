@@ -14,7 +14,7 @@ namespace Breakout.Model
 
         public AbstractBonus Bonus { get; set; }
 
-        public Brick() 
+        public Brick()
         {
             this.XBrick = 0;
             this.YBrick = 0;
@@ -58,6 +58,11 @@ namespace Breakout.Model
             {
                 return false;
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}{1}", this.XBrick, this.YBrick);
         }
     }
 }

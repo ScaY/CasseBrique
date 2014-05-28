@@ -332,5 +332,32 @@ namespace Breakout
 
         }
 
+        private void panel5_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            this.levelsStandard = Level.loadAllDefault();
+            this.levelsAllTypes = Level.loadAllDefault();
+            this.levelsCustom = CustomLevel.loadAllCustom();
+            for (int i = 0; i < this.levelsCustom.Count; i++)
+            {
+                this.levelsAllTypes.Add(this.levelsCustom.ElementAt(i));
+            }
+            this.levelSelector.Items.Clear();
+
+            for (int i = 0; i < this.levelsAllTypes.Count; i++)
+            {
+                if (i >= this.levelsStandard.Count)
+                {
+                    this.levelSelector.Items.Add(this.levelsAllTypes.ElementAt(i).LevelName + " (Niveau personnalisé)");
+
+
+                }
+                else
+                {
+                    this.levelSelector.Items.Add(this.levelsAllTypes.ElementAt(i).LevelName + " (Niveau standard)");
+
+                }
+            }
+        }
+
     }
 }

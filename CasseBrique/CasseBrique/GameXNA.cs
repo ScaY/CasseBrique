@@ -117,7 +117,7 @@ namespace Breakout
                     ball.Size.Width = 16;
                     ball.Size.Height = 16;
                     ball.Position = new Vector2(bar.Position.X + (float)(bar.Size.Width / 2) - (float)(ball.Size.Height / 2), bar.Position.Y - ball.Size.Width);
-                    ball.Speed = 0.3f;
+                    ball.Speed = 0.08f;
                     i++;
                 }
 
@@ -184,6 +184,7 @@ namespace Breakout
                 }
                 catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                 }
 
                 try

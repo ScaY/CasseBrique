@@ -2,6 +2,7 @@
 using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,17 +11,18 @@ namespace Breakout.Model
 {//ceci est un commentaire
     public class Ball : Shape
     {
-        public Brick brikHit { get; set; }
+        public Hashtable briksHit { get; set; }
 
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.08f, new Size(0, 0))
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
         {
+            this.briksHit = new Hashtable();
         }
 
         public Ball(Vector2 position, Vector2 deplacement, float speed)
             : base(position, deplacement, speed, new Size(0, 0))
         {
-
+            this.briksHit = new Hashtable();
         }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
@@ -41,6 +43,7 @@ namespace Breakout.Model
             }
 
             HandleTrajectoryBallReboundFrame(gameTime, heightFrame, widthFrame);
+
             HandleBallReboundBrick(model);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -52,7 +55,7 @@ namespace Breakout.Model
             {
                 RuleBall.HandleReboundUpDown(this);
 
-                this.brikHit = null;
+                this.briksHit.Clear();
             }
 
         }
@@ -63,31 +66,28 @@ namespace Breakout.Model
             if ((Position.X < 0 || Position.X > widthFrame))
             {
                 RuleBall.HandleReboundLeftRight(this);
-                this.brikHit = null;
+                this.briksHit.Clear();
             }
             //rebond en haut
             else if (Position.Y < 0)
             {
                 RuleBall.HandleReboundUpDown(this);
-                this.brikHit = null;
+                this.briksHit.Clear();
             }
 
         }
 
         public void HandleBallReboundBrick(BreakoutModel model)
         {
-            if (this.brikHit == null || !this.brikHit.GetBBox().Intersects(this.GetBox()))
-            {
-                BrickZone bricks = model.BrickZone;
-                List<Brick> brick = RuleBall.GetBrickHit(this, bricks);
+            BrickZone bricks = model.BrickZone;
 
-                if (!brick.Any())
-                {
-                    RuleBall.HandleDeplacementHitBrick(model, brick[0], this);
-                    this.brikHit = brick[0];
-                }
-                Console.WriteLine("End handleBallRebundBrick");
+            Hashtable bricksHit = RuleBall.GetBrickHit(this, bricks);
+            if (bricksHit.Count != 0)
+            {
+                RuleBall.HandleDeplacementHitBrick(model, bricksHit, this);
+                this.briksHit = bricksHit;
             }
+
 
         }
 
