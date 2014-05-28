@@ -158,6 +158,10 @@ namespace Breakout
 
 
                 }
+                else
+                {
+                    MessageBox.Show("Veuillez spécifier un nom d'utilisateur valide !");
+                }
 
             }
             else
@@ -165,6 +169,11 @@ namespace Breakout
                 if (textBox1.Text != null && textBox1.Text != "" && textBox1.Text.Length > 0)
                 {
                     this.players.Add(new Player(textBox1.Text));
+
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez spécifier un nom d'utilisateur valide !");
 
                 }
 
