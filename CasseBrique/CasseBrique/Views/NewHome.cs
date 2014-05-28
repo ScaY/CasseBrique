@@ -445,6 +445,7 @@ namespace Breakout
 
         private void panel10_MouseClick(object sender, MouseEventArgs e)
         {
+            this.Hide();
             using (var game = new GameXNA(this.players,this.selectedLevel, this))
                 game.Run();
 
