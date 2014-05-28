@@ -306,7 +306,7 @@ namespace Breakout
 
             for (int i = 0; i < this.levelsAllTypes.Count; i++)
             {
-                if (i > this.levelsStandard.Count)
+                if (i >= this.levelsStandard.Count)
                 {
                     this.levelSelector.Items.Add(this.levelsAllTypes.ElementAt(i).LevelName+" (Niveau personnalisé)");
 
