@@ -20,7 +20,7 @@ namespace Breakout.Model
 
         public Level()
         {
-            this.Path = "../../../levels/Default/level" + Id + ".json";
+            this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
             this.Map = null;
             this.Id = 0;
             
@@ -29,14 +29,14 @@ namespace Breakout.Model
         {
             
             this.Id = id;
-            this.Path = "../../../levels/Default/level" + Id + ".json";
+            this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
             
         }
         public Level(int id, BrickZone map ){
             
             this.Map = map;
             this.Id = id;
-            this.Path = "../../../levels/Default/level" + Id + ".json";
+            this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
         }
         
 

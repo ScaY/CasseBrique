@@ -16,6 +16,13 @@ namespace Breakout.Model
 
         public List<AbstractBonus> Bonuses { get; set; }
 
+        public BreakoutModel(Level level)
+        {
+            this.BrickZone = level.Map;
+            this.Balls = new List<Ball>();
+            this.Bonuses = new List<AbstractBonus>();
+        }
+
         public BreakoutModel(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.BrickZone = new BrickZone(nbBrickCol, nbBrickRow, startBlockBrickX, startBlockBrickY);

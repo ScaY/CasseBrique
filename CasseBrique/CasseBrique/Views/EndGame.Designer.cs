@@ -180,7 +180,7 @@
             this.pnl_2p.Controls.Add(this.lbl_name2);
             this.pnl_2p.Controls.Add(this.lbl_name1);
             this.pnl_2p.Controls.Add(this.label2);
-            this.pnl_2p.Location = new System.Drawing.Point(0, 0);
+            this.pnl_2p.Location = new System.Drawing.Point(2, 1);
             this.pnl_2p.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_2p.Name = "pnl_2p";
             this.pnl_2p.Size = new System.Drawing.Size(316, 179);
@@ -256,9 +256,9 @@
         private System.Windows.Forms.Panel pnl_players;
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.Panel pnl_2p;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_name2;
         private System.Windows.Forms.Label lbl_name1;
-        private System.Windows.Forms.Label label2;
 
     }
 }

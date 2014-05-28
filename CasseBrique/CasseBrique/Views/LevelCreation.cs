@@ -1,4 +1,5 @@
-﻿using Breakout.Model;
+﻿using Breakout.Bonus;
+using Breakout.Model;
 using CasseBrique.Model;
 using System;
 using System.Collections.Generic;
@@ -119,6 +120,11 @@ namespace CasseBrique.Views
         public void addBonusToolAction()
         {
             AddBonusSelected = true;
+            System.Windows.Forms.MessageBox.Show("My message here");
+
+
+
+
         }
 
         public void disableAllTools()
@@ -298,6 +304,7 @@ namespace CasseBrique.Views
     {
         public LevelCreation ParentForm { get; set; }
         public bool HasBonus { get; set; }
+        public AbstractBonus bonus { get; set; }
         public StaticBrick(LevelCreation f, int width, int height, int x, int y)
             : base()
         {

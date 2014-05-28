@@ -83,7 +83,10 @@ namespace Breakout.Model
             get { return widthBrick; }
             set { widthBrick = value; }
         }
-
+        public BrickZone()
+        {
+            
+        }
         public BrickZone(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
         {
             this.AllBricks = new Brick[nbBrickRow, nbBrickCol];
