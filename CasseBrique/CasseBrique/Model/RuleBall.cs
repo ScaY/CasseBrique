@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Breakout.Model
-{
+{//ceci est un commentaire
     public static class RuleBall
     {
         public static List<Brick> GetBrickHit(Ball ball, BrickZone bricks)

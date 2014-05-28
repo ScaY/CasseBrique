@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 
 namespace Breakout.Model
-{
+{//ceci est un commentaire
     public class Ball : Shape
     {
         public Brick brikHit { get; set; }
