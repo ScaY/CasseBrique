@@ -231,7 +231,7 @@
             this.panel1.Controls.Add(this.pnl2Players);
             this.panel1.Controls.Add(this.pnlQuite);
             this.panel1.Controls.Add(this.pnlAbou);
-            this.panel1.Location = new System.Drawing.Point(82, 160);
+            this.panel1.Location = new System.Drawing.Point(82, 159);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(418, 324);
             this.panel1.TabIndex = 8;
@@ -279,6 +279,8 @@
             this.label6.Size = new System.Drawing.Size(106, 50);
             this.label6.TabIndex = 0;
             this.label6.Text = "Jouer";
+            this.label6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
+
             // 
             // panel4
             // 
@@ -386,6 +388,7 @@
             this.label9.Size = new System.Drawing.Size(106, 50);
             this.label9.TabIndex = 0;
             this.label9.Text = "Jouer";
+            this.label9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlValidateLevel_MouseClick);
             // 
             // panel9
             // 
@@ -408,6 +411,7 @@
             this.label10.Size = new System.Drawing.Size(131, 50);
             this.label10.TabIndex = 1;
             this.label10.Text = "Quitter";
+            this.label10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_MouseClick);
             // 
             // pnlAb
             // 
@@ -498,9 +502,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(582, 560);
             this.ControlBox = false;
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.bigPnlLevel);
             this.Controls.Add(this.bigPnlOnePlayer);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlRightArrow);
             this.Controls.Add(this.pnlAb);
             this.Controls.Add(this.pnlLeftArrow);
