@@ -1,64 +1,60 @@
 ﻿using Breakout.Model;
 using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace Breakout.Model
 {
     public static class RuleBall
     {
-        public static Brick GetBrickHit(Ball ball, BrickZone bricks)
+        public static List<Brick> GetBrickHit(Ball ball, BrickZone bricks)
         {
-            Brick result = null;
+            List<Brick> result = new List<Brick>();
+            Brick brickFound = null;
             Vector2 positionBall = ball.Position;
+
+
             //la balle et dans la zone de brique
             if (CheckBallEnterBlockBrick(ball, bricks))
             {
-                // Vector2 centerBall = ball.GetCenterBall();
                 int width = ball.Size.Width;
                 int height = ball.Size.Height;
 
                 //teste le coin en haut à gauche
                 int brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 int brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
-                result = bricks.GetBrick(brickX, brickY);
-                if (result != null && !result.Equals(ball.brikHit))
-                {
-                    return result;
-                }
+                brickFound = bricks.GetBrick(brickX, brickY);
+                HandleBrickHitFound(brickFound, result, ball);
 
                 //teste le coin en haut à droite
                 brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
-                result = bricks.GetBrick(brickX, brickY);
-                if (result != null && !result.Equals(ball.brikHit))
-                {
-                    return result;
-                }
-
+                brickFound = bricks.GetBrick(brickX, brickY);
+                HandleBrickHitFound(brickFound, result, ball);
 
                 //teste le coin en bas à droite
                 brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y + height - bricks.StartBlockBrickY) / bricks.HeightBrick);
-                result = bricks.GetBrick(brickX, brickY);
-                if (result != null && !result.Equals(ball.brikHit))
-                {
-                    return result;
-                }
-
+                brickFound = bricks.GetBrick(brickX, brickY);
+                HandleBrickHitFound(brickFound, result, ball);
 
                 //teste le coin en bas à gauche
                 brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y + height + bricks.StartBlockBrickY) / bricks.HeightBrick);
-                result = bricks.GetBrick(brickX, brickY);
-                if (result != null && !result.Equals(ball.brikHit))
-                {
-                    return result;
-                }
+                brickFound = bricks.GetBrick(brickX, brickY);
+                HandleBrickHitFound(brickFound, result, ball);
             }
 
             return result;
         }
 
+        public static void HandleBrickHitFound(Brick brickHit, List<Brick> listBrick, Ball ball)
+        {
+            if (brickHit != null && !listBrick.Equals(ball.brikHit))
+            {
+                listBrick.Add(brickHit);
+            }
+        }
 
         public static bool CheckBallEnterBlockBrick(Ball ball, BrickZone bricks)
         {
@@ -70,7 +66,7 @@ namespace Breakout.Model
 
         public static void HandleDeplacementHitBrick(BreakoutModel model, Brick brick, Ball ball)
         {
-            Console.WriteLine("Handle hit brick brick: "+brick.XBrick+"   "+brick.YBrick);
+            Console.WriteLine("Handle hit brick brick: " + brick.XBrick + "   " + brick.YBrick);
             Vector2 centerBall = ball.GetCenterBall();
 
             int widthBrick = brick.Size.Width;
