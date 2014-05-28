@@ -148,7 +148,7 @@ namespace Breakout.Model
 
             foreach (Brick brickHit in bricksHit.Values)
             {
-                //model.UpdateBrickLife(brickHit, brickHit.Life - 1);
+                model.UpdateBrickLife(brickHit, brickHit.Life - 1);
             }
 
             //si la brique est détruite et contient un bonus on ajoute le bonus
