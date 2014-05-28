@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using CasseBrique.Model;
 using CasseBrique.Views;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,10 @@ namespace Breakout
             InitializeComponent();
         }
         private List<Player> players = new List<Player>();
-        private List<Level> levels = new List<Level>();
+        private List<Level> levelsStandard = new List<Level>();
+        private List<Level> levelsCustom = new List<Level>();
+        private List<Level> levelsAllTypes = new List<Level>();
+
         private Level selectedLevel = null;
         private bool isMultiPlayer = false;
         private void NewHome_Load(object sender, EventArgs e)
@@ -213,7 +217,7 @@ namespace Breakout
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.selectedLevel = this.levels.ElementAt(this.levelSelector.SelectedIndex);
+            this.selectedLevel = this.levelsAllTypes.ElementAt(this.levelSelector.SelectedIndex);
         }
 
         private void pnlValidateOnePlayer_MouseClick(object sender, MouseEventArgs e)
@@ -233,7 +237,7 @@ namespace Breakout
 
         private void pnlValidateLevel_MouseClick(object sender, MouseEventArgs e)
         {
-            if (this.levels != null)
+            if (this.levelsStandard != null)
             {
                 this.Hide();
                 using (var game = new GameXNA(this.players,this.selectedLevel, this))
@@ -291,12 +295,18 @@ namespace Breakout
 
         private void levelSelector_VisibleChanged(object sender, EventArgs e)
         {
-            this.levels = Level.loadAllDefault();
-            this.levelSelector.Items.Clear();
-
-            for (int i = 0; i < this.levels.Count; i++)
+            this.levelsStandard = Level.loadAllDefault();
+            this.levelsAllTypes = Level.loadAllDefault();
+            this.levelsCustom = CustomLevel.loadAllCustom();
+            for (int i = 0; i < this.levelsCustom.Count; i++)
             {
-                this.levelSelector.Items.Add(this.levels.ElementAt(i).Id + " | " + this.levels.ElementAt(i).LevelName);
+                this.levelsAllTypes.Add(this.levelsCustom.ElementAt(i));
+            }
+                this.levelSelector.Items.Clear();
+
+            for (int i = 0; i < this.levelsAllTypes.Count; i++)
+            {
+                this.levelSelector.Items.Add(this.levelsAllTypes.ElementAt(i).Id + " | " + this.levelsAllTypes.ElementAt(i).LevelName);
             }
 
         }
