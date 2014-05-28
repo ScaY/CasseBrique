@@ -711,6 +711,8 @@ namespace Breakout
             this.finalPlayBtn.Size = new System.Drawing.Size(57, 28);
             this.finalPlayBtn.TabIndex = 0;
             this.finalPlayBtn.Text = "Jouer";
+            this.finalPlayBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel10_MouseClick);
+
             // 
             // NewHome
             // 
