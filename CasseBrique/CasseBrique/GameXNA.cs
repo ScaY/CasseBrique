@@ -61,12 +61,20 @@ namespace Breakout
         /// </summary>
         protected override void Initialize()
         {
-            widthFrame = Window.ClientBounds.Width;
-            heightFrame = Window.ClientBounds.Height;
+            this.widthFrame = Window.ClientBounds.Width;
+            this.heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(level);
-            view = new ViewBreakout(model);
-            model.AddView(view);
+            if (this.level == null)
+            {
+                this.model = new BreakoutModel(5, 5, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
+            }
+            else
+            {
+                this.model = new BreakoutModel(level);
+            }
+
+            this.view = new ViewBreakout(model);
+            this.model.AddView(view);
 
             if (this.players != null)
             {
