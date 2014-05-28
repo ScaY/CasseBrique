@@ -65,7 +65,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(0, 0, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
             view = new ViewBreakout(model);
             model.AddView(view);
 
@@ -213,14 +213,12 @@ namespace Breakout
 
             previousKeyboardState = keyboardState;
 
-            if (model.IsGameWon())
+            if (model.IsGameWon() ||model.IsGameLost())
             {
-
-            }
-            else if (model.IsGameLost())
-            {
-                EndGame m = new EndGame();
-                
+                bool won = model.IsGameWon();
+                EndGame m = new EndGame(model);
+                m.ShowDialog();
+                this.Exit();
             }
 
             base.Update(gameTime);
