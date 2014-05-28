@@ -90,11 +90,11 @@ namespace Breakout.Model
             this.NbBrickCol = nbBrickCol;
             this.NbBrickRow = nbBrickRow;
 
-            for (int i = 0; i < nbBrickRow; i++)
+            for (int y = 0; y < nbBrickRow; y++)
             {
-                for (int j = 0; j < nbBrickCol; j++)
+                for (int x = 0; x < nbBrickCol; x++)
                 {
-                    AddBrick(new Brick(), i, j);
+                    AddBrick(new Brick(), x, y);
                 }
             }
 
@@ -109,11 +109,11 @@ namespace Breakout.Model
                 this.HeightBrick = size.Height;
                 this.WidthBrick = size.Width;
 
-                for (int i = 0; i < this.NbBrickRow; i++)
+                for (int y = 0; y < nbBrickRow; y++)
                 {
-                    for (int j = 0; j < this.NbBrickCol; j++)
+                    for (int x = 0; x < nbBrickCol; x++)
                     {
-                        AllBricks[i, j].Size = size;
+                        AllBricks[y, x].Size = size;
                     }
                 }
 
@@ -126,11 +126,11 @@ namespace Breakout.Model
         {
             if (x >= 0 && y >= 0 && x < this.NbBrickCol && y < this.NbBrickRow)
             {
-                AllBricks[x, y] = brick;
+                AllBricks[y, x] = brick;
                 brick.XBrick = x;
                 brick.YBrick = y;
                 brick.Life = 3;
-                brick.Bonus = new BarSizeBonus(50, 5);
+                brick.Bonus = new AddBallBonus(0.05f, 5);
                 brick.Bonus.Speed = 1f;
                 brick.Bonus.Position = brick.Position;
                 brick.Bonus.Deplacement = Vector2.Normalize(Vector2.UnitY);
@@ -148,23 +148,23 @@ namespace Breakout.Model
 
         public void InitializePositionBrick()
         {
-            for (int i = 0; i < this.NbBrickRow; i++)
+            for (int y = 0; y < nbBrickRow; y++)
             {
-                for (int j = 0; j < this.NbBrickCol; j++)
+                for (int x = 0; x < nbBrickCol; x++)
                 {
-                    AllBricks[i, j].Position = new Vector2(StartBlockBrickX + i * WidthBrick, StartBlockBrickY + j * HeightBrick);
+                    AllBricks[y, x].Position = new Vector2(StartBlockBrickX + x * WidthBrick, StartBlockBrickY + y * HeightBrick);
                 }
             }
 
         }
 
-        public Brick GetBrick(int i , int j)
+        public Brick GetBrick(int x , int y)
         {
-            if (i < 0 || j < 0 || i >= NbBrickRow || j >= NbBrickCol)
+            if (x < 0 || y < 0 || y >= NbBrickRow || x>= NbBrickCol)
             {
                 return null;
             }
-            return AllBricks[i, j];
+            return AllBricks[y, x];
         }
 
         public Rectangle GetBox()

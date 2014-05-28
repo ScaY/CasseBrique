@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Breakout.Bonus
 {
-    public abstract class BarBonus : AbstractBonus
+    public abstract class BallBonus : AbstractBonus
     {
-        public BarBonus(float modifier, int duration) : base(modifier, duration)
+        public BallBonus(float modifier, int duration) : base(modifier, duration)
         {
         }
     }

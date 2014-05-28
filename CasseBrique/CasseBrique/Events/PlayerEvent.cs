@@ -6,7 +6,7 @@ using Breakout.Model;
 
 namespace Breakout.Events
 {
-    public class PlayerEvent : Event
+    public abstract class PlayerEvent : Event
     {
         public Player Player { get; set; }
 

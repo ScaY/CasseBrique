@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Breakout.Events
 {
-    public class BallEvent : Event
+    public abstract class BallEvent : Event
     {
         public Ball Ball { get; set; }
 

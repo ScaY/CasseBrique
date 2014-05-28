@@ -6,19 +6,24 @@ using System.Text;
 
 namespace Breakout.Bonus
 {
-    public class BarSizeBonus : BarBonus
+    public class BallSpeedBonus : BallBonus
     {
         public override void ApplyBonus(Model.BreakoutModel model, Player player)
         {
-            player.Bar.Size.Width += (int)Modifier;
+            foreach(Ball ball in model.Balls) {
+                ball.Speed += Modifier;
+            }
         }
 
         public override void RemoveBonus(BreakoutModel model, Player player)
         {
-            player.Bar.Size.Width -= (int)Modifier;
+            foreach (Ball ball in model.Balls)
+            {
+                ball.Speed -= Modifier;
+            }
         }
 
-        public BarSizeBonus(float modifier, int duration) : base(modifier, duration)
+        public BallSpeedBonus(float modifier, int duration) : base(modifier, duration)
         {
         }
     }

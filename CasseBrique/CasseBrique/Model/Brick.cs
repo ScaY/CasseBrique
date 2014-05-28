@@ -29,13 +29,35 @@ namespace Breakout.Model
             this.Life = life;
         }
 
-        public void DecreaseLife()
+        public Rectangle GetBBox()
         {
-
+            return new Rectangle((int)this.Position.X, (int)this.Position.Y, (int)this.Size.Width, (int)this.Size.Height);
         }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if(obj == this){
+                return true;
+            }
+
+            if (obj is Brick)
+            {
+                Brick other = (Brick)obj;
+                return other.XBrick != this.XBrick && other.YBrick != this.YBrick;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

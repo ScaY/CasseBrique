@@ -41,9 +41,10 @@ namespace Breakout
         private List<Player> players;
         private KeyboardState previousKeyboardState;
 
-       // SoundEffect ballReboundBar;
+        // SoundEffect ballReboundBar;
 
-        public GameXNA(List<Player> _players) : base()
+        public GameXNA(List<Player> _players)
+            : base()
         {
             if (_players != null)
             {
@@ -64,7 +65,7 @@ namespace Breakout
             widthFrame = Window.ClientBounds.Width;
             heightFrame = Window.ClientBounds.Height;
 
-            model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
+            model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
             view = new ViewBreakout(model, Content);
             model.AddView(view);
 
@@ -73,12 +74,11 @@ namespace Breakout
                 foreach (Player player in this.players)
                 {
                     model.AddPlayer(player);
+                    model.AddBall(new Ball());
                 }
             }
 
-            model.AddBall(new Ball());
-
-            controlerBar = new ControlerBarMouse(model);
+            controlerBar = new ControlerBarKeyboard(model);
             controlerBall = new ControlerBall(model);
             controlerBonus = new ControlerBonus(model);
 
@@ -96,22 +96,34 @@ namespace Breakout
 
             try
             {
-                    Player player = model.Players[0];
-                    player.Bar.Position = new Vector2(50, 450);
+                Player player = model.Players[0];
+                player.Bar.Position = new Vector2(50, heightFrame - 20);
+                player.Bar.Size.Width = 99;
+                player.Bar.Size.Height = 7;
+                player.MoveLeftKey = Keys.Q;
+                player.MoveRightKey = Keys.D;
+
+                if (model.Players.Count > 1)
+                {
+                    player = model.Players[1];
+                    player.Bar.Position = new Vector2(widthFrame - 50 - 99, heightFrame - 20);
                     player.Bar.Size.Width = 99;
                     player.Bar.Size.Height = 7;
+                    player.MoveLeftKey = Keys.K;
+                    player.MoveRightKey = Keys.M;
+                }
 
-                    /*player = model.Players[1];
-                    player.Bar.Position = new Vector2(50, 50 );
-                    player.Bar.Size.Width = 99;
-                    player.Bar.Size.Height = 7;*/
-
+                //on considère ici qu'il y a une balle par joueur
+                int i = 0;
                 foreach (Ball ball in model.Balls)
                 {
-                    //chargement de l'image de la balle du jeu
-                    ball.Position = new Vector2((float)(widthFrame - 99) / 2 + 100, heightFrame * 0.9f - 7);
+                    Bar bar = model.Players[i].Bar;
+
                     ball.Size.Width = 16;
                     ball.Size.Height = 16;
+                    ball.Position = new Vector2(bar.Position.X + (float)(bar.Size.Width / 2) - (float)(ball.Size.Height / 2) + 458, bar.Position.Y - ball.Size.Width);
+                    ball.Speed = 0.08f;
+                    i++;
                 }
 
                 foreach (AbstractBonus bonus in model.Bonuses)
@@ -211,7 +223,7 @@ namespace Breakout
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
             view.Draw(spriteBatch, gameTime);
