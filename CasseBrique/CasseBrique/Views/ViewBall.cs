@@ -7,7 +7,7 @@ namespace Breakout.Views
 {
     public class ViewBall : ShapeView
     {
-        public ViewBall(Ball ball, Texture2D texture) : base(ball, texture)
+        public ViewBall(Ball ball) : base(ball)
         {  
         }
     }

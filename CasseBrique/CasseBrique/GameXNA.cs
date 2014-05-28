@@ -43,8 +43,9 @@ namespace Breakout
 
        // SoundEffect ballReboundBar;
 
-        public GameXNA(List<Player> _players) : base()
+        public GameXNA(List<Player> _players, System.Windows.Forms.Form form) : base()
         {
+            form.Close();
             if (_players != null)
             {
                 this.players = _players;
@@ -65,7 +66,7 @@ namespace Breakout
             heightFrame = Window.ClientBounds.Height;
 
             model = new BreakoutModel(5, 5, (float)(0.2*widthFrame), (float)(0.2 * heightFrame));
-            view = new ViewBreakout(model, Content);
+            view = new ViewBreakout(model);
             model.AddView(view);
 
             if (this.players != null)
@@ -80,18 +81,6 @@ namespace Breakout
             controlerBar = new ControlerBarKeyboard(model);
             controlerBall = new ControlerBall(model);
             controlerBonus = new ControlerBonus(model);
-
-            base.Initialize();
-        }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             try
             {
@@ -127,8 +116,8 @@ namespace Breakout
 
                 foreach (AbstractBonus bonus in model.Bonuses)
                 {
-                    bonus.Size.Width = view.ViewBonuses[0].Texture.Width;
-                    bonus.Size.Height = view.ViewBonuses[0].Texture.Height;
+                    bonus.Size.Width = 32;
+                    bonus.Size.Height = 32;
                 }
             }
             catch (Exception e)
@@ -136,6 +125,18 @@ namespace Breakout
                 Console.WriteLine("Exception in CasseBrique LoadContent: " + e.Message);
             }
 
+            base.Initialize();
+        }
+
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            view.LoadContent(Content);
         }
 
         /// <summary>
@@ -211,6 +212,16 @@ namespace Breakout
             }
 
             previousKeyboardState = keyboardState;
+
+            if (model.IsGameWon())
+            {
+
+            }
+            else if (model.IsGameLost())
+            {
+                EndGame m = new EndGame();
+                
+            }
 
             base.Update(gameTime);
         }

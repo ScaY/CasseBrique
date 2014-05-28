@@ -22,7 +22,7 @@ namespace Breakout
         static void Main()
         {
                 NewHome m = new NewHome();
-                Application.Run(m);
+                m.ShowDialog();
                // using (var game = new GameXNA(new Player("toto", null)))
                // game.Run();
             
