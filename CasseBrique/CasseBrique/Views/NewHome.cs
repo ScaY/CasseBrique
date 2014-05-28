@@ -228,8 +228,8 @@ namespace Breakout
 
         private void pnlValidateLevel_MouseClick(object sender, MouseEventArgs e)
         {
+            this.Hide();
             using (var game = new GameXNA(this.players))
-
                 game.Run();
 
 
