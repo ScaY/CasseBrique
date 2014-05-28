@@ -26,5 +26,8 @@ namespace Breakout.Bonus
         public BallSpeedBonus(float modifier, int duration) : base(modifier, duration)
         {
         }
+        public BallSpeedBonus()
+        {
+        }
     }
 }

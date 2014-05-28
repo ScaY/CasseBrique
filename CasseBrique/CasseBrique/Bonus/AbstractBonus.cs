@@ -7,13 +7,19 @@ using System.Text;
 
 namespace Breakout.Bonus
 {
-    public abstract class AbstractBonus : Shape
+    public class AbstractBonus : Shape
     {
         public float Modifier { get; set; }
 
         public TimeSpan StartTime { get; set; }
 
         public int Duration { get; set; }
+
+        public AbstractBonus(): base()
+        {
+
+        }
+
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
         {
@@ -23,8 +29,14 @@ namespace Breakout.Bonus
             this.Position = new Vector2(x, y);
         }
 
-        public abstract void ApplyBonus(BreakoutModel model, Player player);
-        public abstract void RemoveBonus(BreakoutModel model, Player player);
+        public virtual void ApplyBonus(BreakoutModel model, Player player)
+        {
+
+        }
+        public virtual void RemoveBonus(BreakoutModel model, Player player)
+        {
+
+        }
 
         public AbstractBonus(float modifier, int duration)
         {

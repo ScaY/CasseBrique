@@ -93,7 +93,7 @@ namespace Breakout.Views
             {
                 BrickLifeUpdatedEvent sourceEvent = (BrickLifeUpdatedEvent)e;
                 Brick brick = sourceEvent.Brick;
-                ViewBrick viewBrick = this.ViewBricks[brick.XBrick, brick.YBrick];
+                ViewBrick viewBrick = this.ViewBricks[brick.YBrick, brick.XBrick];
                 int lifeBrick = brick.Life;
                 switch (lifeBrick)
                 {

@@ -11,6 +11,7 @@ namespace Breakout.Bonus
     {
         private Ball ball;
 
+
         public override void ApplyBonus(Model.BreakoutModel model, Player player)
         {
             Bar bar = player.Bar;
@@ -27,7 +28,9 @@ namespace Breakout.Bonus
         {
             model.RemoveBall(ball);
         }
-
+        public AddBallBonus()
+        {
+        }
         public AddBallBonus(float modifier, int duration) : base(modifier, duration)
         {
         }
