@@ -279,6 +279,8 @@
             this.label6.Size = new System.Drawing.Size(106, 50);
             this.label6.TabIndex = 0;
             this.label6.Text = "Jouer";
+            this.label6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
+
             // 
             // panel4
             // 

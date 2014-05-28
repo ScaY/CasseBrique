@@ -130,11 +130,11 @@
     <Compile Include="Views\PlayerRegister.Designer.cs">
       <DependentUpon>PlayerRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\testCreationLevel.cs">
+    <Compile Include="Views\LevelCreation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\testCreationLevel.Designer.cs">
-      <DependentUpon>testCreationLevel.cs</DependentUpon>
+    <Compile Include="Views\LevelCreation.Designer.cs">
+      <DependentUpon>LevelCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewBall.cs" />
     <Compile Include="Views\ViewBar.cs" />
@@ -216,8 +216,8 @@
     <EmbeddedResource Include="Views\PlayerRegister.resx">
       <DependentUpon>PlayerRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\testCreationLevel.resx">
-      <DependentUpon>testCreationLevel.cs</DependentUpon>
+    <EmbeddedResource Include="Views\LevelCreation.resx">
+      <DependentUpon>LevelCreation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

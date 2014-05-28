@@ -80,11 +80,10 @@ namespace Breakout.Model
             {
                 BrickZone bricks = model.BrickZone;
                 Brick brick = RuleBall.GetBrickHit(this, bricks);
-
+                Console.WriteLine("Check brick hit !");
                 if (brick != null)
                 {
                     RuleBall.HandleDeplacementHitBrick(model, brick, this);
-
                     this.brikHit = brick;
                 }
             }
