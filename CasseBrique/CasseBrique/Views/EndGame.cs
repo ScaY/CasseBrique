@@ -39,16 +39,18 @@ namespace Breakout.Views
 
         private void playAgain_click(object sender, EventArgs e)
         {
+            this.Hide();
+
             using (var game = new GameXNA(Model.Players, Model.Level, this))
                 game.Run();
-            this.Close();
         }
 
         private void menu_click(object sender, EventArgs e)
         {
-            NewHome m = new NewHome();
+            this.Hide();
+
+            NewHome m = new NewHome(this);
             m.ShowDialog();
-            this.Close();
         }
 
         private void label2_Click(object sender, EventArgs e)
