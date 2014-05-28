@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using System;
 
 namespace Breakout.Model
-{
+{{//ceci est un commentaire
     public static class RuleBall
     {
         public static Brick GetBrickHit(Ball ball, BrickZone bricks)
