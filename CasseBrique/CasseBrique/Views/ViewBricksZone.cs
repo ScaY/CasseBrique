@@ -53,16 +53,19 @@ namespace Breakout.Views
             {
                 for (int j = 0; j < this.BrickZone.NbBrickCol; j++)
                 {
-                    switch (((Brick)this.ViewBricks[i, j].Shape).Life)
+                    if (this.ViewBricks[i, j] != null && this.ViewBricks[i, j].Shape != null)
                     {
-                        case 0: this.ViewBricks[i, j].Texture = ViewBrick0Life;
-                            break;
-                        case 1: this.ViewBricks[i, j].Texture = ViewBrick1Life;
-                            break;
-                        case 2: this.ViewBricks[i, j].Texture = ViewBrick2Life;
-                            break;
-                        case 3: this.ViewBricks[i, j].Texture = ViewBrick3Life;
-                            break;
+                        switch (((Brick)this.ViewBricks[i, j].Shape).Life)
+                        {
+                            case 0: this.ViewBricks[i, j].Texture = ViewBrick0Life;
+                                break;
+                            case 1: this.ViewBricks[i, j].Texture = ViewBrick1Life;
+                                break;
+                            case 2: this.ViewBricks[i, j].Texture = ViewBrick2Life;
+                                break;
+                            case 3: this.ViewBricks[i, j].Texture = ViewBrick3Life;
+                                break;
+                        }
                     }
                 }
             }

@@ -126,7 +126,10 @@ namespace Breakout.Model
                 {
                     for (int x = 0; x < nbBrickCol; x++)
                     {
-                        AllBricks[y, x].Size = size;
+                        if (AllBricks[y, x] != null)
+                        {
+                            AllBricks[y, x].Size = size;
+                        }
                     }
                 }
 
@@ -165,7 +168,10 @@ namespace Breakout.Model
             {
                 for (int x = 0; x < nbBrickCol; x++)
                 {
-                    AllBricks[y, x].Position = new Vector2(StartBlockBrickX + x * WidthBrick, StartBlockBrickY + y * HeightBrick);
+                    if (AllBricks[y, x] != null)
+                    {
+                        AllBricks[y, x].Position = new Vector2(StartBlockBrickX + x * WidthBrick, StartBlockBrickY + y * HeightBrick);
+                    }
                 }
             }
 
