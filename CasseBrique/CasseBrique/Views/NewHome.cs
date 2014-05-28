@@ -306,7 +306,17 @@ namespace Breakout
 
             for (int i = 0; i < this.levelsAllTypes.Count; i++)
             {
-                this.levelSelector.Items.Add(this.levelsAllTypes.ElementAt(i).Id + " | " + this.levelsAllTypes.ElementAt(i).LevelName);
+                if (i > this.levelsStandard.Count)
+                {
+                    this.levelSelector.Items.Add(this.levelsAllTypes.ElementAt(i).LevelName+" (Niveau personnalisé)");
+
+
+                }
+                else
+                {
+                    this.levelSelector.Items.Add(this.levelsAllTypes.ElementAt(i).LevelName + " (Niveau standard)");
+
+                }
             }
 
         }
