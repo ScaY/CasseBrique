@@ -1,4 +1,6 @@
-﻿namespace Breakout
+﻿using Breakout.Model;
+using System.Collections.Generic;
+namespace Breakout
 {
     partial class NewHome
     {
@@ -280,7 +282,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Jouer";
             this.label6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
-
             // 
             // panel4
             // 
@@ -354,7 +355,13 @@
             this.levelSelector.Name = "levelSelector";
             this.levelSelector.Size = new System.Drawing.Size(200, 24);
             this.levelSelector.TabIndex = 1;
+            this.levelSelector.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.levelSelector_DrawItem);
             this.levelSelector.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.levelSelector.VisibleChanged += new System.EventHandler(this.levelSelector_VisibleChanged);
+            this.levelSelector.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.levelSelector_Validating);
+            this.levelSelector.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelSelector_MouseClick);
+            this.levelSelector.Validating += new System.ComponentModel.CancelEventHandler(this.levelSelector_Validating);
+            this.levelSelector.Validated += new System.EventHandler(this.levelSelector_Validating);
             // 
             // label8
             // 

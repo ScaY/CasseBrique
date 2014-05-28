@@ -39,6 +39,7 @@ namespace Breakout
         private ControlerBall controlerBall;
         private ControlerBonus controlerBonus;
         private List<Player> players;
+        private Level level;
         private KeyboardState previousKeyboardState;
 
         // SoundEffect ballReboundBar;
@@ -50,6 +51,21 @@ namespace Breakout
             {
                 this.players = _players;
             }
+            graphics = new GraphicsDeviceManager(this);
+            Content.RootDirectory = "Content";
+        }
+        public GameXNA(List<Player> _players,Level _level)
+            : base()
+        {
+            if (_players != null)
+            {
+                this.players = _players;
+            }
+            if (_level != null)
+            {
+                this.level = _level;
+            }
+
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
