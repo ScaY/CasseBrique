@@ -72,7 +72,7 @@ namespace CasseBrique.Views
                             int i = (int)Math.Floor((double)currentB.Bounds.X / BrickWidth);
                             int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
 
-                            bricks[i, j] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124, 51));
+                            bricks[j, i] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124, 51));
 
                         }
                     }
@@ -120,10 +120,7 @@ namespace CasseBrique.Views
         public void addBonusToolAction()
         {
             AddBonusSelected = true;
-            System.Windows.Forms.MessageBox.Show("My message here");
-
-
-
+            
 
         }
 
@@ -342,7 +339,26 @@ namespace CasseBrique.Views
         public void setBonus(bool bonus) {
             if (bonus)
             {
-                this.BackColor = Color.FromArgb(80, 150, 1);
+                
+                double randomBonus =Math.Floor(new  Random().NextDouble()*4);
+
+                if (randomBonus == 0)
+                {
+                    this.bonus = new BallSpeedBonus((float)0.05, 15);
+                    this.BackColor = Color.FromArgb(0, 0, 0);
+                }
+                else if (randomBonus == 1)
+                {
+                    this.bonus = new BarSizeBonus((float)0.05, 15);
+                    this.BackColor = Color.FromArgb(80, 80, 80);
+                }
+                else if(randomBonus==2)
+                {
+                    this.bonus = new AddBallBonus((float)0.05, 15);
+                    this.BackColor = Color.FromArgb(120, 120, 120);
+                }
+                ParentForm.ErrorConsole.AppendText(randomBonus.ToString()+"\r\n");
+
                 HasBonus = true;
             }
             else
