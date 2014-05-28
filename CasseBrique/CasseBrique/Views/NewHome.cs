@@ -409,11 +409,11 @@ namespace Breakout
 
         private void lblPlayer1name_Paint(object sender, PaintEventArgs e)
         {
-            if (this.players.ElementAt(0) != null)
+            if (this.players.Count >= 1)
             {
                 this.lblPlayer1name.Text = this.players.ElementAt(0).Name;
             }
-            if (this.players.ElementAt(1) != null)
+            if (this.players.Count > 1)
             {
 
                 this.player2Config.Show();
