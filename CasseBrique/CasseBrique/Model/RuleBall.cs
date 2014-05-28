@@ -40,7 +40,7 @@ namespace Breakout.Model
 
                 //teste le coin en bas à gauche
                 brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
-                brickY = (int)((positionBall.Y + height + bricks.StartBlockBrickY) / bricks.HeightBrick);
+                brickY = (int)((positionBall.Y + height - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 brickHit = bricks.GetBrick(brickX, brickY);
                 HandleBricksHit(ball, listBrick, brickHit);
 
@@ -55,7 +55,6 @@ namespace Breakout.Model
             {
                 if (ball.briksHit.Count == 0)
                 {
-                    String  result = brickHit.ToString();
                     if (!listBrick.ContainsKey(brickHit.ToString()))
                     {
                         listBrick.Add(brickHit.ToString(), brickHit);
@@ -64,7 +63,6 @@ namespace Breakout.Model
                 }
                 else
                 {
-
                     foreach (Brick brickHited in ball.briksHit.Values)
                     {
                         if (!brickHit.Equals(brickHited))
@@ -148,8 +146,11 @@ namespace Breakout.Model
 
             foreach (Brick brickHit in bricksHit.Values)
             {
+                Console.WriteLine("BrickHit: " + brickHit.XBrick + "   " + brickHit.YBrick);
                 model.UpdateBrickLife(brickHit, brickHit.Life - 1);
             }
+
+            Console.WriteLine("...........");
 
             //si la brique est détruite et contient un bonus on ajoute le bonus
             foreach (Brick brickHit in bricksHit.Values)
@@ -160,8 +161,6 @@ namespace Breakout.Model
                     brickHit.Bonus.Position = brickHit.Position;
                 }
             }
-
-
         }
 
         public static void HandleReboundLeftRight(Ball ball)
