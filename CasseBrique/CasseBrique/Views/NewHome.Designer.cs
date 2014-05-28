@@ -1,4 +1,6 @@
-﻿namespace Breakout
+﻿using Breakout.Model;
+using System.Collections.Generic;
+namespace Breakout
 {
     partial class NewHome
     {
@@ -52,6 +54,8 @@
             this.bigPnlOnePlayer = new System.Windows.Forms.Panel();
             this.bigPnlLevel = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.levelSelector = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pnlValidateLevel = new System.Windows.Forms.Panel();
@@ -77,6 +81,7 @@
             this.bigPnlOnePlayer.SuspendLayout();
             this.bigPnlLevel.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.pnlValidateLevel.SuspendLayout();
             this.panel9.SuspendLayout();
             this.pnlAb.SuspendLayout();
@@ -257,7 +262,7 @@
             this.label7.Size = new System.Drawing.Size(131, 50);
             this.label7.TabIndex = 1;
             this.label7.Text = "Quitter";
-            this.label7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
+            this.label7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_Click);
             // 
             // pnlValidatePlayer
             // 
@@ -280,7 +285,6 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Jouer";
             this.label6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick);
-
             // 
             // panel4
             // 
@@ -340,12 +344,36 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.panel7.Controls.Add(this.panel3);
             this.panel7.Controls.Add(this.levelSelector);
             this.panel7.Controls.Add(this.label8);
             this.panel7.Location = new System.Drawing.Point(0, -5);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(421, 165);
             this.panel7.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Location = new System.Drawing.Point(168, 97);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 43);
+            this.panel3.TabIndex = 2;
+            this.panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(28, 7);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(150, 28);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Créer un niveau ";
+            this.label17.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
+            this.label17.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label17_MouseMove);
             // 
             // levelSelector
             // 
@@ -354,7 +382,13 @@
             this.levelSelector.Name = "levelSelector";
             this.levelSelector.Size = new System.Drawing.Size(200, 24);
             this.levelSelector.TabIndex = 1;
+            this.levelSelector.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.levelSelector_DrawItem);
             this.levelSelector.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.levelSelector.VisibleChanged += new System.EventHandler(this.levelSelector_VisibleChanged);
+            this.levelSelector.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.levelSelector_Validating);
+            this.levelSelector.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelSelector_MouseClick);
+            this.levelSelector.Validating += new System.ComponentModel.CancelEventHandler(this.levelSelector_Validating);
+            this.levelSelector.Validated += new System.EventHandler(this.levelSelector_Validating);
             // 
             // label8
             // 
@@ -536,6 +570,8 @@
             this.bigPnlLevel.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.pnlValidateLevel.ResumeLayout(false);
             this.pnlValidateLevel.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -584,6 +620,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label17;
 
     }
 }

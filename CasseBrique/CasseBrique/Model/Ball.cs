@@ -79,13 +79,14 @@ namespace Breakout.Model
             if (this.brikHit == null || !this.brikHit.GetBBox().Intersects(this.GetBox()))
             {
                 BrickZone bricks = model.BrickZone;
-                Brick brick = RuleBall.GetBrickHit(this, bricks);
-                Console.WriteLine("Check brick hit !");
-                if (brick != null)
+                List<Brick> brick = RuleBall.GetBrickHit(this, bricks);
+
+                if (!brick.Any())
                 {
-                    RuleBall.HandleDeplacementHitBrick(model, brick, this);
-                    this.brikHit = brick;
+                    RuleBall.HandleDeplacementHitBrick(model, brick[0], this);
+                    this.brikHit = brick[0];
                 }
+                Console.WriteLine("End handleBallRebundBrick");
             }
 
         }

@@ -52,7 +52,7 @@ namespace Breakout.Model
             if (obj is Brick)
             {
                 Brick other = (Brick)obj;
-                return other.XBrick != this.XBrick && other.YBrick != this.YBrick;
+                return other.XBrick == this.XBrick && other.YBrick == this.YBrick;
             }
             else
             {
