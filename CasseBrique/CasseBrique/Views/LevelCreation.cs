@@ -73,7 +73,7 @@ namespace CasseBrique.Views
                             int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
 
                             bricks[j, i] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124, 51));
-
+                            bricks[j, i].Bonus = currentB.bonus;
                         }
                     }
 
@@ -114,8 +114,11 @@ namespace CasseBrique.Views
             currentBrick = new MovableBrick(this, BrickWidth, BrickHeight);
             currentBrick.BackColor = Color.FromArgb(51, 51, 51);
 
+            
+
 
             pnl3Map.Controls.Add(currentBrick);
+            pnl3Map.Controls.SetChildIndex(currentBrick, 0);
         }
         public void addBonusToolAction()
         {
@@ -339,23 +342,21 @@ namespace CasseBrique.Views
         public void setBonus(bool bonus) {
             if (bonus)
             {
-                
+                this.BackColor = Color.FromArgb(80, 150, 1);
                 double randomBonus =Math.Floor(new  Random().NextDouble()*4);
 
                 if (randomBonus == 0)
                 {
                     this.bonus = new BallSpeedBonus((float)0.05, 15);
-                    this.BackColor = Color.FromArgb(0, 0, 0);
+                    
                 }
                 else if (randomBonus == 1)
                 {
                     this.bonus = new BarSizeBonus((float)0.05, 15);
-                    this.BackColor = Color.FromArgb(80, 80, 80);
                 }
                 else if(randomBonus==2)
                 {
                     this.bonus = new AddBallBonus((float)0.05, 15);
-                    this.BackColor = Color.FromArgb(120, 120, 120);
                 }
                 ParentForm.ErrorConsole.AppendText(randomBonus.ToString()+"\r\n");
 
