@@ -169,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AppleBonus.png" />
+    <Content Include="Content\ball.png" />
     <Content Include="Content\ballSmall.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
