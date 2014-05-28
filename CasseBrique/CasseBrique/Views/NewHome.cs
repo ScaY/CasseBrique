@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using CasseBrique.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -217,25 +218,7 @@ namespace Breakout
 
         private void pnlValidateOnePlayer_MouseClick(object sender, MouseEventArgs e)
         {
-            if (this.isMultiPlayer == false)
-            {
-                this.bigPnlOnePlayer.Hide();
-                this.bigPnlLevel.Show();
-            }
-            else
-            {
-                if (this.players.Count <= 1)
-                {
-                    this.label5.Text = "Joueur  " + (this.players.Count + 1) + " : ";
 
-                }
-                else
-                {
-                    this.bigPnlOnePlayer.Hide();
-                    this.bigPnlLevel.Show();
-
-                }
-            }
         }
 
         private void pnlQuite_MouseClick(object sender, MouseEventArgs e)
@@ -315,6 +298,17 @@ namespace Breakout
             {
                 this.levelSelector.Items.Add(this.levels.ElementAt(i).Id + " | " + this.levels.ElementAt(i).LevelName);
             }
+
+        }
+
+        private void panel3_MouseClick(object sender, MouseEventArgs e)
+        {
+            LevelCreation lc = new LevelCreation();
+            lc.Show();
+        }
+
+        private void label17_MouseMove(object sender, MouseEventArgs e)
+        {
 
         }
 
