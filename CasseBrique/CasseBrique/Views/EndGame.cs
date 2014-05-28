@@ -13,11 +13,14 @@ namespace Breakout.Views
 {
     public partial class EndGame : Form
     {
+        public BreakoutModel Model { get; set; }
         public List<Label> playerNames { get; set; }
 
         public EndGame(BreakoutModel model)
         {
             InitializeComponent();
+
+            this.Model = model;
 
             if (model.Players.Count == 1)
             {
@@ -36,13 +39,15 @@ namespace Breakout.Views
 
         private void playAgain_click(object sender, EventArgs e)
         {
-            NewHome m = new NewHome();
-            m.ShowDialog();
+            using (var game = new GameXNA(Model.Players, Model.Level, this))
+                game.Run();
             this.Close();
         }
 
-        private void exit_click(object sender, EventArgs e)
+        private void menu_click(object sender, EventArgs e)
         {
+            NewHome m = new NewHome();
+            m.ShowDialog();
             this.Close();
         }
 

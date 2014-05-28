@@ -42,11 +42,13 @@ namespace Breakout
         private Level level;
         private KeyboardState previousKeyboardState;
 
+        private System.Windows.Forms.Form form;
+
        // SoundEffect ballReboundBar;
 
-        public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form form) : base()
+        public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form _form) : base()
         {
-            form.Close();
+            this.form = _form;
             this.players = _players;
             this.level = _level;
             graphics = new GraphicsDeviceManager(this);
@@ -61,6 +63,8 @@ namespace Breakout
         /// </summary>
         protected override void Initialize()
         {
+            form.Close();
+
             this.widthFrame = Window.ClientBounds.Width;
             this.heightFrame = Window.ClientBounds.Height;
 
@@ -226,7 +230,6 @@ namespace Breakout
                 bool won = model.IsGameWon();
                 EndGame m = new EndGame(model);
                 m.ShowDialog();
-                this.Exit();
             }
 
             base.Update(gameTime);
