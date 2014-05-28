@@ -54,6 +54,8 @@ namespace Breakout
             this.bigPnlOnePlayer = new System.Windows.Forms.Panel();
             this.bigPnlLevel = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnRefreshLevel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.levelSelector = new System.Windows.Forms.ComboBox();
@@ -81,6 +83,7 @@ namespace Breakout
             this.bigPnlOnePlayer.SuspendLayout();
             this.bigPnlLevel.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.pnlValidateLevel.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -344,6 +347,7 @@ namespace Breakout
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.panel7.Controls.Add(this.panel5);
             this.panel7.Controls.Add(this.panel3);
             this.panel7.Controls.Add(this.levelSelector);
             this.panel7.Controls.Add(this.label8);
@@ -351,6 +355,28 @@ namespace Breakout
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(421, 165);
             this.panel7.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panel5.Controls.Add(this.btnRefreshLevel);
+            this.panel5.Location = new System.Drawing.Point(23, 97);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(118, 42);
+            this.panel5.TabIndex = 3;
+            this.panel5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick_1);
+            // 
+            // btnRefreshLevel
+            // 
+            this.btnRefreshLevel.AutoSize = true;
+            this.btnRefreshLevel.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefreshLevel.ForeColor = System.Drawing.Color.White;
+            this.btnRefreshLevel.Location = new System.Drawing.Point(11, 7);
+            this.btnRefreshLevel.Name = "btnRefreshLevel";
+            this.btnRefreshLevel.Size = new System.Drawing.Size(94, 28);
+            this.btnRefreshLevel.TabIndex = 0;
+            this.btnRefreshLevel.Text = "Actualiser";
+            this.btnRefreshLevel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseClick_1);
             // 
             // panel3
             // 
@@ -570,6 +596,8 @@ namespace Breakout
             this.bigPnlLevel.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.pnlValidateLevel.ResumeLayout(false);
@@ -622,6 +650,8 @@ namespace Breakout
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label btnRefreshLevel;
 
     }
 }
