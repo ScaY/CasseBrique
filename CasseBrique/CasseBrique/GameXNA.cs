@@ -39,7 +39,8 @@ namespace Breakout
         private ControlerBarKeyboard controlerBarKeyboard;
         private ControlerBarMouse controlerbarMouse;
 
-        public GameXNA(List<Player> _players, Level _level) : base()
+        public GameXNA(List<Player> _players, Level _level)
+            : base()
         {
             this.players = _players;
             this.level = _level;
@@ -234,15 +235,11 @@ namespace Breakout
 
             if (model.IsGameWon() || model.IsGameLost())
             {
-<<<<<<< HEAD
                 EndGame m = new EndGame(model, this);
                 System.Windows.Forms.Application.Run(m);
-=======
                 System.Windows.Forms.Application.Run(new EndGame(model, this));
->>>>>>> 26fb73f677c6b33e39980d0a1cd6c54037ac7dfb
+                base.Update(gameTime);
             }
-
-            base.Update(gameTime);
         }
 
         /// <summary>
@@ -252,7 +249,7 @@ namespace Breakout
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
             view.Draw(spriteBatch, gameTime);

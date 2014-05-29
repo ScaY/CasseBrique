@@ -16,15 +16,19 @@ namespace Breakout.Model
 
         public BorderFrame BorderHit { get; set; }
 
+        public bool BarHit { get; set; }
+
         public Ball()
             : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
         {
+            this.BarHit = false;
             this.briksHit = new Hashtable();
         }
 
         public Ball(Vector2 position, Vector2 deplacement, float speed)
             : base(position, deplacement, speed, new Size(0, 0))
         {
+            this.BarHit = false;
             this.briksHit = new Hashtable();
         }
 
@@ -55,9 +59,17 @@ namespace Breakout.Model
         {
             if (bar.getRectangle().Intersects(this.GetBox()))
             {
-                RuleBall.HandleReboundUpDown(this);
+                if (!this.BarHit)
+                {
+                    RuleBall.HandleReboundUpDown(this);
+                    this.BarHit = true;
+                }
 
                 this.briksHit.Clear();
+            }
+            else
+            {
+                this.BarHit = false;
             }
 
         }
