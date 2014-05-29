@@ -1,11 +1,20 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Breakout.Model;
+using Breakout.Views;
+using CasseBrique.Model;
+using Microsoft.Xna.Framework;
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Breakout.Model
 {//ceci est un commentaire
     public class Ball : Shape
     {
         public Hashtable briksHit { get; set; }
+
+        public BorderFrame BorderHit { get; set; }
 
         public Ball()
             : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
@@ -37,7 +46,6 @@ namespace Breakout.Model
             }
 
             HandleTrajectoryBallReboundFrame(gameTime, heightFrame, widthFrame);
-
             HandleBallReboundBrick(model);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -57,32 +65,50 @@ namespace Breakout.Model
         public void HandleTrajectoryBallReboundFrame(GameTime gameTime, int heightFrame, int widthFrame)
         {
             //rebond à gauche ou à droite
-            if ((Position.X < 0 || Position.X > widthFrame))
+            if (((Position.X - this.Size.Width / 2) < 0 || (Position.X + this.Size.Width / 2 > widthFrame)) && this.BorderHit != BorderFrame.BORDER)
             {
                 RuleBall.HandleReboundLeftRight(this);
+                this.BorderHit = BorderFrame.BORDER;
                 this.briksHit.Clear();
             }
             //rebond en haut
-            else if (Position.Y < 0)
+            else if ( (Position.Y-this.Size.Height/2) < 0 && this.BorderHit != BorderFrame.TOP)
             {
                 RuleBall.HandleReboundUpDown(this);
                 this.briksHit.Clear();
+
+                this.BorderHit = BorderFrame.TOP;
             }
-
-
+            else
+            {
+                this.BorderHit = BorderFrame.NONE;
+            }
         }
 
         public void HandleBallReboundBrick(BreakoutModel model)
         {
             BrickZone bricks = model.BrickZone;
 
-            Hashtable bricksHit = RuleBall.GetBrickHit(this, bricks);
-            if (bricksHit.Count != 0)
+            Hashtable newBricksHit = RuleBall.GetBrickHit(this, bricks);
+           /* Console.Write("Brick hited:   ");
+            foreach (Brick brick in this.briksHit.Values)
             {
-                RuleBall.HandleDeplacementHitBrick(model, bricksHit, this);
+                Console.Write(brick.ToString() + "   ");
             }
+            Console.WriteLine("");
 
-            this.briksHit = bricksHit;
+            Console.Write("Brick hit now:   ");
+            foreach (Brick brick in newBricksHit.Values)
+            {
+                Console.Write(brick.ToString() + "   ");
+            }
+            Console.WriteLine("");*/
+
+            if (newBricksHit.Count != 0)
+            {
+                RuleBall.HandleDeplacementHitBrick(model, newBricksHit, this);
+                this.briksHit = newBricksHit;
+            }
         }
 
         public Rectangle GetBox()

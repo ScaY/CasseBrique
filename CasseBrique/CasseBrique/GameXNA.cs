@@ -60,7 +60,7 @@ namespace Breakout
 
             if (this.level == null)
             {
-                this.model = new BreakoutModel(5, 5, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
+                this.model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
             }
             else
             {
