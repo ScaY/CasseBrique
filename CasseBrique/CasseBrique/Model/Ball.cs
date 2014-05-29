@@ -61,7 +61,8 @@ namespace Breakout.Model
             {
                 if (!this.BarHit)
                 {
-                    RuleBall.HandleReboundUpDown(this);
+                    //RuleBall.HandleReboundUpDown(this);
+                    RuleBall.HandleReboundBar(this, bar);
                     this.BarHit = true;
                 }
 
@@ -102,19 +103,6 @@ namespace Breakout.Model
             BrickZone bricks = model.BrickZone;
 
             Hashtable newBricksHit = RuleBall.GetBrickHit(this, bricks);
-           /* Console.Write("Brick hited:   ");
-            foreach (Brick brick in this.briksHit.Values)
-            {
-                Console.Write(brick.ToString() + "   ");
-            }
-            Console.WriteLine("");
-
-            Console.Write("Brick hit now:   ");
-            foreach (Brick brick in newBricksHit.Values)
-            {
-                Console.Write(brick.ToString() + "   ");
-            }
-            Console.WriteLine("");*/
 
             if (newBricksHit.Count != 0)
             {
