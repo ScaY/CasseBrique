@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Breakout.Views
@@ -12,32 +13,49 @@ namespace Breakout.Views
         public List<Label> playerNames { get; set; }
         private Game game;
 
-        public EndGame(BreakoutModel model, Game _game)
+        public EndGame(BreakoutModel model, Game _game, GameTime gameTime)
         {
             InitializeComponent();
 
             this.Model = model;
             this.game = _game;
 
+            int nbBricksTotal = model.BrickZone.NbBrickCol * model.BrickZone.NbBrickRow;
+
+            StringBuilder stringBuilder = new StringBuilder();
+            if (gameTime.TotalGameTime.Minutes < 10)
+            {
+                stringBuilder.Append("0");
+            }
+            stringBuilder.Append(gameTime.TotalGameTime.Minutes.ToString());
+            stringBuilder.Append(":");
+            if (gameTime.TotalGameTime.Seconds < 10)
+            {
+                stringBuilder.Append("0");
+            }
+            stringBuilder.Append(gameTime.TotalGameTime.Seconds.ToString());
+
             if (this.Model.IsGameWon())
             {
-                this.lbl_result1.Text = this.lbl_result2.Text = "Félications, vous avez gagné.";
+                this.lbl_result1P.Text = "Félicitations, vous avez gagné.";
             }
             else if (this.Model.IsGameLost())
             {
-                this.lbl_result1.Text= this.lbl_result2.Text = "Dommage, vous avez perdu.";
+                this.lbl_result1P.Text = "Dommage, vous avez perdu.";
             }
 
-            if (model.Players.Count == 1)
+            this.lbl_duree1P.Text = stringBuilder.ToString();
+
+            this.lbl_nameP1.Text = model.Players[0].Name;
+
+            if (model.Players.Count == 2)
             {
-                this.lbl_name.Text = model.Players[0].Name;
-                this.pnl_players.Show();
+                this.lbl_nameP2.Text = model.Players[1].Name;
             }
-            else if (model.Players.Count == 2)
+            else
             {
-                this.lbl_name1.Text = model.Players[0].Name;
-                this.lbl_name2.Text = model.Players[1].Name;
-                this.pnl_2p.Show();
+                this.lbl_nameP2.Text = "";
+                this.label2.Text = "Joueur :";
             }
         }
 

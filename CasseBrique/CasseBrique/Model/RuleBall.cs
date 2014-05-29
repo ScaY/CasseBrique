@@ -176,10 +176,8 @@ namespace Breakout.Model
             //la balle a touché la brique à droite
             if (centerBall.X > centerBrick.X)
             {
-                Console.WriteLine("Brique TOUCHE à droite");
                 if ((ball.Deplacement.X > 0 && ball.Deplacement.Y > 0) || (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0))
                 {
-                    Console.WriteLine("     Rebond en bas ou ne haut");
                     HandleReboundUpDown(ball);
                 }
                 //gestion de coin en bas à droite
@@ -200,10 +198,8 @@ namespace Breakout.Model
             else
             //la balle a touché la brique à gauche
             {
-                Console.WriteLine("Brique TOUCHE à gauche");
                 if ((ball.Deplacement.X < 0 && ball.Deplacement.Y < 0) || (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0))
                 {
-                    Console.WriteLine("     Rebond en bas ou ne haut");
                     HandleReboundUpDown(ball);
                 }
                 //gestion de coin en bas à gauche
@@ -225,29 +221,24 @@ namespace Breakout.Model
 
         public static void HandlediffXDiffY(float diffX, float diffY, Ball ball)
         {
-            Console.WriteLine("                 diffX: " + diffX + "   " + diffY);
             if (diffX < 0 && diffY > 0)
             {
                 //rebond en bas
-                Console.WriteLine("     Rebond en bas");
                 HandleReboundUpDown(ball);
             }
             else if (diffX > 0 && diffY < 0)
             {
-                Console.WriteLine("     Rebond à gauche");
                 HandleReboundLeftRight(ball);
             }
             if (diffX < 0 && diffY < 0)
             {
                 if (diffX < diffY)
                 {
-                    Console.WriteLine("     Rebond en haut");
                     HandleReboundUpDown(ball);
 
                 }
                 else
                 {
-                    Console.WriteLine("     Rebond à gauche");
                     HandleReboundLeftRight(ball);
                 }
             }
@@ -255,12 +246,10 @@ namespace Breakout.Model
             {
                 if (diffX > diffY)
                 {
-                    Console.WriteLine("     Rebond en haut");
                     HandleReboundUpDown(ball);
                 }
                 else
                 {
-                    Console.WriteLine("     Rebond à gauche");
                     HandleReboundLeftRight(ball);
                 }
             }
@@ -282,22 +271,53 @@ namespace Breakout.Model
             }
         }
 
-        /*public static void HandleReboundBar(Ball ball, Bar bar)
-{
-* double MAX_THETA_REBOUND = Math.PI/2;
-*
-//calcul du theta de la rotation
-Vector2 centerbar = bar.GetCenter();
-float ratioRotation = Math.Abs(centerbar.X - ball.Position.X) / bar.Size.Width;
-double theta = ratioRotation * MAX_THETA_REBOUND;
+        public static void HandleReboundBar(Ball ball, Bar bar)
+        {
+            
+            double MAX_THETA_REBOUND = 60;
 
-//calcul du nouveau vecteur de déplacement
-Vector2 deplacement = ball.Deplacement;
-double hypothenus = deplacement.Length();
-float newX = (float)(Math.Cos(theta) * hypothenus);
-float newY = (float)(Math.Sin(theta) * hypothenus);
-Console.WriteLine("Raio angle: " + theta+" size: "+hypothenus );
-ball.Deplacement = Vector2.Normalize(new Vector2(newX, -newY));
-}*/
+            //calcul du theta de la rotation
+            Vector2 centerbar = bar.GetCenter();
+            float ratioRotation = Math.Abs(centerbar.X - ball.GetCenterBall().X) / (bar.Size.Width / 2);
+
+            if (ball.GetCenterBall().X < bar.GetCenter().X)
+            {
+                if (ball.Deplacement.X > 0 && ball.Deplacement.Y > 0)
+                {
+                    ratioRotation = 1 - ratioRotation;
+                }
+            }
+            else
+            {
+                if (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0)
+                {
+                    ratioRotation = 1 - ratioRotation;
+                }
+            }
+            
+
+            double theta = ratioRotation * MAX_THETA_REBOUND;
+
+            //calcul du nouveau vecteur de déplacement
+            Vector2 deplacement = ball.Deplacement;
+            double hypothenus = deplacement.Length();
+            float newX = (float)Math.Abs((Math.Sin((theta*Math.PI)/180) * hypothenus));
+            float newY = (float)Math.Abs((Math.Cos((theta*Math.PI)/180) * hypothenus));
+            if (ball.Deplacement.X < 0)
+            {
+                newX = -newX;
+            }
+
+            if (ball.Deplacement.Y > 0)
+            {
+                newY = -newY;
+            }
+
+            Console.WriteLine("Thetha: "+theta+"   newX: "+newX+"  newY : "+newY+"      X: "+ball.Deplacement.X+"   Y :"+ball.Deplacement.Y);
+            ball.Deplacement = Vector2.Normalize(new Vector2(newX, newY));
+
+            //HandleReboundUpDown(ball);
+
+        }
     }
 }

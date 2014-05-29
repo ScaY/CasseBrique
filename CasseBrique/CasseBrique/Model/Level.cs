@@ -39,7 +39,6 @@ namespace Breakout.Model
 
         public void load()
         {
-            
 
             if (File.Exists(Path))
             {
