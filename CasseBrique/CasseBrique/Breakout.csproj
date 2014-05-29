@@ -183,7 +183,6 @@
     <Content Include="Content\Brique\OrangeBrick.png" />
     <Content Include="Content\Brique\RedBrick.png" />
     <Content Include="Content\ChromeBonus.png" />
-    <Content Include="Content\IEBonus.png" />
     <Content Include="Content\pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
