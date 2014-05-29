@@ -2,8 +2,13 @@
 using Breakout.Model;
 using CasseBrique.Model;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CasseBrique.Views
@@ -23,12 +28,12 @@ namespace CasseBrique.Views
         public Control currentBrick { get; set; }
         public LevelCreation()
         {
-            
+
             AddBonusSelected = false;
             NoToolSelected = true;
             NbMaxBricks = 12;
-            
-            
+
+
             IsAddingBricks = false;
             InitializeComponent();
             BrickHeight = pnl3Map.Height / 10;
@@ -39,7 +44,7 @@ namespace CasseBrique.Views
         public void decNbBricks()
         {
             NbMaxBricks--;
-            this.pnlNbBricks.Text = String.Format("Nombre de Briques restantes : {0}",NbMaxBricks);
+            this.pnlNbBricks.Text = String.Format("Nombre de Briques restantes : {0}", NbMaxBricks);
         }
         public void incNbBricks()
         {
@@ -48,10 +53,10 @@ namespace CasseBrique.Views
         }
         public void validate()
         {
-            
+
             CustomLevel lvl = new CustomLevel(LevelName, null);
-            
-            if (!(lvl.LevelName==null))
+
+            if (!(lvl.LevelName == null))
             {
                 if (!File.Exists(lvl.Path))
                 {
@@ -66,16 +71,35 @@ namespace CasseBrique.Views
                             hasBricks = true;
                             int i = (int)Math.Floor((double)currentB.Bounds.X / BrickWidth);
                             int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
+                            var brick = new Brick();
+                            brick.Position = new Microsoft.Xna.Framework.Vector2(j, i);
+                            brick.Size = new Breakout.Model.Size(50, 50);
+                            brick.XBrick = i;
+                            brick.YBrick = j;
+                            brick.Life = 3;
+                            if (currentB.bonus != null)
+                            {
+                                brick.Bonus = currentB.bonus;
+                                brick.Bonus.Speed = 1f;
+                                brick.Bonus.Position = brick.Position;
+                                brick.Bonus.Deplacement = Microsoft.Xna.Framework.Vector2.Normalize(Microsoft.Xna.Framework.Vector2.UnitY);
+                                brick.Bonus.Size = new Breakout.Model.Size(32, 32);
+                                brick.Bonus.Duration = 80;
 
-                            bricks[j, i] = new Brick(new Microsoft.Xna.Framework.Vector2(i, j), 3, new Breakout.Model.Size(124, 51));
+                            }
+
+
+
+                            bricks[j, i] = brick;
+
                             bricks[j, i].Bonus = currentB.bonus;
                         }
+
                     }
 
 
 
-
-                    lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 0, 0, bricks);
+                    lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 50, 50, bricks);
 
                     if (hasBricks)
                     {
@@ -86,7 +110,7 @@ namespace CasseBrique.Views
                     {
                         ErrorConsole.AppendText("Aucune brique ajoutée.\r\n");
                     }
-                    
+
                 }
                 else
                 {
@@ -98,7 +122,7 @@ namespace CasseBrique.Views
             {
                 ErrorConsole.AppendText("Aucun nom de niveau renseigné.\r\n");
             }
-           
+
         }
 
         public void addBrickToolAction()
@@ -109,7 +133,7 @@ namespace CasseBrique.Views
             currentBrick = new MovableBrick(this, BrickWidth, BrickHeight);
             currentBrick.BackColor = Color.FromArgb(51, 51, 51);
 
-            
+
 
 
             pnl3Map.Controls.Add(currentBrick);
@@ -118,7 +142,7 @@ namespace CasseBrique.Views
         public void addBonusToolAction()
         {
             AddBonusSelected = true;
-            
+
 
         }
 
@@ -131,7 +155,7 @@ namespace CasseBrique.Views
         }
         public void deleteBrickToolAction()
         {
-            
+
             IsAddingBricks = false;
             NoToolSelected = true;
         }
@@ -151,20 +175,20 @@ namespace CasseBrique.Views
         {
             if (IsAddingBricks)
             {
-                MovableBrick c=null;
+                MovableBrick c = null;
                 foreach (Control control in pnl3Map.Controls)
                 {
                     if (control is MovableBrick)
                     {
-                        c =(MovableBrick) control;
+                        c = (MovableBrick)control;
                     }
                 }
-               
+
 
                 c.BrickMove(MousePosition.X, MousePosition.Y);
                 pnl3Map.Refresh();
             }
-            
+
         }
 
         private void pnlNoTool_MouseClick(object sender, MouseEventArgs e)
@@ -178,18 +202,18 @@ namespace CasseBrique.Views
         {
 
             LevelName = txtLevelName.Text;
-            
+
         }
 
         private void pnlValidate_MouseClick(object sender, MouseEventArgs e)
         {
             validate();
-            
+
         }
 
-        
 
-        
+
+
         private void lblBricks_Click(object sender, EventArgs e)
         {
             disableAllTools();
@@ -219,15 +243,15 @@ namespace CasseBrique.Views
             validate();
         }
 
-       
 
-       
 
-      
 
-      
 
-        
+
+
+
+
+
 
     }
 
@@ -246,16 +270,16 @@ namespace CasseBrique.Views
             this.Size = new System.Drawing.Size(width, height);
             ParentForm = f;
         }
-        public void BrickMove(int X,int Y)
+        public void BrickMove(int X, int Y)
         {
-            this.SetBounds(X - this.ParentForm.Bounds.X - this.Parent.Bounds.X - this.Width / 2, Y - this.ParentForm.Bounds.Y - this.Parent.Bounds.Y - this.Height , this.Width, this.Height);
+            this.SetBounds(X - this.ParentForm.Bounds.X - this.Parent.Bounds.X - this.Width / 2, Y - this.ParentForm.Bounds.Y - this.Parent.Bounds.Y - this.Height, this.Width, this.Height);
         }
 
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            BrickMove(MousePosition.X , MousePosition.Y );
+            BrickMove(MousePosition.X, MousePosition.Y);
             this.Parent.Refresh();
         }
 
@@ -264,8 +288,8 @@ namespace CasseBrique.Views
         {
             base.OnClick(e);
             ControlCollection controls = this.Parent.Controls;
-            int x = (int)Math.Floor((double)Bounds.X / Width) * Width;
-            int y = (int)Math.Floor((double)Bounds.Y / Height) * Height;
+            int x = Math.Abs((int)Math.Floor((double)Bounds.X / Width) * Width);
+            int y = Math.Abs((int)Math.Floor((double)Bounds.Y / Height) * Height);
             bool canBeAdded = true;
             foreach (Control control in controls)
             {
@@ -274,23 +298,24 @@ namespace CasseBrique.Views
                     canBeAdded = false;
                 }
             }
-            if (canBeAdded && ParentForm.NbMaxBricks>0)
+            if (canBeAdded && ParentForm.NbMaxBricks > 0)
             {
                 this.Parent.Controls.Add(new StaticBrick(ParentForm, Width, Height, x, y));
                 ParentForm.decNbBricks();
             }
-            else if(!canBeAdded)
+            else if (!canBeAdded)
             {
 
                 ParentForm.ErrorConsole.AppendText("Brique déjà existante.\r\n");
-            
+
             }
-            else if(ParentForm.NbMaxBricks<=0){
+            else if (ParentForm.NbMaxBricks <= 0)
+            {
                 ParentForm.ErrorConsole.AppendText("Plus de briques disponibles.\r\n");
             }
-            
-            
-            
+
+
+
         }
     }
 
@@ -307,7 +332,7 @@ namespace CasseBrique.Views
             this.BackColor = Color.FromArgb(51, 51, 51);
             this.SetBounds(x, y, width, height);
             ParentForm = f;
-            
+
             this.Refresh();
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -330,30 +355,31 @@ namespace CasseBrique.Views
                 {
                     setBonus(true);
                 }
-                
+
             }
         }
 
-        public void setBonus(bool bonus) {
+        public void setBonus(bool bonus)
+        {
             if (bonus)
             {
                 this.BackColor = Color.FromArgb(80, 150, 1);
-                double randomBonus =Math.Floor(new  Random().NextDouble()*4);
+                double randomBonus = Math.Floor(new Random().NextDouble() * 4);
 
                 if (randomBonus == 0)
                 {
                     this.bonus = new BallSpeedBonus((float)0.05, 15);
-                    
+
                 }
                 else if (randomBonus == 1)
                 {
                     this.bonus = new BarSizeBonus((float)0.05, 15);
                 }
-                else if(randomBonus==2)
+                else if (randomBonus == 2)
                 {
                     this.bonus = new AddBallBonus((float)0.05, 15);
                 }
-                ParentForm.ErrorConsole.AppendText(randomBonus.ToString()+"\r\n");
+                ParentForm.ErrorConsole.AppendText(randomBonus.ToString() + "\r\n");
 
                 HasBonus = true;
             }
