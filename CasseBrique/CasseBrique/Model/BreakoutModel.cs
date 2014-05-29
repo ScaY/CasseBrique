@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
 using Breakout.Bonus;
 using Breakout.Events;
 
@@ -86,7 +82,7 @@ namespace Breakout.Model
 
         public bool IsGameWon()
         {
-            return false;
+            return this.BrickZone.GetNbBricks() == 0;
         }
 
         public bool IsGameLost()

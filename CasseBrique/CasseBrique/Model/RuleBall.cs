@@ -1,8 +1,6 @@
-﻿using Breakout.Model;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Breakout.Model
 {//ceci est un commentaire
@@ -59,7 +57,7 @@ namespace Breakout.Model
                     {
                         listBrick.Add(brickHit.ToString(), brickHit);
                     }
-                    
+
                 }
                 else
                 {
@@ -91,66 +89,27 @@ namespace Breakout.Model
             Brick brick = null;
             foreach (Brick b in bricksHit.Values)
             {
-                    brick =(Brick) b;
+                brick = (Brick)b;
             }
 
-            Vector2 centerBall = ball.GetCenterBall();
-
-            int widthBrick = brick.Size.Width;
-            int heightBrick = brick.Size.Height;
-            int heightBall = ball.Size.Height;
-            int widthBall = ball.Size.Width;
-
-            Vector2 centerBrick = new Vector2(brick.Position.X + widthBrick / 2, brick.Position.Y + heightBrick / 2);
-
-            //la balle se situe à la partie droite de la brique
-            if (centerBall.X > centerBrick.X)
+            if (bricksHit.Count == 1)
             {
-                if (centerBall.X < (centerBrick.X + widthBrick / 2))
-                {
-                    HandleReboundUpDown(ball);
-                }
-                else
-                {
-                    if ((centerBall.Y + heightBall / 2) < (centerBrick.Y - heightBrick / 2) || (centerBall.Y - heightBall / 2) > (centerBrick.Y + heightBrick / 2))
-                    {
-                        HandleReboundUpDown(ball);
-                    }
-                    else
-                    {
-                        HandleReboundLeftRight(ball);
-                    }
-                }
-
+                HandleHitOneBrick(brick, ball);
             }
-            else
-            //la balle a touché la brique à gauche
+            else if (bricksHit.Count == 2)
             {
-                if (centerBall.X > (centerBrick.X - widthBrick / 2))
-                {
-                    HandleReboundUpDown(ball);
-                }
-                else
-                {
-                    if ((centerBall.Y + heightBall / 2) < (centerBrick.Y - heightBrick / 2) || (centerBall.Y - heightBall / 2) > (centerBrick.Y + heightBrick / 2))
-                    {
-                        HandleReboundUpDown(ball);
-                    }
-                    else
-                    {
-                        HandleReboundLeftRight(ball);
-                    }
-                }
-
+                HandleHitTwoBrick(bricksHit, ball);
+            }
+            else if (bricksHit.Count == 3)
+            {
+                HandleHitThreeBrick(bricksHit, ball);
             }
 
+            //maj de la vie des briques
             foreach (Brick brickHit in bricksHit.Values)
             {
-                Console.WriteLine("BrickHit: " + brickHit.XBrick + "   " + brickHit.YBrick);
                 model.UpdateBrickLife(brickHit, brickHit.Life - 1);
             }
-
-            Console.WriteLine("...........");
 
             //si la brique est détruite et contient un bonus on ajoute le bonus
             foreach (Brick brickHit in bricksHit.Values)
@@ -162,7 +121,151 @@ namespace Breakout.Model
                 }
             }
         }
+        public static void HandleHitThreeBrick(Hashtable listBrick, Ball ball)
+        {
+            ball.Deplacement = new Vector2(-ball.Deplacement.X, -ball.Deplacement.Y);
+        }
 
+        public static void HandleHitTwoBrick(Hashtable listBrick, Ball ball)
+        {
+            bool sameX = false;
+            bool sameY = false;
+            Brick previousBrick = null;
+
+            foreach (Brick b in listBrick.Values)
+            {
+                if (previousBrick == null)
+                {
+                    previousBrick = b;
+                }
+                else
+                {
+                    if (previousBrick.XBrick == b.XBrick)
+                    {
+                        sameX = true;
+                    }
+                    else if (previousBrick.YBrick == b.YBrick)
+                    {
+                        sameY = true;
+                    }
+                }
+            }
+
+            if (sameX)
+            {
+                HandleReboundLeftRight(ball);
+            }
+            else if (sameY)
+            {
+                HandleReboundUpDown(ball);
+            }
+        }
+
+        public static void HandleHitOneBrick(Brick brick, Ball ball)
+        {
+
+            Vector2 centerBall = ball.GetCenterBall();
+
+            int widthBrick = brick.Size.Width;
+            int heightBrick = brick.Size.Height;
+            int heightBall = ball.Size.Height;
+            int widthBall = ball.Size.Width;
+
+            Vector2 centerBrick = new Vector2(brick.Position.X + widthBrick / 2, brick.Position.Y + heightBrick / 2);
+
+            //la balle a touché la brique à droite
+            if (centerBall.X > centerBrick.X)
+            {
+                Console.WriteLine("Brique TOUCHE à droite");
+                if ((ball.Deplacement.X > 0 && ball.Deplacement.Y > 0) || (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0))
+                {
+                    Console.WriteLine("     Rebond en bas ou ne haut");
+                    HandleReboundUpDown(ball);
+                }
+                //gestion de coin en bas à droite
+                else if (ball.Deplacement.X < 0 && ball.Deplacement.Y < 0)
+                {
+                    float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
+                    float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
+                    HandlediffXDiffY(diffX, diffY, ball);
+
+                }//gestion du coin en haut à droite
+                else if (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0)
+                {
+                    float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
+                    float diffY = (centerBrick.Y - heightBrick / 2) - centerBall.Y;
+                    HandlediffXDiffY(diffX, diffY, ball);
+                }
+            }
+            else
+            //la balle a touché la brique à gauche
+            {
+                Console.WriteLine("Brique TOUCHE à gauche");
+                if ((ball.Deplacement.X < 0 && ball.Deplacement.Y < 0) || (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0))
+                {
+                    Console.WriteLine("     Rebond en bas ou ne haut");
+                    HandleReboundUpDown(ball);
+                }
+                //gestion de coin en bas à gauche
+                else if (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0)
+                {
+                    float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
+                    float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
+                    HandlediffXDiffY(diffX, diffY, ball);
+
+                }//gestion du coin en haut à gauche
+                else if (ball.Deplacement.X > 0 && ball.Deplacement.Y > 0)
+                {
+                    float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
+                    float diffY = (centerBrick.Y - heightBrick / 2) - centerBall.Y;
+                    HandlediffXDiffY(diffX, diffY, ball);
+                }
+            }
+        }
+
+        public static void HandlediffXDiffY(float diffX, float diffY, Ball ball)
+        {
+            Console.WriteLine("                 diffX: " + diffX + "   " + diffY);
+            if (diffX < 0 && diffY > 0)
+            {
+                //rebond en bas
+                Console.WriteLine("     Rebond en bas");
+                HandleReboundUpDown(ball);
+            }
+            else if (diffX > 0 && diffY < 0)
+            {
+                Console.WriteLine("     Rebond à gauche");
+                HandleReboundLeftRight(ball);
+            }
+            if (diffX < 0 && diffY < 0)
+            {
+                if (diffX < diffY)
+                {
+                    Console.WriteLine("     Rebond en haut");
+                    HandleReboundUpDown(ball);
+
+                }
+                else
+                {
+                    Console.WriteLine("     Rebond à gauche");
+                    HandleReboundLeftRight(ball);
+                }
+            }
+            else if (diffX > 0 && diffY > 0)
+            {
+                if (diffX > diffY)
+                {
+                    Console.WriteLine("     Rebond en haut");
+                    HandleReboundUpDown(ball);
+                }
+                else
+                {
+                    Console.WriteLine("     Rebond à gauche");
+                    HandleReboundLeftRight(ball);
+                }
+            }
+
+        }
         public static void HandleReboundLeftRight(Ball ball)
         {
             if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && (ball.Deplacement.Y < 0 || ball.Deplacement.Y > 0))

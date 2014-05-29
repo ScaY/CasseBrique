@@ -1,5 +1,4 @@
-﻿using CasseBrique;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Breakout.Bonus;
 
 namespace Breakout.Model

@@ -1,11 +1,8 @@
 ﻿using Breakout.Bonus;
-using CasseBrique;
 using CasseBrique.Controler;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Breakout.Model
 {

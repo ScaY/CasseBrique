@@ -1,7 +1,6 @@
 ﻿using Breakout.Model;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
 
 namespace Breakout.Controler
 {
@@ -30,7 +29,7 @@ namespace Breakout.Controler
 
             if (!Model.GameLauch)
             {
-                Bar.StartBall.Position = new Vector2(Bar.Position.X + Bar.Size.Width / 2 - Bar.StartBall.Size.Width/2, Bar.Position.Y - Bar.StartBall.Size.Height);
+                Bar.StartBall.Position = new Vector2(Bar.Position.X + Bar.Size.Width / 2 - Bar.StartBall.Size.Width/2 , Bar.Position.Y - Bar.StartBall.Size.Height -160);
             }
         }
     }

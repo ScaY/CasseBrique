@@ -1,16 +1,12 @@
 ﻿
 using Breakout.Bonus;
-using Breakout.Model;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Breakout.Model
 {
     public class BrickZone
     {
-
         private Brick[,] bricks;
 
         public Brick[,] AllBricks
@@ -196,6 +192,24 @@ namespace Breakout.Model
             return string.Format("{0} {1}      et y: {2} {3}",
                 this.StartBlockBrickX, this.EndBlockBrickX,
                 this.StartBlockBrickY, this.EndBlockBrickY);
+        }
+
+        public int GetNbBricks()
+        {
+            int nbBricks = 0;
+
+            for (int y = 0; y < nbBrickRow; y++)
+            {
+                for (int x = 0; x < nbBrickCol; x++)
+                {
+                    if (AllBricks[y, x] != null)
+                    {
+                        nbBricks++;
+                    }
+                }
+            }
+
+            return nbBricks;
         }
     }
 }

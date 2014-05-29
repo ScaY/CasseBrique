@@ -80,6 +80,7 @@
     <Compile Include="Model\Bar.cs" />
     <Compile Include="Bonus\AbstractBonus.cs" />
     <Compile Include="Bonus\BarBonus.cs" />
+    <Compile Include="Model\BorderFrame.cs" />
     <Compile Include="Model\BrickZone.cs" />
     <Compile Include="GameXNA.cs" />
     <Compile Include="Controler\ControlerBall.cs" />

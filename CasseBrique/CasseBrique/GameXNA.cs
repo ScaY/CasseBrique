@@ -2,18 +2,14 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Storage;
-using Microsoft.Xna.Framework.GamerServices;
 using Breakout.Model;
 using Breakout.Views;
 using Breakout.Controler;
 using Breakout.Bonus;
 using CasseBrique.Controler;
-using System.Media;
-using System.Threading;
+
 
 #endregion
 
@@ -64,7 +60,7 @@ namespace Breakout
 
             if (this.level == null)
             {
-                this.model = new BreakoutModel(5, 5, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
+                this.model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
             }
             else
             {
@@ -238,7 +234,6 @@ namespace Breakout
 
             if (model.IsGameWon() || model.IsGameLost())
             {
-                model.Pause = true;
                 EndGame m = new EndGame(model, this);
                 System.Windows.Forms.Application.Run(m);
             }
