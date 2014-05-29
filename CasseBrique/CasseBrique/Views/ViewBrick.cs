@@ -6,6 +6,7 @@ namespace Breakout.Views
     {
         public ViewBrick(Brick brick) : base(brick)
         {
+            
         }
     }
 }

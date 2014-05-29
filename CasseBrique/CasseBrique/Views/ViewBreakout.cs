@@ -29,7 +29,7 @@ namespace Breakout.Views
         private Texture2D texturePause;
 
         public ViewBreakout(BreakoutModel breakout)
-        {
+        {   
             breakout.BrickZone.InitializeSizeBrick(new Size(124, 51));
             breakout.BrickZone.InitializePositionBrick();
 
@@ -61,7 +61,6 @@ namespace Breakout.Views
             this.textureBall = content.Load<Texture2D>("ballSmall");
             this.textureBonus = content.Load<Texture2D>("bonus");
             this.texturePause = content.Load<Texture2D>("pause");
-
             foreach (ViewBar viewBar in this.ViewBars)
             {
                 viewBar.Texture = this.textureBar;

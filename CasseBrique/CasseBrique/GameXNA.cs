@@ -41,10 +41,13 @@ namespace Breakout
 
         public GameXNA(List<Player> _players, Level _level) : base()
         {
+            
             this.players = _players;
             this.level = _level;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
+
         }
 
         /// <summary>
@@ -55,6 +58,7 @@ namespace Breakout
         /// </summary>
         protected override void Initialize()
         {
+
             this.widthFrame = this.GraphicsDevice.Viewport.Width;
             this.heightFrame = this.GraphicsDevice.Viewport.Height;
 
@@ -68,6 +72,7 @@ namespace Breakout
             }
 
             this.view = new ViewBreakout(model);
+            
             this.model.AddView(view);
 
             if (this.players != null)
@@ -234,12 +239,9 @@ namespace Breakout
 
             if (model.IsGameWon() || model.IsGameLost())
             {
-<<<<<<< HEAD
                 EndGame m = new EndGame(model, this);
                 System.Windows.Forms.Application.Run(m);
-=======
                 System.Windows.Forms.Application.Run(new EndGame(model, this));
->>>>>>> 26fb73f677c6b33e39980d0a1cd6c54037ac7dfb
             }
 
             base.Update(gameTime);
@@ -251,13 +253,13 @@ namespace Breakout
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(51,51,51));
             
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
             view.Draw(spriteBatch, gameTime);
             spriteBatch.End();
-
+            
             base.Draw(gameTime);
         }
     }
