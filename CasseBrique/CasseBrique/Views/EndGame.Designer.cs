@@ -45,6 +45,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pnlValidateLevel = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.lbl_result1 = new System.Windows.Forms.Label();
+            this.lbl_result2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pnl_players.SuspendLayout();
@@ -109,31 +111,35 @@
             // pnl_players
             // 
             this.pnl_players.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-            this.pnl_players.Controls.Add(this.pnl_2p);
+            this.pnl_players.Controls.Add(this.lbl_result2);
             this.pnl_players.Controls.Add(this.lbl_name);
             this.pnl_players.Location = new System.Drawing.Point(-2, 2);
             this.pnl_players.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_players.Name = "pnl_players";
             this.pnl_players.Size = new System.Drawing.Size(316, 179);
             this.pnl_players.TabIndex = 6;
+            this.pnl_players.Visible = false;
             // 
             // pnl_2p
             // 
             this.pnl_2p.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.pnl_2p.Controls.Add(this.lbl_result1);
             this.pnl_2p.Controls.Add(this.lbl_name2);
             this.pnl_2p.Controls.Add(this.lbl_name1);
             this.pnl_2p.Controls.Add(this.label2);
-            this.pnl_2p.Location = new System.Drawing.Point(2, 1);
+            this.pnl_2p.Location = new System.Drawing.Point(59, 129);
             this.pnl_2p.Margin = new System.Windows.Forms.Padding(2);
             this.pnl_2p.Name = "pnl_2p";
             this.pnl_2p.Size = new System.Drawing.Size(316, 179);
             this.pnl_2p.TabIndex = 7;
+            this.pnl_2p.Visible = false;
             // 
             // lbl_name2
             // 
             this.lbl_name2.AutoSize = true;
             this.lbl_name2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name2.Location = new System.Drawing.Point(2, 99);
+            this.lbl_name2.ForeColor = System.Drawing.Color.White;
+            this.lbl_name2.Location = new System.Drawing.Point(8, 99);
             this.lbl_name2.Name = "lbl_name2";
             this.lbl_name2.Size = new System.Drawing.Size(0, 25);
             this.lbl_name2.TabIndex = 2;
@@ -143,7 +149,8 @@
             // 
             this.lbl_name1.AutoSize = true;
             this.lbl_name1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name1.Location = new System.Drawing.Point(2, 40);
+            this.lbl_name1.ForeColor = System.Drawing.Color.White;
+            this.lbl_name1.Location = new System.Drawing.Point(6, 40);
             this.lbl_name1.Name = "lbl_name1";
             this.lbl_name1.Size = new System.Drawing.Size(0, 25);
             this.lbl_name1.TabIndex = 1;
@@ -161,6 +168,7 @@
             // 
             this.lbl_name.AutoSize = true;
             this.lbl_name.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_name.ForeColor = System.Drawing.Color.White;
             this.lbl_name.Location = new System.Drawing.Point(5, 83);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(0, 25);
@@ -229,6 +237,26 @@
             this.label9.Text = "Rejouer";
             this.label9.Click += new System.EventHandler(this.playAgain_click);
             // 
+            // lbl_result1
+            // 
+            this.lbl_result1.AutoSize = true;
+            this.lbl_result1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_result1.ForeColor = System.Drawing.Color.White;
+            this.lbl_result1.Location = new System.Drawing.Point(31, 0);
+            this.lbl_result1.Name = "lbl_result1";
+            this.lbl_result1.Size = new System.Drawing.Size(0, 25);
+            this.lbl_result1.TabIndex = 3;
+            // 
+            // lbl_result2
+            // 
+            this.lbl_result2.AutoSize = true;
+            this.lbl_result2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_result2.ForeColor = System.Drawing.Color.White;
+            this.lbl_result2.Location = new System.Drawing.Point(33, 6);
+            this.lbl_result2.Name = "lbl_result2";
+            this.lbl_result2.Size = new System.Drawing.Size(0, 25);
+            this.lbl_result2.TabIndex = 8;
+            // 
             // EndGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,6 +264,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(438, 456);
             this.Controls.Add(this.pnlValidateLevel);
+            this.Controls.Add(this.pnl_2p);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlRightArrow);
             this.Controls.Add(this.pnlLeftArrow);
@@ -276,6 +305,8 @@
         private System.Windows.Forms.Label lbl_name2;
         private System.Windows.Forms.Label lbl_name1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_result1;
+        private System.Windows.Forms.Label lbl_result2;
 
     }
 }

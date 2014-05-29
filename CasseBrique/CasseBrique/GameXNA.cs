@@ -234,7 +234,6 @@ namespace Breakout
 
             if (model.IsGameWon() || model.IsGameLost())
             {
-                model.Pause = true;
                 EndGame m = new EndGame(model, this);
                 System.Windows.Forms.Application.Run(m);
             }
