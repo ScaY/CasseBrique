@@ -8,6 +8,7 @@ namespace Breakout.Views
     public interface View
     {
         void Refresh(Event e);
+
         void Draw(SpriteBatch spriteBatch, GameTime gameTime);
     }
 }

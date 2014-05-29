@@ -18,12 +18,15 @@ namespace Breakout.Model
 
         public Level Level { get; set; }
 
+        public bool GameLauch { get; set; }
+
         public BreakoutModel(Level level)
         {
             this.BrickZone = level.Map;
             this.Balls = new List<Ball>();
             this.Bonuses = new List<AbstractBonus>();
             this.Level = level;
+            this.GameLauch = false;
         }
 
         public BreakoutModel(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY)
@@ -32,6 +35,7 @@ namespace Breakout.Model
             this.Balls = new List<Ball>();
             this.Bonuses = new List<AbstractBonus>();
             this.Level = null;
+            this.GameLauch = false;
         }
 
         public void AddBrick(Brick brick, int x, int y)

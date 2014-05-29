@@ -1,5 +1,6 @@
 ﻿using Breakout.Bonus;
 using CasseBrique;
+using CasseBrique.Controler;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,8 @@ namespace Breakout.Model
             get;
             set;
         }
-        public string ControlGame
+
+        public NameControlerBar ControlGame
         {
             get;
             set;

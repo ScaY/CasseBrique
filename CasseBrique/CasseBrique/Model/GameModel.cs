@@ -1,4 +1,5 @@
 ﻿using Breakout.Events;
+using CasseBrique.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,12 @@ namespace Breakout.Model
         {
             this.Pause = false;
             this.Players = new List<Player>();
+        }
+
+        public void SetPause(bool pause)
+        {
+            this.Pause = pause;
+            this.RefreshViews(new GamePause(this));
         }
     }
 }

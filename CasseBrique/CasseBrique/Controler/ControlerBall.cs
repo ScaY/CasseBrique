@@ -17,7 +17,8 @@ namespace Breakout.Controler
             gameLaunch = false;
         }
 
-        public ControlerBall(BreakoutModel model) : base(model)
+        public ControlerBall(BreakoutModel model)
+            : base(model)
         {
         }
 
@@ -26,14 +27,9 @@ namespace Breakout.Controler
 
         }
 
-        public void HandleBall(Ball ball, GameTime gameTime, int heightFrame, int widthFrame, MouseState mouseState, KeyboardState keyState) 
+        public void HandleBall(Ball ball, GameTime gameTime, int heightFrame, int widthFrame)
         {
-            if (mouseState.LeftButton == ButtonState.Pressed)
-            {
-                gameLaunch = true;
-            }
-
-            if (gameLaunch)
+            if (Model.GameLauch)
             {
                 ball.HandleTrajectory(Model, gameTime, heightFrame, widthFrame);
             }

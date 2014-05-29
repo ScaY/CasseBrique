@@ -24,8 +24,8 @@ namespace Breakout
     /// </summary>
     public class GameXNA : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         //dimensions de la fenêtre
         private int widthFrame;
@@ -33,14 +33,15 @@ namespace Breakout
 
         private BreakoutModel model;
         private ViewBreakout view;
-        private ControlerBar controlerBar;
         private ControlerBall controlerBall;
         private ControlerBonus controlerBonus;
         private List<Player> players;
         private Level level;
         private KeyboardState previousKeyboardState;
 
-       // SoundEffect ballReboundBar;
+        //les différents controleur de la barre disponible
+        private ControlerBarKeyboard controlerBarKeyboard;
+        private ControlerBarMouse controlerbarMouse;
 
         public GameXNA(List<Player> _players, Level _level) : base()
         {
@@ -78,11 +79,15 @@ namespace Breakout
                 foreach (Player player in this.players)
                 {
                     model.AddPlayer(player);
-                    model.AddBall(new Ball());
+                    Ball ball = new Ball();
+                    model.AddBall(ball);
+                    player.Bar.StartBall = ball;
+
                 }
             }
 
-            controlerBar = new ControlerBarKeyboard(model);
+            controlerBarKeyboard = new ControlerBarKeyboard(model);
+            controlerbarMouse = new ControlerBarMouse(model);
             controlerBall = new ControlerBall(model);
             controlerBonus = new ControlerBonus(model);
 
@@ -140,7 +145,7 @@ namespace Breakout
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            view.LoadContent(Content);
+            view.LoadContent(Content, widthFrame, heightFrame);
         }
 
         /// <summary>
@@ -159,7 +164,7 @@ namespace Breakout
         protected override void Update(GameTime gameTime)
         {
             KeyboardState keyboardState = Keyboard.GetState();
-            MouseState mouseState =Mouse.GetState();
+            MouseState mouseState = Mouse.GetState();
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || keyboardState.IsKeyDown(Keys.Escape))
             {
@@ -168,7 +173,12 @@ namespace Breakout
 
             if (keyboardState.IsKeyDown(Keys.Space) && previousKeyboardState != null && previousKeyboardState.IsKeyUp(Keys.Space))
             {
-                model.Pause = !model.Pause;
+                model.SetPause(!model.Pause);
+            }
+
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                model.GameLauch = true;
             }
 
             if (!model.Pause)
@@ -177,7 +187,7 @@ namespace Breakout
                 {
                     foreach (Ball ball in model.Balls)
                     {
-                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame, mouseState, keyboardState);
+                        controlerBall.HandleBall(ball, gameTime, this.heightFrame, this.widthFrame);
                     }
                 }
                 catch (Exception e)
@@ -198,7 +208,14 @@ namespace Breakout
 
                 foreach (Player player in model.Players)
                 {
-                    controlerBar.HandleInput(keyboardState, mouseState, gameTime, widthFrame , player);
+                    if (player.ControlGame == NameControlerBar.KeyboardKM || player.ControlGame == NameControlerBar.KeyboardQD)
+                    {
+                        controlerBarKeyboard.HandleInput(keyboardState, mouseState, gameTime, widthFrame, player);
+                    }
+                    else if (player.ControlGame == NameControlerBar.Mouse)
+                    {
+                        controlerbarMouse.HandleInput(keyboardState, mouseState, gameTime, widthFrame, player);
+                    }
 
                     try
                     {

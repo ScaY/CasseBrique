@@ -1,4 +1,5 @@
 ﻿using Breakout.Model;
+using CasseBrique.Controler;
 using CasseBrique.Model;
 using CasseBrique.Views;
 using System;
@@ -246,12 +247,12 @@ namespace Breakout
                 this.panel10.Show();
                 if (this.players.ElementAt(0) != null)
                 {
-                    this.players.ElementAt(0).ControlGame = "mouse";
+                    this.players.ElementAt(0).ControlGame = NameControlerBar.Mouse;
 
                 }
                 if (this.players.Count >1)
                 {
-                    this.players.ElementAt(1).ControlGame = "keyboard-K/M";
+                    this.players.ElementAt(1).ControlGame = NameControlerBar.KeyboardKM;
 
                 }
 
@@ -380,7 +381,7 @@ namespace Breakout
         {
             if (radioButton1.Checked)
             {
-                this.players.ElementAt(0).ControlGame = "mouse";
+                this.players.ElementAt(0).ControlGame = NameControlerBar.Mouse;
             }
         }
 
@@ -388,7 +389,7 @@ namespace Breakout
         {
             if (radioButton2.Checked)
             {
-                this.players.ElementAt(0).ControlGame = "keyboard-Q/D";
+                this.players.ElementAt(0).ControlGame = NameControlerBar.KeyboardQD;
             }
 
         }
@@ -397,7 +398,7 @@ namespace Breakout
         {
             if (radioButton3.Checked)
             {
-                this.players.ElementAt(1).ControlGame = "keyboard-K/M";
+                this.players.ElementAt(1).ControlGame = NameControlerBar.KeyboardKM;
             }
 
         }

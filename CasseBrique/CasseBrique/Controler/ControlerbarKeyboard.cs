@@ -7,7 +7,8 @@ namespace Breakout.Controler
 {
     public class ControlerBarKeyboard : ControlerBar
     {
-        public ControlerBarKeyboard(BreakoutModel model) : base(model)
+        public ControlerBarKeyboard(BreakoutModel model)
+            : base(model)
         {
 
         }
@@ -16,7 +17,7 @@ namespace Breakout.Controler
         {
             Bar Bar = player.Bar;
 
-            if (keyBoardState.IsKeyDown(player.MoveRightKey) && (Bar.Position.X < widthFrame))
+            if (keyBoardState.IsKeyDown(player.MoveRightKey) && (Bar.Position.X + Bar.Size.Width < widthFrame))
             {
                 Bar.Deplacement = Vector2.Normalize(new Vector2(1, 0));
                 Bar.Position += Bar.Deplacement * Bar.Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -25,6 +26,11 @@ namespace Breakout.Controler
             {
                 Bar.Deplacement = Vector2.Normalize(new Vector2(-1, 0));
                 Bar.Position += Bar.Deplacement * Bar.Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            }
+
+            if (!Model.GameLauch)
+            {
+                Bar.StartBall.Position = new Vector2(Bar.Position.X + Bar.Size.Width / 2 - Bar.StartBall.Size.Width/2, Bar.Position.Y - Bar.StartBall.Size.Height);
             }
         }
     }
