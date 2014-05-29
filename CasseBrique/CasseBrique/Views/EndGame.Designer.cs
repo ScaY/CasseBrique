@@ -28,54 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EndGame));
-            this.pnlRightArrow = new System.Windows.Forms.Panel();
-            this.pnlLeftArrow = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnl_players = new System.Windows.Forms.Panel();
-            this.pnl_2p = new System.Windows.Forms.Panel();
-            this.lbl_name2 = new System.Windows.Forms.Label();
-            this.lbl_name1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_name = new System.Windows.Forms.Label();
+            this.pnl_1P = new System.Windows.Forms.Panel();
+            this.lbl_result1P = new System.Windows.Forms.Label();
+            this.lbl_nameP1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlValidateLevel = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.lbl_result1 = new System.Windows.Forms.Label();
-            this.lbl_result2 = new System.Windows.Forms.Label();
+            this.lbl_duree1P = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_nameP2 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.pnl_players.SuspendLayout();
-            this.pnl_2p.SuspendLayout();
+            this.pnl_1P.SuspendLayout();
             this.panel9.SuspendLayout();
             this.pnlValidateLevel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlRightArrow
-            // 
-            this.pnlRightArrow.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlRightArrow.BackgroundImage")));
-            this.pnlRightArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlRightArrow.Location = new System.Drawing.Point(380, 128);
-            this.pnlRightArrow.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlRightArrow.Name = "pnlRightArrow";
-            this.pnlRightArrow.Size = new System.Drawing.Size(48, 45);
-            this.pnlRightArrow.TabIndex = 14;
-            this.pnlRightArrow.Visible = false;
-            // 
-            // pnlLeftArrow
-            // 
-            this.pnlLeftArrow.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlLeftArrow.BackgroundImage")));
-            this.pnlLeftArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnlLeftArrow.Location = new System.Drawing.Point(9, 128);
-            this.pnlLeftArrow.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlLeftArrow.Name = "pnlLeftArrow";
-            this.pnlLeftArrow.Size = new System.Drawing.Size(48, 45);
-            this.pnlLeftArrow.TabIndex = 13;
-            this.pnlLeftArrow.Visible = false;
             // 
             // panel2
             // 
@@ -101,78 +74,50 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pnl_players);
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Location = new System.Drawing.Point(62, 128);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(313, 316);
             this.panel1.TabIndex = 15;
             // 
-            // pnl_players
+            // pnl_1P
             // 
-            this.pnl_players.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-            this.pnl_players.Controls.Add(this.lbl_result2);
-            this.pnl_players.Controls.Add(this.lbl_name);
-            this.pnl_players.Location = new System.Drawing.Point(-2, 2);
-            this.pnl_players.Margin = new System.Windows.Forms.Padding(2);
-            this.pnl_players.Name = "pnl_players";
-            this.pnl_players.Size = new System.Drawing.Size(316, 179);
-            this.pnl_players.TabIndex = 6;
-            this.pnl_players.Visible = false;
+            this.pnl_1P.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.pnl_1P.Controls.Add(this.label2);
+            this.pnl_1P.Controls.Add(this.lbl_nameP2);
+            this.pnl_1P.Controls.Add(this.lbl_duree1P);
+            this.pnl_1P.Controls.Add(this.label6);
+            this.pnl_1P.Controls.Add(this.lbl_result1P);
+            this.pnl_1P.Controls.Add(this.lbl_nameP1);
+            this.pnl_1P.Location = new System.Drawing.Point(61, 128);
+            this.pnl_1P.Margin = new System.Windows.Forms.Padding(2);
+            this.pnl_1P.Name = "pnl_1P";
+            this.pnl_1P.Size = new System.Drawing.Size(316, 179);
+            this.pnl_1P.TabIndex = 6;
+            this.pnl_1P.UseWaitCursor = true;
             // 
-            // pnl_2p
+            // lbl_result1P
             // 
-            this.pnl_2p.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-            this.pnl_2p.Controls.Add(this.lbl_result1);
-            this.pnl_2p.Controls.Add(this.lbl_name2);
-            this.pnl_2p.Controls.Add(this.lbl_name1);
-            this.pnl_2p.Controls.Add(this.label2);
-            this.pnl_2p.Location = new System.Drawing.Point(59, 129);
-            this.pnl_2p.Margin = new System.Windows.Forms.Padding(2);
-            this.pnl_2p.Name = "pnl_2p";
-            this.pnl_2p.Size = new System.Drawing.Size(316, 179);
-            this.pnl_2p.TabIndex = 7;
-            this.pnl_2p.Visible = false;
+            this.lbl_result1P.AutoSize = true;
+            this.lbl_result1P.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_result1P.ForeColor = System.Drawing.Color.White;
+            this.lbl_result1P.Location = new System.Drawing.Point(33, 6);
+            this.lbl_result1P.Name = "lbl_result1P";
+            this.lbl_result1P.Size = new System.Drawing.Size(153, 25);
+            this.lbl_result1P.TabIndex = 8;
+            this.lbl_result1P.Text = "message resultat";
             // 
-            // lbl_name2
+            // lbl_nameP1
             // 
-            this.lbl_name2.AutoSize = true;
-            this.lbl_name2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name2.ForeColor = System.Drawing.Color.White;
-            this.lbl_name2.Location = new System.Drawing.Point(8, 99);
-            this.lbl_name2.Name = "lbl_name2";
-            this.lbl_name2.Size = new System.Drawing.Size(0, 25);
-            this.lbl_name2.TabIndex = 2;
-            this.lbl_name2.Visible = false;
-            // 
-            // lbl_name1
-            // 
-            this.lbl_name1.AutoSize = true;
-            this.lbl_name1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name1.ForeColor = System.Drawing.Color.White;
-            this.lbl_name1.Location = new System.Drawing.Point(6, 40);
-            this.lbl_name1.Name = "lbl_name1";
-            this.lbl_name1.Size = new System.Drawing.Size(0, 25);
-            this.lbl_name1.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 25);
-            this.label2.TabIndex = 0;
-            // 
-            // lbl_name
-            // 
-            this.lbl_name.AutoSize = true;
-            this.lbl_name.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name.ForeColor = System.Drawing.Color.White;
-            this.lbl_name.Location = new System.Drawing.Point(5, 83);
-            this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(0, 25);
-            this.lbl_name.TabIndex = 0;
+            this.lbl_nameP1.AutoSize = true;
+            this.lbl_nameP1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nameP1.ForeColor = System.Drawing.Color.White;
+            this.lbl_nameP1.Location = new System.Drawing.Point(135, 80);
+            this.lbl_nameP1.Name = "lbl_nameP1";
+            this.lbl_nameP1.Size = new System.Drawing.Size(125, 25);
+            this.lbl_nameP1.TabIndex = 0;
+            this.lbl_nameP1.Text = "nom joueur 1";
+            this.lbl_nameP1.UseWaitCursor = true;
             // 
             // panel9
             // 
@@ -237,25 +182,51 @@
             this.label9.Text = "Rejouer";
             this.label9.Click += new System.EventHandler(this.playAgain_click);
             // 
-            // lbl_result1
+            // lbl_duree1P
             // 
-            this.lbl_result1.AutoSize = true;
-            this.lbl_result1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_result1.ForeColor = System.Drawing.Color.White;
-            this.lbl_result1.Location = new System.Drawing.Point(31, 0);
-            this.lbl_result1.Name = "lbl_result1";
-            this.lbl_result1.Size = new System.Drawing.Size(0, 25);
-            this.lbl_result1.TabIndex = 3;
+            this.lbl_duree1P.AutoSize = true;
+            this.lbl_duree1P.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_duree1P.ForeColor = System.Drawing.Color.White;
+            this.lbl_duree1P.Location = new System.Drawing.Point(123, 38);
+            this.lbl_duree1P.Name = "lbl_duree1P";
+            this.lbl_duree1P.Size = new System.Drawing.Size(63, 25);
+            this.lbl_duree1P.TabIndex = 10;
+            this.lbl_duree1P.Text = "temps";
             // 
-            // lbl_result2
+            // label6
             // 
-            this.lbl_result2.AutoSize = true;
-            this.lbl_result2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_result2.ForeColor = System.Drawing.Color.White;
-            this.lbl_result2.Location = new System.Drawing.Point(33, 6);
-            this.lbl_result2.Name = "lbl_result2";
-            this.lbl_result2.Size = new System.Drawing.Size(0, 25);
-            this.lbl_result2.TabIndex = 8;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(56, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 25);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Durée : ";
+            // 
+            // lbl_nameP2
+            // 
+            this.lbl_nameP2.AutoSize = true;
+            this.lbl_nameP2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nameP2.ForeColor = System.Drawing.Color.White;
+            this.lbl_nameP2.Location = new System.Drawing.Point(135, 118);
+            this.lbl_nameP2.Name = "lbl_nameP2";
+            this.lbl_nameP2.Size = new System.Drawing.Size(125, 25);
+            this.lbl_nameP2.TabIndex = 11;
+            this.lbl_nameP2.Text = "nom joueur 2";
+            this.lbl_nameP2.UseWaitCursor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(33, 80);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 25);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Joueurs :";
+            this.label2.UseWaitCursor = true;
             // 
             // EndGame
             // 
@@ -263,22 +234,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(438, 456);
+            this.Controls.Add(this.pnl_1P);
             this.Controls.Add(this.pnlValidateLevel);
-            this.Controls.Add(this.pnl_2p);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pnlRightArrow);
-            this.Controls.Add(this.pnlLeftArrow);
             this.Controls.Add(this.panel2);
             this.Name = "EndGame";
             this.Text = "Fin du jeu";
+            this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.EndGame_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.pnl_players.ResumeLayout(false);
-            this.pnl_players.PerformLayout();
-            this.pnl_2p.ResumeLayout(false);
-            this.pnl_2p.PerformLayout();
+            this.pnl_1P.ResumeLayout(false);
+            this.pnl_1P.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.pnlValidateLevel.ResumeLayout(false);
@@ -289,8 +257,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlRightArrow;
-        private System.Windows.Forms.Panel pnlLeftArrow;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
@@ -298,15 +264,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel pnlValidateLevel;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel pnl_players;
-        private System.Windows.Forms.Label lbl_name;
-        private System.Windows.Forms.Panel pnl_2p;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbl_name2;
-        private System.Windows.Forms.Label lbl_name1;
+        private System.Windows.Forms.Panel pnl_1P;
+        private System.Windows.Forms.Label lbl_nameP1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbl_result1;
-        private System.Windows.Forms.Label lbl_result2;
+        private System.Windows.Forms.Label lbl_result1P;
+        private System.Windows.Forms.Label lbl_duree1P;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_nameP2;
+        private System.Windows.Forms.Label label2;
 
     }
 }

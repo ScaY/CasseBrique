@@ -109,29 +109,11 @@
     <Compile Include="Views\EndGame.Designer.cs">
       <DependentUpon>EndGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LevelChooser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\LevelChooser.Designer.cs">
-      <DependentUpon>LevelChooser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\NewHome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\NewHome.Designer.cs">
       <DependentUpon>NewHome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PlayerRegister.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\PlayerRegister.Designer.cs">
-      <DependentUpon>PlayerRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\LevelCreation.cs">
       <SubType>Form</SubType>
@@ -215,20 +197,8 @@
     <EmbeddedResource Include="Views\EndGame.resx">
       <DependentUpon>EndGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home.en.resx">
-      <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\LevelChooser.resx">
-      <DependentUpon>LevelChooser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\NewHome.resx">
       <DependentUpon>NewHome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\PlayerRegister.resx">
-      <DependentUpon>PlayerRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LevelCreation.resx">
       <DependentUpon>LevelCreation.cs</DependentUpon>
