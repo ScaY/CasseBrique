@@ -34,23 +34,23 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_players = new System.Windows.Forms.Panel();
+            this.pnl_2p = new System.Windows.Forms.Panel();
+            this.lbl_name2 = new System.Windows.Forms.Label();
+            this.lbl_name1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_name = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pnlValidateLevel = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.pnl_players = new System.Windows.Forms.Panel();
-            this.lbl_name = new System.Windows.Forms.Label();
-            this.pnl_2p = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_name1 = new System.Windows.Forms.Label();
-            this.lbl_name2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.pnlValidateLevel.SuspendLayout();
             this.pnl_players.SuspendLayout();
             this.pnl_2p.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.pnlValidateLevel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlRightArrow
@@ -106,6 +106,66 @@
             this.panel1.Size = new System.Drawing.Size(313, 316);
             this.panel1.TabIndex = 15;
             // 
+            // pnl_players
+            // 
+            this.pnl_players.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.pnl_players.Controls.Add(this.pnl_2p);
+            this.pnl_players.Controls.Add(this.lbl_name);
+            this.pnl_players.Location = new System.Drawing.Point(-2, 2);
+            this.pnl_players.Margin = new System.Windows.Forms.Padding(2);
+            this.pnl_players.Name = "pnl_players";
+            this.pnl_players.Size = new System.Drawing.Size(316, 179);
+            this.pnl_players.TabIndex = 6;
+            // 
+            // pnl_2p
+            // 
+            this.pnl_2p.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            this.pnl_2p.Controls.Add(this.lbl_name2);
+            this.pnl_2p.Controls.Add(this.lbl_name1);
+            this.pnl_2p.Controls.Add(this.label2);
+            this.pnl_2p.Location = new System.Drawing.Point(2, 1);
+            this.pnl_2p.Margin = new System.Windows.Forms.Padding(2);
+            this.pnl_2p.Name = "pnl_2p";
+            this.pnl_2p.Size = new System.Drawing.Size(316, 179);
+            this.pnl_2p.TabIndex = 7;
+            // 
+            // lbl_name2
+            // 
+            this.lbl_name2.AutoSize = true;
+            this.lbl_name2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_name2.Location = new System.Drawing.Point(2, 99);
+            this.lbl_name2.Name = "lbl_name2";
+            this.lbl_name2.Size = new System.Drawing.Size(0, 25);
+            this.lbl_name2.TabIndex = 2;
+            this.lbl_name2.Visible = false;
+            // 
+            // lbl_name1
+            // 
+            this.lbl_name1.AutoSize = true;
+            this.lbl_name1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_name1.Location = new System.Drawing.Point(2, 40);
+            this.lbl_name1.Name = "lbl_name1";
+            this.lbl_name1.Size = new System.Drawing.Size(0, 25);
+            this.lbl_name1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(5, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 25);
+            this.label2.TabIndex = 0;
+            // 
+            // lbl_name
+            // 
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_name.Location = new System.Drawing.Point(5, 83);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(0, 25);
+            this.lbl_name.TabIndex = 0;
+            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(163)))), ((int)(((byte)(10)))));
@@ -118,6 +178,19 @@
             this.panel9.Size = new System.Drawing.Size(127, 128);
             this.panel9.TabIndex = 5;
             this.panel9.Click += new System.EventHandler(this.menu_click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 56);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 41);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "principal";
+            this.label3.Click += new System.EventHandler(this.menu_click);
             // 
             // label10
             // 
@@ -156,79 +229,6 @@
             this.label9.Text = "Rejouer";
             this.label9.Click += new System.EventHandler(this.playAgain_click);
             // 
-            // pnl_players
-            // 
-            this.pnl_players.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-            this.pnl_players.Controls.Add(this.pnl_2p);
-            this.pnl_players.Controls.Add(this.lbl_name);
-            this.pnl_players.Location = new System.Drawing.Point(-2, 2);
-            this.pnl_players.Margin = new System.Windows.Forms.Padding(2);
-            this.pnl_players.Name = "pnl_players";
-            this.pnl_players.Size = new System.Drawing.Size(316, 179);
-            this.pnl_players.TabIndex = 6;
-            // 
-            // lbl_name
-            // 
-            this.lbl_name.AutoSize = true;
-            this.lbl_name.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name.Location = new System.Drawing.Point(5, 83);
-            this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(0, 25);
-            this.lbl_name.TabIndex = 0;
-            // 
-            // pnl_2p
-            // 
-            this.pnl_2p.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
-            this.pnl_2p.Controls.Add(this.lbl_name2);
-            this.pnl_2p.Controls.Add(this.lbl_name1);
-            this.pnl_2p.Controls.Add(this.label2);
-            this.pnl_2p.Location = new System.Drawing.Point(2, 1);
-            this.pnl_2p.Margin = new System.Windows.Forms.Padding(2);
-            this.pnl_2p.Name = "pnl_2p";
-            this.pnl_2p.Size = new System.Drawing.Size(316, 179);
-            this.pnl_2p.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 25);
-            this.label2.TabIndex = 0;
-            // 
-            // lbl_name1
-            // 
-            this.lbl_name1.AutoSize = true;
-            this.lbl_name1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name1.Location = new System.Drawing.Point(2, 40);
-            this.lbl_name1.Name = "lbl_name1";
-            this.lbl_name1.Size = new System.Drawing.Size(0, 25);
-            this.lbl_name1.TabIndex = 1;
-            // 
-            // lbl_name2
-            // 
-            this.lbl_name2.AutoSize = true;
-            this.lbl_name2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name2.Location = new System.Drawing.Point(2, 99);
-            this.lbl_name2.Name = "lbl_name2";
-            this.lbl_name2.Size = new System.Drawing.Size(0, 25);
-            this.lbl_name2.TabIndex = 2;
-            this.lbl_name2.Visible = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 56);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 41);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "principal";
-            this.label3.Click += new System.EventHandler(this.menu_click);
-            // 
             // EndGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,17 +242,18 @@
             this.Controls.Add(this.panel2);
             this.Name = "EndGame";
             this.Text = "Fin du jeu";
+            this.Load += new System.EventHandler(this.EndGame_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.pnlValidateLevel.ResumeLayout(false);
-            this.pnlValidateLevel.PerformLayout();
             this.pnl_players.ResumeLayout(false);
             this.pnl_players.PerformLayout();
             this.pnl_2p.ResumeLayout(false);
             this.pnl_2p.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.pnlValidateLevel.ResumeLayout(false);
+            this.pnlValidateLevel.PerformLayout();
             this.ResumeLayout(false);
 
         }

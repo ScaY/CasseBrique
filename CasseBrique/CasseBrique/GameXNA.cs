@@ -13,6 +13,7 @@ using Breakout.Controler;
 using Breakout.Bonus;
 using CasseBrique.Controler;
 using System.Media;
+using System.Threading;
 
 #endregion
 
@@ -42,9 +43,8 @@ namespace Breakout
         private ControlerBarKeyboard controlerBarKeyboard;
         private ControlerBarMouse controlerbarMouse;
 
-        public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form _form) : base()
+        public GameXNA(List<Player> _players, Level _level) : base()
         {
-            _form.Close();
             this.players = _players;
             this.level = _level;
             graphics = new GraphicsDeviceManager(this);
@@ -239,8 +239,8 @@ namespace Breakout
             if (model.IsGameWon() || model.IsGameLost())
             {
                 model.Pause = true;
-                EndGame m = new EndGame(model);
-                m.ShowDialog();
+                EndGame m = new EndGame(model, this);
+                System.Windows.Forms.Application.Run(m);
             }
 
             base.Update(gameTime);
