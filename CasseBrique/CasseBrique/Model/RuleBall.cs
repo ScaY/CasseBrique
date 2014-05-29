@@ -279,6 +279,23 @@ namespace Breakout.Model
             //calcul du theta de la rotation
             Vector2 centerbar = bar.GetCenter();
             float ratioRotation = Math.Abs(centerbar.X - ball.GetCenterBall().X) / (bar.Size.Width / 2);
+
+            if (ball.GetCenterBall().X < bar.GetCenter().X)
+            {
+                if (ball.Deplacement.X > 0 && ball.Deplacement.Y > 0)
+                {
+                    ratioRotation = 1 - ratioRotation;
+                }
+            }
+            else
+            {
+                if (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0)
+                {
+                    ratioRotation = 1 - ratioRotation;
+                }
+            }
+            
+
             double theta = ratioRotation * MAX_THETA_REBOUND;
 
             //calcul du nouveau vecteur de déplacement
