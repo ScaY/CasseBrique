@@ -113,8 +113,8 @@ namespace Breakout.Views
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            using (var game = new GameXNA(this.Players, this.LevelChoosed, this))
-                game.Run();
+            //using (var game = new GameXNA(this.Players, this.LevelChoosed))
+                //game.Run();
 
         }
 

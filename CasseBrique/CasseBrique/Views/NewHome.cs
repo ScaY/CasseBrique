@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Breakout
@@ -16,12 +17,6 @@ namespace Breakout
     {
         public NewHome()
         {
-            InitializeComponent();
-        }
-
-        public NewHome(Form form)
-        {
-            form.Close();
             InitializeComponent();
         }
 
@@ -443,12 +438,24 @@ namespace Breakout
 
         }
 
+        private void runGame()
+        {
+            try
+            {
+                using (var game = new GameXNA(this.players, this.selectedLevel))
+                    game.Run();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         private void panel10_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Hide();
-            using (var game = new GameXNA(this.players,this.selectedLevel, this))
-                game.Run();
-
+            Thread oThread = new Thread(new ThreadStart(runGame));
+            oThread.Start();
+            this.Close();
         }
 
     }

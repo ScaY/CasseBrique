@@ -21,8 +21,7 @@ namespace Breakout
         [STAThread]
         static void Main()
         {
-                NewHome m = new NewHome();
-                m.ShowDialog();
+            Application.Run(new NewHome());
         }
     }
 #endif

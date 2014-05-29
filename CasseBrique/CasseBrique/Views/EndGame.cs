@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Breakout.Views
@@ -15,12 +16,14 @@ namespace Breakout.Views
     {
         public BreakoutModel Model { get; set; }
         public List<Label> playerNames { get; set; }
+        private Game game;
 
-        public EndGame(BreakoutModel model)
+        public EndGame(BreakoutModel model, Game _game)
         {
             InitializeComponent();
 
             this.Model = model;
+            this.game = _game;
 
             if (model.Players.Count == 1)
             {
@@ -37,25 +40,29 @@ namespace Breakout.Views
             }
         }
 
+        private void runGame()
+        {
+            using (var game = new GameXNA(Model.Players, Model.Level))
+                game.Run();
+        }
+
         private void playAgain_click(object sender, EventArgs e)
         {
-            this.Hide();
-
-            using (var game = new GameXNA(Model.Players, Model.Level, this))
-                game.Run();
+            Thread oThread = new Thread(new ThreadStart(runGame));
+            oThread.Start();
+            this.Close();
         }
 
         private void menu_click(object sender, EventArgs e)
         {
+            NewHome m = new NewHome();
             this.Hide();
-
-            NewHome m = new NewHome(this);
             m.ShowDialog();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void EndGame_Load(object sender, EventArgs e)
         {
-
+            this.game.Exit();
         }
     }
 }
