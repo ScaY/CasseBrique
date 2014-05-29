@@ -164,9 +164,6 @@
     <Content Include="Content\barMid.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\barplayer2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\bonus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -187,7 +184,6 @@
     <Content Include="Content\Brique\RedBrick.png" />
     <Content Include="Content\ChromeBonus.png" />
     <Content Include="Content\IEBonus.png" />
-    <Content Include="Content\Image1.png" />
     <Content Include="Content\pause.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
