@@ -1,8 +1,6 @@
-﻿using Breakout.Model;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace Breakout.Model
 {//ceci est un commentaire

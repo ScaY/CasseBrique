@@ -2,12 +2,6 @@
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Breakout.Views
@@ -48,9 +42,10 @@ namespace Breakout.Views
 
         private void playAgain_click(object sender, EventArgs e)
         {
-            Thread oThread = new Thread(new ThreadStart(runGame));
-            oThread.Start();
-            this.Close();
+            /*Thread oThread = new Thread(new ThreadStart(runGame));
+            oThread.Start();*/
+            this.Hide();
+            runGame();;
         }
 
         private void menu_click(object sender, EventArgs e)

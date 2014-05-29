@@ -1,11 +1,7 @@
 ﻿using Breakout.Bonus;
 using Breakout.Model;
-using Breakout.Views;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Breakout.Controler
 {
