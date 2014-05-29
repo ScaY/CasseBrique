@@ -11,7 +11,8 @@ namespace CasseBrique.Controler
 {
     public class ControlerBarMouse : ControlerBar
     {
-        public ControlerBarMouse(BreakoutModel model) : base(model)
+        public ControlerBarMouse(BreakoutModel model)
+            : base(model)
         {
 
         }
@@ -20,9 +21,14 @@ namespace CasseBrique.Controler
         {
             Bar Bar = player.Bar;
 
-            if ( (mouseSate.X - Bar.Size.Width / 2) >= 0 && mouseSate.X <= widthFrame)
+            if ((mouseSate.X - Bar.Size.Width / 2) >= 0 && mouseSate.X <= widthFrame)
             {
                 Bar.Position = new Vector2(mouseSate.X - Bar.Size.Width / 2, Bar.Position.Y);
+            }
+
+            if (!Model.GameLauch)
+            {
+                Bar.StartBall.Position = new Vector2(Bar.Position.X + Bar.Size.Width / 2 - Bar.StartBall.Size.Width / 2, Bar.Position.Y - Bar.StartBall.Size.Height);
             }
         }
     }

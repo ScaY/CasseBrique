@@ -60,6 +60,7 @@
     <Compile Include="Controler\AbstractControler.cs" />
     <Compile Include="Controler\ControlerBarMouse.cs" />
     <Compile Include="Controler\ControlerBonus.cs" />
+    <Compile Include="Controler\NameControlerBar.cs" />
     <Compile Include="Events\AddedBallEvent.cs" />
     <Compile Include="Events\AddedBonusEvent.cs" />
     <Compile Include="Events\AddedBrickEvent.cs" />

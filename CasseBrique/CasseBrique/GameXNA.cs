@@ -32,12 +32,15 @@ namespace Breakout
 
         private BreakoutModel model;
         private ViewBreakout view;
-        private ControlerBar controlerBar;
         private ControlerBall controlerBall;
         private ControlerBonus controlerBonus;
         private List<Player> players;
         private Level level;
         private KeyboardState previousKeyboardState;
+
+        //les différents controleur de la barre disponible
+        private ControlerBarKeyboard controlerBarKeyboard;
+        private ControlerBarMouse controlerbarMouse;
 
         public GameXNA(List<Player> _players, Level _level, System.Windows.Forms.Form _form) : base()
         {
@@ -83,7 +86,8 @@ namespace Breakout
                 }
             }
 
-            controlerBar = new ControlerBarKeyboard(model);
+            controlerBarKeyboard = new ControlerBarKeyboard(model);
+            controlerbarMouse = new ControlerBarMouse(model);
             controlerBall = new ControlerBall(model);
             controlerBonus = new ControlerBonus(model);
 
@@ -204,7 +208,14 @@ namespace Breakout
 
                 foreach (Player player in model.Players)
                 {
-                    controlerBar.HandleInput(keyboardState, mouseState, gameTime, widthFrame, player);
+                    if (player.ControlGame == NameControlerBar.KeyboardKM || player.ControlGame == NameControlerBar.KeyboardQD)
+                    {
+                        controlerBarKeyboard.HandleInput(keyboardState, mouseState, gameTime, widthFrame, player);
+                    }
+                    else if (player.ControlGame == NameControlerBar.Mouse)
+                    {
+                        controlerbarMouse.HandleInput(keyboardState, mouseState, gameTime, widthFrame, player);
+                    }
 
                     try
                     {
