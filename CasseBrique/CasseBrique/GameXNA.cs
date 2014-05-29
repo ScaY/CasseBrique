@@ -46,7 +46,10 @@ namespace Breakout
             this.level = _level;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
+            this.Window.Title = "Casse Tuile";
+
+            this.Window.AllowUserResizing = false;
+
 
         }
 
@@ -132,7 +135,7 @@ namespace Breakout
             }
             catch (Exception e)
             {
-                Console.WriteLine("Exception in CasseBrique LoadContent: " + e.Message);
+                Console.WriteLine("Exception in CasseTuile LoadContent: " + e.Message);
             }
 
             base.Initialize();
@@ -259,7 +262,6 @@ namespace Breakout
             spriteBatch.Begin();
             view.Draw(spriteBatch, gameTime);
             spriteBatch.End();
-            
             base.Draw(gameTime);
         }
     }
