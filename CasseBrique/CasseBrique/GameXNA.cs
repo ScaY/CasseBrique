@@ -39,19 +39,25 @@ namespace Breakout
         private ControlerBarKeyboard controlerBarKeyboard;
         private ControlerBarMouse controlerbarMouse;
 
-        public GameXNA(List<Player> _players, Level _level)
-            : base()
+        public GameXNA(List<Player> _players, Level _level) : base()
         {
-
-            this.players = _players;
-            this.level = _level;
+            this.InitializeVariables(_players, _level);
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.Window.Title = "Casse Tuile";
-
             this.Window.AllowUserResizing = false;
+        }
 
+        public void InitializeVariables(List<Player> _players, Level _level)
+        {
+            this.players = _players;
+            this.level = _level;
+        }
 
+        public void Reset(List<Player> _players, Level _level)
+        {
+            this.InitializeVariables(_players, _level);
+            this.Initialize();
         }
 
         /// <summary>
@@ -62,21 +68,21 @@ namespace Breakout
         /// </summary>
         protected override void Initialize()
         {
-
+            
             this.widthFrame = this.GraphicsDevice.Viewport.Width;
             this.heightFrame = this.GraphicsDevice.Viewport.Height;
-            Console.WriteLine(widthFrame / 10 + "  " + heightFrame / 11);
+
             if (this.level == null)
             {
-                this.model = new BreakoutModel(8,8, 0, 0);
+                this.model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
             }
             else
             {
                 this.model = new BreakoutModel(level);
             }
 
-            this.view = new ViewBreakout(model, this.heightFrame, this.widthFrame);
-
+            this.view = new ViewBreakout(model,this.heightFrame,this.widthFrame);
+            
             this.model.AddView(view);
 
             if (this.players != null)
@@ -150,7 +156,7 @@ namespace Breakout
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            view.LoadContent(Content, widthFrame, heightFrame, model);
+            view.LoadContent(Content, widthFrame, heightFrame);
         }
 
         /// <summary>
@@ -237,14 +243,16 @@ namespace Breakout
                     {
                     }
                 }
+
+                if (model.IsGameWon() || model.IsGameLost())
+                {
+                    model.SetPause(true);
+                    System.Windows.Forms.Form m = new EndGame(model, this, gameTime);
+                    m.ShowDialog();
+                }
             }
 
             previousKeyboardState = keyboardState;
-
-            if (model.IsGameWon() || model.IsGameLost())
-            {
-                System.Windows.Forms.Application.Run(new EndGame(model, this, gameTime));
-            }
 
             base.Update(gameTime);
         }
@@ -255,8 +263,8 @@ namespace Breakout
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(new Color(51, 51, 51));
-
+            GraphicsDevice.Clear(new Color(51,51,51));
+            
             //signal au SpriteBatch le début du déssin
             spriteBatch.Begin();
             view.Draw(spriteBatch, gameTime);
