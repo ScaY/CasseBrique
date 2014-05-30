@@ -3,40 +3,49 @@ using System;
 using System.Collections;
 
 namespace Breakout.Model
-{//ceci est un commentaire
+{
+    /// <summary>
+    /// This a class that contains the rule to move the ball.
+    /// </summary>
     public static class RuleBall
     {
+        /// <summary>
+        /// Gets the bricks hit.
+        /// </summary>
+        /// <param name="ball">The ball.</param>
+        /// <param name="bricks">The bricks.</param>
+        /// <returns>the bricks hit</returns>
         public static Hashtable GetBrickHit(Ball ball, BrickZone bricks)
         {
             Hashtable listBrick = new Hashtable();
             Brick brickHit = null;
 
             Vector2 positionBall = ball.Position;
-            //la balle et dans la zone de brique
+            //the ball is in the brick zone
             if (CheckBallEnterBlockBrick(ball, bricks))
             {
                 int width = ball.Size.Width;
                 int height = ball.Size.Height;
 
-                //teste le coin en haut à gauche
+                //test the top left corner
                 int brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 int brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 brickHit = bricks.GetBrick(brickX, brickY);
                 HandleBricksHit(ball, listBrick, brickHit);
 
-                //teste le coin en haut à droite
+                //test the top right corner
                 brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 brickHit = bricks.GetBrick(brickX, brickY);
                 HandleBricksHit(ball, listBrick, brickHit);
 
-                //teste le coin en bas à droite
+                //test the bottom right corner
                 brickX = (int)((positionBall.X + width - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y + height - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 brickHit = bricks.GetBrick(brickX, brickY);
                 HandleBricksHit(ball, listBrick, brickHit);
 
-                //teste le coin en bas à gauche
+                //test the bottom left corner
                 brickX = (int)((positionBall.X - bricks.StartBlockBrickX) / bricks.WidthBrick);
                 brickY = (int)((positionBall.Y + height - bricks.StartBlockBrickY) / bricks.HeightBrick);
                 brickHit = bricks.GetBrick(brickX, brickY);
@@ -47,6 +56,12 @@ namespace Breakout.Model
             return listBrick;
         }
 
+        /// <summary>
+        /// Handles the brick hit.
+        /// </summary>
+        /// <param name="ball">The ball.</param>
+        /// <param name="listBrick">The list of bricks.</param>
+        /// <param name="brickHit">The brick hit.</param>
         public static void HandleBricksHit(Ball ball, Hashtable listBrick, Brick brickHit)
         {
             if (brickHit != null)
@@ -76,6 +91,12 @@ namespace Breakout.Model
             }
         }
 
+        /// <summary>
+        /// Checks if the ball enter the block of bricks.
+        /// </summary>
+        /// <param name="ball">The ball.</param>
+        /// <param name="bricks">The bricks.</param>
+        /// <returns></returns>
         public static bool CheckBallEnterBlockBrick(Ball ball, BrickZone bricks)
         {
             Rectangle boxBall = ball.GetBox();
@@ -84,6 +105,12 @@ namespace Breakout.Model
             return boxBall.Intersects(boxZone);
         }
 
+        /// <summary>
+        /// Handles the deplacement when a brick is hit.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="bricksHit">The bricks hit.</param>
+        /// <param name="ball">The ball.</param>
         public static void HandleDeplacementHitBrick(BreakoutModel model, Hashtable bricksHit, Ball ball)
         {
             Brick brick = null;
@@ -105,13 +132,13 @@ namespace Breakout.Model
                 HandleHitThreeBrick(bricksHit, ball);
             }
 
-            //maj de la vie des briques
+            //updating the life of the brick
             foreach (Brick brickHit in bricksHit.Values)
             {
                 model.UpdateBrickLife(brickHit, brickHit.Life - 1);
             }
 
-            //si la brique est détruite et contient un bonus on ajoute le bonus
+            //when the brick is destroyed and contained a bonus, we add it to the game
             foreach (Brick brickHit in bricksHit.Values)
             {
                 if (brickHit.Life < 0 && brickHit.Bonus != null)
@@ -121,11 +148,21 @@ namespace Breakout.Model
                 }
             }
         }
+        /// <summary>
+        /// Handles when the three bricks are hit.
+        /// </summary>
+        /// <param name="listBrick">The list of bricks.</param>
+        /// <param name="ball">The ball.</param>
         public static void HandleHitThreeBrick(Hashtable listBrick, Ball ball)
         {
             ball.Deplacement = new Vector2(-ball.Deplacement.X, -ball.Deplacement.Y);
         }
 
+        /// <summary>
+        /// Handles when two bricks are hit.
+        /// </summary>
+        /// <param name="listBrick">The list of bricks.</param>
+        /// <param name="ball">The ball.</param>
         public static void HandleHitTwoBrick(Hashtable listBrick, Ball ball)
         {
             bool sameX = false;
@@ -161,6 +198,11 @@ namespace Breakout.Model
             }
         }
 
+        /// <summary>
+        /// Handles when only one brick is hit.
+        /// </summary>
+        /// <param name="brick">The brick.</param>
+        /// <param name="ball">The ball.</param>
         public static void HandleHitOneBrick(Brick brick, Ball ball)
         {
 
@@ -173,21 +215,22 @@ namespace Breakout.Model
 
             Vector2 centerBrick = new Vector2(brick.Position.X + widthBrick / 2, brick.Position.Y + heightBrick / 2);
 
-            //la balle a touché la brique à droite
+            //the ball hit the brick on the right side
             if (centerBall.X > centerBrick.X)
             {
                 if ((ball.Deplacement.X > 0 && ball.Deplacement.Y > 0) || (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0))
                 {
                     HandleReboundUpDown(ball);
                 }
-                //gestion de coin en bas à droite
-                else if (ball.Deplacement.X < 0 && ball.Deplacement.Y < 0)
+                
+                //handle the bottom right corner 
+               else if (ball.Deplacement.X < 0 && ball.Deplacement.Y < 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
                     float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
                     HandlediffXDiffY(diffX, diffY, ball);
 
-                }//gestion du coin en haut à droite
+                }//handle the top right corner
                 else if (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
@@ -196,20 +239,20 @@ namespace Breakout.Model
                 }
             }
             else
-            //la balle a touché la brique à gauche
+            //the ball hit the brick on the left side
             {
                 if ((ball.Deplacement.X < 0 && ball.Deplacement.Y < 0) || (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0))
                 {
                     HandleReboundUpDown(ball);
                 }
-                //gestion de coin en bas à gauche
+                //handle the botoom left corner
                 else if (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
                     float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
                     HandlediffXDiffY(diffX, diffY, ball);
 
-                }//gestion du coin en haut à gauche
+                }//handle the top left corner
                 else if (ball.Deplacement.X > 0 && ball.Deplacement.Y > 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
@@ -219,11 +262,17 @@ namespace Breakout.Model
             }
         }
 
+        /// <summary>
+        /// Handlediffs the x difference y.
+        /// </summary>
+        /// <param name="diffX">The difference x.</param>
+        /// <param name="diffY">The difference y.</param>
+        /// <param name="ball">The ball.</param>
         public static void HandlediffXDiffY(float diffX, float diffY, Ball ball)
         {
             if (diffX < 0 && diffY > 0)
             {
-                //rebond en bas
+                //bounce in the bottom
                 HandleReboundUpDown(ball);
             }
             else if (diffX > 0 && diffY < 0)
@@ -255,6 +304,10 @@ namespace Breakout.Model
             }
 
         }
+        /// <summary>
+        /// Handles the bounce on the left and right side.
+        /// </summary>
+        /// <param name="ball">The ball.</param>
         public static void HandleReboundLeftRight(Ball ball)
         {
             if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && (ball.Deplacement.Y < 0 || ball.Deplacement.Y > 0))
@@ -263,6 +316,10 @@ namespace Breakout.Model
             }
         }
 
+        /// <summary>
+        /// Handles the bounce on the up and bottom side.
+        /// </summary>
+        /// <param name="ball">The ball.</param>
         public static void HandleReboundUpDown(Ball ball)
         {
             if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && (ball.Deplacement.Y > 0 || ball.Deplacement.Y < 0))
@@ -271,12 +328,17 @@ namespace Breakout.Model
             }
         }
 
+        /// <summary>
+        /// Handles the bounce on the bar.
+        /// </summary>
+        /// <param name="ball">The ball.</param>
+        /// <param name="bar">The bar.</param>
         public static void HandleReboundBar(Ball ball, Bar bar)
         {
             
             double MAX_THETA_REBOUND = 60;
 
-            //calcul du theta de la rotation
+            //compute the angle theta for the rotation
             Vector2 centerbar = bar.GetCenter();
             float ratioRotation = Math.Abs(centerbar.X - ball.GetCenterBall().X) / (bar.Size.Width / 2);
 
@@ -298,7 +360,7 @@ namespace Breakout.Model
 
             double theta = ratioRotation * MAX_THETA_REBOUND;
 
-            //calcul du nouveau vecteur de déplacement
+            //compute the new vector for the deplacement
             Vector2 deplacement = ball.Deplacement;
             double hypothenus = deplacement.Length();
             float newX = (float)Math.Abs((Math.Sin((theta*Math.PI)/180) * hypothenus));

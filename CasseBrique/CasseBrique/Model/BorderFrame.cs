@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CasseBrique.Model
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public enum BorderFrame
     {
         TOP,
