@@ -74,7 +74,7 @@ namespace Breakout
 
             if (this.level == null)
             {
-                this.model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
+                this.model = new BreakoutModel(8, 8, 0, 0);
             }
             else
             {
@@ -156,7 +156,7 @@ namespace Breakout
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            view.LoadContent(Content, widthFrame, heightFrame);
+            view.LoadContent(Content, widthFrame, heightFrame, model);
         }
 
         /// <summary>
