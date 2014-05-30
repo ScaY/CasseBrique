@@ -7,7 +7,7 @@ namespace Breakout.Bonus
         public override void ApplyBonus(Model.BreakoutModel model, Player player)
         {
             foreach(Ball ball in model.Balls) {
-                ball.Speed += Modifier;
+                ball.Speed *= Modifier;
             }
         }
 
@@ -15,7 +15,7 @@ namespace Breakout.Bonus
         {
             foreach (Ball ball in model.Balls)
             {
-                //ball.Speed -= Modifier;
+                 ball.Speed /= Modifier;
             }
         }
 

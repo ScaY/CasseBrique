@@ -8,7 +8,6 @@ namespace Breakout.Model
 {
     public class Level
     {
-        [Newtonsoft.Json.JsonProperty(TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto)]
         public BrickZone Map { get; set; }
 
         public string LevelName { get; set; }
@@ -16,13 +15,13 @@ namespace Breakout.Model
         public string Path { get; set; }
         public int Id { get; set; }
 
-        public static  JsonSerializerSettings settings = new JsonSerializerSettings()
+        public static JsonSerializerSettings settings = new JsonSerializerSettings()
         {
             TypeNameHandling = TypeNameHandling.All,
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-            ObjectCreationHandling = ObjectCreationHandling.Replace
-            
+            ConstructorHandling = ConstructorHandling.Default,
+            ObjectCreationHandling = ObjectCreationHandling.Auto
         };
+
         public Level()
         {
            // this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
