@@ -41,7 +41,8 @@ namespace CasseBrique.Model
             {
                 Level newLevel = new Level();
                 string file = File.ReadAllText(path);
-                var jsonDe = JsonConvert.DeserializeObject<Level>(file);
+                var jsonDe = JsonConvert.DeserializeObject<Level>(file, settings);
+
 
                 newLevel.LevelName = jsonDe.LevelName;
                 newLevel.Map = jsonDe.Map;

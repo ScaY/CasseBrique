@@ -11,7 +11,8 @@ namespace Breakout.Model
 
         public int YBrick { get; set; }
 
-        public AbstractBonus Bonus { get; set; }
+        
+        public virtual AbstractBonus Bonus { get; set; }
 
         public Brick()
         {
@@ -64,4 +65,9 @@ namespace Breakout.Model
             return string.Format("{0}{1}", this.XBrick, this.YBrick);
         }
     }
+
+    
+
+
+
 }

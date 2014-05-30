@@ -3,7 +3,7 @@ namespace Breakout.Bonus
 {
     public abstract class BarBonus : AbstractBonus
     {
-        public BarBonus()
+        public BarBonus() : base()
             
         {
         }
