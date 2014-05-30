@@ -312,11 +312,7 @@ namespace Breakout.Model
             {
                 newY = -newY;
             }
-
-            Console.WriteLine("Thetha: "+theta+"   newX: "+newX+"  newY : "+newY+"      X: "+ball.Deplacement.X+"   Y :"+ball.Deplacement.Y);
             ball.Deplacement = Vector2.Normalize(new Vector2(newX, newY));
-
-            //HandleReboundUpDown(ball);
 
         }
     }
