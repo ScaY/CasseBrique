@@ -49,8 +49,8 @@ namespace Breakout.Model
         public static  JsonSerializerSettings settings = new JsonSerializerSettings()
         {
             TypeNameHandling = TypeNameHandling.All,
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-            ObjectCreationHandling = ObjectCreationHandling.Replace
+            ConstructorHandling = ConstructorHandling.Default,
+            ObjectCreationHandling = ObjectCreationHandling.Auto
             
         };
         /// <summary>

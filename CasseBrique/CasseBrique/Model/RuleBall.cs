@@ -310,11 +310,12 @@ namespace Breakout.Model
         /// <param name="ball">The ball.</param>
         public static void HandleReboundLeftRight(Ball ball)
         {
-            if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && (ball.Deplacement.Y < 0 || ball.Deplacement.Y > 0))
+            if ((ball.Deplacement.X >= 0 || ball.Deplacement.X <= 0) && (ball.Deplacement.Y <= 0 || ball.Deplacement.Y >= 0))
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(-ball.Deplacement.X, ball.Deplacement.Y));
             }
         }
+
 
         /// <summary>
         /// Handles the bounce on the up and bottom side.
@@ -322,7 +323,7 @@ namespace Breakout.Model
         /// <param name="ball">The ball.</param>
         public static void HandleReboundUpDown(Ball ball)
         {
-            if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && (ball.Deplacement.Y > 0 || ball.Deplacement.Y < 0))
+            if ((ball.Deplacement.X >= 0 || ball.Deplacement.X <= 0) && (ball.Deplacement.Y >= 0 || ball.Deplacement.Y <= 0))
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(ball.Deplacement.X, -ball.Deplacement.Y));
             }
