@@ -71,10 +71,10 @@ namespace Breakout
             
             this.widthFrame = this.GraphicsDevice.Viewport.Width;
             this.heightFrame = this.GraphicsDevice.Viewport.Height;
-
+            Console.WriteLine(widthFrame / 10 + "   " + heightFrame / 11);
             if (this.level == null)
             {
-                this.model = new BreakoutModel(8, 8, 0, 0);
+                this.model = new BreakoutModel(10, 10, 0, 0);
             }
             else
             {
