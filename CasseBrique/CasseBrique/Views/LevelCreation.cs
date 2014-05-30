@@ -374,7 +374,7 @@ namespace CasseBrique.Views
                 double randomBonus = Math.Floor(new Random().NextDouble() * 3);
                 if (randomBonus == 0)
                 {
-                    this.bonus = new BallSpeedBonus((float)0.05, 15);
+                    this.bonus = new BallSpeedBonus((float)0.3, 15);
                 }
                 else if (randomBonus == 1)
                 {
