@@ -61,7 +61,7 @@ namespace Breakout
         /// </summary>
         protected override void Initialize()
         {
-
+            
             this.widthFrame = this.GraphicsDevice.Viewport.Width;
             this.heightFrame = this.GraphicsDevice.Viewport.Height;
 
@@ -74,7 +74,7 @@ namespace Breakout
                 this.model = new BreakoutModel(level);
             }
 
-            this.view = new ViewBreakout(model);
+            this.view = new ViewBreakout(model,this.heightFrame,this.widthFrame);
             
             this.model.AddView(view);
 

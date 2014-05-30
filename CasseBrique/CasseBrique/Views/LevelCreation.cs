@@ -31,7 +31,7 @@ namespace CasseBrique.Views
 
             AddBonusSelected = false;
             NoToolSelected = true;
-            NbMaxBricks = 12;
+            NbMaxBricks = 20;
 
 
             IsAddingBricks = false;
@@ -238,6 +238,16 @@ namespace CasseBrique.Views
         private void lblValidate_Click(object sender, EventArgs e)
         {
             validate();
+        }
+
+        private void pnl1Titre_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl2Outils_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 
