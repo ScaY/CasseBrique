@@ -218,20 +218,20 @@ namespace Breakout.Model
             //the ball hit the brick on the right side
             if (centerBall.X > centerBrick.X)
             {
-                if ((ball.Deplacement.X > 0 && ball.Deplacement.Y > 0) || (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0))
+                if ((ball.Deplacement.X >= 0 && ball.Deplacement.Y >= 0) || (ball.Deplacement.X >= 0 && ball.Deplacement.Y <= 0))
                 {
                     HandleReboundUpDown(ball);
                 }
                 
                 //handle the bottom right corner 
-               else if (ball.Deplacement.X < 0 && ball.Deplacement.Y < 0)
+               else if (ball.Deplacement.X <= 0 && ball.Deplacement.Y <= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
                     float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
                     HandlediffXDiffY(diffX, diffY, ball);
 
                 }//handle the top right corner
-                else if (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0)
+                else if (ball.Deplacement.X <= 0 && ball.Deplacement.Y >= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
                     float diffY = (centerBrick.Y - heightBrick / 2) - centerBall.Y;
@@ -241,19 +241,19 @@ namespace Breakout.Model
             else
             //the ball hit the brick on the left side
             {
-                if ((ball.Deplacement.X < 0 && ball.Deplacement.Y < 0) || (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0))
+                if ((ball.Deplacement.X <= 0 && ball.Deplacement.Y <= 0) || (ball.Deplacement.X <= 0 && ball.Deplacement.Y >= 0))
                 {
                     HandleReboundUpDown(ball);
                 }
                 //handle the botoom left corner
-                else if (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0)
+                else if (ball.Deplacement.X >= 0 && ball.Deplacement.Y <= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
                     float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
                     HandlediffXDiffY(diffX, diffY, ball);
 
                 }//handle the top left corner
-                else if (ball.Deplacement.X > 0 && ball.Deplacement.Y > 0)
+                else if (ball.Deplacement.X >= 0 && ball.Deplacement.Y >= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
                     float diffY = (centerBrick.Y - heightBrick / 2) - centerBall.Y;

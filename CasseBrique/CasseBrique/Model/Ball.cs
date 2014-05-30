@@ -43,7 +43,7 @@ namespace Breakout.Model
         /// Initializes a new instance of the <see cref="Ball"/> class.
         /// </summary>
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(0, -1)), 0.2f, new Size(0, 0))
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2((float)(0.1), -1)), 0.2f, new Size(0, 0))
         {
             this.BarHit = false;
             this.briksHit = new Hashtable();
