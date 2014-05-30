@@ -74,7 +74,7 @@ namespace Breakout
 
             if (this.level == null)
             {
-                this.model = new BreakoutModel(1, 1, 0, 0);
+                this.model = new BreakoutModel(10, 10, 0, 0);
             }
             else
             {
