@@ -62,6 +62,7 @@
             this.pnl1Titre.Name = "pnl1Titre";
             this.pnl1Titre.Size = new System.Drawing.Size(1129, 100);
             this.pnl1Titre.TabIndex = 3;
+            this.pnl1Titre.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl1Titre_Paint);
             // 
             // lbl1
             // 
@@ -87,6 +88,7 @@
             this.pnl2Outils.Name = "pnl2Outils";
             this.pnl2Outils.Size = new System.Drawing.Size(228, 564);
             this.pnl2Outils.TabIndex = 4;
+            this.pnl2Outils.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl2Outils_Paint);
             // 
             // panel3
             // 
@@ -115,7 +117,7 @@
             // txtLevelName
             // 
             this.txtLevelName.Location = new System.Drawing.Point(17, 338);
-            this.txtLevelName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLevelName.Margin = new System.Windows.Forms.Padding(4);
             this.txtLevelName.Name = "txtLevelName";
             this.txtLevelName.Size = new System.Drawing.Size(191, 22);
             this.txtLevelName.TabIndex = 6;
@@ -231,7 +233,7 @@
             // txtErrorMessage
             // 
             this.txtErrorMessage.Location = new System.Drawing.Point(232, 594);
-            this.txtErrorMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtErrorMessage.Margin = new System.Windows.Forms.Padding(4);
             this.txtErrorMessage.Multiline = true;
             this.txtErrorMessage.Name = "txtErrorMessage";
             this.txtErrorMessage.ReadOnly = true;
@@ -254,7 +256,7 @@
             this.Controls.Add(this.pnl3Map);
             this.Controls.Add(this.pnl2Outils);
             this.Controls.Add(this.pnl1Titre);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1142, 705);
             this.MinimumSize = new System.Drawing.Size(1142, 705);
             this.Name = "LevelCreation";
