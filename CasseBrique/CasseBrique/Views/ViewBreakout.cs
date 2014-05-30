@@ -27,10 +27,11 @@ namespace Breakout.Views
         private Texture2D textureBall;
         private Texture2D textureBonus;
         private Texture2D texturePause;
+        private Texture2D textureBallBonus;
 
         public ViewBreakout(BreakoutModel breakout,int height,int width)
         {   
-            breakout.BrickZone.InitializeSizeBrick(new Size(width/11, height/11));
+            breakout.BrickZone.InitializeSizeBrick(new Size(width/10, height/11));
             breakout.BrickZone.InitializePositionBrick();
 
             this.ViewBars = new List<ViewBar>();
@@ -61,6 +62,8 @@ namespace Breakout.Views
             this.textureBall = content.Load<Texture2D>("ballSmall");
             this.textureBonus = content.Load<Texture2D>("bonus");
             this.texturePause = content.Load<Texture2D>("pause");
+            this.textureBallBonus = content.Load<Texture2D>("ballBonus");
+
             foreach (ViewBar viewBar in this.ViewBars)
             {
                 viewBar.Texture = this.textureBar;
@@ -154,7 +157,7 @@ namespace Breakout.Views
                 if (e is AddedBallEvent)
                 {
                     ViewBall viewBall = new ViewBall(be.Ball);
-                    viewBall.Texture = this.textureBall;
+                    viewBall.Texture = this.textureBallBonus;
                     this.ViewBalls.Add(viewBall);
                 }
                 else if (e is RemovedBallEvent)

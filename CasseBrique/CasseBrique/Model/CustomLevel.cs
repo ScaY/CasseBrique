@@ -48,7 +48,6 @@ namespace CasseBrique.Model
                 i++;
                 path = "../../../levels/Customized/level" + i + ".json";
                 toReturn.Add(newLevel);
-                Console.WriteLine(newLevel.LevelName);
             }
             return toReturn;
         }
