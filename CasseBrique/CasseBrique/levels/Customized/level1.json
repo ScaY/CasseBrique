@@ -1,1 +1,657 @@
-{"Map":{"AllBricks":[[null,null,null,null,null,null,null,null,null,null],[null,null,{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":1.0,"Y":2.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":1.0,"Y":3.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},null,null,null,null,null,null],[null,{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":2.0,"Y":1.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":2.0,"Y":2.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":2.0,"Y":3.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":2.0,"Y":4.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},null,null,null,null,null],[null,null,{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":3.0,"Y":2.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":3.0,"Y":3.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},null,null,null,null,null,null],[null,null,{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":4.0,"Y":2.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":4.0,"Y":3.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},null,null,null,null,null,null],[null,null,{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":5.0,"Y":2.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},{"Life":3,"XBrick":0,"YBrick":0,"Bonus":null,"Position":{"X":5.0,"Y":3.0},"Deplacement":{"X":0.0,"Y":0.0},"Speed":0.0,"Size":{"Width":124,"Height":51}},null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null]],"StartBlockBrickX":0.0,"StartBlockBrickY":0.0,"EndBlockBrickX":0.0,"EndBlockBrickY":0.0,"NbBrickRow":10,"NbBrickCol":10,"HeightBrick":0.0,"WidthBrick":0.0},"LevelName":"test1","Path":"../../../levels/Customized/level1.json","Id":0}
+{
+  "$type": "CasseBrique.Model.CustomLevel, CasseBrique",
+  "Map": {
+    "AllBricks": {
+      "$type": "Breakout.Model.Brick[,], CasseBrique",
+      "$values": [
+        [
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 1,
+            "YBrick": 0,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 0.0,
+              "Y": 1.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 1,
+            "YBrick": 1,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 1.0,
+                "Y": 1.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 1.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 3,
+            "YBrick": 1,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 1.0,
+                "Y": 3.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 3.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 4,
+            "YBrick": 1,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 1.0,
+                "Y": 4.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 4.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 1,
+            "YBrick": 2,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 2.0,
+                "Y": 1.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 2.0,
+              "Y": 1.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 3,
+            "YBrick": 2,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 2.0,
+                "Y": 3.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 2.0,
+              "Y": 3.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 2,
+            "YBrick": 3,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 3.0,
+                "Y": 2.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 3.0,
+              "Y": 2.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 1,
+            "YBrick": 4,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 4.0,
+                "Y": 1.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 4.0,
+              "Y": 1.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 2,
+            "YBrick": 4,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 4.0,
+                "Y": 2.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 4.0,
+              "Y": 2.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 5,
+            "YBrick": 4,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 4.0,
+                "Y": 5.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 4.0,
+              "Y": 5.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 2,
+            "YBrick": 5,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 5.0,
+                "Y": 2.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 5.0,
+              "Y": 2.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          {
+            "$type": "Breakout.Model.Brick, CasseBrique",
+            "Life": 3,
+            "XBrick": 4,
+            "YBrick": 5,
+            "Bonus": {
+              "$type": "Breakout.Bonus.AddBallBonus, CasseBrique",
+              "Modifier": 10.0,
+              "StartTime": "00:00:00",
+              "Duration": 15,
+              "Position": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 5.0,
+                "Y": 4.0
+              },
+              "Deplacement": {
+                "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+                "X": 0.0,
+                "Y": 1.0
+              },
+              "Speed": 1.0,
+              "Size": {
+                "$type": "Breakout.Model.Size, CasseBrique",
+                "Width": 32,
+                "Height": 32
+              }
+            },
+            "Position": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 5.0,
+              "Y": 4.0
+            },
+            "Deplacement": {
+              "$type": "Microsoft.Xna.Framework.Vector2, MonoGame.Framework",
+              "X": 1.0,
+              "Y": 0.0
+            },
+            "Speed": 0.5,
+            "Size": {
+              "$type": "Breakout.Model.Size, CasseBrique",
+              "Width": 50,
+              "Height": 50
+            }
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "StartBlockBrickX": 50.0,
+    "StartBlockBrickY": 50.0,
+    "EndBlockBrickX": 0.0,
+    "EndBlockBrickY": 0.0,
+    "NbBrickRow": 10,
+    "NbBrickCol": 10,
+    "HeightBrick": 0.0,
+    "WidthBrick": 0.0
+  },
+  "LevelName": "fr",
+  "Path": "../../../levels/Customized/level1.json",
+  "Id": 0
+}
