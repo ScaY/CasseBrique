@@ -15,7 +15,7 @@ namespace Breakout.Bonus
         {
             foreach (Ball ball in model.Balls)
             {
-                ball.Speed -= Modifier;
+                //ball.Speed -= Modifier;
             }
         }
 

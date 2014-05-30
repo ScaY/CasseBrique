@@ -19,7 +19,7 @@ namespace Breakout.Model
         public bool BarHit { get; set; }
 
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(0, -1)), 0.2f, new Size(0, 0))
         {
             this.BarHit = false;
             this.briksHit = new Hashtable();
@@ -51,8 +51,8 @@ namespace Breakout.Model
                 HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
             }
 
-            HandleTrajectoryBallReboundFrame(gameTime, heightFrame, widthFrame);
             HandleBallReboundBrick(model);
+            HandleTrajectoryBallReboundFrame(gameTime, heightFrame, widthFrame);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
@@ -115,6 +115,7 @@ namespace Breakout.Model
             {
                 RuleBall.HandleDeplacementHitBrick(model, newBricksHit, this);
                 this.briksHit = newBricksHit;
+                this.BorderHit = BorderFrame.NONE;
             }
         }
 

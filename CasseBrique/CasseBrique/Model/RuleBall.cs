@@ -176,19 +176,19 @@ namespace Breakout.Model
             //la balle a touché la brique à droite
             if (centerBall.X > centerBrick.X)
             {
-                if ((ball.Deplacement.X > 0 && ball.Deplacement.Y > 0) || (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0))
+                if ((ball.Deplacement.X >= 0 && ball.Deplacement.Y >= 0) || (ball.Deplacement.X >= 0 && ball.Deplacement.Y <= 0))
                 {
                     HandleReboundUpDown(ball);
                 }
                 //gestion de coin en bas à droite
-                else if (ball.Deplacement.X < 0 && ball.Deplacement.Y < 0)
+                else if (ball.Deplacement.X <= 0 && ball.Deplacement.Y <= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
                     float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
                     HandlediffXDiffY(diffX, diffY, ball);
 
                 }//gestion du coin en haut à droite
-                else if (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0)
+                else if (ball.Deplacement.X <= 0 && ball.Deplacement.Y >= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X + widthBrick / 2);
                     float diffY = (centerBrick.Y - heightBrick / 2) - centerBall.Y;
@@ -198,19 +198,19 @@ namespace Breakout.Model
             else
             //la balle a touché la brique à gauche
             {
-                if ((ball.Deplacement.X < 0 && ball.Deplacement.Y < 0) || (ball.Deplacement.X < 0 && ball.Deplacement.Y > 0))
+                if ((ball.Deplacement.X <= 0 && ball.Deplacement.Y <= 0) || (ball.Deplacement.X <= 0 && ball.Deplacement.Y >= 0))
                 {
                     HandleReboundUpDown(ball);
                 }
                 //gestion de coin en bas à gauche
-                else if (ball.Deplacement.X > 0 && ball.Deplacement.Y < 0)
+                else if (ball.Deplacement.X >= 0 && ball.Deplacement.Y <= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
                     float diffY = centerBall.Y - (centerBrick.Y + heightBrick / 2);
                     HandlediffXDiffY(diffX, diffY, ball);
 
                 }//gestion du coin en haut à gauche
-                else if (ball.Deplacement.X > 0 && ball.Deplacement.Y > 0)
+                else if (ball.Deplacement.X >= 0 && ball.Deplacement.Y >= 0)
                 {
                     float diffX = centerBall.X - (centerBrick.X - widthBrick / 2);
                     float diffY = (centerBrick.Y - heightBrick / 2) - centerBall.Y;
@@ -257,7 +257,7 @@ namespace Breakout.Model
         }
         public static void HandleReboundLeftRight(Ball ball)
         {
-            if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && (ball.Deplacement.Y < 0 || ball.Deplacement.Y > 0))
+            if ((ball.Deplacement.X >= 0 || ball.Deplacement.X <= 0) && (ball.Deplacement.Y <= 0 || ball.Deplacement.Y >= 0))
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(-ball.Deplacement.X, ball.Deplacement.Y));
             }
@@ -265,7 +265,7 @@ namespace Breakout.Model
 
         public static void HandleReboundUpDown(Ball ball)
         {
-            if ((ball.Deplacement.X > 0 || ball.Deplacement.X < 0) && (ball.Deplacement.Y > 0 || ball.Deplacement.Y < 0))
+            if ((ball.Deplacement.X >= 0 || ball.Deplacement.X <= 0) && (ball.Deplacement.Y >= 0 || ball.Deplacement.Y <= 0))
             {
                 ball.Deplacement = Vector2.Normalize(new Vector2(ball.Deplacement.X, -ball.Deplacement.Y));
             }
