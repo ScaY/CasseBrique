@@ -17,7 +17,7 @@ namespace CasseBrique.Controler
         {
             Bar Bar = player.Bar;
 
-            if ((mouseSate.X - Bar.Size.Width / 2) >= 0 && mouseSate.X <= widthFrame)
+            if ((mouseSate.X - Bar.Size.Width / 2) >= 0 && (mouseSate.X + Bar.Size.Width / 2) <= widthFrame)
             {
                 Bar.Position = new Vector2(mouseSate.X - Bar.Size.Width / 2, Bar.Position.Y);
             }
