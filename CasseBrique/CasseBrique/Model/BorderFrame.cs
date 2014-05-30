@@ -8,7 +8,8 @@ namespace CasseBrique.Model
     public enum BorderFrame
     {
         TOP,
-        BORDER,
+        BORDERLEFT,
+        BORDERRIGHT,
         NONE
     }
 }

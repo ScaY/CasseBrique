@@ -25,7 +25,7 @@ namespace Breakout.Model
         };
         public Level()
         {
-            this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
+           // this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
             this.Map = null;
             this.Id = 0;
             
@@ -34,20 +34,20 @@ namespace Breakout.Model
         {
             
             this.Id = id;
-            this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
+           // this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
             
         }
         public Level(int id, BrickZone map ){
             
             this.Map = map;
             this.Id = id;
-            this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
+          // this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
         }
         
 
         public void load()
         {
-            
+            /*
             if (File.Exists(Path))
             {
                 string file = File.ReadAllText(Path);
@@ -55,7 +55,7 @@ namespace Breakout.Model
 
                 this.LevelName = jsonDe.LevelName;
                 this.Map = jsonDe.Map;
-            }
+            }*/
         }
 
 

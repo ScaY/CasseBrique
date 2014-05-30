@@ -19,10 +19,11 @@ namespace Breakout.Model
         public bool BarHit { get; set; }
 
         public Ball()
-            : base(Vector2.Zero, Vector2.Normalize(new Vector2(-1)), 0.2f, new Size(0, 0))
+            : base(Vector2.Zero, Vector2.Normalize(new Vector2(0, -1)), 0.2f, new Size(0, 0))
         {
             this.BarHit = false;
             this.briksHit = new Hashtable();
+            this.BorderHit = BorderFrame.NONE;
         }
 
         public Ball(Vector2 position, Vector2 deplacement, float speed)
@@ -30,6 +31,7 @@ namespace Breakout.Model
         {
             this.BarHit = false;
             this.briksHit = new Hashtable();
+            this.BorderHit = BorderFrame.NONE;
         }
 
         public override void HandleTrajectory(BreakoutModel model, GameTime gameTime, int heightFrame, int widthFrame)
@@ -49,8 +51,8 @@ namespace Breakout.Model
                 HandleTrajectoryBallReboundBar(bar, gameTime, heightFrame, widthFrame);
             }
 
-            HandleTrajectoryBallReboundFrame(gameTime, heightFrame, widthFrame);
             HandleBallReboundBrick(model);
+            HandleTrajectoryBallReboundFrame(gameTime, heightFrame, widthFrame);
 
             Position += Deplacement * Speed * (float)gameTime.ElapsedGameTime.TotalMilliseconds;
         }
@@ -61,7 +63,6 @@ namespace Breakout.Model
             {
                 if (!this.BarHit)
                 {
-                    //RuleBall.HandleReboundUpDown(this);
                     RuleBall.HandleReboundBar(this, bar);
                     this.BarHit = true;
                 }
@@ -77,22 +78,28 @@ namespace Breakout.Model
 
         public void HandleTrajectoryBallReboundFrame(GameTime gameTime, int heightFrame, int widthFrame)
         {
-            //rebond à gauche ou à droite
-            if (((Position.X - this.Size.Width / 2) < 0 || (Position.X + this.Size.Width / 2 > widthFrame)) && this.BorderHit != BorderFrame.BORDER)
+            //rebond à gauche 
+            if ((Position.X - this.Size.Width / 2) < 0 && this.BorderHit != BorderFrame.BORDERLEFT)
             {
                 RuleBall.HandleReboundLeftRight(this);
-                this.BorderHit = BorderFrame.BORDER;
+                this.BorderHit = BorderFrame.BORDERLEFT;
+                this.briksHit.Clear();
+            }
+            else if (Position.X + this.Size.Width / 2 > widthFrame && this.BorderHit != BorderFrame.BORDERRIGHT)
+            {
+                RuleBall.HandleReboundLeftRight(this);
+                this.BorderHit = BorderFrame.BORDERRIGHT;
                 this.briksHit.Clear();
             }
             //rebond en haut
-            else if ( (Position.Y-this.Size.Height/2) < 0 && this.BorderHit != BorderFrame.TOP)
+            else if ((Position.Y - this.Size.Height / 2) < 0 && this.BorderHit != BorderFrame.TOP)
             {
                 RuleBall.HandleReboundUpDown(this);
-                this.briksHit.Clear();
-
                 this.BorderHit = BorderFrame.TOP;
+                this.briksHit.Clear();
             }
-            else
+            //la balle est dans la zone
+            else if (((Position.Y - this.Size.Height / 2) > 0) && (Position.X - this.Size.Width / 2) > 0 && (Position.X + this.Size.Width / 2 < widthFrame))
             {
                 this.BorderHit = BorderFrame.NONE;
             }
@@ -108,6 +115,7 @@ namespace Breakout.Model
             {
                 RuleBall.HandleDeplacementHitBrick(model, newBricksHit, this);
                 this.briksHit = newBricksHit;
+                this.BorderHit = BorderFrame.NONE;
             }
         }
 

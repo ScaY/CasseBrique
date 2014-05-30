@@ -41,16 +41,23 @@ namespace Breakout
 
         public GameXNA(List<Player> _players, Level _level) : base()
         {
-            
-            this.players = _players;
-            this.level = _level;
+            this.InitializeVariables(_players, _level);
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.Window.Title = "Casse Tuile";
-
             this.Window.AllowUserResizing = false;
+        }
 
+        public void InitializeVariables(List<Player> _players, Level _level)
+        {
+            this.players = _players;
+            this.level = _level;
+        }
 
+        public void Reset(List<Player> _players, Level _level)
+        {
+            this.InitializeVariables(_players, _level);
+            this.Initialize();
         }
 
         /// <summary>
@@ -67,7 +74,7 @@ namespace Breakout
 
             if (this.level == null)
             {
-                this.model = new BreakoutModel(2, 1, (float)(0.2 * widthFrame), (float)(0.2 * heightFrame));
+                this.model = new BreakoutModel(10, 10, 0, 0);
             }
             else
             {
@@ -149,7 +156,7 @@ namespace Breakout
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            view.LoadContent(Content, widthFrame, heightFrame);
+            view.LoadContent(Content, widthFrame, heightFrame, model);
         }
 
         /// <summary>
@@ -236,14 +243,16 @@ namespace Breakout
                     {
                     }
                 }
+
+                if (model.IsGameWon() || model.IsGameLost())
+                {
+                    model.SetPause(true);
+                    System.Windows.Forms.Form m = new EndGame(model, this, gameTime);
+                    m.ShowDialog();
+                }
             }
 
             previousKeyboardState = keyboardState;
-
-            if (model.IsGameWon() || model.IsGameLost())
-            {
-                System.Windows.Forms.Application.Run(new EndGame(model, this,gameTime));
-            }
 
             base.Update(gameTime);
         }

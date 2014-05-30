@@ -11,9 +11,9 @@ namespace Breakout.Views
     {
         public BreakoutModel Model { get; set; }
         public List<Label> playerNames { get; set; }
-        private Game game;
+        private GameXNA game;
 
-        public EndGame(BreakoutModel model, Game _game, GameTime gameTime)
+        public EndGame(BreakoutModel model, GameXNA _game, GameTime gameTime)
         {
             InitializeComponent();
 
@@ -59,30 +59,23 @@ namespace Breakout.Views
             }
         }
 
-        private void runGame()
-        {
-            using (var game = new GameXNA(Model.Players, Model.Level))
-                game.Run();
-        }
-
         private void playAgain_click(object sender, EventArgs e)
         {
-            /*Thread oThread = new Thread(new ThreadStart(runGame));
-            oThread.Start();*/
-            this.Hide();
-            runGame();;
+            game.Reset(this.Model.Players, this.Model.Level);
+            this.Close();
         }
 
         private void menu_click(object sender, EventArgs e)
         {
-            NewHome m = new NewHome();
+            NewHome m = new NewHome(this.game);
             this.Hide();
             m.ShowDialog();
+            this.Close();
         }
 
         private void EndGame_Load(object sender, EventArgs e)
         {
-            this.game.Exit();
+            //this.game.Exit();
         }
     }
 }

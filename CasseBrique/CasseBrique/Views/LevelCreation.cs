@@ -73,7 +73,6 @@ namespace CasseBrique.Views
                             int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
                             var brick = new Brick();
                             brick.Position = new Microsoft.Xna.Framework.Vector2(j, i);
-                            brick.Size = new Breakout.Model.Size(50, 50);
                             brick.XBrick = i;
                             brick.YBrick = j;
                             brick.Life = 3;
@@ -96,7 +95,7 @@ namespace CasseBrique.Views
 
 
 
-                    lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 50, 50, bricks);
+                    lvl.Map = new BrickZone(pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight, 0, 0, bricks);
 
                     if (hasBricks)
                     {
