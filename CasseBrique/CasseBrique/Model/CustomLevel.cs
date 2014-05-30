@@ -9,7 +9,6 @@ namespace CasseBrique.Model
 {
     class CustomLevel : Level
     {
-        public static int IdInstance = 0;
         public CustomLevel() : base()
         {
             this.Path = String.Format("../../../levels/Customized/level{0}.json", Directory.GetFiles("../../../levels/Customized/").Count() + 1);
