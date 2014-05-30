@@ -31,7 +31,7 @@ namespace Breakout.Views
 
         public ViewBreakout(BreakoutModel breakout,int height,int width)
         {   
-            breakout.BrickZone.InitializeSizeBrick(new Size(width/11, height/11));
+            breakout.BrickZone.InitializeSizeBrick(new Size(width/10, height/11));
             breakout.BrickZone.InitializePositionBrick();
 
             this.ViewBars = new List<ViewBar>();

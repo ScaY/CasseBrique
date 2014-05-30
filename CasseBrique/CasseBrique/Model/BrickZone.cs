@@ -129,8 +129,8 @@ namespace Breakout.Model
                     }
                 }
 
-                this.EndBlockBrickX = startBlockBrickX + NbBrickCol * WidthBrick;
-                this.EndBlockBrickY = startBlockBrickY + NbBrickRow * HeightBrick;
+                this.EndBlockBrickX = NbBrickCol * WidthBrick;
+                this.EndBlockBrickY = NbBrickRow * HeightBrick;
             }
         }
 
@@ -166,7 +166,7 @@ namespace Breakout.Model
                 {
                     if (AllBricks[y, x] != null)
                     {
-                        AllBricks[y, x].Position = new Vector2(StartBlockBrickX + x * WidthBrick, StartBlockBrickY + y * HeightBrick);
+                        AllBricks[y, x].Position = new Vector2(x * WidthBrick, y * HeightBrick);
                     }
                 }
             }
