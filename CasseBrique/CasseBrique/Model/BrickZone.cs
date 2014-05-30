@@ -100,12 +100,12 @@ namespace Breakout.Model
             this.StartBlockBrickX = startBlockBrickX;
             this.StartBlockBrickY = startBlockBrickY;
         }
+
         public BrickZone(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY,Brick[,] bricks)
         {
             this.AllBricks = bricks;
             this.NbBrickCol = nbBrickCol;
             this.NbBrickRow = nbBrickRow;
-
 
             this.StartBlockBrickX = startBlockBrickX;
             this.StartBlockBrickY = startBlockBrickY;

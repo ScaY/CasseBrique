@@ -186,7 +186,7 @@
     <Content Include="Content\Brique\OrangeBrick.png" />
     <Content Include="Content\Brique\RedBrick.png" />
     <Content Include="Content\ChromeBonus.png" />
-    <Content Include="Content\pause.png">
+    <Content Include="Content\PauseCasseTuile.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />

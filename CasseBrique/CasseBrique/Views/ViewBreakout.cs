@@ -61,7 +61,7 @@ namespace Breakout.Views
             this.textureBar = content.Load<Texture2D>("barMid");
             this.textureBall = content.Load<Texture2D>("ballSmall");
             this.textureBonus = content.Load<Texture2D>("bonus");
-            this.texturePause = content.Load<Texture2D>("pause");
+            this.texturePause = content.Load<Texture2D>("PauseCasseTuile");
             this.textureBallBonus = content.Load<Texture2D>("ballBonus");
 
             foreach (ViewBar viewBar in this.ViewBars)
