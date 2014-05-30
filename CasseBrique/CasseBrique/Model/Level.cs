@@ -39,7 +39,7 @@ namespace Breakout.Model
 
         public void load()
         {
-
+            
             if (File.Exists(Path))
             {
                 string file = File.ReadAllText(Path);
