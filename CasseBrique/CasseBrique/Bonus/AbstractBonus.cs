@@ -4,7 +4,7 @@ using System;
 
 namespace Breakout.Bonus
 {
-    public class AbstractBonus : Shape
+    public abstract class AbstractBonus : Shape
     {
         public float Modifier { get; set; }
 

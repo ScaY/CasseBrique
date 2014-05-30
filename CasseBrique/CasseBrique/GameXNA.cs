@@ -61,7 +61,7 @@ namespace Breakout
         /// </summary>
         protected override void Initialize()
         {
-
+            
             this.widthFrame = this.GraphicsDevice.Viewport.Width;
             this.heightFrame = this.GraphicsDevice.Viewport.Height;
 
@@ -74,7 +74,7 @@ namespace Breakout
                 this.model = new BreakoutModel(level);
             }
 
-            this.view = new ViewBreakout(model);
+            this.view = new ViewBreakout(model,this.heightFrame,this.widthFrame);
             
             this.model.AddView(view);
 
@@ -242,8 +242,6 @@ namespace Breakout
 
             if (model.IsGameWon() || model.IsGameLost())
             {
-                EndGame m = new EndGame(model, this,gameTime);
-                System.Windows.Forms.Application.Run(m);
                 System.Windows.Forms.Application.Run(new EndGame(model, this,gameTime));
             }
 

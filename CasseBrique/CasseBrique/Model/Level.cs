@@ -8,6 +8,7 @@ namespace Breakout.Model
 {
     public class Level
     {
+        [Newtonsoft.Json.JsonProperty(TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto)]
         public BrickZone Map { get; set; }
 
         public string LevelName { get; set; }
@@ -15,6 +16,13 @@ namespace Breakout.Model
         public string Path { get; set; }
         public int Id { get; set; }
 
+        public static  JsonSerializerSettings settings = new JsonSerializerSettings()
+        {
+            TypeNameHandling = TypeNameHandling.All,
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            ObjectCreationHandling = ObjectCreationHandling.Replace
+            
+        };
         public Level()
         {
             this.Path = String.Format("../../../levels/Default/level{0}.json", Directory.GetFiles("../../../levels/Default/").Count() + 1);
@@ -55,7 +63,8 @@ namespace Breakout.Model
         {
             
             
-            File.WriteAllText(Path, JsonConvert.SerializeObject(this));
+            File.WriteAllText(Path, JsonConvert.SerializeObject(this,Formatting.Indented,settings));
+           
 
         }
 
@@ -68,7 +77,7 @@ namespace Breakout.Model
             {
                 Level newLevel = new Level();
                 string file = File.ReadAllText(path);
-                var jsonDe = JsonConvert.DeserializeObject<Level>(file);
+                var jsonDe = JsonConvert.DeserializeObject<Level>(file, settings);
 
                 newLevel.LevelName = jsonDe.LevelName;
                 newLevel.Map = jsonDe.Map;

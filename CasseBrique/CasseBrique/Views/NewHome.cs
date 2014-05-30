@@ -117,7 +117,7 @@ namespace Breakout
         private void pnl2Players_MouseClick(object sender, MouseEventArgs e)
         {
             this.isMultiPlayer = true;
-
+            this.players = new List<Player>();
             if (this.players.Count <= 1)
             {
                 this.panel1.Hide();
@@ -126,6 +126,8 @@ namespace Breakout
                 this.bigPnlOnePlayer.Show();
                 
                 this.label5.Text = "Joueur  "+ (this.players.Count + 1)+" : ";
+                this.textBox1.Text = "";
+
             }
             else
             {
@@ -138,13 +140,15 @@ namespace Breakout
 
         private void pnlOnePlayer_Click(object sender, EventArgs e)
         {
+            this.players = new List<Player>();
+
             this.panel1.Hide();
             this.isMultiPlayer = false;
 
             this.pnlLeftArrow.Show();
             this.bigPnlOnePlayer.BringToFront();
             this.bigPnlOnePlayer.Show();
-
+            this.textBox1.Text = "";
 
         }
 
@@ -253,8 +257,6 @@ namespace Breakout
 
                 }
 
-                /*using (var game = new GameXNA(this.players,this.selectedLevel, this))
-                    game.Run();*/
 
             }
             else

@@ -24,7 +24,7 @@ namespace Breakout.Bonus
         {
             model.RemoveBall(ball);
         }
-        public AddBallBonus()
+        public AddBallBonus():base()
         {
         }
         public AddBallBonus(float modifier, int duration) : base(modifier, duration)

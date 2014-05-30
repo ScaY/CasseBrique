@@ -31,7 +31,7 @@ namespace CasseBrique.Views
 
             AddBonusSelected = false;
             NoToolSelected = true;
-            NbMaxBricks = 12;
+            NbMaxBricks = 20;
 
 
             IsAddingBricks = false;
@@ -84,15 +84,12 @@ namespace CasseBrique.Views
                                 brick.Bonus.Position = brick.Position;
                                 brick.Bonus.Deplacement = Microsoft.Xna.Framework.Vector2.Normalize(Microsoft.Xna.Framework.Vector2.UnitY);
                                 brick.Bonus.Size = new Breakout.Model.Size(32, 32);
-                                brick.Bonus.Duration = 80;
-
                             }
 
 
 
                             bricks[j, i] = brick;
 
-                            bricks[j, i].Bonus = currentB.bonus;
                         }
 
                     }
@@ -243,6 +240,16 @@ namespace CasseBrique.Views
             validate();
         }
 
+        private void pnl1Titre_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl2Outils_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
 
 
 
@@ -364,23 +371,21 @@ namespace CasseBrique.Views
             if (bonus)
             {
                 this.BackColor = Color.FromArgb(80, 150, 1);
-                double randomBonus = Math.Floor(new Random().NextDouble() * 4);
-
+                double randomBonus = Math.Floor(new Random().NextDouble() * 3);
                 if (randomBonus == 0)
                 {
                     this.bonus = new BallSpeedBonus((float)0.05, 15);
-
                 }
                 else if (randomBonus == 1)
                 {
-                    this.bonus = new BarSizeBonus((float)0.05, 15);
+                    this.bonus = new BarSizeBonus((float)0.5, 15);
                 }
                 else if (randomBonus == 2)
                 {
-                    this.bonus = new AddBallBonus((float)0.05, 15);
+                    this.bonus = new AddBallBonus((float)0.5, 15);
                 }
-                ParentForm.ErrorConsole.AppendText(randomBonus.ToString() + "\r\n");
-
+                
+                
                 HasBonus = true;
             }
             else

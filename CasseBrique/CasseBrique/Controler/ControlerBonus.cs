@@ -28,6 +28,7 @@ namespace Breakout.Controler
                     {
                         player.Bonuses.Add(bonus);
                         bonus.ApplyBonus(Model, player);
+                        Console.WriteLine(bonus.ToString());
                         bonus.StartTime = totalGameTime;
                         Model.RemoveBonus(bonus);
                     }

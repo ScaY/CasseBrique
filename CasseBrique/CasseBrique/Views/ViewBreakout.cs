@@ -28,9 +28,9 @@ namespace Breakout.Views
         private Texture2D textureBonus;
         private Texture2D texturePause;
 
-        public ViewBreakout(BreakoutModel breakout)
+        public ViewBreakout(BreakoutModel breakout,int height,int width)
         {   
-            breakout.BrickZone.InitializeSizeBrick(new Size(124, 51));
+            breakout.BrickZone.InitializeSizeBrick(new Size(width/11, height/11));
             breakout.BrickZone.InitializePositionBrick();
 
             this.ViewBars = new List<ViewBar>();
