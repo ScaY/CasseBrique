@@ -28,11 +28,10 @@ namespace Breakout.Views
         private Texture2D textureBonus;
         private Texture2D texturePause;
         private Texture2D textureBallBonus;
+        private Texture2D textureBrick;
 
-        public ViewBreakout(BreakoutModel breakout,int height,int width)
-        {   
-            breakout.BrickZone.InitializeSizeBrick(new Size(width/10, height/11));
-            breakout.BrickZone.InitializePositionBrick();
+        public ViewBreakout(BreakoutModel breakout, int height, int width)
+        {
 
             this.ViewBars = new List<ViewBar>();
             foreach (Player player in breakout.Players)
@@ -57,19 +56,24 @@ namespace Breakout.Views
             this.ViewPause = new ViewPause();
         }
 
-        public void LoadContent(ContentManager content, int widthFrame, int heightFrame) {
+        public void LoadContent(ContentManager content, int widthFrame, int heightFrame, BreakoutModel breakout)
+        {
             this.textureBar = content.Load<Texture2D>("barMid");
             this.textureBall = content.Load<Texture2D>("ballSmall");
             this.textureBonus = content.Load<Texture2D>("bonus");
             this.texturePause = content.Load<Texture2D>("PauseCasseTuile");
             this.textureBallBonus = content.Load<Texture2D>("ballBonus");
+            this.textureBrick = content.Load<Texture2D>("brick0life");
+
+            breakout.BrickZone.InitializeSizeBrick(new Size(textureBrick.Width, textureBrick.Height));
+            breakout.BrickZone.InitializePositionBrick();
 
             foreach (ViewBar viewBar in this.ViewBars)
             {
                 viewBar.Texture = this.textureBar;
             }
 
-            foreach(ViewBall viewBall in this.ViewBalls)
+            foreach (ViewBall viewBall in this.ViewBalls)
             {
                 viewBall.Texture = this.textureBall;
             }
@@ -97,7 +101,7 @@ namespace Breakout.Views
             }
 
             ViewBricksZone.Draw(spriteBatch, gameTime);
-            
+
             foreach (ViewBonus viewBonus in this.ViewBonuses)
             {
                 viewBonus.Draw(spriteBatch, gameTime);

@@ -97,10 +97,8 @@ namespace Breakout.Model
                 }
             }
 
-            this.StartBlockBrickX = 0;
+            this.StartBlockBrickX = startBlockBrickX;
             this.StartBlockBrickY = startBlockBrickY;
-            //this.StartBlockBrickX = 0;
-            //this.StartBlockBrickY = 0;
 
         }
         public BrickZone(int nbBrickCol, int nbBrickRow, float startBlockBrickX, float startBlockBrickY,Brick[,] bricks)
@@ -110,10 +108,8 @@ namespace Breakout.Model
             this.NbBrickRow = nbBrickRow;
 
 
-           this.StartBlockBrickX = 0;
+            this.StartBlockBrickX = startBlockBrickX;
             this.StartBlockBrickY = startBlockBrickY;
-            //this.StartBlockBrickX = 0;
-            //this.StartBlockBrickY = 0;
         }
 
         public void InitializeSizeBrick(Size size)
