@@ -13,8 +13,13 @@ namespace Breakout
 {
     public partial class NewHome : Form
     {
-        public NewHome()
+        public NewHome() : this(null)
         {
+        }
+
+        public NewHome(GameXNA _game)
+        {
+            this.game = _game;
             InitializeComponent();
         }
 
@@ -25,6 +30,7 @@ namespace Breakout
 
         private Level selectedLevel = null;
         private bool isMultiPlayer = false;
+        private GameXNA game;
         private void NewHome_Load(object sender, EventArgs e)
         {
 
@@ -104,6 +110,11 @@ namespace Breakout
 
         private void pnlQuite_Click(object sender, EventArgs e)
         {
+            if (game != null)
+            {
+                game.Exit();
+            }
+
             this.Close();
         }
 
@@ -453,8 +464,15 @@ namespace Breakout
 
         private void panel10_MouseClick(object sender, MouseEventArgs e)
         {
-            Thread oThread = new Thread(new ThreadStart(runGame));
-            oThread.Start();
+            if (this.game != null)
+            {
+                this.game.Reset(this.players, this.selectedLevel);
+            }
+            else
+            {
+                Thread oThread = new Thread(new ThreadStart(runGame));
+                oThread.Start();
+            }
             this.Close();
         }
 

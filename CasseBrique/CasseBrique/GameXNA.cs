@@ -41,16 +41,23 @@ namespace Breakout
 
         public GameXNA(List<Player> _players, Level _level) : base()
         {
-            
-            this.players = _players;
-            this.level = _level;
+            this.InitializeVariables(_players, _level);
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.Window.Title = "Casse Tuile";
-
             this.Window.AllowUserResizing = false;
+        }
 
+        public void InitializeVariables(List<Player> _players, Level _level)
+        {
+            this.players = _players;
+            this.level = _level;
+        }
 
+        public void Reset(List<Player> _players, Level _level)
+        {
+            this.InitializeVariables(_players, _level);
+            this.Initialize();
         }
 
         /// <summary>
@@ -236,14 +243,16 @@ namespace Breakout
                     {
                     }
                 }
+
+                if (model.IsGameWon() || model.IsGameLost())
+                {
+                    model.SetPause(true);
+                    System.Windows.Forms.Form m = new EndGame(model, this, gameTime);
+                    m.ShowDialog();
+                }
             }
 
             previousKeyboardState = keyboardState;
-
-            if (model.IsGameWon() || model.IsGameLost())
-            {
-                System.Windows.Forms.Application.Run(new EndGame(model, this,gameTime));
-            }
 
             base.Update(gameTime);
         }
