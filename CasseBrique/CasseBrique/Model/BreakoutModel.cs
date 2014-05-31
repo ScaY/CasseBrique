@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Breakout.Bonus;
 using Breakout.Events;
+using System.Media;
 
 namespace Breakout.Model
 {
@@ -40,6 +41,39 @@ namespace Breakout.Model
         /// The level.
         /// </value>
         public Level Level { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sound of the ball when she hited the bar.
+        /// </summary>
+        /// <value>
+        /// The sound of the ball when she hited the bar.
+        /// </value>
+        public SoundPlayer SoundReboundBar { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sound when the player win the game.
+        /// </summary>
+        /// <value>
+        /// The sound when the player win the game.
+        /// </value>
+        public SoundPlayer SoundWinGame { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sound when the player lost the game.
+        /// </summary>
+        /// <value>
+        /// The sound when the player lost the game.
+        /// </value>
+        public SoundPlayer SoundLooseGame { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sound of the brick destroyed.
+        /// </summary>
+        /// <value>
+        /// The sound of the brick destroyed.
+        /// </value>
+        public SoundPlayer SoundDestructionBrick { get; set; }
+
 
         /// <summary>
         /// Gets or sets a value indicating whether the game is launched.
@@ -96,8 +130,9 @@ namespace Breakout.Model
         /// <param name="brick">The brick.</param>
         public void RemoveBrick(Brick brick)
         {
-           BrickZone.RemoveBrick(brick);
-           this.RefreshViews(new RemovedBrickEvent(this, brick));
+            BrickZone.RemoveBrick(brick);
+            this.SoundDestructionBrick.Play();
+            this.RefreshViews(new RemovedBrickEvent(this, brick));
         }
 
         /// <summary>
@@ -141,6 +176,7 @@ namespace Breakout.Model
         /// <param name="ball">The ball.</param>
         public void AddBall(Ball ball)
         {
+            ball.SoundReboundBar = this.SoundReboundBar;
             this.Balls.Add(ball);
             this.RefreshViews(new AddedBallEvent(this, ball));
         }
@@ -161,7 +197,15 @@ namespace Breakout.Model
         /// <returns><c>true</c> if the game is won; otherwise, <c>false</c>.</returns>
         public bool IsGameWon()
         {
-            return this.BrickZone.GetNbBricks() == 0;
+            if (this.BrickZone.GetNbBricks() == 0)
+            {
+                this.SoundWinGame.Play();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -170,7 +214,15 @@ namespace Breakout.Model
         /// <returns><c>true</c> if the game is lost; otherwise, <c>false</c>.</returns>
         public bool IsGameLost()
         {
-            return this.Balls.Count == 0;
+            if (this.Balls.Count == 0)
+            {
+                this.SoundLooseGame.Play();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

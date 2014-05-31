@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 
 namespace Breakout.Model
@@ -30,6 +31,14 @@ namespace Breakout.Model
         /// The border hit.
         /// </value>
         public BorderFrame BorderHit { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sound of the ball when she hited the bar.
+        /// </summary>
+        /// <value>
+        /// The sound of the ball when she hited the bar.
+        /// </value>
+        public SoundPlayer SoundReboundBar { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the bar was hit.
@@ -111,6 +120,11 @@ namespace Breakout.Model
                 {
                     RuleBall.HandleReboundBar(this, bar);
                     this.BarHit = true;
+
+                    if (this.SoundReboundBar != null)
+                    {
+                        this.SoundReboundBar.Play();
+                    }
                 }
 
                 this.briksHit.Clear();

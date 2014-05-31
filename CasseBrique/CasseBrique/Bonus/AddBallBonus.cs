@@ -1,5 +1,6 @@
 ﻿using Breakout.Model;
 using Microsoft.Xna.Framework;
+using System.Media;
 
 namespace Breakout.Bonus
 {

@@ -9,6 +9,7 @@ using Breakout.Views;
 using Breakout.Controler;
 using Breakout.Bonus;
 using CasseBrique.Controler;
+using System.Media;
 
 
 #endregion
@@ -23,7 +24,6 @@ namespace Breakout
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        //dimensions de la fenêtre
         private int widthFrame;
         private int heightFrame;
 
@@ -35,9 +35,9 @@ namespace Breakout
         private Level level;
         private KeyboardState previousKeyboardState;
 
-        //les différents controleur de la barre disponible
         private ControlerBarKeyboard controlerBarKeyboard;
         private ControlerBarMouse controlerbarMouse;
+
 
         public GameXNA(List<Player> _players, Level _level) : base()
         {
@@ -154,6 +154,23 @@ namespace Breakout
         /// </summary>
         protected override void LoadContent()
         {
+            SoundPlayer soundReboundBar = new SoundPlayer(@"Content\reboundBar.wav");
+            model.SoundReboundBar = soundReboundBar;
+            SoundPlayer soundWinGame = new SoundPlayer(@"Content\winGame.wav");
+            model.SoundWinGame = soundWinGame;
+            SoundPlayer soundLooseGame = new SoundPlayer(@"Content\looseGame.wav");
+            model.SoundLooseGame = soundLooseGame;
+            SoundPlayer soundDestructionBrick = new SoundPlayer(@"Content\destructionBrick.wav");
+            model.SoundDestructionBrick = soundDestructionBrick;
+
+            foreach (Ball b in model.Balls)
+            {
+                if (b.SoundReboundBar == null)
+                {
+                    b.SoundReboundBar = soundReboundBar;
+                }
+            }
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             view.LoadContent(Content, widthFrame, heightFrame, model);
