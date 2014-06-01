@@ -6,24 +6,79 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Breakout.Views
 {
+    /// <summary>
+    /// This class represents the view of the zone of bricks.
+    /// </summary>
     public class ViewBricksZone : View
     {
+        /// <summary>
+        /// Gets or sets the view of all the bricks.
+        /// </summary>
+        /// <value>
+        /// The view bricks.
+        /// </value>
         public ViewBrick[,] ViewBricks { get; set; }
 
+        /// <summary>
+        /// Gets or sets the brick zone (from the model).
+        /// </summary>
+        /// <value>
+        /// The brick zone.
+        /// </value>
         public BrickZone BrickZone { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of bricks per columns.
+        /// </summary>
+        /// <value>
+        /// The nb brick col.
+        /// </value>
         public int NbBrickCol { get; set; }
 
+        /// <summary>
+        /// Gets or sets the number of bricks per rows.
+        /// </summary>
+        /// <value>
+        /// The nb brick row.
+        /// </value>
         public int NbBrickRow { get; set; }
 
+        /// <summary>
+        /// Gets or sets the image of a brick with 0 life.
+        /// </summary>
+        /// <value>
+        /// The image of a brick with 0 life
+        /// </value>
         public Texture2D ViewBrick0Life { get; set; }
 
+        /// <summary>
+        /// Gets or sets the image of a brick with 1 life.
+        /// </summary>
+        /// <value>
+        /// The image of a brick with 1 life
+        /// </value>
         public Texture2D ViewBrick1Life { get; set; }
 
+        /// <summary>
+        /// Gets or sets the image of a brick with 2 life.
+        /// </summary>
+        /// <value>
+        /// The image of a brick with 2 life
+        /// </value>
         public Texture2D ViewBrick2Life { get; set; }
 
+        /// <summary>
+        /// Gets or sets the image of a brick with 3 life.
+        /// </summary>
+        /// <value>
+        /// The image of a brick with 3 life
+        /// </value>
         public Texture2D ViewBrick3Life { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewBricksZone"/> class.
+        /// </summary>
+        /// <param name="brickZone">The brick zone.</param>
         public ViewBricksZone(BrickZone brickZone)
         {
             this.ViewBricks = new ViewBrick[brickZone.NbBrickRow, brickZone.NbBrickCol];
@@ -43,6 +98,10 @@ namespace Breakout.Views
             }
         }
 
+        /// <summary>
+        /// Loads the content, here all the images.
+        /// </summary>
+        /// <param name="content">The content.</param>
         public void LoadContent(ContentManager content)
         {
             this.ViewBrick0Life = content.Load<Texture2D>("brick0life");
@@ -72,6 +131,11 @@ namespace Breakout.Views
             }
         }
 
+        /// <summary>
+        /// Draws the texture of all the bricks using the sprite bach.
+        /// </summary>
+        /// <param name="spriteBatch">The sprite batch.</param>
+        /// <param name="gameTime">The game time.</param>
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             for (int i = 0; i < NbBrickRow; i++)
@@ -86,6 +150,10 @@ namespace Breakout.Views
             }
         }
 
+        /// <summary>
+        /// Refreshes the view according to the specified e.
+        /// </summary>
+        /// <param name="e">The event fired.</param>
         public void Refresh(Event e)
         {
             if (e is BrickLifeUpdatedEvent)

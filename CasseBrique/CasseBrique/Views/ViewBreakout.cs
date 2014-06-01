@@ -11,25 +11,82 @@ using System.Linq;
 
 namespace Breakout.Views
 {
+    /// <summary>
+    /// This class represents the graphical interface of the breakout.
+    /// </summary>
     public class ViewBreakout : View
     {
+        /// <summary>
+        /// Gets or sets the view of the bars.
+        /// </summary>
+        /// <value>
+        /// The view bars.
+        /// </value>
         public List<ViewBar> ViewBars { get; set; }
 
+        /// <summary>
+        /// Gets or sets the view of the balls.
+        /// </summary>
+        /// <value>
+        /// The view balls.
+        /// </value>
         public List<ViewBall> ViewBalls { get; set; }
 
+        /// <summary>
+        /// Gets or sets the view of the bricks zone.
+        /// </summary>
+        /// <value>
+        /// The view bricks zone.
+        /// </value>
         public ViewBricksZone ViewBricksZone { get; set; }
 
+        /// <summary>
+        /// Gets or sets the view of the bonuses.
+        /// </summary>
+        /// <value>
+        /// The view bonuses.
+        /// </value>
         public List<ViewBonus> ViewBonuses { get; set; }
 
+        /// <summary>
+        /// Gets or sets the view of the pause.
+        /// </summary>
+        /// <value>
+        /// The view pause.
+        /// </value>
         public ViewPause ViewPause { get; set; }
 
+        /// <summary>
+        /// The texture of the bar
+        /// </summary>
         private Texture2D textureBar;
+        /// <summary>
+        /// The texture of the ball
+        /// </summary>
         private Texture2D textureBall;
+        /// <summary>
+        /// The texture of the bonus
+        /// </summary>
         private Texture2D textureBonus;
+        /// <summary>
+        /// The texture of the pause
+        /// </summary>
         private Texture2D texturePause;
+        /// <summary>
+        /// The texture of the ball bonus
+        /// </summary>
         private Texture2D textureBallBonus;
+        /// <summary>
+        /// The texture of the brick
+        /// </summary>
         private Texture2D textureBrick;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ViewBreakout"/> class.
+        /// </summary>
+        /// <param name="breakout">The breakout model.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="width">The width.</param>
         public ViewBreakout(BreakoutModel breakout, int height, int width)
         {
 
@@ -56,6 +113,13 @@ namespace Breakout.Views
             this.ViewPause = new ViewPause();
         }
 
+        /// <summary>
+        /// Loads the content, here all the images.
+        /// </summary>
+        /// <param name="content">The content.</param>
+        /// <param name="widthFrame">The width frame.</param>
+        /// <param name="heightFrame">The height frame.</param>
+        /// <param name="breakout">The breakout.</param>
         public void LoadContent(ContentManager content, int widthFrame, int heightFrame, BreakoutModel breakout)
         {
             this.textureBar = content.Load<Texture2D>("barMid");
@@ -88,6 +152,11 @@ namespace Breakout.Views
             this.ViewPause.LoadContent(this.texturePause, widthFrame, heightFrame);
         }
 
+        /// <summary>
+        /// Draws the components of the view by calling the draw method on all the sub components.
+        /// </summary>
+        /// <param name="spriteBatch">The sprite batch.</param>
+        /// <param name="gameTime">The game time.</param>
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             foreach (ViewBall viewBall in this.ViewBalls)
@@ -110,6 +179,10 @@ namespace Breakout.Views
             ViewPause.Draw(spriteBatch, gameTime);
         }
 
+        /// <summary>
+        /// Refreshes the view according to the specified e.
+        /// </summary>
+        /// <param name="e">The event fired.</param>
         public void Refresh(Event e)
         {
             if (e is PlayerEvent)

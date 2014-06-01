@@ -7,12 +7,38 @@ using System.Windows.Forms;
 
 namespace Breakout.Views
 {
+    /// <summary>
+    /// This class represents the actions done by the form displayed at the end of a game.
+    /// </summary>
     public partial class EndGame : Form
     {
+        /// <summary>
+        /// Gets or sets the model.
+        /// </summary>
+        /// <value>
+        /// The model.
+        /// </value>
         public BreakoutModel Model { get; set; }
+
+        /// <summary>
+        /// Gets or sets the player names.
+        /// </summary>
+        /// <value>
+        /// The player names.
+        /// </value>
         public List<Label> playerNames { get; set; }
+
+        /// <summary>
+        /// The game (XNA object).
+        /// </summary>
         private GameXNA game;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EndGame"/> class.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="_game">The game.</param>
+        /// <param name="gameTime">The game time.</param>
         public EndGame(BreakoutModel model, GameXNA _game, GameTime gameTime)
         {
             InitializeComponent();
@@ -59,23 +85,28 @@ namespace Breakout.Views
             }
         }
 
+        /// <summary>
+        /// Handles the click event of the playAgain control. Starts a new game with the same players and level.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void playAgain_click(object sender, EventArgs e)
         {
             game.Reset(this.Model.Players, this.Model.Level);
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the click event of the menu control. Opens the home menu.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void menu_click(object sender, EventArgs e)
         {
             NewHome m = new NewHome(this.game);
             this.Hide();
             m.ShowDialog();
             this.Close();
-        }
-
-        private void EndGame_Load(object sender, EventArgs e)
-        {
-            //this.game.Exit();
         }
     }
 }
