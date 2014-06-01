@@ -65,9 +65,17 @@ namespace Breakout.Views
         /// </summary>
         private Texture2D textureBall;
         /// <summary>
-        /// The texture of the bonus
+        /// The texture of the IEbonus
         /// </summary>
-        private Texture2D textureBonus;
+        private Texture2D textureIEBonus;
+        /// <summary>
+        /// The texture of the FireFoxbonus
+        /// </summary>
+        private Texture2D textureFireFoxBonus;
+        /// <summary>
+        /// The texture of the Chromebonus
+        /// </summary>
+        private Texture2D textureChromeBonus;
         /// <summary>
         /// The texture of the pause
         /// </summary>
@@ -124,7 +132,9 @@ namespace Breakout.Views
         {
             this.textureBar = content.Load<Texture2D>("barMid");
             this.textureBall = content.Load<Texture2D>("ballSmall");
-            this.textureBonus = content.Load<Texture2D>("bonus");
+            this.textureIEBonus = content.Load<Texture2D>("IEbonus");
+            this.textureChromeBonus = content.Load<Texture2D>("ChromeBonus");
+            this.textureFireFoxBonus = content.Load<Texture2D>("FireFoxBonus");
             this.texturePause = content.Load<Texture2D>("PauseCasseTuile");
             this.textureBallBonus = content.Load<Texture2D>("ballBonus");
             this.textureBrick = content.Load<Texture2D>("brick0life");
@@ -207,7 +217,18 @@ namespace Breakout.Views
                 if (e is AddedBonusEvent)
                 {
                     ViewBonus viewBonus = new ViewBonus(be.Bonus);
-                    viewBonus.Texture = this.textureBonus;
+                    if (be.Bonus is AddBallBonus)
+                    {
+                        viewBonus.Texture = this.textureIEBonus;
+                    }
+                    else if (be.Bonus is BallSpeedBonus)
+                    {
+                        viewBonus.Texture = this.textureChromeBonus;
+                    }
+                    else if (be.Bonus is BarSizeBonus)
+                    {
+                        viewBonus.Texture = this.textureFireFoxBonus;
+                    }
                     this.ViewBonuses.Add(viewBonus);
                 }
                 else if (e is RemovedBonusEvent)
