@@ -710,6 +710,7 @@ namespace Breakout
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel8);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(600, 600);
             this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "NewHome";
