@@ -234,23 +234,23 @@ namespace Breakout
         /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnlValidateLevel_MouseClick(object sender, MouseEventArgs e)
         {
-            if (this.levelsStandard != null)
+            if (this.levelsStandard != null && this.selectedLevel != null)
             {
+               
+                    this.bigPnlLevel.Hide();
+                    this.panel8.Show();
+                    this.panel10.Show();
+                    if (this.players.ElementAt(0) != null)
+                    {
+                        this.players.ElementAt(0).ControlGame = NameControlerBar.Mouse;
+
+                    }
+                    if (this.players.Count > 1)
+                    {
+                        this.players.ElementAt(1).ControlGame = NameControlerBar.KeyboardKM;
+
+                    }
                 
-                this.bigPnlLevel.Hide();
-                this.panel8.Show();
-                this.panel10.Show();
-                if (this.players.ElementAt(0) != null)
-                {
-                    this.players.ElementAt(0).ControlGame = NameControlerBar.Mouse;
-
-                }
-                if (this.players.Count >1)
-                {
-                    this.players.ElementAt(1).ControlGame = NameControlerBar.KeyboardKM;
-
-                }
-
 
             }
             else
