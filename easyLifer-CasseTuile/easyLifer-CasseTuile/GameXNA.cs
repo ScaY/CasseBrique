@@ -91,6 +91,7 @@ namespace Breakout
                 {
                     model.AddPlayer(player);
                     Ball ball = new Ball();
+                    player.Bonuses = new List<AbstractBonus>();
                     model.AddBall(ball);
                     player.Bar.StartBall = ball;
 
