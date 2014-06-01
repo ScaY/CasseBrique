@@ -270,16 +270,16 @@ namespace Breakout.Model
         /// <param name="ball">The ball.</param>
         public static void HandlediffXDiffY(float diffX, float diffY, Ball ball)
         {
-            if (diffX < 0 && diffY > 0)
+            if (diffX <= 0 && diffY >= 0)
             {
                 //bounce in the bottom
                 HandleReboundUpDown(ball);
             }
-            else if (diffX > 0 && diffY < 0)
+            else if (diffX >= 0 && diffY <= 0)
             {
                 HandleReboundLeftRight(ball);
             }
-            if (diffX < 0 && diffY < 0)
+            if (diffX <= 0 && diffY <= 0)
             {
                 if (diffX < diffY)
                 {
@@ -291,7 +291,7 @@ namespace Breakout.Model
                     HandleReboundLeftRight(ball);
                 }
             }
-            else if (diffX > 0 && diffY > 0)
+            else if (diffX >= 0 && diffY >= 0)
             {
                 if (diffX > diffY)
                 {
