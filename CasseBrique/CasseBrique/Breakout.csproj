@@ -152,9 +152,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\AppleBonus.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\ball.png" />
     <Content Include="Content\ballBonus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -184,9 +181,6 @@
     <Content Include="Content\brick3life.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Brique\GreenBrick.png" />
-    <Content Include="Content\Brique\OrangeBrick.png" />
-    <Content Include="Content\Brique\RedBrick.png" />
     <Content Include="Content\ChromeBonus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
