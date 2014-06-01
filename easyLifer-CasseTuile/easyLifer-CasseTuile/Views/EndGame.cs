@@ -45,7 +45,7 @@ namespace Breakout.Views
 
             this.Model = model;
             this.game = _game;
-
+            //this function display a new window to inform the user if he has won or not
             int nbBricksTotal = model.BrickZone.NbBrickCol * model.BrickZone.NbBrickRow;
 
             StringBuilder stringBuilder = new StringBuilder();

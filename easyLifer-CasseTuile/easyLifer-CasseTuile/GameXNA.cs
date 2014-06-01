@@ -97,7 +97,7 @@ namespace Breakout
 
                 }
             }
-
+            //controllers for the ball and the bar
             controlerBarKeyboard = new ControlerBarKeyboard(model);
             controlerbarMouse = new ControlerBarMouse(model);
             controlerBall = new ControlerBall(model);
@@ -105,6 +105,7 @@ namespace Breakout
 
             try
             {
+                //Initialisation of the players on the map
                 Player player = model.Players[0];
                 player.Bar.Position = new Vector2(50, heightFrame - 20);
                 player.Bar.Size.Width = 99;
@@ -134,7 +135,7 @@ namespace Breakout
                     ball.Speed = 0.3f;
                     i++;
                 }
-
+                //initialisation of the bonuses
                 foreach (AbstractBonus bonus in model.Bonuses)
                 {
                     bonus.Size.Width = 32;
@@ -155,6 +156,7 @@ namespace Breakout
         /// </summary>
         protected override void LoadContent()
         {
+            //sounds loading for the game
             SoundPlayer soundReboundBar = new SoundPlayer(@"Content\reboundBar.wav");
             model.SoundReboundBar = soundReboundBar;
             SoundPlayer soundWinGame = new SoundPlayer(@"Content\winGame.wav");
@@ -283,6 +285,7 @@ namespace Breakout
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            //background color settings
             GraphicsDevice.Clear(new Color(51,51,51));
             
             //signal au SpriteBatch le début du déssin
