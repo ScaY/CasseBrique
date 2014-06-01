@@ -129,10 +129,6 @@ namespace Breakout.Model
 
                 this.briksHit.Clear();
             }
-            else
-            {
-                this.BarHit = false;
-            }
 
         }
 
@@ -150,12 +146,14 @@ namespace Breakout.Model
                 RuleBall.HandleReboundLeftRight(this);
                 this.BorderHit = BorderFrame.BORDERLEFT;
                 this.briksHit.Clear();
+                this.BarHit = false;
             }
             else if (Position.X + this.Size.Width / 2 > widthFrame && this.BorderHit != BorderFrame.BORDERRIGHT)
             {
                 RuleBall.HandleReboundLeftRight(this);
                 this.BorderHit = BorderFrame.BORDERRIGHT;
                 this.briksHit.Clear();
+                this.BarHit = false;
             }
             //rebond en haut
             else if ((Position.Y - this.Size.Height / 2) < 0 && this.BorderHit != BorderFrame.TOP)
@@ -163,6 +161,7 @@ namespace Breakout.Model
                 RuleBall.HandleReboundUpDown(this);
                 this.BorderHit = BorderFrame.TOP;
                 this.briksHit.Clear();
+                this.BarHit = false;
             }
             //la balle est dans la zone
             else if (((Position.Y - this.Size.Height / 2) > 0) && (Position.X - this.Size.Width / 2) > 0 && (Position.X + this.Size.Width / 2 < widthFrame))
@@ -186,6 +185,7 @@ namespace Breakout.Model
                 RuleBall.HandleDeplacementHitBrick(model, newBricksHit, this);
                 this.briksHit = newBricksHit;
                 this.BorderHit = BorderFrame.NONE;
+                this.BarHit = false;
             }
         }
 
