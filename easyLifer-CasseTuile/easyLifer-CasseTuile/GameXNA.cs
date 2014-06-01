@@ -230,8 +230,9 @@ namespace Breakout
                         controlerBonus.HandleBonus(gameTime, heightFrame, widthFrame, bonus, gameTime.TotalGameTime);
                     }
                 }
-                catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
+                catch (Exception e) 
                 {
+                    Console.WriteLine("Error in GameXNA: " + e.Message);
                 }
 
                 foreach (Player player in model.Players)
@@ -256,8 +257,9 @@ namespace Breakout
                             }
                         }
                     }
-                    catch (Exception e) //je comprends pas encore à quoi est dû la levée d'exception
+                    catch (Exception e) 
                     {
+                        Console.WriteLine("Error in GameXNA: " + e.Message);
                     }
                 }
 
