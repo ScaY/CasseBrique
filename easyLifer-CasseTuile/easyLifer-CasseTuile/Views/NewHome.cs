@@ -11,86 +11,69 @@ using System.Windows.Forms;
 
 namespace Breakout
 {
+    /// <summary>
+    /// This is a class that contains all the handlers for the event of the form NewHome.
+    /// </summary>
     public partial class NewHome : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewHome"/> class.
+        /// </summary>
         public NewHome() : this(null)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NewHome"/> class.
+        /// </summary>
+        /// <param name="_game">The game.</param>
         public NewHome(GameXNA _game)
         {
             this.game = _game;
             InitializeComponent();
         }
 
+        /// <summary>
+        /// A list of players, used to store the data entered about the players
+        /// </summary>
         private List<Player> players = new List<Player>();
+
+
+        /// <summary>
+        /// A list of standard levels
+        /// </summary>
         private List<Level> levelsStandard = new List<Level>();
+
+        /// <summary>
+        /// A list of custom levels
+        /// </summary>
         private List<Level> levelsCustom = new List<Level>();
+
+        /// <summary>
+        /// A list of levels of all types
+        /// </summary>
         private List<Level> levelsAllTypes = new List<Level>();
 
+        /// <summary>
+        /// The selected level
+        /// </summary>
         private Level selectedLevel = null;
+
+        /// <summary>
+        /// True if multiplayer, false otherwise
+        /// </summary>
         private bool isMultiPlayer = false;
+
+        /// <summary>
+        /// The game
+        /// </summary>
         private GameXNA game;
-        private void NewHome_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlLeftArrow_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnlOnePlayer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnlOnePlayer_MouseHover(object sender, EventArgs e)
-        {
-            //this.pnlOnePlayer.BorderStyle = BorderStyle.FixedSingle;
-        }
-
-        private void pnlQuite_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel5_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnl2Players_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pnlQuite_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
-
+        /// <summary>
+        /// Handles the MouseClick event of the pnlOnePlayer control. Hide the current panel and adds the panel to select the name of the player.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnlOnePlayer_MouseClick(object sender, MouseEventArgs e)
         {
             this.panel1.Hide();
@@ -103,11 +86,11 @@ namespace Breakout
 
         }
 
-        private void label4_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Handles the Click event of the pnlQuite control. Exits the game.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void pnlQuite_Click(object sender, EventArgs e)
         {
             if (game != null)
@@ -118,6 +101,11 @@ namespace Breakout
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the pnlAbou control. Hides the current panel and show the about panel.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnlAbou_MouseClick(object sender, MouseEventArgs e)
         {
             this.pnlLeftArrow.Show();
@@ -125,6 +113,11 @@ namespace Breakout
             this.pnlAb.Show();
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the pnl2Players control. Hides the current panel and shows the panel to enter the name of the first player.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnl2Players_MouseClick(object sender, MouseEventArgs e)
         {
             this.isMultiPlayer = true;
@@ -149,6 +142,11 @@ namespace Breakout
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the pnlOnePlayer control. Hides the current panel and displays the panel to let the player enter his name.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void pnlOnePlayer_Click(object sender, EventArgs e)
         {
             this.players = new List<Player>();
@@ -163,16 +161,11 @@ namespace Breakout
 
         }
 
-        private void label5_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            //this.players.Add(new Player(textBox1.Text,null,null));
-        }
-
+        /// <summary>
+        /// Handles the MouseClick event of the panel5 control. Adds the player to the list, hides the panel and displays the panel to select a level.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void panel5_MouseClick(object sender, MouseEventArgs e)
         {
             if (!this.isMultiPlayer)
@@ -224,31 +217,21 @@ namespace Breakout
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBox1 control. Changes the selected level with the one selected in the combobox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.selectedLevel = this.levelsAllTypes.ElementAt(this.levelSelector.SelectedIndex);
         }
 
-        private void pnlValidateOnePlayer_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void pnlQuite_MouseClick(object sender, MouseEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void pnlValidateOnePlayer_MouseClick_1(object sender, MouseEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Handles the MouseClick event of the pnlValidateLevel control. Hides the panel and shows the panel to select the controls.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnlValidateLevel_MouseClick(object sender, MouseEventArgs e)
         {
             if (this.levelsStandard != null)
@@ -278,6 +261,11 @@ namespace Breakout
 
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the pnlLeftArrow control. Hides the current panel and shows the previous one.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnlLeftArrow_MouseClick(object sender, MouseEventArgs e)
         {
             this.bigPnlLevel.Hide();
@@ -290,37 +278,11 @@ namespace Breakout
             this.pnlLeftArrow.Hide();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void levelSelector_Validating(object sender, CancelEventArgs e)
-        {
-        }
-        private void levelSelector_Validating(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void levelSelector_Validating(object sender, ControlEventArgs e)
-        {
-           
-        }
-
-        private void levelSelector_DrawItem(object sender, DrawItemEventArgs e)
-        {
-           
-
-        }
-
-        private void levelSelector_MouseClick(object sender, MouseEventArgs e)
-        {
-         
-
-
-        }
-
+        /// <summary>
+        /// Handles the VisibleChanged event of the levelSelector control. Displays all the levels in the combobox.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void levelSelector_VisibleChanged(object sender, EventArgs e)
         {
             this.levelsStandard = Level.loadAllDefault();
@@ -349,17 +311,22 @@ namespace Breakout
 
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the panel3 control. Displays the level creation form.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void panel3_MouseClick(object sender, MouseEventArgs e)
         {
             LevelCreation lc = new LevelCreation();
             lc.Show();
         }
 
-        private void label17_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Handles the 1 event of the panel5_MouseClick control. Adds all the levels in the combo box.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void panel5_MouseClick_1(object sender, MouseEventArgs e)
         {
             this.levelsStandard = Level.loadAllDefault();
@@ -387,6 +354,11 @@ namespace Breakout
             }
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioButton1 control. Changes the selected controls to the one corresponding to the radio button clicked.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
@@ -395,6 +367,11 @@ namespace Breakout
             }
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioButton2 control. Changes the selected controls to the one corresponding to the radio button clicked.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton2.Checked)
@@ -404,6 +381,11 @@ namespace Breakout
 
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioButton3 control. Changes the selected controls to the one corresponding to the radio button clicked.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton3.Checked)
@@ -413,6 +395,11 @@ namespace Breakout
 
         }
 
+        /// <summary>
+        /// Handles the Paint event of the lblPlayer1name control. Displays the player names.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
         private void lblPlayer1name_Paint(object sender, PaintEventArgs e)
         {
             if (this.players.Count >= 1)
@@ -427,11 +414,11 @@ namespace Breakout
 
         }
 
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Handles the Paint event of the label18 control. Displays the panel to let the player 2 choose his controls.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
         private void label18_Paint(object sender, PaintEventArgs e)
         {
             if (this.players.ElementAt(1) != null)
@@ -444,11 +431,9 @@ namespace Breakout
 
         }
 
-        private void pnlValidateLevel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Runs the game.
+        /// </summary>
         private void runGame()
         {
             try
@@ -462,6 +447,11 @@ namespace Breakout
             }
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the panel10 control. Launches the game.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void panel10_MouseClick(object sender, MouseEventArgs e)
         {
             if (this.game != null)
