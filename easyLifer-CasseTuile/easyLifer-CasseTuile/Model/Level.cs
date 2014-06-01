@@ -121,7 +121,7 @@ namespace Breakout.Model
         /// <returns>the default levels</returns>
         public static List<Level> loadAllDefault()
         {
-            int i=0;
+            int i=1;
             string path = "../../../levels/Default/level" + i + ".json";
             List<Level> toReturn = new List<Level>();
             while (File.Exists(path))
