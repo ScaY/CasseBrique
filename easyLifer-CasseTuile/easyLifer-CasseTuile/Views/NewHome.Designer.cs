@@ -117,9 +117,7 @@ namespace Breakout
             this.pnlOnePlayer.Size = new System.Drawing.Size(244, 157);
             this.pnlOnePlayer.TabIndex = 1;
             this.pnlOnePlayer.Click += new System.EventHandler(this.pnlOnePlayer_Click);
-            this.pnlOnePlayer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlOnePlayer_Paint);
             this.pnlOnePlayer.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlOnePlayer_MouseClick);
-            this.pnlOnePlayer.MouseHover += new System.EventHandler(this.pnlOnePlayer_MouseHover);
             // 
             // label2
             // 
@@ -141,7 +139,6 @@ namespace Breakout
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(587, 100);
             this.panel2.TabIndex = 2;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label1
             // 
@@ -210,7 +207,6 @@ namespace Breakout
             this.label18.Size = new System.Drawing.Size(113, 37);
             this.label18.TabIndex = 0;
             this.label18.Text = "Joueur 2";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             this.label18.Paint += new System.Windows.Forms.PaintEventHandler(this.label18_Paint);
             // 
             // player1Config
@@ -280,7 +276,6 @@ namespace Breakout
             this.pnl2Players.Size = new System.Drawing.Size(247, 157);
             this.pnl2Players.TabIndex = 3;
             this.pnl2Players.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl2Players_MouseClick);
-            this.pnl2Players.MouseHover += new System.EventHandler(this.pnl2Players_MouseHover);
             // 
             // label3
             // 
@@ -292,7 +287,6 @@ namespace Breakout
             this.label3.Size = new System.Drawing.Size(169, 50);
             this.label3.TabIndex = 0;
             this.label3.Text = "2 Joueurs";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             this.label3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl2Players_MouseClick);
             // 
             // pnlQuite
@@ -305,9 +299,7 @@ namespace Breakout
             this.pnlQuite.Size = new System.Drawing.Size(169, 157);
             this.pnlQuite.TabIndex = 4;
             this.pnlQuite.Click += new System.EventHandler(this.pnlQuite_Click);
-            this.pnlQuite.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlQuite_Paint);
-            this.pnlQuite.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_MouseClick);
-            this.pnlQuite.MouseHover += new System.EventHandler(this.pnlQuite_MouseHover);
+            this.pnlQuite.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_Click);
             // 
             // label4
             // 
@@ -320,7 +312,7 @@ namespace Breakout
             this.label4.TabIndex = 1;
             this.label4.Text = "Quitter";
             this.label4.Click += new System.EventHandler(this.pnlQuite_Click);
-            this.label4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_MouseClick);
+            this.label4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_Click);
             // 
             // pnlAbou
             // 
@@ -331,7 +323,6 @@ namespace Breakout
             this.pnlAbou.Size = new System.Drawing.Size(165, 159);
             this.pnlAbou.TabIndex = 5;
             this.pnlAbou.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlAbou_MouseClick);
-            this.pnlAbou.MouseHover += new System.EventHandler(this.panel5_MouseHover);
             // 
             // pnlAbout
             // 
@@ -343,7 +334,6 @@ namespace Breakout
             this.pnlAbout.Size = new System.Drawing.Size(165, 50);
             this.pnlAbout.TabIndex = 2;
             this.pnlAbout.Text = "A propos";
-            this.pnlAbout.Click += new System.EventHandler(this.label5_Click);
             this.pnlAbout.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlAbou_MouseClick);
             // 
             // pnlLeftArrow
@@ -355,7 +345,6 @@ namespace Breakout
             this.pnlLeftArrow.Size = new System.Drawing.Size(64, 55);
             this.pnlLeftArrow.TabIndex = 6;
             this.pnlLeftArrow.Visible = false;
-            this.pnlLeftArrow.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLeftArrow_Paint);
             this.pnlLeftArrow.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlLeftArrow_MouseClick);
             // 
             // pnlRightArrow
@@ -388,7 +377,7 @@ namespace Breakout
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(169, 157);
             this.panel6.TabIndex = 4;
-            this.panel6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_MouseClick);
+            this.panel6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_Click);
             // 
             // label7
             // 
@@ -441,7 +430,6 @@ namespace Breakout
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(196, 41);
             this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label5
             // 
@@ -453,7 +441,6 @@ namespace Breakout
             this.label5.Size = new System.Drawing.Size(144, 50);
             this.label5.TabIndex = 0;
             this.label5.Text = "Joueur :";
-            this.label5.Click += new System.EventHandler(this.label5_Click_1);
             // 
             // bigPnlOnePlayer
             // 
@@ -534,7 +521,6 @@ namespace Breakout
             this.label17.TabIndex = 0;
             this.label17.Text = "Créer un niveau ";
             this.label17.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseClick);
-            this.label17.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label17_MouseMove);
             // 
             // levelSelector
             // 
@@ -543,13 +529,8 @@ namespace Breakout
             this.levelSelector.Name = "levelSelector";
             this.levelSelector.Size = new System.Drawing.Size(200, 24);
             this.levelSelector.TabIndex = 1;
-            this.levelSelector.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.levelSelector_DrawItem);
             this.levelSelector.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.levelSelector.VisibleChanged += new System.EventHandler(this.levelSelector_VisibleChanged);
-            this.levelSelector.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.levelSelector_Validating);
-            this.levelSelector.MouseClick += new System.Windows.Forms.MouseEventHandler(this.levelSelector_MouseClick);
-            this.levelSelector.Validating += new System.ComponentModel.CancelEventHandler(this.levelSelector_Validating);
-            this.levelSelector.Validated += new System.EventHandler(this.levelSelector_Validating);
             // 
             // label8
             // 
@@ -561,7 +542,6 @@ namespace Breakout
             this.label8.Size = new System.Drawing.Size(148, 50);
             this.label8.TabIndex = 0;
             this.label8.Text = "Niveau :";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // pnlValidateLevel
             // 
@@ -571,7 +551,6 @@ namespace Breakout
             this.pnlValidateLevel.Name = "pnlValidateLevel";
             this.pnlValidateLevel.Size = new System.Drawing.Size(247, 158);
             this.pnlValidateLevel.TabIndex = 3;
-            this.pnlValidateLevel.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlValidateLevel_Paint);
             this.pnlValidateLevel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlValidateLevel_MouseClick);
             // 
             // label9
@@ -595,7 +574,7 @@ namespace Breakout
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(169, 157);
             this.panel9.TabIndex = 4;
-            this.panel9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_MouseClick);
+            this.panel9.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_Click);
             // 
             // label10
             // 
@@ -607,7 +586,7 @@ namespace Breakout
             this.label10.Size = new System.Drawing.Size(131, 50);
             this.label10.TabIndex = 1;
             this.label10.Text = "Quitter";
-            this.label10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_MouseClick);
+            this.label10.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnlQuite_Click);
             // 
             // pnlAb
             // 
@@ -735,7 +714,6 @@ namespace Breakout
             this.MinimumSize = new System.Drawing.Size(600, 600);
             this.Name = "NewHome";
             this.Text = "Casse Tuile 8.1";
-            this.Load += new System.EventHandler(this.NewHome_Load);
             this.pnlOnePlayer.ResumeLayout(false);
             this.pnlOnePlayer.PerformLayout();
             this.panel2.ResumeLayout(false);
