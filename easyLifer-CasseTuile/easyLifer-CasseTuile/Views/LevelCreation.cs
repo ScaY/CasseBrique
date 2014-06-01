@@ -26,12 +26,15 @@ namespace CasseBrique.Views
         public TextBox ErrorConsole { get; set; }
 
         public Control currentBrick { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LevelCreation"/> class.
+        /// </summary>
         public LevelCreation()
         {
 
             AddBonusSelected = false;
             NoToolSelected = true;
-            NbMaxBricks = 20;
+            NbMaxBricks = 100;//limit the number of bricks allowed.
 
 
             IsAddingBricks = false;
@@ -41,16 +44,25 @@ namespace CasseBrique.Views
             ErrorConsole = this.txtErrorMessage;
             this.pnlNbBricks.Text = String.Format("Nombre de Briques restantes : {0}", NbMaxBricks);
         }
+        /// <summary>
+        /// Decimals the nb of bricks.
+        /// </summary>
         public void decNbBricks()
         {
             NbMaxBricks--;
             this.pnlNbBricks.Text = String.Format("Nombre de Briques restantes : {0}", NbMaxBricks);
         }
+        /// <summary>
+        /// Incs the nb of bricks.
+        /// </summary>
         public void incNbBricks()
         {
             NbMaxBricks++;
             this.pnlNbBricks.Text = String.Format("Nombre de Briques restantes : {0}", NbMaxBricks);
         }
+        /// <summary>
+        /// Validates the form.
+        /// </summary>
         public void validate()
         {
 
@@ -58,9 +70,11 @@ namespace CasseBrique.Views
 
             if (!(lvl.LevelName == null))
             {
+                //checks if the level is already existing
                 if (!File.Exists(lvl.Path))
                 {
                     bool hasBricks = false;
+                    //Creation of the bricks
                     Brick[,] bricks = new Brick[pnl3Map.Width / BrickWidth, pnl3Map.Height / BrickHeight];
 
                     foreach (Control item in pnl3Map.Controls)
@@ -68,6 +82,7 @@ namespace CasseBrique.Views
                         StaticBrick currentB = item as StaticBrick;
                         if (currentB != null)
                         {
+                            //each brick get a position depending of the row and the col
                             hasBricks = true;
                             int i = (int)Math.Floor((double)currentB.Bounds.X / BrickWidth);
                             int j = (int)Math.Floor((double)currentB.Bounds.Y / BrickHeight);
@@ -121,6 +136,9 @@ namespace CasseBrique.Views
 
         }
 
+        /// <summary>
+        /// Adds a brick in the good area
+        /// </summary>
         public void addBrickToolAction()
         {
             NoToolSelected = false;
@@ -142,6 +160,9 @@ namespace CasseBrique.Views
 
         }
 
+        /// <summary>
+        /// Disables all tools.
+        /// </summary>
         public void disableAllTools()
         {
             pnl3Map.Controls.Remove(currentBrick);
@@ -149,6 +170,9 @@ namespace CasseBrique.Views
             NoToolSelected = false;
             IsAddingBricks = false;
         }
+        /// <summary>
+        /// Deletes the brick tool action.
+        /// </summary>
         public void deleteBrickToolAction()
         {
 
@@ -160,6 +184,12 @@ namespace CasseBrique.Views
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the pnl4Player control.
+        /// Allows the user to add new bricks with the correct tool
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void pnl4Player_Click(object sender, EventArgs e)
         {
             disableAllTools();
@@ -187,6 +217,12 @@ namespace CasseBrique.Views
 
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the pnlNoTool control.
+        /// Allows the user to delete a brick on the area by clicking on the brick to delete
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnlNoTool_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -201,6 +237,12 @@ namespace CasseBrique.Views
 
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the pnlValidate control.
+        /// Allows the user to confirm the level settings and to start playing
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void pnlValidate_MouseClick(object sender, MouseEventArgs e)
         {
             validate();
@@ -216,24 +258,48 @@ namespace CasseBrique.Views
             addBrickToolAction();
         }
 
+        /// <summary>
+        /// Handles the Click event of the lblDelete control.
+        /// Allows the user to delete a brick
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void lblDelete_Click(object sender, EventArgs e)
         {
             disableAllTools();
             deleteBrickToolAction();
         }
 
+        /// <summary>
+        /// Handles the Click event of the lblBonus control.
+        /// Allows the user to add bonuses
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void lblBonus_Click(object sender, EventArgs e)
         {
             disableAllTools();
             addBonusToolAction();
         }
 
+        /// <summary>
+        /// Handles the MouseClick event of the panel3 control.
+        /// Allows the user to add bonus on a brick
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         private void panel3_MouseClick(object sender, MouseEventArgs e)
         {
             disableAllTools();
             addBonusToolAction();
         }
 
+        /// <summary>
+        /// Handles the Click event of the lblValidate control.
+        /// Allows the user to confirm the level settings
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void lblValidate_Click(object sender, EventArgs e)
         {
             validate();
@@ -270,18 +336,34 @@ namespace CasseBrique.Views
     public class MovableBrick : Panel
     {
         public LevelCreation ParentForm { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MovableBrick"/> class.
+        /// </summary>
+        /// <param name="f">The f.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
         public MovableBrick(LevelCreation f, int width, int height)
             : base()
         {
             this.Size = new System.Drawing.Size(width, height);
             ParentForm = f;
         }
+        /// <summary>
+        /// Move the bricks.
+        /// </summary>
+        /// <param name="X">The x.</param>
+        /// <param name="Y">The y.</param>
         public void BrickMove(int X, int Y)
         {
             this.SetBounds(X - this.ParentForm.Bounds.X - this.Parent.Bounds.X - this.Width / 2, Y - this.ParentForm.Bounds.Y - this.Parent.Bounds.Y - this.Height, this.Width, this.Height);
         }
 
 
+        /// <summary>
+        /// Déclenche l'événement <see cref="E:System.Windows.Forms.Control.MouseMove" />.
+        /// Allows to move a brick
+        /// </summary>
+        /// <param name="e"><see cref="T:System.Windows.Forms.MouseEventArgs" /> qui contient les données d'événement.</param>
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -290,6 +372,11 @@ namespace CasseBrique.Views
         }
 
 
+        /// <summary>
+        /// Déclenche l'événement <see cref="E:System.Windows.Forms.Control.Click" />.
+        /// Allows the user to set a brick at a position
+        /// </summary>
+        /// <param name="e"><see cref="T:System.EventArgs" /> qui contient les données de l'événement.</param>
         protected override void OnClick(EventArgs e)
         {
             base.OnClick(e);
@@ -326,6 +413,9 @@ namespace CasseBrique.Views
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class StaticBrick : Panel
     {
         public LevelCreation ParentForm { get; set; }
@@ -341,12 +431,22 @@ namespace CasseBrique.Views
 
             this.Refresh();
         }
+        /// <summary>
+        /// Déclenche l'événement <see cref="E:System.Windows.Forms.Control.Paint" />.
+        /// Allows to draw border on a brick to separate each bricks
+        /// </summary>
+        /// <param name="e"><see cref="T:System.Windows.Forms.PaintEventArgs" /> qui contient les données de l'événement.</param>
         protected override void OnPaint(PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, Color.White, ButtonBorderStyle.Solid);
 
             base.OnPaint(e);
         }
+        /// <summary>
+        /// Déclenche l'événement <see cref="E:System.Windows.Forms.Control.MouseClick" />.
+        /// Allows to confirm the position of a brick or a bonus
+        /// </summary>
+        /// <param name="e"><see cref="T:System.Windows.Forms.MouseEventArgs" /> qui contient les données de l'événement.</param>
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
@@ -365,6 +465,10 @@ namespace CasseBrique.Views
             }
         }
 
+        /// <summary>
+        /// Sets the bonus.
+        /// </summary>
+        /// <param name="bonus">if set to <c>true</c> [bonus].</param>
         public void setBonus(bool bonus)
         {
             if (bonus)
